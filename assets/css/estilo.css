@@ -83,3 +83,22 @@ footer{
 #copyright{
     background-color: #111111;
 }
+
+.imagemProduto{
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+}
+.textoProduto{
+    padding: 75px 0;
+}
+.textoProduto h4{
+    font-family: 'Montserrat' !important;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+.col-lg-4{
+    -ms-flex: 0 0 32.6% !important;
+    flex: 0 0 32.6% !important;
+    max-width: 32.6% !important;
+}

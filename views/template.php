@@ -39,7 +39,7 @@
 						<a class="nav-link" href="contato">Contato</a>
 					</li>
 				</ul>
-				<button class="btn bg-padrao my-2 my-sm-0">Área do Cliente</button>
+				<button class="btn bg-padrao my-2 my-sm-0 btn-sm">Área do Cliente</button>
 			</div>
 		</nav>
 	</div>
