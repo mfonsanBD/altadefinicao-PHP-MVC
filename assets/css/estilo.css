@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "Google Sans";
+    src: url("fontes/GoogleSans-Regular.ttf");
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("fontes/Montserrat-Bold.otf");
+}
+*{
+    font-family: 'Google Sans';
+    outline: none !important;
+}
+.bg-padrao{
+    background-color: #eec800 !important;
+    color: white !important;
+}
+.menu{
+    margin-left: auto !important;
+}
+.ativo{
+    color: #eec800 !important;
+    border-bottom: solid 3px #eec800;
+}
+.carousel-caption{
+    bottom: 35% !important;
+    /* text-align: left !important; */
+}
+.carousel-caption h1{
+    font-family: 'Montserrat';
+    font-size: 3rem;
+}
+.carousel-control-next, .carousel-control-prev{
+    top: 50% !important;
+    width: 4% !important;
+    height: 70px;
+    margin: 0 20px;
+}
+.quem-somos,
+.produtos-servicos,
+.revenda,
+.contato,
+footer{
+    padding: 120px 0;
+}
+.quem-somos h1,
+.produtos-servicos h1,
+.contato h1,
+footer h5{
+    font-family: 'Montserrat' !important;
+}
+.revenda h1{
+    font-family: 'Montserrat' !important;
+    margin-top: 30%;
+}
+.titulo::after{
+    content: '';
+    width: 3%;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    margin-top: 5px;
+    transform: translateX(-50%);
+    background-color: #eec800;
+    display: block;
+}
+.produtos-servicos,
+.contato{
+    background-color:#F9F9F9;
+}
+.revenda{
+    background-color:#eec800;
+}
+.nome-site{
+    color: #eec800;
+}
+.texto-quemsomos{
+    padding-top: 150px;
+}
+footer{
+    background-color: #222222;
+    color: #FFFFFF;
+}
+#copyright{
+    background-color: #111111;
+}

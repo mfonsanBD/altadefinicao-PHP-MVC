@@ -4,7 +4,7 @@ use \Core\Controller;
 
 class HomeController extends Controller{
 	public function index(){
-		$this->titulo = "Página Principal";
+		$this->titulo = "A maior gráfica de Duque de Caxias";
 		$this->loadTemplate('home', $dados=array());
 	}
 }
