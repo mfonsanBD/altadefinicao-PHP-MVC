@@ -35,16 +35,18 @@
     height: 70px;
     margin: 0 20px;
 }
-.quem-somos,
 .produtos-servicos,
 .revenda,
+.noticias,
 .contato,
 footer{
     padding: 120px 0;
 }
 .quem-somos h1,
 .produtos-servicos h1,
+.noticias h1,
 .contato h1,
+.quemSomosText h3,
 footer h5{
     font-family: 'Montserrat' !important;
 }
@@ -101,4 +103,30 @@ footer{
     -ms-flex: 0 0 32.6% !important;
     flex: 0 0 32.6% !important;
     max-width: 32.6% !important;
+}
+.ondeestou{
+    padding: 120px 0 !important;
+}
+.quem-somos{
+    padding: 80px 0;
+}
+.quemSomosImg{
+    width: 100%;
+    height: 350px;
+    background-color: aquamarine;
+    overflow: hidden;
+    z-index: 9999;
+}
+.caixaImg{
+    position: absolute;
+    left: -15px;
+    top: 30px;
+    width: 100%;
+    height: 350px;
+    border: 12px solid #eec800;
+    z-index: 0;
+}
+.quemSomosText{
+    padding: 80px 0;
+    text-align: center;
 }

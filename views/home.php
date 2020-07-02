@@ -54,7 +54,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://static.vecteezy.com/system/resources/previews/000/518/298/non_2x/vector-abstract-blue-background-dark-curve-006.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/letreiro-em-lona.webp" alt="Letreiro em Lona" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://besthqwallpapers.com/Uploads/11-5-2019/91419/thumb2-yellow-material-background-material-design-yellow-black-abstraction-lines-abstract-backgrounds.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/letreiro-em-acm.webp" alt="Letreiro em ACM" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/cad47486610545.5d9e97c346f44.png" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/adesivacao-de-lojas.webp" alt="Adesivação de Lojas" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -93,7 +93,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://static.vecteezy.com/system/resources/previews/000/518/298/non_2x/vector-abstract-blue-background-dark-curve-006.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/banners.webp" alt="Banners" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -106,7 +106,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://besthqwallpapers.com/Uploads/11-5-2019/91419/thumb2-yellow-material-background-material-design-yellow-black-abstraction-lines-abstract-backgrounds.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/totens.webp" alt="Totens" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -119,7 +119,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/cad47486610545.5d9e97c346f44.png" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/envelopamento-de-frotas.webp" alt="Envelopamento de Frotas" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -132,7 +132,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://static.vecteezy.com/system/resources/previews/000/518/298/non_2x/vector-abstract-blue-background-dark-curve-006.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/panfletos.webp" alt="Panfletos" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -145,7 +145,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://besthqwallpapers.com/Uploads/11-5-2019/91419/thumb2-yellow-material-background-material-design-yellow-black-abstraction-lines-abstract-backgrounds.jpg" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/cartao-de-visita.webp" alt="Cartão de Visita" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
@@ -158,12 +158,12 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="imagemProduto rounded-left">
-                            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/cad47486610545.5d9e97c346f44.png" alt="" height="100%">
+                            <img src="assets/img/servicos-produtos/tabuas-de-churrasco-personalizada.webp" alt="Tábua p/ Churrasco Personalizada" height="100%">
                         </div>
                     </div>
                     <div class="col-lg-6 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-break">Tábua p/ Churrasco Personalizada</h4>
+                        <h4 class="m-0 text-uppercase text-break">Tábua Personalizada</h4>
                     </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@
     </div>
 </section>
 
-<section id="quem-somos" class="quem-somos">
+<section id="noticias" class="noticias">
     <div class="container">
         <h1 class="text-uppercase text-center titulo">Notícias Recentes</h1>
         <div class="pt-5 pb-5">

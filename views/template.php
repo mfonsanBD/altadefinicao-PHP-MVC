@@ -24,7 +24,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav menu">
 					<li class="nav-item <?=($this->titulo == "A maior gráfica de Duque de Caxias") ? 'ativo' : '';?>">
-						<a class="nav-link" href="home">Inicio</a>
+						<a class="nav-link" href="inicio">Inicio</a>
 					</li>
 					<li class="nav-item <?=($this->titulo == "Quem Somos") ? 'ativo' : '';?>">
 						<a class="nav-link" href="quem-somos">Quem Somos</a>
@@ -59,7 +59,7 @@
 					<h5>Menu do Site</h5>
 					<ul class="navbar-nav pt-4">
 						<li>
-							<a class="nav-link text-white" href="home">Inicio</a>
+							<a class="nav-link text-white" href="inicio">Inicio</a>
 						</li>
 						<li>
 							<a class="nav-link text-white" href="quem-somos">Quem Somos</a>
