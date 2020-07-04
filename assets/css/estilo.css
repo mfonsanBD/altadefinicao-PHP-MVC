@@ -46,9 +46,13 @@ footer{
 .produtos-servicos h1,
 .noticias h1,
 .contato h1,
-.quemSomosText h3,
+.quem-somos h6,
 footer h5{
     font-family: 'Montserrat' !important;
+}
+.card-title{
+    font-family: 'Montserrat' !important;
+    line-height: 0.9;
 }
 .revenda h1{
     font-family: 'Montserrat' !important;
@@ -113,7 +117,8 @@ footer{
 .quemSomosImg{
     width: 100%;
     height: 350px;
-    background-color: aquamarine;
+    background:url('https://fotografiamais.com.br/wp-content/uploads/2019/01/cmyk-ou-rgb-o-que-significa.jpg');
+    background-size: cover;
     overflow: hidden;
     z-index: 9999;
 }
@@ -127,6 +132,12 @@ footer{
     z-index: 0;
 }
 .quemSomosText{
-    padding: 80px 0;
+    padding: 160px 0;
     text-align: center;
+}
+.breadcrumb-item + .breadcrumb-item::before{
+    color: #FFFFFF !important;
+}
+.mvv{
+    background-color: #F9F9F9 !important;
 }
