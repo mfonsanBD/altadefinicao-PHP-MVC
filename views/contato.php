@@ -48,24 +48,24 @@
                             </textarea>
                         </div>
                     </div>
-                    <button class="btn btn-warning" type="submit">Enviar</button>
+                    <button class="btn bg-padrao btn-sm" type="submit">Enviar Mensagem</button>
                 </form>
             </div>
             <div class="col-lg-5 bg-dark p-5 contato-infos rounded-lg">
-                <div class="row mb-4">
-                    <div class="pt-2 pb-2 pl-3 pr-3 mr-2 bg-warning rounded-lg"><i class="fab fa-whatsapp fa-lg"></i></div>
+                <div class="mb-4">
+                    <i class="fab fa-whatsapp fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
                     <a href="https://api.whatsapp.com/send?phone=5521982755100" target="_blank" class="pt-1">(21) 98275-5100</a>
                 </div>
-                <div class="row mb-4">
-                    <div class="pt-2 pb-2 pl-3 pr-3 mr-2 bg-warning rounded-lg"><i class="fas fa-phone-alt fa-lg"></i></div>
+                <div class="mb-4">
+                    <i class="fas fa-phone-alt fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
                     <a href="tel:2141286328" target="_blank" class="pt-1">(21) 4128-6328</a>
                 </div>
-                <div class="row mb-4">
-                    <div class="pt-2 pb-2 pl-3 pr-3 mr-2 bg-warning rounded-lg"><i class="far fa-envelope fa-lg"></i></div>
+                <div class="mb-4">
+                    <i class="far fa-envelope fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
                     <a href="mailto:altadefinicaocaxias@gmail.com" target="_blank" class="pt-1">altadefinicaocaxias@gmail.com</a>
                 </div>
-                <div class="row">
-                    <div class="pt-2 pb-2 pl-3 pr-3 mr-2 bg-warning rounded-lg"><i class="fas fa-map-marker-alt fa-lg"></i></div>
+                <div>
+                    <i class="fas fa-map-marker-alt fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
                     <a href="https://goo.gl/maps/XcNxJ9edc3bFXbS49" target="_blank" class="pt-1">Av. Governador Leonel de Moura Brizola - Jardim das Oliveiras, Duque de Caxias - RJ, 25040-004</a>
                 </div>
             </div>

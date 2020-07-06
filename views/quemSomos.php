@@ -23,17 +23,17 @@
     <div class="container">
         <div class="row">
             <div class="col bg-white rounded-lg shadow p-3 ml-1 mr-1 text-center m-0">
-                <i class="fas fa-mountain fa-3x text-warning"></i>
+                <i class="fas fa-mountain fa-3x texto-padrao"></i>
                 <h6 class="mt-3 text-uppercase">Missão</h6>
                 <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In tempora molestias ad adipisci optio laudantium rem!</p>
             </div>
             <div class="col bg-white rounded-lg shadow p-3 ml-1 mr-1 text-center m-0">
-                <i class="fas fa-bullseye fa-3x text-warning"></i>
+                <i class="fas fa-bullseye fa-3x texto-padrao"></i>
                 <h6 class="mt-3 text-uppercase">Visão</h6>
                 <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In tempora molestias ad adipisci optio laudantium rem!</p>
             </div>
             <div class="col bg-white rounded-lg shadow p-3 ml-1 mr-1 text-center m-0">
-                <i class="far fa-handshake fa-3x text-warning"></i>
+                <i class="far fa-handshake fa-3x texto-padrao"></i>
                 <h6 class="mt-3 text-uppercase">Valores</h6>
                 <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In tempora molestias ad adipisci optio laudantium rem!</p>
             </div>

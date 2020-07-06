@@ -10,9 +10,22 @@
     font-family: 'Google Sans';
     outline: none !important;
 }
+.breadcrumb a{
+    color: #FC7634 !important;
+}
+.breadcrumb a:hover{
+    text-decoration: none !important;
+    color: #F2AC34 !important;
+}
+form a{
+    color: #FFFFFF !important;
+}
 .bg-padrao{
-    background-color: #eec800 !important;
+    background-color: #FC7634 !important;
     color: white !important;
+}
+.texto-padrao{
+    color: #FC7634 !important;
 }
 .bg-padrao a{
     color: #000000 !important;
@@ -25,8 +38,8 @@
     margin-left: auto !important;
 }
 .ativo{
-    color: #eec800 !important;
-    border-bottom: solid 3px #eec800;
+    color: #FC7634 !important;
+    border-bottom: solid 3px #FC7634;
 }
 .carousel-caption{
     bottom: 35% !important;
@@ -75,7 +88,7 @@ footer h5,
     left: 50%;
     margin-top: 5px;
     transform: translateX(-50%);
-    background-color: #eec800;
+    background-color: #FC7634;
     display: block;
 }
 .produtos-servicos,
@@ -83,10 +96,10 @@ footer h5,
     background-color:#F9F9F9;
 }
 .revenda{
-    background-color:#eec800;
+    background-color:#FC7634;
 }
 .nome-site{
-    color: #eec800;
+    color: #FC7634;
 }
 .texto-quemsomos{
     padding-top: 150px;
@@ -137,7 +150,7 @@ footer{
     top: 30px;
     width: 100%;
     height: 350px;
-    border: 12px solid #eec800;
+    border: 12px solid #FC7634;
     z-index: 0;
 }
 .quemSomosText{
@@ -152,10 +165,15 @@ footer{
 }
 .contato-infos a{
     color:#FFFFFF !important;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Montserrat' !important;
 }
 .contato-infos a:hover{
-    color:#FFC107 !important;
+    color:#FC7634 !important;
     text-decoration: none;
+}
+.card-imagem{
+    width: 100%;
+    height:320px;
+    overflow: hidden;
 }

@@ -5,6 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<link rel="icon" href="assets/img/favicon.png" type="image/png">
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/css/estilo.css">
@@ -39,7 +40,7 @@
 						<a class="nav-link" href="contato">Contato</a>
 					</li>
 				</ul>
-				<button class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Área do Cliente</button>
+				<button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button>
 			</div>
 		</nav>
 	</div>
@@ -89,7 +90,7 @@
 							<input type="checkbox" class="form-check-input" id="newsCheck">
 							<label class="form-check-label" for="newsCheck">Concordo com os termos e condições de uso.</label>
 						</div>
-						<button type="submit" class="btn btn-warning">Enviar</button>
+						<button type="submit" class="btn bg-padrao">Enviar</button>
 					</form>
 				</div>
 			</div>
@@ -108,5 +109,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="assets/js/login.js"></script>
+	<script src="assets/js/site.js"></script>
   </body>
 </html>

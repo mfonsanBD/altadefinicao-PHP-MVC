@@ -11,7 +11,7 @@
         <div class="container">
           <h1 class="text-uppercase">First slide label</h1>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <button class="btn btn-light">Saiba Mais</button>
+          <button class="btn btn-light btn-sm">Saiba Mais</button>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
         <div class="container">
           <h1 class="text-uppercase">Second slide label</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button class="btn btn-light">Saiba Mais</button>
+          <button class="btn btn-light btn-sm">Saiba Mais</button>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="container">
           <h1 class="text-uppercase">Third slide label</h1>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          <button class="btn btn-light">Saiba Mais</button>
+          <button class="btn btn-light btn-sm">Saiba Mais</button>
         </div>
       </div>
     </div>
@@ -174,57 +174,41 @@
 <section id="revenda" class="revenda">
     <div class="container">
         <div class="text-center">
-            <h1 class="text-uppercase m-0 p-0">Seja um revendedor!</h1>
-            <p class="p-0 m-0">Preencha o formulário abaixo para condições exclusivas.</p>
+            <h1 class="text-uppercase m-0 p-0 text-white">Seja um revendedor!</h1>
+            <p class="p-0 m-0 text-light">Preencha o formulário abaixo para condições exclusivas.</p>
         </div>
-        <div class="col-lg-6 offset-lg-3">
+        <div class="col-lg-6 offset-lg-3 text-white">
             <div class="row mt-5">
-                <div class="col-lg-12 text-left">
+                <div class="col-lg-12 text-center">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4">
+                                <input type="text" class="form-control" id="inputEmail4" placeholder="Nome">
                             </div>
                             <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4">
+                                <input type="text" class="form-control" id="inputPassword4" placeholder="Sobrenome">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                            <input type="text" class="form-control" id="inputAddress" placeholder="E-mail">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                                <input type="text" class="form-control" id="inputEmail4" placeholder="Telefone">
                             </div>
-                            <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="inputPassword4" placeholder="Celular/Whatsapp">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Check me out
+                            <input class="form-check-input" type="checkbox" id="politica">
+                            <label class="form-check-label" for="politica">
+                                Li e aceito a <a href="politica-de-privacidade">Política de Privacidade</a>
                             </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-dark">Cadastrar</button>
+                        <button type="submit" id="botao-cadastrar" class="btn btn-dark" disabled>Cadastrar</button>
                     </form>
                 </div>
             </div>
@@ -238,41 +222,47 @@
         <div class="pt-5 pb-5">
             <div class="card-deck">
                 <div class="card">
-                    <img src="https://graficamk.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/a/banner-massoterapia_2_.jpg" class="card-img-top" alt="...">
+                    <div class="card-imagem">
+                        <img src="https://graficamk.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/b/a/banner-massoterapia_2_.jpg" class="card-img-top" alt="..." height="100%">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <button class="btn btn-warning">Leia Mais!</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
+                        <button class="btn bg-padrao float-right btn-sm">Leia Mais!</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://criativweb.com.br/wp-content/uploads/2015/12/outdoor.jpg" class="card-img-top" alt="...">
+                    <div class="card-imagem">
+                        <img src="https://criativweb.com.br/wp-content/uploads/2015/12/outdoor.jpg" class="card-img-top" alt="..." height="100%">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <button class="btn btn-warning">Leia Mais!</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
+                        <button class="btn bg-padrao float-right btn-sm">Leia Mais!</button>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://img.elo7.com.br/product/original/264D467/arte-para-panfleto-flyers-em-geral-panfleto-para-matricula.jpg" class="card-img-top" alt="...">
+                    <div class="card-imagem">
+                        <img src="https://img.elo7.com.br/product/original/264D467/arte-para-panfleto-flyers-em-geral-panfleto-para-matricula.jpg" class="card-img-top" alt="..." height="100%">
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <button class="btn btn-warning">Leia Mais!</button>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
+                        <button class="btn bg-padrao float-right btn-sm">Leia Mais!</button>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-5">
-                <button class="btn btn-warning">Ver mais notícias!</button>
+                <button class="btn bg-padrao btn-sm" id="mais-noticias">Ver mais notícias!</button>
             </div>
         </div>
     </div>
@@ -283,17 +273,17 @@
         <h1 class="text-uppercase text-center titulo">Contato</h1>
         <div class="row mt-5">
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-phone-alt fa-2x text-black-50"></i>
+                <i class="fas fa-phone-alt fa-2x texto-padrao"></i>
                 <h5 class="p-0 m-0 mt-3 text-black-50">(21) 4128-6328</h5>
                 <h5 class="p-0 m-0 text-black-50">(21) 98275-5100</h5>
             </div>
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-envelope fa-2x text-black-50"></i>
+                <i class="fas fa-envelope fa-2x texto-padrao"></i>
                 <h5 class="p-0 m-0 mt-3 text-black-50">altadefinicaocaxias@gmail.com</h5>
                 <h5 class="p-0 m-0 text-black-50">contato@altadefinicaocaxias.com.br</h5>
             </div>
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-map-marker-alt fa-2x text-black-50"></i>
+                <i class="fas fa-map-marker-alt fa-2x texto-padrao"></i>
                 <h5 class="p-0 m-0 mt-3 text-black-50">Presidente Kennedy, 8515 - São Bento - D. de Caxias - RJ</h5>
             </div>
         </div>
