@@ -14,6 +14,13 @@
     background-color: #eec800 !important;
     color: white !important;
 }
+.bg-padrao a{
+    color: #000000 !important;
+}
+.bg-padrao a:hover{
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
 .menu{
     margin-left: auto !important;
 }
@@ -39,7 +46,8 @@
 .revenda,
 .noticias,
 .contato,
-footer{
+footer,
+.notfound{
     padding: 120px 0;
 }
 .quem-somos h1,
@@ -47,7 +55,8 @@ footer{
 .noticias h1,
 .contato h1,
 .quem-somos h6,
-footer h5{
+footer h5,
+.text-padrao{
     font-family: 'Montserrat' !important;
 }
 .card-title{
@@ -140,4 +149,13 @@ footer{
 }
 .mvv{
     background-color: #F9F9F9 !important;
+}
+.contato-infos a{
+    color:#FFFFFF !important;
+    font-size: 18px;
+    font-family: 'Montserrat' !important;
+}
+.contato-infos a:hover{
+    color:#FFC107 !important;
+    text-decoration: none;
 }
