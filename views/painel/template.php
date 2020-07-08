@@ -16,6 +16,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/dashboard/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 </head>
 <body>
   <?php
@@ -49,6 +50,7 @@
   <script src="assets/dashboard/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/dashboard/js/argon.js?v=1.2.0"></script>
+  <script src="assets/js/login.js"></script>
 </body>
 
 </html>

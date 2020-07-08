@@ -21,13 +21,21 @@
         <div class="col-lg-6 col-md-8">
           <div class="card bg-secondary border-0">
             <div class="card-body px-lg-5 py-lg-5">
-              <form role="form">
+              <form role="form" id="form-cadastro">
                 <div class="form-group">
                   <div class="input-group input-group-merge input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
                     <input class="form-control" placeholder="Nome" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Sobrenome" type="text">
                   </div>
                 </div>
                 <div class="form-group">
@@ -50,15 +58,15 @@
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                      <label class="custom-control-label" for="customCheckRegister">
+                      <input class="custom-control-input" id="aceito" type="checkbox">
+                      <label class="custom-control-label" for="aceito">
                         <span class="text-muted">Li e aceito a <a href="#!">Política de Privacidade</a></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4" disabled>Criar Conta</button>
+                  <button type="submit" id="cadastro" class="btn btn-primary mt-4" disabled>Criar Conta</button>
                 </div>
               </form>
             </div>
@@ -73,3 +81,5 @@
     </div>
   </div>
   <!-- Argon Scripts -->
+
+  <div id="notificacao" class="fixed-top mt-3"></div>
