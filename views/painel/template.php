@@ -6,6 +6,7 @@
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
   <title><?=NOME_DO_SITE." :: ".$this->titulo?></title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Favicon -->
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <!-- Fonts -->

@@ -27,7 +27,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Nome" type="text">
+                    <input class="form-control" placeholder="Nome" type="text" id="nome">
                   </div>
                 </div>
                 <div class="form-group">
@@ -35,7 +35,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Sobrenome" type="text">
+                    <input class="form-control" placeholder="Sobrenome" type="text" id="sobrenome">
                   </div>
                 </div>
                 <div class="form-group">
@@ -43,7 +43,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="E-mail" type="email">
+                    <input class="form-control" placeholder="E-mail" type="email" id="email">
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,10 +51,18 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Senha" type="password">
+                    <input class="form-control" placeholder="Senha" type="password" id="senha">
                   </div>
                 </div>
-                <div class="text-muted font-italic"><small>força da senha: <span class="text-success font-weight-700">strong</span></small></div>
+                <div class="form-group">
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Confirma Senha" type="password" id="confirmaSenha">
+                  </div>
+                </div>
+                <div class="text-muted font-italic forcaSenha"></div>
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
@@ -65,6 +73,7 @@
                     </div>
                   </div>
                 </div>
+                <div class="g-recaptcha" data-sitekey="6LePCrAZAAAAAEnjkfbXuh04fM6HpsC0GyfRYbW6"></div>
                 <div class="text-center">
                   <button type="submit" id="cadastro" class="btn btn-primary mt-4" disabled>Criar Conta</button>
                 </div>
@@ -82,4 +91,4 @@
   </div>
   <!-- Argon Scripts -->
 
-  <div id="notificacao" class="fixed-top mt-3"></div>
+  <div id="notificacao" class="fixed-bottom mb-2"></div>
