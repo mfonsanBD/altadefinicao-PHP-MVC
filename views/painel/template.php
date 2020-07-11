@@ -52,6 +52,6 @@
   <!-- Argon JS -->
   <script src="assets/dashboard/js/argon.js?v=1.2.0"></script>
   <script src="assets/js/login.js"></script>
+  <script src="assets/js/cadastro.js"></script>
 </body>
-
 </html>

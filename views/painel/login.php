@@ -20,13 +20,13 @@
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary border-0 mb-0">
             <div class="card-body px-lg-5 py-lg-5">
-              <form role="form">
+              <form role="form" id="form-login">
                 <div class="form-group mb-3">
                   <div class="input-group input-group-merge input-group-alternative">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                     </div>
-                    <input class="form-control" placeholder="E-mail" type="email">
+                    <input class="form-control" placeholder="E-mail" type="email" id="emailLogin">
                   </div>
                 </div>
                 <div class="form-group">
@@ -34,11 +34,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                     </div>
-                    <input class="form-control" placeholder="Senha" type="password">
+                    <input class="form-control" placeholder="Senha" type="password" id="senhaLogin">
                   </div>
                 </div>
+                <div class="g-recaptcha" data-sitekey="6LePCrAZAAAAAEnjkfbXuh04fM6HpsC0GyfRYbW6"></div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary my-4" disabled>Entrar</button>
+                  <button type="submit" class="btn btn-primary my-4">Entrar</button>
                 </div>
               </form>
             </div>
@@ -56,3 +57,5 @@
     </div>
   </div>
   <!-- Argon Scripts -->
+
+  <div id="notificacaoLogin" class="fixed-bottom mb-2"></div>

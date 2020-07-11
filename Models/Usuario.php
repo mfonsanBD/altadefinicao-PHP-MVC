@@ -13,6 +13,16 @@ class Usuario extends Model{
 			return false;
 		}
     }
+	public function verificaSenha($email, $senha){
+		$sql = $this->conexao->prepare("SELECT senhaUsuario FROM usuario WHERE emailUsuario = ? AND senhaUsuario = ?");
+		$sql->execute(array($email, $senha));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
     public function cadastro($nome, $sobrenome, $email, $senha, $hashConfirmacao){
         $sql = $this->conexao->prepare("INSERT INTO usuario SET nomeUsuario = ?, sobrenomeUsuario = ?, emailUsuario = ?, senhaUsuario = ?, hashUsuario = ?, permissaoUsuario = 0, fotoUsuario = 'usuario.jpg', tipoUsuario = 0");
         $sql->execute(array($nome, $sobrenome, $email, $senha, $hashConfirmacao));
@@ -22,5 +32,17 @@ class Usuario extends Model{
 		}else{
 			return false;
 		}
-    }
+	}
+	public function logar($email, $senha){
+		$sql = $this->conexao->prepare("SELECT * FROM usuario WHERE emailUsuario = ? AND senhaUsuario = ?");
+		$sql->execute(array($email, $senha));
+
+		if($sql->rowCount() > 0){
+			$dados = $sql->fetch();
+			$_SESSION['logado'] 		= $dados['idUsuario'];
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
