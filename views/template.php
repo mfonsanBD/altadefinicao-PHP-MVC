@@ -17,7 +17,7 @@
   <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-			<a class="navbar-brand" href="home"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
+			<a class="navbar-brand" href="inicio"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -40,7 +40,17 @@
 						<a class="nav-link" href="contato">Contato</a>
 					</li>
 				</ul>
-				<button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button>
+				<?php
+					if(empty($_SESSION['logado']) || !isset($_SESSION['logado'])){
+				?>
+					<button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button>
+				<?php
+					}else{
+				?>
+					<button id="botaoPainel" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Painel de Controle</button>
+				<?php
+					} 
+				?>
 			</div>
 		</nav>
 	</div>

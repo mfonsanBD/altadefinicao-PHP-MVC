@@ -6,6 +6,10 @@ $(document).ready(function(){
     $("#botaoLogin").click(function(){
         window.location.href = 'login';
     });
+    
+    $("#botaoPainel").click(function(){
+        window.location.href = 'painel';
+    });
 
     $("#politica").click(function(){
         var marcado = $(this).is(':checked');

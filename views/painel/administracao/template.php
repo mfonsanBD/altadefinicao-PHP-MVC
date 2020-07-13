@@ -19,6 +19,9 @@
 </head>
 <body>
 
+  <?php
+		$this->loadViewInTemplate($viewNome, $dados);
+	?>
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="assets/dashboard/vendor/jquery/dist/jquery.min.js"></script>

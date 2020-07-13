@@ -33,7 +33,7 @@ $(document).ready(function(){
                                         data: {email:email, senha:senha, recaptcha:grecaptcha.getResponse()},
                                         success: function(dados){
                                             if(dados == 1){
-                                                sucessoLogin("Login feito!!!");
+                                                document.location.href = 'painel';
                                             }else if(dados == 2){
                                                 erroLogin("Não é permitido a entrada de robô no sistema.")
                                             }else{

@@ -90,5 +90,21 @@
     </div>
   </div>
   <!-- Argon Scripts -->
+  <!-- Footer -->
+  <footer class="py-5" id="footer-main">
+    <div class="container">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-12">
+          <div class="copyright text-center text-muted">
+          &copy; Copyright 
+          <?php
+            $anos = date('Y', strtotime('- 2005 years'));
+            echo date('Y', strtotime('- '.$anos.' years'))." - ".date('Y').", <span class='nome-site'>".NOME_DO_SITE."</span>";
+          ?>. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <div id="notificacao" class="fixed-bottom mb-2"></div>

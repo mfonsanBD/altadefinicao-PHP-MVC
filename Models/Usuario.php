@@ -40,9 +40,21 @@ class Usuario extends Model{
 		if($sql->rowCount() > 0){
 			$dados = $sql->fetch();
 			$_SESSION['logado'] 		= $dados['idUsuario'];
+			$_SESSION['tipoUsuario'] 	= $dados['tipoUsuario'];
 			return true;
 		}else{
 			return false;
 		}
+	}
+	public function informacoesUsuario($id){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT * FROM usuario WHERE idUsuario = ?");
+		$sql->execute(array($id));
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+
+		return $array;
 	}
 }
