@@ -58,4 +58,9 @@ class LoginController extends Login{
 				echo 2;
 		}
 	}
+	public function sair(){
+		unset($_SESSION['logado']);
+		unset($_SESSION['tipoUsuario']);
+		header("Location: login");
+	}
 }
