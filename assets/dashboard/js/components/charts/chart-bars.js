@@ -22,10 +22,10 @@ var BarsChart = (function() {
 		var ordersChart = new Chart($chart, {
 			type: 'bar',
 			data: {
-				labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+				labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
 				datasets: [{
 					label: 'Sales',
-					data: [25, 20, 30, 22, 17, 29]
+					data: [0, 20, 10, 30, 15, 40, 20, 60, 60, 45, 78, 92]
 				}]
 			}
 		});

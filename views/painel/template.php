@@ -18,6 +18,7 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/dashboard/css/argon.css?v=1.2.0" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
 </head>
 <body>
   <?php
@@ -34,7 +35,10 @@
   <script src="assets/dashboard/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/dashboard/js/argon.js?v=1.2.0"></script>
+  <script src="assets/dashboard/js/jquery.mask.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/cadastro.js"></script>
+  <script src="assets/js/produtos.js"></script>
 </body>
 </html>

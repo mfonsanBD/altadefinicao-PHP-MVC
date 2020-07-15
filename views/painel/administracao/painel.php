@@ -14,20 +14,32 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link <?=($this->titulo == "Painel de Controle") ? 'active' : '';?>" href="painel">
-                <i class="ni ni-tv-2 text-primary"></i>
+                <i class="ni ni-chart-pie-35 text-default"></i>
                 <span class="nav-link-text">Painel de Controle</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="caixa">
-              <i class="fas fa-wallet text-warning"></i>
-                <span class="nav-link-text">Caixa</span>
+              <a class="nav-link <?=($this->titulo == "Produtos") ? 'active' : '';?>" href="produtos">
+                <i class="ni ni-box-2 text-default"></i>
+                <span class="nav-link-text">Produtos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?=($this->titulo == "Clientes") ? 'active' : '';?>" href="clientes">
+                <i class="ni ni-single-02 text-default"></i>
+                <span class="nav-link-text">Clientes</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link <?=($this->titulo == "Pedidos") ? 'active' : '';?>" href="pedidos">
-                <i class="ni ni-archive-2 text-success"></i>
+                <i class="ni ni-archive-2 text-default"></i>
                 <span class="nav-link-text">Pedidos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="caixa">
+                <i class="ni ni-book-bookmark text-default"></i>
+                <span class="nav-link-text">Caixa</span>
               </a>
             </li>
             <li class="nav-item">
@@ -292,8 +304,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Lucro de Hoje</h5>
-                      <span class="h2 font-weight-bold mb-0">R$ 20.000,00</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Ganho Hoje</h5>
+                      <span class="h2 font-weight-bold mb-0">R$ 20.000</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -314,8 +326,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Lucro este Mês</h5>
-                      <span class="h2 font-weight-bold mb-0">R$ 120.000,00</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Ganho no Mês</h5>
+                      <span class="h2 font-weight-bold mb-0">R$ 120.000</span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -336,6 +348,45 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-6">
+          <div class="card bg-default">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <!-- <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6> -->
+                  <h5 class="h3 text-white mb-0">Ganho Mensal</h5>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <!-- Chart wrapper -->
+                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <div class="card">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <!-- <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6> -->
+                  <h5 class="h3 mb-0">Pedidos Mensal</h5>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <canvas id="chart-bars" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xl-12">
           <div class="card">
@@ -406,40 +457,14 @@
                 </tbody>
               </table>
             </div>
-            <!-- Card footer -->
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
           </div>
         </div>
       </div>
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6">
-            <div class="copyright text-center  text-lg-left  text-muted">&copy; Copyright 
+          <div class="col-lg-12">
+            <div class="copyright text-center text-muted">&copy; Copyright 
               <?php
                 $anos = date('Y', strtotime('- 2005 years'));
                 echo date('Y', strtotime('- '.$anos.' years'))." - ".date('Y').", <span class='nome-site'>".NOME_DO_SITE."</span>";

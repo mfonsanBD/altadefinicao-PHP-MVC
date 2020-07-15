@@ -16,6 +16,11 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+.cropit-preview {
+    /* You can specify preview size in CSS */
+    width: 960px;
+    height: 540px;
+}
 :root
 {
     --blue: #5e72e4;
