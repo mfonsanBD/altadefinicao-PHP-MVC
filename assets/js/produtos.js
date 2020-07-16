@@ -54,13 +54,49 @@ $(document).ready(function(){
             type: 'canvas',
             size: 'viewport'
             }).then(function (img) {
-            console.log(img);
+                $.ajax({
+                    url: urlSite+'/cadastraProduto/',
+                    type: 'POST',
+                    data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, tipoProduto:tipoProduto, acabamentoProduto:acabamentoProduto,valorProduto:valorProduto, fotoProduto:img},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Produto cadastrado com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }
+                        else if(dados == 2){
+                            atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
+                        }
+                        else{
+                            erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
+                        }
+                    }
+                });
             });
         });
     });
         
     $('.valorProduto').mask("#.##0,00", {reverse: true});
 });
+
+function excluiProduto(id){
+    $.ajax({
+        url: urlSite+'/excluiProduto/',
+        type: 'POST',
+        data: {idProduto:id},
+        success: function(dados){
+            if(dados == 1){
+                sucessoProdutos("Produto excluido com sucesso!");
+                setTimeout(function(){
+                    window.location.reload();
+                }, 3000);
+            }else{
+                erroProdutos("Não foi possível excluir o produto. Tente novamente mais tarde.");
+            }
+        }
+    });
+}
 
 function sucessoProdutos(texto){
     $("#notificacaoProduto").html("<div class='col-lg-4 offset-lg-4 alert alert-success alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='ni ni-like-2'></i></span><span class='alert-text'><strong>Sucesso! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");

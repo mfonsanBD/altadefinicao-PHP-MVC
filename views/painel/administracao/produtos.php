@@ -77,7 +77,7 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-                <button type="button" class="btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span>Notificações</span>
                     <span class="badge badge-primary">24</span>
                 </button>
@@ -267,7 +267,39 @@
                 </div>
               </div>
             </div>
+            <div class="card-body">
+                <div class="row">
+                        <?php
+                            if($quantidadeDeProduto != 0){
+                                foreach($listaProduto as $produtos):
+                        ?>
+                            <div class="card col-xl-4">
+                                <div class="card-imagem pt-3">
+                                    <img src="assets/img/servicos-produtos/<?=$produtos['fotoProduto']?>" class="card-img-top" alt="<?=$produtos['nomeProduto']?>" height="100%">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="card-title"><?=$produtos['nomeProduto']?></h3>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-default float-left btn-block btn-sm">Editar</button>
+                                    <button class="btn btn-danger float-right btn-block btn-sm" onclick="excluiProduto(<?= $produtos['idProduto'];?>)">Excluir</button>
+                                </div>
+                            </div>
+                        <?php
+                                endforeach;
+                            }else{
+                        ?>
+                            <div class="alert alert-default col-xl-12 text-center" role="alert">
+                                Nenhum Produto cadastrado!
+                            </div>
+                        <?php
+                            }
+                        ?>
+                </div>
+            </div>
           </div>
+        </div>
+        <div class="col-xl-12">
         </div>
       </div>
       <!-- Footer -->
@@ -367,17 +399,16 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-warning my-4">Próximo</button>
+                                        <button type="submit" class="btn btn-warning my-4">Adicionar Imagem do Produto</button>
                                     </div>
                                     <div class="row d-none" id="cortaImagem">
                                     <div class="col-md-12 text-center">
                                         <div id="upload-demo"></div>
                                     </div>
                                     <div class="col-md-12" style="padding:5%;">
-                                        <strong>Select image to crop:</strong>
-                                        <input type="file" id="image">
-
-                                        <button type="button" class="btn btn-success btn-block btn-upload-image" style="margin-top:2%">Upload Image</button>
+                                        <input type="file" id="image" class="d-none">
+                                        <label for="image" class="p-3 border text-center">Clique aqui e escolha uma imagem para seu produto</label>
+                                        <button type="button" class="btn btn-default btn-block btn-upload-image mt-4" style="margin-top:2%">Cadastrar Produto</button>
                                     </div>
                                 </div>
                                 </form>
