@@ -24,8 +24,11 @@ class PainelController extends Login{
                 $this->loadTemplate('cliente/painel', $dados=array());
             break;
             case 1:
+                $quantidadeUsuarios = $usuario->quantidadeUsuarios();
+                $dados['quantidadeUsuarios'] = $quantidadeUsuarios;
+
                 $this->titulo = "Painel de Controle";
-                $this->loadTemplate('administracao/painel', $dados=array());
+                $this->loadTemplate('administracao/painel', $dados);
             break;
             default:
                 header("Location: ".URL_BASE."login");

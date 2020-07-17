@@ -136,6 +136,15 @@ $(document).ready(function(){
             });
         });
     });
+
+    $(document).ready(function() {
+        $('#tabelaDeClientes').DataTable({
+            "language": {
+                "url": "assets/js/Portuguese-Brasil.json"
+            }
+        });
+        
+    } );
 });
 
 function sucessoProdutos(texto){

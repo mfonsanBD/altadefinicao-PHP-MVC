@@ -57,4 +57,26 @@ class Usuario extends Model{
 
 		return $array;
 	}
+	public function listaUsuarios(){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT * FROM usuario WHERE tipoUsuario = 0");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
+	public function quantidadeUsuarios(){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT COUNT(*) AS quantidade FROM usuario WHERE tipoUsuario = 0");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+		
+		return $array['quantidade'];
+	}
 }

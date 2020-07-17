@@ -100,9 +100,27 @@ class ProdutosController extends Login{
         if(isset($_POST) && !empty($_POST)){
             $id = trim(addslashes($_POST['idProduto']));
 
-            $produto = new Produto();
+            $produto = new Produtos();
 
             if($produto->excluiProduto($id)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
+    public function alteraProduto(){
+        if(isset($_POST) && !empty($_POST)){
+            $idProduto              = trim(addslashes($_POST['idProduto']));
+            $nomeProduto            = trim(addslashes($_POST['nomeProduto']));
+            $categoriaProduto       = trim(addslashes($_POST['categoriaProduto']));
+            $tipoProduto            = trim(addslashes($_POST['tipoProduto']));
+            $acabamentoProduto      = trim(addslashes($_POST['acabamentoProduto']));
+            $valorProduto           = trim(addslashes($_POST['valorProduto']));
+
+            $produto = new Produtos();
+            
+            if($produto->alteraProduto($nomeProduto, $valorProduto, $categoriaProduto, $tipoProduto, $acabamentoProduto, $idProduto)){
                 echo 1;
             }else{
                 echo 0;

@@ -249,7 +249,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-produto"><i class="fas fa-plus"></i> Cadastrar Produto</a>
+              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-produto"><i class="fas fa-plus"></i> Cadastrar Cliente</a>
             </div>
           </div>
         </div>
@@ -263,149 +263,63 @@
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Produtos Cadastrados</h3>
+                  <h3 class="mb-0">Clientes Cadastrados</h3>
                 </div>
               </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                        <?php
-                            if($quantidadeDeProduto != 0){
-                                foreach($listaProduto as $produtos):
-                        ?>
-                            <div class="card col-xl-3">
-                                <div class="card-imagem pt-3">
-                                    <img src="assets/img/servicos-produtos/<?=$produtos['fotoProduto']?>" class="card-img-top" alt="<?=$produtos['nomeProduto']?>" height="100%">
-                                </div>
-                                <div class="card-body pl-0 pr-0">
-                                    <h3 class="card-title m-0 p-0"><?=$produtos['nomeProduto']." ".$produtos['nomeTipoProduto']?></h3>
-                                    <?php
-                                      if($produtos['nomeCategoria'] == "Comunicação Visual"){
-                                        echo '<span class="badge badge-warning mb-2">'.$produtos['nomeCategoria'].'</span>';
-                                      }else{
-                                        echo '<span class="badge badge-success" mb-2>'.$produtos['nomeCategoria'].'</span>';
-                                      }
-                                    ?>
-                                    <p class="m-0 p-0"><small>Acabamento: <?=$produtos['nomeAcabamento']?></small></p>
-                                    <h1 class="card-title m-0 p-0" style="color: #202020; font-weight:bold;">R$ <?=$produtos['valorProduto']?></h1>
-                                </div>
-                                <div class="card-footer pl-0 pr-0">
-                                    <button class="btn btn-default float-left btn-block btn-sm" data-toggle="modal" data-target="#edita-produto" data-id="<?=$produtos['idProduto']?>">Editar</button>
-                                      <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="modal fade" id="edita-produto" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                                                  <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
-                                                      <div class="modal-content">
-                                                          <div class="modal-body p-0">
-                                                              <div class="card bg-secondary border-0 mb-0">
-                                                                  <div class="card-header bg-warning text-white">
-                                                                      Editar Produto
-                                                                  </div>
-                                                                  <div class="card-body px-lg-5 py-lg-5">
-                                                                      <form role="form" id="formularioEditaProduto">
-                                                                          <div class="form-group">
-                                                                              <div class="input-group input-group-merge input-group-alternative">
-                                                                                  <div class="input-group-prepend">
-                                                                                      <span class="input-group-text"><i class="ni ni-box-2"></i></span>
-                                                                                  </div>
-                                                                                  <input class="form-control" placeholder="Nome do Produto" type="text" id="nomeEditaProduto" value="<?=$produtos['nomeProduto']?>">
-                                                                              </div>
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <div class="input-group input-group-merge input-group-alternative">
-                                                                                  <div class="input-group-prepend">
-                                                                                      <span class="input-group-text"><i class="fas fa-sitemap"></i>
-                                                                                  </div>
-                                                                                  <select class="form-control m-0" id="categoriaEditaProduto">
-                                                                                      <option disabled selected>Selecione a Categoria</option>
-                                                                                      <?php
-                                                                                          foreach($listaCategoria as $tipoDeCategoria):
-                                                                                      ?>
-                                                                                      <option value="<?=$tipoDeCategoria['idCategoria']?>"
-                                                                                      <?=($produtos['idCategoria'] == $tipoDeCategoria['idCategoria']) ? 'selected' : ''?>
-                                                                                      >
-                                                                                        <?=$tipoDeCategoria['nomeCategoria']?>
-                                                                                      </option>
-                                                                                      <?php
-                                                                                          endforeach;
-                                                                                      ?>
-                                                                                  </select>
-                                                                              </div>
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <div class="input-group input-group-merge input-group-alternative">
-                                                                                  <div class="input-group-prepend">
-                                                                                      <span class="input-group-text"><i class="fas fa-award"></i>
-                                                                                  </div>
-                                                                                  <select class="form-control m-0" id="tipoEditaProduto">
-                                                                                      <option disabled selected>Selecione o Tipo</option>
-                                                                                      <?php
-                                                                                          foreach($listaTipoProduto as $tipoDeProduto):
-                                                                                      ?>
-                                                                                      <option value="<?=$tipoDeProduto['idTipoProduto']?>" 
-                                                                                      <?=($produtos['idTipoProduto'] == $tipoDeProduto['idTipoProduto']) ? 'selected' : ''?>
-                                                                                      >
-                                                                                        <?=$tipoDeProduto['nomeTipoProduto']?>
-                                                                                      </option>
-                                                                                      <?php
-                                                                                          endforeach;
-                                                                                      ?>
-                                                                                  </select>
-                                                                              </div>
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <div class="input-group input-group-merge input-group-alternative">
-                                                                                  <div class="input-group-prepend">
-                                                                                      <span class="input-group-text"><i class="fas fa-crop-alt"></i>
-                                                                                  </div>
-                                                                                  <select class="form-control m-0" id="acabamentoEditaProduto">
-                                                                                      <option disabled selected>Selecione o Acabamento</option>
-                                                                                      <?php
-                                                                                          foreach($listaAcabamento as $tipoDeAcabamento):
-                                                                                      ?>
-                                                                                      <option value="<?=$tipoDeAcabamento['idAcabamento']?>" 
-                                                                                      <?=($produtos['idAcabamento'] == $tipoDeAcabamento['idAcabamento']) ? 'selected' : ''?>
-                                                                                      >
-                                                                                        <?=$tipoDeAcabamento['nomeAcabamento']?></option>
-                                                                                      <?php
-                                                                                          endforeach;
-                                                                                      ?>
-                                                                                  </select>
-                                                                              </div>
-                                                                          </div>
-                                                                          <div class="form-group">
-                                                                              <div class="input-group input-group-merge input-group-alternative">
-                                                                                  <div class="input-group-prepend">
-                                                                                      <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                                                                  </div>
-                                                                                  <input class="form-control valorProduto" placeholder="Valor do Produto" type="text" id="valorEditaProduto" value="<?=$produtos['valorProduto']?>">
-                                                                              </div>
-                                                                          </div>
-                                                                          <div class="text-center">
-                                                                              <button type="submit" class="btn btn-warning my-4">Alterar Produto</button>
-                                                                          </div>
-                                                                      </form>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                    <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto">Excluir</button>
-                                </div>
-                            </div>
-                        <?php
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush" id="tabelaDeClientes">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">Nome</th>
+                            <th scope="col" class="sort" data-sort="status">Permissão</th>
+                            <th scope="col" class="sort" data-sort="valor">Valor em Compras (até hoje)</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody class="list">
+                            <?php
+                                foreach($listaUsuarios as $clientes):
+                            ?>
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                        <span class="name mb-0 text-sm"><?=$clientes['nomeUsuario']." ".$clientes['sobrenomeUsuario'];?></span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    <span class="badge badge-dot mr-4">
+                                        <i class="bg-warning"></i>
+                                        <span class="status">pending</span>
+                                    </span>
+                                </td>
+                                <td class="budget">
+                                    $2500 USD
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
                                 endforeach;
-                            }else{
-                        ?>
-                            <div class="alert alert-default col-xl-12 text-center" role="alert">
-                                Nenhum Produto cadastrado!
-                            </div>
-                        <?php
-                            }
-                        ?>
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
           </div>
