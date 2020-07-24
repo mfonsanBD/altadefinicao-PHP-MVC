@@ -1,158 +1,168 @@
 urlSite = window.location.href;
 $(document).ready(function(){
-    $("#cadastraProduto").on("submit", function(e){
+    $("#cadastraCliente").on("submit", function(e){
         e.preventDefault();
 
-        var nomeProduto             = $("#nomeProduto").val();
-        var categoriaProduto        = $("#categoriaProduto").val();
-        var tipoProduto             = $("#tipoProduto").val();
-        var acabamentoProduto       = $("#acabamentoProduto").val();
-        var valorProduto            = $("#valorProduto").val();
+        var nomeCliente             = $("#nomeCliente").val();
+        var sobrenomeCliente        = $("#sobrenomeCliente").val();
+        var emailCliente            = $("#emailCliente").val();
+        var senhaCliente            = $("#senhaCliente").val();
+        var confirmaSenhaCliente    = $("#confirmaSenhaCliente").val();
 
-        if(nomeProduto == ''){
-            atencaoProdutos("O campo <strong>Nome do Produto</strong> é <strong>obrigatório</strong>.");
+        if(nomeCliente == ''){
+            atencaoClientes("O campo <strong class='text-uppercase'>nome</strong> é <strong>obrigatório</strong>.");
         }
-        else if(categoriaProduto == null){
-            atencaoProdutos("O campo <strong>Categoria</strong> é <strong>obrigatório</strong>.");
+        else if(nomeCliente.length < 3){
+            atencaoClientes("O campo <strong class='text-uppercase'>nome</strong> deve conter no mínimo <strong>3 caracteres</strong>.");
         }
-        else if(tipoProduto == null){
-            atencaoProdutos("O campo <strong>Tipo</strong> é <strong>obrigatório</strong>.");
+        else if(!isNaN(nomeCliente)){
+            atencaoClientes("O campo <strong class='text-uppercase'>nome</strong> não deve conter <strong>caracteres numéricos</strong>.");
         }
-        else if(acabamentoProduto == null){
-            atencaoProdutos("O campo <strong>Acabamento</strong> é <strong>obrigatório</strong>.");
+        else if(sobrenomeCliente == ''){
+            atencaoClientes("O campo <strong class='text-uppercase'>sobrenome</strong> é <strong>obrigatório</strong>.");
         }
-        else if(valorProduto == ''){
-            atencaoProdutos("O campo <strong>Valor do Produto</strong> é <strong>obrigatório</strong>.");
+        else if(sobrenomeCliente.length < 3){
+            atencaoClientes("O campo <strong class='text-uppercase'>sobrenome</strong> deve conter no mínimo <strong>3 caracteres</strong>.");
+        }
+        else if(!isNaN(sobrenomeCliente)){
+            atencaoClientes("O campo <strong class='text-uppercase'>sobrenome</strong> não deve conter <strong>caracteres numéricos</strong>.");
+        }
+        else if(emailCliente == ''){
+            atencaoClientes("O campo <strong class='text-uppercase'>e-mail</strong> é <strong>obrigatório</strong>.");
+        }
+        else if(!validaEmailCliente(emailCliente)){
+            atencaoClientes("Digite um <strong class='text-uppercase'>e-mail</strong> <strong>válido</strong>.");
+        }
+        else if(senhaCliente == ''){
+            atencaoClientes("O campo <strong class='text-uppercase'>senha</strong> é <strong>obrigatório</strong>.");
+        }
+        else if(forcaDaSenhaCliente(senhaCliente) < 70){
+            atencaoClientes("Para segurança das suas informações sua <strong class='text-uppercase'>senha</strong> precisa ser <strong>mais forte</strong>.");
+        }
+        else if(confirmaSenhaCliente == ''){
+            atencaoClientes("O campo <strong class='text-uppercase'>confirma senha</strong> é <strong>obrigatório</strong>.");
+        }
+        else if(confirmaSenhaCliente != senhaCliente){
+            atencaoClientes("Os campos de senha não coincidem.");
         }else{
-            $("#cortaImagem").removeClass('d-none');
-        }
-        var resize = $('#upload-demo').croppie({
-            enableExif: true,
-            enableOrientation: true,    
-            viewport: { 
-                width: 387,
-                height: 250
-            },
-            boundary: {
-                width: 387,
-                height: 250
-            }
-        });
-        $('#image').on('change', function () { 
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                resize.croppie('bind',{
-                url: e.target.result
-                }).then(function(){
-                console.log('jQuery bind complete');
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-        $('.btn-upload-image').on('click', function (ev) {
-            resize.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-            }).then(function (img) {
-                $.ajax({
-                    url: urlSite+'/cadastraProduto/',
-                    type: 'POST',
-                    data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, tipoProduto:tipoProduto, acabamentoProduto:acabamentoProduto,valorProduto:valorProduto, fotoProduto:img},
-                    success: function(dados){
-                        if(dados == 1){
-                            sucessoProdutos("Produto cadastrado com sucesso!");
-                            setTimeout(function(){
-                                window.location.reload();
-                            }, 3000);
-                        }
-                        else if(dados == 2){
-                            atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
-                        }
-                        else{
-                            erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
-                        }
-                    }
-                });
-            });
-        });
-    });
-        
-    $('.valorProduto').mask("#.##0,00", {reverse: true});
-
-    $("#confirmaExclusaoDeProduto").on("show.bs.modal", function(event){
-        var botao = $(event.relatedTarget);
-        var id = botao.data("id");
-        var nome = botao.data("nome");
-
-        $("produto").html(nome);
-
-        $("#botaoConfirmaExclusao").on("click", function(){
             $.ajax({
-                url: urlSite+'/excluiProduto/',
+                url: urlSite+'/verificaEmail/',
                 type: 'POST',
-                data: {idProduto:id},
+                data:{email:emailCliente},
                 success: function(dados){
                     if(dados == 1){
-                        sucessoProdutos(nome+" excluido com sucesso!");
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 3000);
+                        atencaoClientes("O <strong class='text-uppercase'>e-mail</strong> que você digitou <strong>já consta em nosso sistema</strong>.");
                     }else{
-                        erroProdutos("Não foi possível excluir o produto. Tente novamente mais tarde.");
+                        $.ajax({
+                            url: urlSite+'/cadastraCliente/',
+                            type: 'POST',
+                            data: {nome:nomeCliente, sobrenome:sobrenomeCliente, email:emailCliente, senha:senhaCliente},
+                            success: function(dados){
+                                if(dados == 1){
+                                    sucessoClientes("Cliente cadastrado com sucesso!");
+                                    setTimeout(function(){
+                                        window.location.reload();
+                                    }, 3000);
+                                }
+                                else{
+                                    erroClientes("Não foi possível cadastrar um novo cliente. Tente novamente mais tarde!");
+                                }
+                            }
+                        });
                     }
                 }
             });
-        });
+        }
     });
 
-    $("#edita-produto").on("show.bs.modal", function(event){
-        var botao = $(event.relatedTarget);
-        var id = botao.data("id");
-        
-        $("#formularioEditaProduto").on("submit", function(e){
-            e.preventDefault();
+    // $("#confirmaExclusaoDeCliente").on("show.bs.modal", function(event){
+    //     var botao = $(event.relatedTarget);
+    //     var id = botao.data("id");
+    //     var nome = botao.data("nome");
 
-            var nomeProduto             = $("#nomeEditaProduto").val();
-            var categoriaProduto        = $("#categoriaEditaProduto").val();
-            var tipoProduto             = $("#tipoEditaProduto").val();
-            var acabamentoProduto       = $("#acabamentoEditaProduto").val();
-            var valorProduto            = $("#valorEditaProduto").val();
+    //     $("produto").html(nome);
 
-            $.ajax({
-                url: urlSite+'/alteraProduto/',
-                type: 'POST',
-                data: {idProduto:id, nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, tipoProduto:tipoProduto, acabamentoProduto:acabamentoProduto,valorProduto:valorProduto},
-                success: function(dados){
-                    if(dados == 1){
-                        sucessoProdutos("Produto alterado com sucesso!");
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 3000);
-                    }
-                    else{
-                        atencaoProdutos("As informações que você enviou são as informações atuais do produto!");
-                    }
-                }
-            });
-        });
+    //     $("#botaoConfirmaExclusao").on("click", function(){
+    //         $.ajax({
+    //             url: urlSite+'/excluiCliente/',
+    //             type: 'POST',
+    //             data: {idProduto:id},
+    //             success: function(dados){
+    //                 if(dados == 1){
+    //                     sucessoProdutos(nome+" excluido com sucesso!");
+    //                     setTimeout(function(){
+    //                         window.location.reload();
+    //                     }, 3000);
+    //                 }else{
+    //                     erroProdutos("Não foi possível excluir o produto. Tente novamente mais tarde.");
+    //                 }
+    //             }
+    //         });
+    //     });
+    // });
+    
+    $('#tabelaDeClientes').DataTable({
+        "language": {
+            "url": "assets/js/Portuguese-Brasil.json"
+        }
     });
-
-    $(document).ready(function() {
-        $('#tabelaDeClientes').DataTable({
-            "language": {
-                "url": "assets/js/Portuguese-Brasil.json"
-            }
-        });
-        
-    } );
 });
 
-function sucessoProdutos(texto){
+$("#senhaCliente").keyup(function(){
+    var senha = $(this).val();
+    var forcaSenha = forcaDaSenhaCliente(senha);
+
+    if((forcaSenha >= 0) && (forcaSenha < 20)){                  
+        $(".forcaSenha").html("<small>Força da senha: <span class='text-danger font-weight-700'>muito fraca</span></small>");
+    }
+    else if((forcaSenha >= 20) && (forcaSenha < 40)){
+        $(".forcaSenha").html("<small>Força da senha: <span class='text-warning font-weight-700'>fraca</span></small>");
+    }
+    else if((forcaSenha >= 40) && (forcaSenha < 60)){
+        $(".forcaSenha").html("<small>Força da senha: <span class='text-info font-weight-700'>legal</span></small>");
+    }
+    else if((forcaSenha >= 60) && (forcaSenha < 80)){
+        $(".forcaSenha").html("<small>Força da senha: <span class='text-default font-weight-700'>boa</span></small>");
+    }
+    else{
+        $(".forcaSenha").html("<small>Força da senha: <span class='text-success font-weight-700'>perfeita</span></small>");
+    }
+});
+function validaEmailCliente(email){
+    var expressao = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    return expressao.test(email);
+}
+function sucessoClientes(texto){
     $("#notificacaoProduto").html("<div class='col-lg-4 offset-lg-4 alert alert-success alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='ni ni-like-2'></i></span><span class='alert-text'><strong>Sucesso! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
 }
-function erroProdutos(texto){
+function erroClientes(texto){
     $("#notificacaoProduto").html("<div class='col-lg-4 offset-lg-4 alert alert-danger alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-times'></i></span><span class='alert-text'><strong>Erro! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
 }
-function atencaoProdutos(texto){
+function atencaoClientes(texto){
     $("#notificacaoProduto").html("<div class='col-lg-4 offset-lg-4 alert alert-warning alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-exclamation-triangle'></i></span><span class='alert-text'><strong>Atenção! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+}
+function forcaDaSenhaCliente(senha){
+    var forca = 0;
+
+    if(senha.length > 4 && senha.length < 8){
+        forca += 10;
+    }
+    else if(senha.length >= 8){
+        forca += 40;
+    }
+
+    if((senha.length > 0) && (senha.match(/[a-z]+/))){
+        forca += 15;
+    }
+    if((senha.length > 0) && (senha.match(/[A-Z]+/))){
+        forca += 15;
+    }
+    if((senha.length > 0) && (senha.match(/[0-9]+/))){
+        forca += 10;
+    }
+    if((senha.length > 0) && (senha.match(/[^a-z0-9]/i))){
+        forca += 20;
+    }
+
+    return forca;
 }

@@ -249,7 +249,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-produto"><i class="fas fa-plus"></i> Cadastrar Cliente</a>
+              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-cliente"><i class="fas fa-plus"></i> Cadastrar Cliente</a>
             </div>
           </div>
         </div>
@@ -285,18 +285,38 @@
                             <tr>
                                 <th scope="row">
                                     <div class="media align-items-center">
-                                        <a href="#" class="avatar rounded-circle mr-3">
-                                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                                        </a>
+                                        <span class="avatar avatar-sm rounded-circle">
+                                          <?php
+                                              if($clientes['fotoUsuario'] == 'usuario.jpg'){
+                                                  echo "<img alt='Foto de Usuário' src='assets/img/usuario.jpg'>";
+                                              }else{
+                                                  echo "<img alt='Foto de ".$clientes['nomeUsuario']." ".$clientes['sobrenomeUsuario']."' src='assets/img/usuairo/".$clientes['idUsuario']."/".$clientes['fotoUsuario']."'>";
+                                              }
+                                          ?>
+                                        </span>
                                         <div class="media-body">
-                                        <span class="name mb-0 text-sm"><?=$clientes['nomeUsuario']." ".$clientes['sobrenomeUsuario'];?></span>
+                                        <span class="name mb-0 text-sm ml-2"><?=$clientes['nomeUsuario']." ".$clientes['sobrenomeUsuario'];?></span>
                                         </div>
                                     </div>
                                 </th>
                                 <td>
                                     <span class="badge badge-dot mr-4">
-                                        <i class="bg-warning"></i>
-                                        <span class="status">pending</span>
+                                      <?php
+                                        switch($clientes['permissaoUsuario']){
+                                          case 0:
+                                            echo "<i class='bg-warning'></i>
+                                            <span class='status'>Aguardando Aprovação</span>";
+                                          break;
+                                          case 1:
+                                            echo "<i class='bg-success'></i>
+                                            <span class='status'>Ativo</span>";
+                                          break;
+                                          case 2:
+                                            echo "<i class='bg-danger'></i>
+                                            <span class='status'>Inativo</span>";
+                                          break;
+                                        }
+                                      ?>
                                     </span>
                                 </td>
                                 <td class="budget">
@@ -307,10 +327,22 @@
                                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-v"></i>
                                         </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
+                                          <?php
+                                            switch($clientes['permissaoUsuario']){
+                                              case 0:
+                                                echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
+                                                <button class='btn btn-success' id='aprovaCliente'>Aprovar Revendedor</button>";
+                                              break;
+                                              case 1:
+                                                echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
+                                                <button class='btn btn-warning' id='desativaCliente'>Desativar Revendedor</button><button class='btn btn-danger' id='excluiCliente'>Excluir Revendedor</button>";
+                                              break;
+                                              case 2:
+                                                echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
+                                                <button class='btn btn-danger' id='excluiCliente'>Excluir Revendedor</button>";
+                                              break;
+                                            }
+                                          ?>
                                         </div>
                                     </div>
                                 </td>
@@ -346,96 +378,60 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="modal fade" id="cadastra-produto" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal fade" id="cadastra-cliente" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
                 <div class="modal-content">
                     <div class="modal-body p-0">
                         <div class="card bg-secondary border-0 mb-0">
                             <div class="card-header bg-warning text-white">
-                                Cadastro de Novo Produto
+                                Cadastro de Novo Cliente
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                                <form role="form" id="cadastraProduto">
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="ni ni-box-2"></i></span>
-                                            </div>
-                                            <input class="form-control" placeholder="Nome do Produto" type="text" id="nomeProduto">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-sitemap"></i>
-                                            </div>
-                                            <select class="form-control m-0" id="categoriaProduto">
-                                                <option disabled selected>Selecione a Categoria</option>
-                                                <?php
-                                                    foreach($listaCategoria as $tipoDeCategoria):
-                                                ?>
-                                                <option value="<?=$tipoDeCategoria['idCategoria']?>"><?=$tipoDeCategoria['nomeCategoria']?></option>
-                                                <?php
-                                                    endforeach;
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-award"></i>
-                                            </div>
-                                            <select class="form-control m-0" id="tipoProduto">
-                                                <option disabled selected>Selecione o Tipo</option>
-                                                <?php
-                                                    foreach($listaTipoProduto as $tipoDeProduto):
-                                                ?>
-                                                <option value="<?=$tipoDeProduto['idTipoProduto']?>"><?=$tipoDeProduto['nomeTipoProduto']?></option>
-                                                <?php
-                                                    endforeach;
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-crop-alt"></i>
-                                            </div>
-                                            <select class="form-control m-0" id="acabamentoProduto">
-                                                <option disabled selected>Selecione o Acabamento</option>
-                                                <?php
-                                                    foreach($listaAcabamento as $tipoDeAcabamento):
-                                                ?>
-                                                <option value="<?=$tipoDeAcabamento['idAcabamento']?>"><?=$tipoDeAcabamento['nomeAcabamento']?></option>
-                                                <?php
-                                                    endforeach;
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group input-group-merge input-group-alternative">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                            </div>
-                                            <input class="form-control valorProduto" placeholder="Valor do Produto" type="text" id="valorProduto">
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-warning my-4">Adicionar Imagem do Produto</button>
-                                    </div>
-                                    <div class="row d-none" id="cortaImagem">
-                                    <div class="col-md-12 text-center">
-                                        <div id="upload-demo"></div>
-                                    </div>
-                                    <div class="col-md-12" style="padding:5%;">
-                                        <input type="file" id="image" class="d-none">
-                                        <label for="image" class="p-3 border text-center">Clique aqui e escolha uma imagem para seu produto</label>
-                                        <button type="button" class="btn btn-default btn-block btn-upload-image mt-4" style="margin-top:2%">Cadastrar Produto</button>
-                                    </div>
-                                </div>
+                                <form role="form" id="cadastraCliente">
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge input-group-alternative">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-user"></i>
+                                          </div>
+                                          <input class="form-control" placeholder="Nome" type="text" id="nomeCliente">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge input-group-alternative">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="fas fa-user"></i>
+                                          </div>
+                                          <input class="form-control" placeholder="Sobrenome" type="text" id="sobrenomeCliente">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge input-group-alternative">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="E-mail" type="email" id="emailCliente">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge input-group-alternative">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="Senha" type="password" id="senhaCliente">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="input-group input-group-merge input-group-alternative">
+                                          <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                          </div>
+                                          <input class="form-control" placeholder="Confirma Senha" type="password" id="confirmaSenhaCliente">
+                                      </div>
+                                  </div>
+                                  <div class="text-muted font-italic forcaSenha"></div>
+                                  <div class="text-center">
+                                      <button type="submit" class="btn btn-warning my-4">Cadastrar</button>
+                                  </div>
                                 </form>
                             </div>
                         </div>

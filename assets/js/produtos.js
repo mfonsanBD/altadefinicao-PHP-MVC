@@ -93,7 +93,7 @@ $(document).ready(function(){
                 data: {idProduto:id},
                 success: function(dados){
                     if(dados == 1){
-                        sucessoProdutos(nome+" excluido com sucesso!");
+                        sucessoProdutos("Produto excluido com sucesso!");
                         setTimeout(function(){
                             window.location.reload();
                         }, 3000);

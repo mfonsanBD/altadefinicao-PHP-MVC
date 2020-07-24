@@ -28,4 +28,32 @@ class ClientesController extends Login{
 
         $this->loadTemplate('administracao/clientes', $dados);
     }
+	public function verificaEmail(){
+		if(!empty($_POST) && isset($_POST)){
+			$email = trim(addslashes($_POST['email']));
+			$usuario = new Usuario();
+
+			if($usuario->verificaEmail($email)){
+				echo 1;
+			}else{
+				echo 0;
+			}
+		}
+	}
+	public function cadastraCliente(){
+		if(!empty($_POST) && isset($_POST)){
+			$nome 				= trim(addslashes($_POST['nome']));
+			$sobrenome 			= trim(addslashes($_POST['sobrenome']));
+			$email 				= trim(addslashes($_POST['email']));
+			$senha 				= md5(trim(addslashes($_POST['senha'])));
+            
+            $usuario = new Usuario();
+            if($usuario->cadastraCliente($nome, $sobrenome, $email, $senha)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+			
+		}
+	}
 }

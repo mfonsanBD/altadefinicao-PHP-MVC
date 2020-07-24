@@ -50,120 +50,120 @@
     <div class="container">
         <h1 class="text-uppercase text-center titulo">Produtos & Serviços</h1>
         <div class="row mt-5">
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/letreiro-em-lona.webp" alt="Letreiro em Lona" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/letreiro-em-lona.webp" alt="Letreiro em Lona" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase">Letreiro em Lona</h4>
+                        <h4 class="m-0 text-uppercase text-white">Letreiro em Lona</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/letreiro-em-acm.webp" alt="Letreiro em ACM" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/letreiro-em-acm.webp" alt="Letreiro em ACM" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase">Letreiro em ACM</h4>
+                        <h4 class="m-0 text-uppercase text-white">Letreiro em ACM</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/adesivacao-de-lojas.webp" alt="Adesivação de Lojas" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/adesivacao-de-lojas.webp" alt="Adesivação de Lojas" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase">Adesivação de Lojas</h4>
+                        <h4 class="m-0 text-uppercase text-white">Adesivação de Lojas</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/banners.webp" alt="Banners" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/banners.webp" alt="Banners" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase">Banners</h4>
+                        <h4 class="m-0 text-uppercase text-white">Banners</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/totens.webp" alt="Totens" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/totens.webp" alt="Totens" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase">Totens</h4>
+                        <h4 class="m-0 text-uppercase text-white">Totens</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/envelopamento-de-frotas.webp" alt="Envelopamento de Frotas" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/envelopamento-de-frotas.webp" alt="Envelopamento de Frotas" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-break">Envelopamento de Frotas</h4>
+                        <h4 class="m-0 text-uppercase text-break text-white">Envelopamento de Frotas</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/panfletos.webp" alt="Panfletos" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/panfletos.webp" alt="Panfletos" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase">Panfletos</h4>
+                        <h4 class="m-0 text-uppercase text-white">Panfletos</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/cartao-de-visita.webp" alt="Cartão de Visita" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/cartao-de-visita.webp" alt="Cartão de Visita" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase">Cartão de Visita</h4>
+                        <h4 class="m-0 text-uppercase text-white">Cartão de Visita</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="imagemProduto rounded-left">
-                            <img src="assets/img/servicos-produtos/tabuas-de-churrasco-personalizada.webp" alt="Tábua p/ Churrasco Personalizada" height="100%">
+                    <div class="col-lg-12 pr-0">
+                        <div class="imagemProduto rounded-lg">
+                            <img src="assets/img/servicos-produtos/tabuas-de-churrasco-personalizada.webp" alt="Tábua p/ Churrasco Personalizada" width="100%">
                         </div>
                     </div>
-                    <div class="col-lg-6 pl-4 textoProduto text-center">
+                    <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-break">Tábua Personalizada</h4>
+                        <h4 class="m-0 text-uppercase text-break text-white">Tábua Personalizada</h4>
                     </div>
                 </div>
             </div>

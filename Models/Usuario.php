@@ -79,4 +79,14 @@ class Usuario extends Model{
 		
 		return $array['quantidade'];
 	}
+	public function cadastraCliente($nome, $sobrenome, $email, $senha){
+        $sql = $this->conexao->prepare("INSERT INTO usuario SET nomeUsuario = ?, sobrenomeUsuario = ?, emailUsuario = ?, senhaUsuario = ?, permissaoUsuario = 1, fotoUsuario = 'usuario.jpg', tipoUsuario = 0");
+        $sql->execute(array($nome, $sobrenome, $email, $senha));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
