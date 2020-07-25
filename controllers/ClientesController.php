@@ -55,5 +55,53 @@ class ClientesController extends Login{
             }
 			
 		}
-	}
+    }
+    public function excluiCliente(){
+        if(isset($_POST) && !empty($_POST)){
+            $id     = addslashes($_POST['id']);
+            $foto   = trim(addslashes($_POST['foto']));
+            
+            if($foto != 'usuario.jpg'){
+                $caminho = "assets/img/usuarios/".$id;
+                $foto = md5($id).".jpg";
+
+                unlink($caminho."/".$foto);
+                rmdir($caminho);
+            }
+
+            $usuario = new Usuario();
+            
+            if($usuario->excluiCliente($id)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
+    public function aprovar(){
+        if(isset($_POST) && !empty($_POST)){
+            $id = addslashes($_POST['id']);
+
+            $usuario = new Usuario();
+
+            if($usuario->aprovar($id)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
+    public function desativaCliente(){
+        if(isset($_POST) && !empty($_POST)){
+            $id = addslashes($_POST['id']);
+
+            $usuario = new Usuario();
+
+            if($usuario->desativa($id)){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
 }

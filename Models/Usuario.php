@@ -89,4 +89,34 @@ class Usuario extends Model{
 			return false;
 		}
 	}
+	public function excluiCliente($id){
+		$sql = $this->conexao->prepare("DELETE FROM usuario WHERE idUsuario = ?");
+		$sql->execute(array($id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function aprovar($id){
+		$sql = $this->conexao->prepare("UPDATE usuario SET permissaoUsuario = 1 WHERE idUsuario = ?");
+		$sql->execute(array($id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function desativa($id){
+		$sql = $this->conexao->prepare("UPDATE usuario SET permissaoUsuario = 2 WHERE idUsuario = ?");
+		$sql->execute(array($id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

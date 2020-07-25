@@ -185,7 +185,7 @@
                         if($this->foto == 'usuario.jpg'){
                             echo "<img alt='Foto de Usuário' src='assets/img/usuario.jpg'>";
                         }else{
-                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='assets/img/usuairo/".$_SESSION['logado']."/".$this->foto."'>";
+                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='assets/img/usuario/".$_SESSION['logado']."/".$this->foto."'>";
                         }
                     ?>
                   </span>

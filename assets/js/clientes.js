@@ -75,31 +75,60 @@ $(document).ready(function(){
         }
     });
 
-    // $("#confirmaExclusaoDeCliente").on("show.bs.modal", function(event){
-    //     var botao = $(event.relatedTarget);
-    //     var id = botao.data("id");
-    //     var nome = botao.data("nome");
+    $("#confirmaExclusaoDeCliente").on("show.bs.modal", function(event){
+        var botao       = $(event.relatedTarget);
+        var id          = botao.data("id");
+        var nome        = botao.data("nome");
+        var sobrenome   = botao.data("sobrenome");
+        var foto        = botao.data("foto");
 
-    //     $("produto").html(nome);
+        $("cliente").html(nome+" "+sobrenome);
 
-    //     $("#botaoConfirmaExclusao").on("click", function(){
-    //         $.ajax({
-    //             url: urlSite+'/excluiCliente/',
-    //             type: 'POST',
-    //             data: {idProduto:id},
-    //             success: function(dados){
-    //                 if(dados == 1){
-    //                     sucessoProdutos(nome+" excluido com sucesso!");
-    //                     setTimeout(function(){
-    //                         window.location.reload();
-    //                     }, 3000);
-    //                 }else{
-    //                     erroProdutos("Não foi possível excluir o produto. Tente novamente mais tarde.");
-    //                 }
-    //             }
-    //         });
-    //     });
-    // });
+        $("#botaoExcluiCliente").on("click", function(){
+            $.ajax({
+                url: urlSite+'/excluiCliente/',
+                type: 'POST',
+                data: {id:id, foto:foto},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoProdutos(nome+" excluido com sucesso!");
+                        setTimeout(function(){
+                            window.location.reload();
+                        }, 3000);
+                    }else{
+                        erroProdutos("Não foi possível excluir "+nome+". Tente novamente mais tarde.");
+                    }
+                }
+            });
+        });
+    });
+
+    $("#desitavaCliente").on("show.bs.modal", function(event){
+        var botao       = $(event.relatedTarget);
+        var id          = botao.data("id");
+        var nome        = botao.data("nome");
+        var sobrenome   = botao.data("sobrenome");
+
+        $("cliente").html(nome+" "+sobrenome);
+
+        $("#botaoDesativaCliente").on("click", function(){
+            $.ajax({
+                url: urlSite+'/desativaCliente/',
+                type: 'POST',
+                data: {id:id},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoProdutos(nome+" desativado(a) com sucesso!");
+                        setTimeout(function(){
+                            window.location.reload();
+                        }, 3000);
+                    }else{
+                        erroProdutos("Não foi possível desativar "+nom+". Tente novamente mais tarde.");
+                    }
+                }
+            });
+        });
+    });
     
     $('#tabelaDeClientes').DataTable({
         "language": {
@@ -107,6 +136,42 @@ $(document).ready(function(){
         }
     });
 });
+
+function aprovar(id){
+    $.ajax({
+        url: urlSite+'/aprovar/',
+        type: 'POST',
+        data: {id:id},
+        success: function(dados){
+            if(dados == 1){
+                sucessoClientes("Revendedor aprovado com sucesso!");
+                setTimeout(function(){
+                    window.location.reload();
+                }, 3000);
+            }else{
+                erroClientes("Não foi possível aprovar revendedor. Tente novamente mais tarde.");
+            }
+        }
+    });
+}
+
+function reativar(id){
+    $.ajax({
+        url: urlSite+'/aprovar/',
+        type: 'POST',
+        data: {id:id},
+        success: function(dados){
+            if(dados == 1){
+                sucessoClientes("Revendedor reativado com sucesso!");
+                setTimeout(function(){
+                    window.location.reload();
+                }, 3000);
+            }else{
+                erroClientes("Não foi possível reativado revendedor. Tente novamente mais tarde.");
+            }
+        }
+    });
+}
 
 $("#senhaCliente").keyup(function(){
     var senha = $(this).val();

@@ -30,11 +30,11 @@ $(document).ready(function(){
             enableExif: true,
             enableOrientation: true,    
             viewport: { 
-                width: 387,
+                width: 372,
                 height: 250
             },
             boundary: {
-                width: 387,
+                width: 372,
                 height: 250
             }
         });
