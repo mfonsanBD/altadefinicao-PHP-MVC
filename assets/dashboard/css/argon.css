@@ -29843,3 +29843,11 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 {
     background: transparent;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+    color: #fff !important;
+    background-color: #fb6340 !important;
+}
+.nav-pills .nav-link{
+    color: #fb6340 !important;
+}

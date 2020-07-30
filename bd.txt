@@ -1,0 +1,116 @@
+ACABAMENTO
+    - idAcabamento
+    - nomeAcabamento
+
+CATEGORIA
+    - idCategoria
+    - nomeCategoria
+
+CLIENTE
+    - idCliente
+    - idUsuario
+    - idTipoCliente
+    - telefoneCliente
+    - celularCliente
+    - whatsappCliente
+
+COLABORADOR
+    - idColaborador
+    - nomeColaborador
+    - cargoColaborador
+    - fotoColaborador
+
+ENDEREÇO
+    - idEndereco
+    - idCliente
+    - logradouroEndereco
+    - numeroEndereco
+    - complementoEndereco
+    - bairroEndereco
+    - cidadeEndereco
+    - estadoEndereco
+    - cepEndereco
+
+FORMAPAGAMENTO
+    - idFormaPagamento
+    - nomeFormaPagamento
+
+MIDIA
+    - idMidia
+    - nomeMidia
+
+PEDIDO
+    - idPedido
+    - idCliente
+    - idProduto
+    - idMidia
+    - idAcabamento
+    - idValorProdutoTipoCliente
+    - idFormaPagamento
+    - codigoPedido
+    - statusPagamento
+    - altura
+    - largura
+    - statusPedido
+    - dataPedido
+    - observacaoPedido
+    - quantidade
+    - arquivo
+    - comprovantePagamento
+
+POSTAGEM
+    - idPostagem
+    - idUsuario
+    - tituloPostagem
+    - textoPostagem
+    - fotoPostagem
+    - dataPostagem
+
+PRODUTO
+    - idProduto
+    - idCategoria
+    - nomeProduto
+    - fotoProduto
+
+TIPOCLIENTE
+    - idTipoCliente
+    - nomeTipoCliente
+
+USUARIO
+    - idUsuario
+    - nomeUsuario
+    - sobrenomeUsuario
+    - emailUsuario
+    - senhaUsuario
+    - tipoUsuario
+    - fotoUsuario
+    - hashUsuario
+    - permissaoUsuario
+    - codigoUsuario
+
+VALORPRODUTOTIPOCLIENTE
+    - idValorProdutoTipoCliente
+    - idProduto
+    - idTipoCliente
+    - valor
+
+PAPEL
+    - idPapel
+    - nomePapel
+
+GRAMATURA
+    - idGramatura
+    - nomeGramatura
+
+COR 
+    - idCor
+    - nomeCor
+
+FORMATO
+    - idFormato
+    - nomeFormato
+
+QUANTIDADE
+    - idQuantidade
+    - idProduto
+    - quantidade

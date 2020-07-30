@@ -5,24 +5,12 @@ $(document).ready(function(){
 
         var nomeProduto             = $("#nomeProduto").val();
         var categoriaProduto        = $("#categoriaProduto").val();
-        var tipoProduto             = $("#tipoProduto").val();
-        var acabamentoProduto       = $("#acabamentoProduto").val();
-        var valorProduto            = $("#valorProduto").val();
 
         if(nomeProduto == ''){
             atencaoProdutos("O campo <strong>Nome do Produto</strong> é <strong>obrigatório</strong>.");
         }
         else if(categoriaProduto == null){
             atencaoProdutos("O campo <strong>Categoria</strong> é <strong>obrigatório</strong>.");
-        }
-        else if(tipoProduto == null){
-            atencaoProdutos("O campo <strong>Tipo</strong> é <strong>obrigatório</strong>.");
-        }
-        else if(acabamentoProduto == null){
-            atencaoProdutos("O campo <strong>Acabamento</strong> é <strong>obrigatório</strong>.");
-        }
-        else if(valorProduto == ''){
-            atencaoProdutos("O campo <strong>Valor do Produto</strong> é <strong>obrigatório</strong>.");
         }else{
             $("#cortaImagem").removeClass('d-none');
         }
@@ -43,8 +31,6 @@ $(document).ready(function(){
             reader.onload = function (e) {
                 resize.croppie('bind',{
                 url: e.target.result
-                }).then(function(){
-                console.log('jQuery bind complete');
                 });
             }
             reader.readAsDataURL(this.files[0]);
@@ -57,7 +43,7 @@ $(document).ready(function(){
                 $.ajax({
                     url: urlSite+'/cadastraProduto/',
                     type: 'POST',
-                    data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, tipoProduto:tipoProduto, acabamentoProduto:acabamentoProduto,valorProduto:valorProduto, fotoProduto:img},
+                    data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:img},
                     success: function(dados){
                         if(dados == 1){
                             sucessoProdutos("Produto cadastrado com sucesso!");
@@ -114,14 +100,11 @@ $(document).ready(function(){
 
             var nomeProduto             = $("#nomeEditaProduto").val();
             var categoriaProduto        = $("#categoriaEditaProduto").val();
-            var tipoProduto             = $("#tipoEditaProduto").val();
-            var acabamentoProduto       = $("#acabamentoEditaProduto").val();
-            var valorProduto            = $("#valorEditaProduto").val();
 
             $.ajax({
                 url: urlSite+'/alteraProduto/',
                 type: 'POST',
-                data: {idProduto:id, nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, tipoProduto:tipoProduto, acabamentoProduto:acabamentoProduto,valorProduto:valorProduto},
+                data: {idProduto:id, nomeProduto:nomeProduto, categoriaProduto:categoriaProduto},
                 success: function(dados){
                     if(dados == 1){
                         sucessoProdutos("Produto alterado com sucesso!");
@@ -133,6 +116,96 @@ $(document).ready(function(){
                         atencaoProdutos("As informações que você enviou são as informações atuais do produto!");
                     }
                 }
+            });
+        });
+
+        $("#definePrecoRevenda").on("submit", function(ev){
+            ev.preventDefault();
+            var valorRevenda = $("#precoRevenda").val();
+            
+            $.ajax({
+                url: urlSite+'/precoParaRevenda/',
+                type: 'POST',
+                data: {valorRevenda:valorRevenda, idProduto:id},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoProdutos("Preço de revenda definido com sucesso!");
+                        setTimeout(function(){
+                            window.location.reload();
+                        }, 3000);
+                    }else{
+                        erroProdutos("Não foi possível definir o preço para revenda. Tente novamente mais tarde!");
+                    }
+                }
+            });
+        });
+
+        $("#definePrecoFinal").on("submit", function(evt){
+            evt.preventDefault();
+            var valorFinal = $("#precoFinal").val();
+            
+            $.ajax({
+                url: urlSite+'/precoParaFinal/',
+                type: 'POST',
+                data: {valorFinal:valorFinal, idProduto:id},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoProdutos("Preço de cliente final definido com sucesso!");
+                        setTimeout(function(){
+                            window.location.reload();
+                        }, 3000);
+                    }else{
+                        erroProdutos("Não foi possível definir o preço para cliente final. Tente novamente mais tarde!");
+                    }
+                }
+            });
+        });
+        
+        var resize = $('#upload-demo-edicao').croppie({
+            enableExif: true,
+            enableOrientation: true,    
+            viewport: { 
+                width: 372,
+                height: 250
+            },
+            boundary: {
+                width: 372,
+                height: 250
+            }
+        });
+        $('#image-edicao').on('change', function () { 
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                resize.croppie('bind',{
+                url: e.target.result
+                });
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+        $('.btn-upload-image-edicao').on('click', function (ev) {
+            resize.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+            }).then(function (img) {
+                $.ajax({
+                    url: urlSite+'/alteraFotoProduto/',
+                    type: 'POST',
+                    data: {idProduto:id, fotoProduto:img},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Foto do produto alterada com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }
+                        else if(dados == 2){
+                            atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.");
+                        }
+                        else{
+                            erroProdutos("Não foi possível alterar a foto do produto. Tente novamente mais tarde!");
+                        }
+                    }
+                });
             });
         });
     });

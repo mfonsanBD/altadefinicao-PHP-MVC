@@ -5,10 +5,7 @@ use \Core\Model;
 class Produtos extends Model{
     public function listaProduto(){
         $array = array();
-        $sql = $this->conexao->prepare("
-        SELECT pro.*, tip.*, aca.*, cat.* FROM produto AS pro
-        INNER JOIN tipoproduto AS tip ON (pro.idTipoProduto = tip.idTipoProduto)
-        INNER JOIN acabamento AS aca ON (pro.idAcabamento = aca.idAcabamento)
+        $sql = $this->conexao->prepare("SELECT pro.*, cat.* FROM produto AS pro
         INNER JOIN categoria AS cat ON (pro.idCategoria = cat.idCategoria)
         ORDER BY idProduto DESC
         ");
@@ -31,9 +28,9 @@ class Produtos extends Model{
 
         return $array['quantidade'];
     }
-    public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $valorProduto, $categoriaProduto, $tipoProduto, $acabamentoProduto){
-        $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, valorProduto = ?, idCategoria = ?, idTipoProduto = ?, idAcabamento = ?");
-        $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $valorProduto, $categoriaProduto, $tipoProduto, $acabamentoProduto));
+    public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto){
+        $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, idCategoria = ?");
+        $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto));
 
         if($sql->rowCount() > 0){
             return true;
@@ -52,13 +49,24 @@ class Produtos extends Model{
             return false;
         }
     }
-    public function alteraProduto($nomeProduto, $valorProduto, $categoriaProduto, $tipoProduto, $acabamentoProduto, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE produto SET nomeProduto = ?, valorProduto = ?, idCategoria = ?, idTipoProduto = ?, idAcabamento = ? WHERE idProduto = ?");
-        $sql->execute(array($nomeProduto, $valorProduto, $categoriaProduto, $tipoProduto, $acabamentoProduto, $idProduto));
+    public function alteraProduto($nomeProduto, $categoriaProduto, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE produto SET nomeProduto = ?, idCategoria = ? WHERE idProduto = ?");
+        $sql->execute(array($nomeProduto, $categoriaProduto, $idProduto));
 
         if($sql->rowCount() > 0){
             return true;
         }else{
+            return false;
+        }
+    }
+    public function alteraFotoProduto($nomeDaFotoDoProduto, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE produto SET fotoProduto = ? WHERE idProduto = ?");
+        $sql->execute(array($nomeDaFotoDoProduto, $idProduto));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }
+        else{
             return false;
         }
     }
