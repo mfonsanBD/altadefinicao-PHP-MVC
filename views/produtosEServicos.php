@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
-    <ol class="breadcrumb justify-content-center ondeestou bg-dark">
+    <ol class="breadcrumb justify-content-center ondeestou">
         <li class="breadcrumb-item"><a href="inicio">Página Inicial</a></li>
-        <li class="breadcrumb-item text-white active" aria-current="page"><?=$this->titulo?></li>
+        <li class="breadcrumb-item breadcrumb-titulo active" aria-current="page"><?=$this->titulo?></li>
     </ol>
 </nav>
 <section id="produtos-servicos" class="mb-5">

@@ -3,11 +3,12 @@ namespace Models;
 use \Core\Model;
 
 class Produtos extends Model{
+    public $idUltimoProduto;
+
     public function listaProduto(){
         $array = array();
         $sql = $this->conexao->prepare("SELECT pro.*, cat.* FROM produto AS pro
         INNER JOIN categoria AS cat ON (pro.idCategoria = cat.idCategoria)
-        ORDER BY idProduto DESC
         ");
         $sql->execute();
 
@@ -31,9 +32,9 @@ class Produtos extends Model{
     public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto){
         $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, idCategoria = ?");
         $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto));
-
+        
         if($sql->rowCount() > 0){
-            return true;
+            return $this->conexao->lastInsertId();
         }else{
             return false;
         }

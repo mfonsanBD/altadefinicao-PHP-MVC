@@ -8,6 +8,8 @@ use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
 
 class ProdutosController extends Login{
+    public $ultimoId;
+
 	public function index(){
         if(empty($_SESSION['logado']) || !isset($_SESSION['logado'])){
             header("Location: ".URL_BASE."login");
@@ -30,20 +32,25 @@ class ProdutosController extends Login{
             case 1:
                 $this->titulo = "Produtos";
 
-                $produto                = new Produtos();
-                $listaProduto           = $produto->listaProduto();
-                $quantidadeDeProduto    = $produto->quantidadeDeProduto();
+                $produto                                = new Produtos();
+                $listaProduto                           = $produto->listaProduto();
+                $quantidadeDeProduto                    = $produto->quantidadeDeProduto();
 
-                $categoria              = new Categoria();
-                $listaCategoria         = $categoria->listaCategoria();
+                $categoria                              = new Categoria();
+                $listaCategoria                         = $categoria->listaCategoria();
 
-                $tiporCliente           = new TipoCliente();
-                $listaTipoCliente       = $tiporCliente->listaTipoCliente();
+                $tiporCliente                           = new TipoCliente();
+                $listaTipoCliente                       = $tiporCliente->listaTipoCliente();
+
+                $valorProdutoTipoCliente                = new ValorProdutoTipoCliente();
+                $listaValorProdutoTipoCliente           = $valorProdutoTipoCliente->listaValorProdutoTipoCliente();
                 
-                $dados['listaProduto']             = $listaProduto;
-                $dados['quantidadeDeProduto']      = $quantidadeDeProduto;
-                $dados['listaCategoria']           = $listaCategoria;
-                $dados['listaTipoCliente']         = $listaTipoCliente;
+                $dados['listaProduto']                  = $listaProduto;
+                $dados['quantidadeDeProduto']           = $quantidadeDeProduto;
+                $dados['listaCategoria']                = $listaCategoria;
+                $dados['listaTipoCliente']              = $listaTipoCliente;
+                $dados['listaValorProdutoTipoCliente']  = $listaValorProdutoTipoCliente;
+                
                 $this->loadTemplate('administracao/produtos', $dados);
             break;
             default:
@@ -77,10 +84,11 @@ class ProdutosController extends Login{
                     file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
                 }
 
-                $produto        = new Produtos();
+                $produto            = new Produtos();
+                $this->ultimoId     = $produto->adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto);
                 
-                if($produto->adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto)){
-                    echo 1;
+                if($this->ultimoId != false){
+                    echo $this->ultimoId;
                 }else{
                     echo 0;
                 }
@@ -150,34 +158,6 @@ class ProdutosController extends Login{
                 }
             }else{
                 echo 2;
-            }
-        }
-    }
-    public function precoParaRevenda(){
-        if(isset($_POST) && !empty($_POST)){
-            $idProduto      = trim(addslashes($_POST['idProduto']));
-            $precoRevenda   = trim(addslashes($_POST['valorRevenda']));
-
-            $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
-
-            if($valorProdutoTipoCliente->defineValorRevenda($idProduto, $precoRevenda)){
-                echo 1;
-            }else{
-                echo 0;
-            }
-        }
-    }
-    public function precoParaFinal(){
-        if(isset($_POST) && !empty($_POST)){
-            $idProduto      = trim(addslashes($_POST['idProduto']));
-            $precoFinal     = trim(addslashes($_POST['valorFinal']));
-
-            $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
-            
-            if($valorProdutoTipoCliente->defineValorFinal($idProduto, $precoFinal)){
-                echo 1;
-            }else{
-                echo 0;
             }
         }
     }

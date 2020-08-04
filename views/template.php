@@ -16,8 +16,8 @@
   </head>
   <body>
 	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-			<a class="navbar-brand" href="inicio"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
+		<nav class="navbar navbar-expand-lg navbar-light bg-transparent p-0">
+			<a class="navbar-brand p-0" href="inicio"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -35,6 +35,9 @@
 					</li>
 					<li class="nav-item <?=($this->titulo == "Notícias") ? 'ativo' : '';?>">
 						<a class="nav-link" href="noticias">Notícias</a>
+					</li>
+					<li class="nav-item <?=($this->titulo == "Orçamento") ? 'ativo' : '';?>">
+						<a class="nav-link" href="orcamento">Orçamento</a>
 					</li>
 					<li class="nav-item <?=($this->titulo == "Contato") ? 'ativo' : '';?>">
 						<a class="nav-link" href="contato">Contato</a>
@@ -80,6 +83,9 @@
 						</li>
 						<li>
 							<a class="nav-link text-white" href="noticias">Notícias</a>
+						</li>
+						<li>
+							<a class="nav-link text-white" href="orcamento">Orçamento</a>
 						</li>
 						<li>
 							<a class="nav-link text-white" href="contato">Contato</a>

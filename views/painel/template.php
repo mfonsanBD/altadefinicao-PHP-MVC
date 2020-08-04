@@ -45,5 +45,6 @@
   <script src="assets/js/cadastro.js"></script>
   <script src="assets/js/produtos.js"></script>
   <script src="assets/js/clientes.js"></script>
+  <script src="assets/js/colaboradores.js"></script>
 </body>
 </html>

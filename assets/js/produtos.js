@@ -14,6 +14,7 @@ $(document).ready(function(){
         }else{
             $("#cortaImagem").removeClass('d-none');
         }
+    
         var resize = $('#upload-demo').croppie({
             enableExif: true,
             enableOrientation: true,    
@@ -45,17 +46,17 @@ $(document).ready(function(){
                     type: 'POST',
                     data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:img},
                     success: function(dados){
-                        if(dados == 1){
-                            sucessoProdutos("Produto cadastrado com sucesso!");
-                            setTimeout(function(){
-                                window.location.reload();
-                            }, 3000);
+                        if(dados == 0){
+                            erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
                         }
                         else if(dados == 2){
                             atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
                         }
                         else{
-                            erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
+                            sucessoProdutos("Produto cadastrado com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
                         }
                     }
                 });
@@ -93,13 +94,16 @@ $(document).ready(function(){
 
     $("#edita-produto").on("show.bs.modal", function(event){
         var botao = $(event.relatedTarget);
-        var id = botao.data("id");
+        var id      = botao.data("id");
+        var nome    = botao.data("nome");
+
+        $("#nomeEditaProduto").attr("value", nome);
         
         $("#formularioEditaProduto").on("submit", function(e){
             e.preventDefault();
 
-            var nomeProduto             = $("#nomeEditaProduto").val();
-            var categoriaProduto        = $("#categoriaEditaProduto").val();
+            var nomeProduto         = $("#nomeEditaProduto").val();
+            var categoriaProduto    = $("#categoriaEditaProduto").val();
 
             $.ajax({
                 url: urlSite+'/alteraProduto/',

@@ -6,7 +6,7 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="assets/img/banner/banner-01.webp" class="d-block w-100" alt="...">
+      <img src="assets/img/banner/banner-01.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <div class="container">
           <h1 class="text-uppercase">First slide label</h1>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="assets/img/banner/banner-02.webp" class="d-block w-100" alt="...">
+      <img src="assets/img/banner/banner-02.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <div class="container">
           <h1 class="text-uppercase">Second slide label</h1>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="assets/img/banner/banner-03.webp" class="d-block w-100" alt="...">
+      <img src="assets/img/banner/banner-03.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <div class="container">
           <h1 class="text-uppercase">Third slide label</h1>

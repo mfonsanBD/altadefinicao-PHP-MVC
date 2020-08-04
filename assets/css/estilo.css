@@ -10,8 +10,14 @@
     font-family: 'Google Sans';
     outline: none !important;
 }
+.breadcrumb{
+    background-color: transparent !important;
+}
+.breadcrumb-titulo{
+    color: #000000 !important;
+}
 .breadcrumb a{
-    color: #FC7634 !important;
+    color: #670001 !important;
 }
 .breadcrumb a:hover{
     text-decoration: none !important;
@@ -79,6 +85,9 @@ footer h5,
 .revenda h1{
     font-family: 'Montserrat' !important;
     margin-top: 30%;
+}
+.revenda{
+
 }
 .titulo::after{
     content: '';
@@ -163,7 +172,10 @@ footer{
     max-width: 32.6% !important;
 }
 .ondeestou{
-    padding: 120px 0 !important;
+    padding: 100px 0 40px !important;
+    background: url('../img/brandcrumb.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .quem-somos{
     padding: 80px 0;
@@ -180,10 +192,10 @@ footer{
     position: absolute;
     left: -15px;
     top: 30px;
-    width: 100%;
+    width: 95%;
     height: 350px;
     border: 12px solid #FC7634;
-    z-index: 0;
+    z-index: -1;
 }
 .quemSomosText{
     padding: 160px 0;
