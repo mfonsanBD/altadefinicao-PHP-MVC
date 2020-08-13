@@ -55,62 +55,22 @@
                                         if($colaboradores['fotoColaborador'] == 'usuario.jpg'){
                                             echo "<img alt='Foto do Colaborador' src='assets/img/usuario.jpg'>";
                                         }else{
-                                            echo "<img alt='Foto de ".$colaboradores['nomeColaborador']." ".$clientes['sobrenomeUsuario']."' src='assets/img/usuario/".$clientes['idUsuario']."/".$clientes['fotoUsuario']."'>";
+                                            echo "<img alt='Foto de ".$colaboradores['nomeColaborador']."' src='assets/img/equipe/".$colaboradores['fotoColaborador']."'>";
                                         }
                                     ?>
                                   </span>
                                   <div class="media-body">
-                                  <span class="name mb-0 text-sm ml-2"><?=$clientes['nomeUsuario']." ".$clientes['sobrenomeUsuario'];?></span>
+                                  <span class="name mb-0 text-sm ml-2"><?=$colaboradores['nomeColaborador'];?></span>
                                   </div>
                               </div>
                           </th>
                           <td>
-                              <span class="badge badge-dot mr-4">
-                                <?php
-                                  switch($clientes['permissaoUsuario']){
-                                    case 0:
-                                      echo "<i class='bg-warning'></i>
-                                      <span class='status'>Aguardando Aprovação</span>";
-                                    break;
-                                    case 1:
-                                      echo "<i class='bg-success'></i>
-                                      <span class='status'>Ativo</span>";
-                                    break;
-                                    case 2:
-                                      echo "<i class='bg-danger'></i>
-                                      <span class='status'>Inativo</span>";
-                                    break;
-                                  }
-                                ?>
-                              </span>
+                              <span class="badge badge-dot mr-4"><?=$colaboradores['cargoColaborador'];?></span>
                           </td>
                           <td class="text-right">
-                              <div class="dropdown">
-                                  <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <i class="fas fa-ellipsis-v"></i>
-                                  </a>
-                                    <?php
-                                      switch($clientes['permissaoUsuario']){
-                                        case 0:
-                                          echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-success' onclick='aprovar(".$clientes['idUsuario'].")' id='aprovaCliente'>Aprovar Revendedor</button>";
-                                        break;
-                                        case 1:
-                                          echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-warning' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-toggle='modal' data-target='#desitavaCliente'>Desativar Revendedor</button>
-
-                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'>Excluir Revendedor</button>";
-                                        break;
-                                        case 2:
-                                          echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-success' onclick='reativar(".$clientes['idUsuario'].")' id='aprovaCliente'>Reativar Revendedor</button>
-
-                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'>Excluir Revendedor</button>";
-                                        break;
-                                      }
-                                    ?>
-                                  </div>
-                              </div>
+                            <?php
+                              echo "<button class='btn btn-danger btn-sm' data-id='".$colaboradores['idColaborador']."' data-nome='".$colaboradores['nomeColaborador']."' data-foto='".$colaboradores['fotoColaborador']."' data-toggle='modal' data-target='#confirmaExclusaoDeColaborador'>Excluir Colaborador</button>";
+                            ?>
                           </td>
                       </tr>
                       <?php
@@ -161,62 +121,20 @@
                                                     <input class="form-control" placeholder="Função do Colaborador" type="text" id="funcaoColaborador">
                                                 </div>
                                             </div>
-                                            <div class="row" id="cortaImagem">
-                                                <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-warning btn-block mt-4" style="margin-top:2%">Imagem do Colaborador</button>
+                                            <div class="row d-none mt-4" id="cortaImagem">
+                                                <div class="col-md-6" style="padding:5%;">
+                                                    <input type="file" id="imageColaborador" class="d-none">
+                                                    <label for="imageColaborador" class="p-3 border text-center">Clique aqui e escolha uma imagem para esse colaborador</label>
+                                                </div>
+                                                <div class="col-md-6 text-center">
                                                     <div id="upload-demoColaborador"></div>
                                                 </div>
-                                                <div class="col-md-12" style="padding:5%;">
-                                                    <input type="file" id="imageColaborador" class="d-none">
-                                                    <label for="imageColaborador" class="p-3 border text-center">Clique aqui e escolha uma imagem para seu produto</label>
-                                                    <button type="button" class="btn btn-warning btn-block btn-upload-imageColaborador mt-4" style="margin-top:2%">Cadastrar Colaborador</button>
-                                                </div>
+                                                <button type="button" class="btn btn-warning btn-block btn-upload-imageColaborador mt-4" style="margin-top:2%">Cadastrar Colaborador</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-precorevenda" role="tabpanel" aria-labelledby="pills-precorevenda-tab">
-                                        <form role="form" id="definePrecoRevenda">
-                                            <div class="form-group">
-                                                <div class="input-group input-group-merge input-group-alternative">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                                    </div>
-                                                    <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para revendedor" type="text" id="precoRevenda">
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-warning my-4">Definir Preço de Revenda</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-precofinal" role="tabpanel" aria-labelledby="pills-precofinal-tab">
-                                        <form role="form" id="definePrecoFinal">
-                                            <div class="form-group">
-                                                <div class="input-group input-group-merge input-group-alternative">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                                    </div>
-                                                    <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para cliente final" type="text" id="precoFinal">
-                                                </div>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn btn-warning my-4">Definir Preço para Cliente Final</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-foto" role="tabpanel" aria-labelledby="pills-foto-tab">
-                                        <form role="form">
-                                            <div class="row" id="cortaImagemEdicao">
-                                                <div class="col-md-12 text-center">
-                                                    <div id="upload-demo-edicao"></div>
-                                                </div>
-                                                <div class="col-md-12" style="padding:5%;">
-                                                    <input type="file" id="image-edicao" class="d-none">
-                                                    <label for="image-edicao" class="p-3 border text-center w-100" id="escolherFoto"><strong class="text-warning">Clique aqui</strong> para trocar a imagem</label>
-                                                    <button type="button" class="btn btn-warning btn-block btn-upload-image-edicao mt-4" style="margin-top:2%">Mudar Foto do(a) <?=$produtos['nomeProduto']?></button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +164,7 @@
               </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-white" id="botaoConfirmaExclusao">Sim, excluir</button>
+              <button type="button" class="btn btn-white" id="botaoConfirmaExclusaoColaborador">Sim, excluir</button>
               <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Não, cancelar</button>
           </div>
         </div>

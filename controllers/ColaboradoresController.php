@@ -33,14 +33,39 @@ class ColaboradoresController extends Login{
     }
 	public function cadastraColaborador(){
 		if(!empty($_POST) && isset($_POST)){
+            $nomeColaborador    = trim(addslashes($_POST['nome']));
+            $funcaoColaborador  = trim(addslashes($_POST['funcao']));
+            $fotoColaborador    = trim(addslashes($_POST['imagem']));
             
-            $usuario = new Colaboradores();
-            if($usuario->cadastraColaborador()){
-                echo 1;
+            $primeiroArrayFoto = explode(";", $fotoColaborador);
+            $segundoArrayFoto = explode(",", $primeiroArrayFoto[1]);
+
+            $permitidos = array('data:image/jpeg', 'data:image/png', 'data:image/jpg');
+
+            if(in_array($primeiroArrayFoto[0], $permitidos)){
+                $informacoesDaFoto = base64_decode($segundoArrayFoto[1]);
+                $nomeDaFotoDoProduto = md5(date("d/m/Y - H:i:s").rand(0, 99999)).'.jpg';
+
+                $caminho = 'assets/img/equipe/';
+
+                if(is_dir($caminho)){
+                    file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
+                }
+                else{
+                    mkdir($caminho);
+                    file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
+                }
+
+                $colaboradores = new Colaboradores();
+                
+                if($colaboradores->cadastraColaboradores($nomeColaborador, $funcaoColaborador, $nomeDaFotoDoProduto)){
+                    echo 1;
+                }else{
+                    echo 0;
+                }
             }else{
-                echo 0;
+                echo 2;
             }
-			
 		}
     }
     public function excluiColaborador(){
@@ -49,16 +74,13 @@ class ColaboradoresController extends Login{
             $foto   = trim(addslashes($_POST['foto']));
             
             if($foto != 'usuario.jpg'){
-                $caminho = "assets/img/usuarios/".$id;
-                $foto = md5($id).".jpg";
-
+                $caminho = "assets/img/equipe/";
                 unlink($caminho."/".$foto);
-                rmdir($caminho);
             }
 
-            $usuario = new Usuario();
+            $colaboradores = new Colaboradores();
             
-            if($usuario->excluiCliente($id)){
+            if($colaboradores->excluiColaboradores($id)){
                 echo 1;
             }else{
                 echo 0;

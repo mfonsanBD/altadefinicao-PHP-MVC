@@ -25,4 +25,24 @@ class Colaboradores extends Model{
 		
 		return $array['quantidade'];
 	}
+	public function cadastraColaboradores($nomeColaborador, $funcaoColaborador, $nomeDaFotoDoProduto){
+		$sql = $this->conexao->prepare("INSERT INTO colaboradores SET nomeColaborador = ?, cargoColaborador = ?, fotoColaborador = ?");
+		$sql->execute(array($nomeColaborador, $funcaoColaborador, $nomeDaFotoDoProduto));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function excluiColaboradores($id){
+		$sql = $this->conexao->prepare("DELETE FROM colaboradores WHERE idColaborador = ?");
+		$sql->execute(array($id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
