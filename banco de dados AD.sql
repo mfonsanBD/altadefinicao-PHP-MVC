@@ -19,8 +19,9 @@ CREATE TABLE IF NOT EXISTS `acabamento` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.acabamento: ~11 rows (aproximadamente)
+DELETE FROM `acabamento`;
 /*!40000 ALTER TABLE `acabamento` DISABLE KEYS */;
-INSERT IGNORE INTO `acabamento` (`idAcabamento`, `nomeAcabamento`) VALUES
+INSERT INTO `acabamento` (`idAcabamento`, `nomeAcabamento`) VALUES
 	(1, 'Bainha e Ilhós'),
 	(2, 'Tubete e Corda Lateral'),
 	(3, 'Bainha e Ilhós + Reforço com Corda'),
@@ -43,8 +44,9 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.categoria: ~2 rows (aproximadamente)
+DELETE FROM `categoria`;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT IGNORE INTO `categoria` (`idCategoria`, `nomeCategoria`, `slugCategoria`) VALUES
+INSERT INTO `categoria` (`idCategoria`, `nomeCategoria`, `slugCategoria`) VALUES
 	(1, 'Comunicação Visual', ''),
 	(2, 'Impressão Offset', '');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
@@ -62,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.cliente: ~0 rows (aproximadamente)
+DELETE FROM `cliente`;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
@@ -75,8 +78,9 @@ CREATE TABLE IF NOT EXISTS `colaboradores` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.colaboradores: ~5 rows (aproximadamente)
+DELETE FROM `colaboradores`;
 /*!40000 ALTER TABLE `colaboradores` DISABLE KEYS */;
-INSERT IGNORE INTO `colaboradores` (`idColaborador`, `nomeColaborador`, `cargoColaborador`, `fotoColaborador`) VALUES
+INSERT INTO `colaboradores` (`idColaborador`, `nomeColaborador`, `cargoColaborador`, `fotoColaborador`) VALUES
 	(7, 'Mike Santos', 'Arte Finalista', '476ceb0f6a6098b13286c0a009e3d67b.jpg'),
 	(8, 'Valdeir Foli', 'CEO', '8446091efaf2283cae4d579c508c5043.jpg'),
 	(9, 'Daniel Almeida', 'Gerente', '071dbfe1e9a7f752feabbc90bc42fdce.jpg'),
@@ -92,8 +96,9 @@ CREATE TABLE IF NOT EXISTS `cor` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.cor: ~2 rows (aproximadamente)
+DELETE FROM `cor`;
 /*!40000 ALTER TABLE `cor` DISABLE KEYS */;
-INSERT IGNORE INTO `cor` (`idCor`, `nomeCor`) VALUES
+INSERT INTO `cor` (`idCor`, `nomeCor`) VALUES
 	(1, '4/0'),
 	(2, '4/1'),
 	(3, '4/4');
@@ -114,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.endereco: ~0 rows (aproximadamente)
+DELETE FROM `endereco`;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 
@@ -126,8 +132,9 @@ CREATE TABLE IF NOT EXISTS `formato` (
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.formato: ~14 rows (aproximadamente)
+DELETE FROM `formato`;
 /*!40000 ALTER TABLE `formato` DISABLE KEYS */;
-INSERT IGNORE INTO `formato` (`idFormato`, `idProduto`, `nomeFormato`) VALUES
+INSERT INTO `formato` (`idFormato`, `idProduto`, `nomeFormato`) VALUES
 	(1, 0, '9x5'),
 	(2, 0, '9x10'),
 	(3, 0, '10x14'),
@@ -154,8 +161,9 @@ CREATE TABLE IF NOT EXISTS `forma_pagamento` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.forma_pagamento: ~4 rows (aproximadamente)
+DELETE FROM `forma_pagamento`;
 /*!40000 ALTER TABLE `forma_pagamento` DISABLE KEYS */;
-INSERT IGNORE INTO `forma_pagamento` (`idFormaPagamento`, `nomeFormaPagamento`) VALUES
+INSERT INTO `forma_pagamento` (`idFormaPagamento`, `nomeFormaPagamento`) VALUES
 	(1, 'Dinheiro'),
 	(2, 'Transferência'),
 	(3, 'Cartão de Débito'),
@@ -171,8 +179,9 @@ CREATE TABLE IF NOT EXISTS `gramatura` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.gramatura: ~6 rows (aproximadamente)
+DELETE FROM `gramatura`;
 /*!40000 ALTER TABLE `gramatura` DISABLE KEYS */;
-INSERT IGNORE INTO `gramatura` (`idGramatura`, `idProduto`, `nomeGramatura`) VALUES
+INSERT INTO `gramatura` (`idGramatura`, `idProduto`, `nomeGramatura`) VALUES
 	(1, 0, '250'),
 	(2, 0, '300'),
 	(3, 0, '115'),
@@ -189,8 +198,9 @@ CREATE TABLE IF NOT EXISTS `midia` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.midia: ~18 rows (aproximadamente)
+DELETE FROM `midia`;
 /*!40000 ALTER TABLE `midia` DISABLE KEYS */;
-INSERT IGNORE INTO `midia` (`idMidia`, `nomeMidia`) VALUES
+INSERT INTO `midia` (`idMidia`, `nomeMidia`) VALUES
 	(1, 'Adesivo Fosco Premium'),
 	(2, 'Adesivo Brilho Premium'),
 	(4, 'Lona Backlight'),
@@ -220,8 +230,9 @@ CREATE TABLE IF NOT EXISTS `papel` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.papel: ~4 rows (aproximadamente)
+DELETE FROM `papel`;
 /*!40000 ALTER TABLE `papel` DISABLE KEYS */;
-INSERT IGNORE INTO `papel` (`idPapel`, `nomePapel`) VALUES
+INSERT INTO `papel` (`idPapel`, `nomePapel`) VALUES
 	(1, 'Couchê Brilho'),
 	(2, 'DuoDesign'),
 	(3, 'Supremo'),
@@ -250,6 +261,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.pedido: ~0 rows (aproximadamente)
+DELETE FROM `pedido`;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
@@ -259,14 +271,18 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   `tituloPostagem` varchar(150) NOT NULL,
   `textoPostagem` text NOT NULL,
   `imagemPostagem` varchar(36) NOT NULL,
+  `statusPostagem` tinyint(4) NOT NULL DEFAULT 0,
   `dataPostagem` datetime NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `slugPostagem` int(11) DEFAULT NULL,
+  `slugPostagem` varchar(160) NOT NULL,
   PRIMARY KEY (`idPostagem`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.postagem: ~0 rows (aproximadamente)
+DELETE FROM `postagem`;
 /*!40000 ALTER TABLE `postagem` DISABLE KEYS */;
+INSERT INTO `postagem` (`idPostagem`, `tituloPostagem`, `textoPostagem`, `imagemPostagem`, `statusPostagem`, `dataPostagem`, `idUsuario`, `slugPostagem`) VALUES
+	(4, 'Carré com Feijão', '<p>gsasagdsagdsagdgfdshfd</p>', 'c1fc3d3158c98aa8378e6fd82e5e21d6.jpg', 1, '2020-08-14 17:17:18', 1, 'carre-com-feijao');
 /*!40000 ALTER TABLE `postagem` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.produto
@@ -280,8 +296,9 @@ CREATE TABLE IF NOT EXISTS `produto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.produto: ~1 rows (aproximadamente)
+DELETE FROM `produto`;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT IGNORE INTO `produto` (`idProduto`, `nomeProduto`, `fotoProduto`, `idCategoria`, `slugProduto`) VALUES
+INSERT INTO `produto` (`idProduto`, `nomeProduto`, `fotoProduto`, `idCategoria`, `slugProduto`) VALUES
 	(30, 'Lona', 'ab6fa2fdf0e3620eb3e2aff63ba235a5.jpg', 1, NULL);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
@@ -294,8 +311,9 @@ CREATE TABLE IF NOT EXISTS `quantidade` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.quantidade: ~12 rows (aproximadamente)
+DELETE FROM `quantidade`;
 /*!40000 ALTER TABLE `quantidade` DISABLE KEYS */;
-INSERT IGNORE INTO `quantidade` (`idQuantidade`, `idProduto`, `quantidade`) VALUES
+INSERT INTO `quantidade` (`idQuantidade`, `idProduto`, `quantidade`) VALUES
 	(1, 0, 1),
 	(2, 0, 2),
 	(3, 0, 5),
@@ -318,8 +336,9 @@ CREATE TABLE IF NOT EXISTS `tipocliente` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.tipocliente: ~2 rows (aproximadamente)
+DELETE FROM `tipocliente`;
 /*!40000 ALTER TABLE `tipocliente` DISABLE KEYS */;
-INSERT IGNORE INTO `tipocliente` (`idTipoCliente`, `nomeTipoCliente`) VALUES
+INSERT INTO `tipocliente` (`idTipoCliente`, `nomeTipoCliente`) VALUES
 	(1, 'Final'),
 	(2, 'Revendedor');
 /*!40000 ALTER TABLE `tipocliente` ENABLE KEYS */;
@@ -337,11 +356,12 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `permissaoUsuario` tinyint(1) NOT NULL DEFAULT 0,
   `fotoUsuario` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.usuario: ~1 rows (aproximadamente)
+DELETE FROM `usuario`;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT IGNORE INTO `usuario` (`idUsuario`, `tipoUsuario`, `nomeUsuario`, `sobrenomeUsuario`, `emailUsuario`, `senhaUsuario`, `hashUsuario`, `codigoUsuario`, `permissaoUsuario`, `fotoUsuario`) VALUES
+INSERT INTO `usuario` (`idUsuario`, `tipoUsuario`, `nomeUsuario`, `sobrenomeUsuario`, `emailUsuario`, `senhaUsuario`, `hashUsuario`, `codigoUsuario`, `permissaoUsuario`, `fotoUsuario`) VALUES
 	(1, 1, 'Alta', 'Definição', 'altadefinicaocaxias@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, 1, 'usuario.jpg');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
@@ -355,8 +375,9 @@ CREATE TABLE IF NOT EXISTS `valor_produto_tipocliente` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.valor_produto_tipocliente: ~3 rows (aproximadamente)
+DELETE FROM `valor_produto_tipocliente`;
 /*!40000 ALTER TABLE `valor_produto_tipocliente` DISABLE KEYS */;
-INSERT IGNORE INTO `valor_produto_tipocliente` (`idValorProdutoTipoCliente`, `idProduto`, `idTipoCliente`, `valor`) VALUES
+INSERT INTO `valor_produto_tipocliente` (`idValorProdutoTipoCliente`, `idProduto`, `idTipoCliente`, `valor`) VALUES
 	(1, 27, 2, 20.00),
 	(2, 27, 1, 40.00),
 	(4, 28, 2, 25.00),

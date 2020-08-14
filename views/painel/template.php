@@ -41,10 +41,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/cadastro.js"></script>
   <script src="assets/js/produtos.js"></script>
   <script src="assets/js/clientes.js"></script>
   <script src="assets/js/colaboradores.js"></script>
+  <script src="assets/js/blog.js"></script>
+
+  <script>
+    CKEDITOR.replace('texto_blog');
+  </script>
 </body>
 </html>

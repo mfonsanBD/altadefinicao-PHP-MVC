@@ -29854,3 +29854,6 @@ input.datetimepicker[data-color='yellow'] + .bootstrap-datetimepicker-widget.dro
 #escolherFoto:hover{
     cursor: pointer;
 }
+.modal-blog{
+    max-width: 950px !important;
+}

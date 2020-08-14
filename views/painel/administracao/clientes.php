@@ -50,7 +50,7 @@
                       <tr>
                           <th scope="row">
                               <div class="media align-items-center">
-                                  <span class="avatar avatar-sm rounded-circle">
+                                  <span class="avatar avatar-lg rounded-circle">
                                     <?php
                                         if($clientes['fotoUsuario'] == 'usuario.jpg'){
                                             echo "<img alt='Foto de Usuário' src='assets/img/usuario.jpg'>";
