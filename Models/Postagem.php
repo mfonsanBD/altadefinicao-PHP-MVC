@@ -63,4 +63,24 @@ class Postagem extends Model{
 			return false;
 		}
 	}
+	public function alteraNoticia($titulo, $texto, $status, $slug, $id){
+		$sql = $this->conexao->prepare("UPDATE postagem SET tituloPostagem = ?, textoPostagem = ?, statusPostagem = ?, slugPostagem = ? WHERE idPostagem = ?");
+		$sql->execute(array($titulo, $texto, $status, $slug, $id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function alteraFotoNoticia($nomeDaFotoDaNoticia, $id){
+		$sql = $this->conexao->prepare("UPDATE postagem SET imagemPostagem = ? WHERE idPostagem = ?");
+		$sql->execute(array($nomeDaFotoDaNoticia, $id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

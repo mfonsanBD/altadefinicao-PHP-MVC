@@ -51,6 +51,7 @@
 
   <script>
     CKEDITOR.replace('texto_blog');
+    CKEDITOR.replace('editaTextoNoticia');
   </script>
 </body>
 </html>

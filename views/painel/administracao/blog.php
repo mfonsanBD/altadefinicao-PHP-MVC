@@ -104,9 +104,12 @@
                                       echo "
                                       <div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
                                           <a href='noticia/".$postagens['slugPostagem']."' class='btn btn-success btn-sm'>Visualizar Notícia</a>
-                                          <button class='btn btn-default btn-sm'>Editar Notícia</button>
+
+                                          <button class='btn btn-default btn-sm' data-id='".$postagens['idPostagem']."' data-status='".$postagens['statusPostagem']."' data-titulo='".$postagens['tituloPostagem']."' data-texto='".$postagens['textoPostagem']."' data-toggle='modal' data-target='#editaNoticia'>Editar Notícia</button>
+                                          
                                           <button class='btn btn-danger btn-sm' data-id='".$postagens['idPostagem']."' data-titulo='".$postagens['tituloPostagem']."' data-foto='".$postagens['imagemPostagem']."' data-toggle='modal' data-target='#confirmaExclusaoDeNoticia'>Excluir Notícia</button>
-                                          <button class='btn btn-info btn-sm'>Mudar Imagem da Notícia</button>
+
+                                          <button class='btn btn-info btn-sm' data-id='".$postagens['idPostagem']."' data-titulo='".$postagens['tituloPostagem']."' data-toggle='modal' data-target='#alteraFotoDaNoticia'>Mudar Imagem da Notícia</button>
                                       </div>
                                       ";
                                     ?>
@@ -205,31 +208,71 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
-    <div class="modal fade" id="desitavaCliente" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-      <div class="modal-dialog modal-warning modal-dialog-centered modal-" role="document">
-        <div class="modal-content bg-gradient-warning">
-          <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-notification">Atenção!</h6>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div class="py-3 text-center">
-                  <i class="ni ni-bell-55 ni-3x"></i>
-                  <h4 class="heading mt-4">O(A) cliente <cliente></cliente> está para ser desativado(a).</h4>
-                  <p>Com isso, <cliente></cliente> não terá mais acesso ao sistema até que você o ative novamente.<br>Tem certeza que deseja desativar <cliente></cliente>?</p>
+  <div class="col-md-6">
+      <div class="modal fade" id="editaNoticia" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal-blog modal- modal-dialog-centered modal" role="document">
+              <div class="modal-content">
+                  <div class="modal-body p-0">
+                      <div class="card bg-secondary border-0 mb-0">
+                          <div class="card-header bg-warning text-white">
+                              Edição da Notícia <noticia></noticia>
+                          </div>
+                          <div class="card-body px-lg-5 py-lg-5">
+                            <form>
+                                <div class="form-group">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="Título" type="text" id="editaTituloNoticia">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <textarea type="text" class="form-control" id="editaTextoNoticia" name="editaTextoNoticia"></textarea>
+                                </div>
+                                <div class="form-group">
+                                  <select name="editaStatusNoticia" id="editaStatusNoticia">
+                                  </select>
+                                </div>
+                                <button type="button" id="formEditaNoticia" class="btn btn-warning btn-block mt-4" style="margin-top:2%">Editar Notícia</button>
+                            </form>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-white" id="botaoDesativaCliente">Sim, desativar</button>
-              <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Não, cancelar</button>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="modal fade" id="alteraFotoDaNoticia" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal-dialog modal-blog modal- modal-dialog-centered modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary border-0 mb-0">
+                            <div class="card-header bg-warning text-white">
+                                Mudar foto de <noticia></noticia>
+                            </div>
+                            <div class="card-body px-lg-5 py-lg-5">
+                              <div class="row">
+                                  <div class="col-md-12" style="padding:5%;">
+                                      <input type="file" id="editaImageNoticia" class="d-none">
+                                      <label for="editaImageNoticia" class="p-3 border text-center w-100">Clique aqui e escolha outra imagem para essa notícia</label>
+                                  </div>
+                                  <div class="col-md-12 text-center">
+                                      <div id="upload-demoEditaNoticia"></div>
+                                  </div>
+                                  <button type="button" class="btn btn-warning btn-block btn-upload-editaImageNoticia mt-4" style="margin-top:2%">Alterar imagem da notícia</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="notificacaoBlog" class="fixed-bottom mb-2" style="z-index:9999999;"></div>

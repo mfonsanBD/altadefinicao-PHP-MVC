@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `colaboradores` (
   PRIMARY KEY (`idColaborador`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.colaboradores: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.colaboradores: ~4 rows (aproximadamente)
 DELETE FROM `colaboradores`;
 /*!40000 ALTER TABLE `colaboradores` DISABLE KEYS */;
 INSERT INTO `colaboradores` (`idColaborador`, `nomeColaborador`, `cargoColaborador`, `fotoColaborador`) VALUES
@@ -276,13 +276,11 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   `idUsuario` int(11) NOT NULL,
   `slugPostagem` varchar(160) NOT NULL,
   PRIMARY KEY (`idPostagem`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.postagem: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.postagem: ~1 rows (aproximadamente)
 DELETE FROM `postagem`;
 /*!40000 ALTER TABLE `postagem` DISABLE KEYS */;
-INSERT INTO `postagem` (`idPostagem`, `tituloPostagem`, `textoPostagem`, `imagemPostagem`, `statusPostagem`, `dataPostagem`, `idUsuario`, `slugPostagem`) VALUES
-	(4, 'Carré com Feijão', '<p>gsasagdsagdsagdgfdshfd</p>', 'c1fc3d3158c98aa8378e6fd82e5e21d6.jpg', 1, '2020-08-14 17:17:18', 1, 'carre-com-feijao');
 /*!40000 ALTER TABLE `postagem` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.produto
@@ -298,8 +296,6 @@ CREATE TABLE IF NOT EXISTS `produto` (
 -- Copiando dados para a tabela sistema.produto: ~1 rows (aproximadamente)
 DELETE FROM `produto`;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` (`idProduto`, `nomeProduto`, `fotoProduto`, `idCategoria`, `slugProduto`) VALUES
-	(30, 'Lona', 'ab6fa2fdf0e3620eb3e2aff63ba235a5.jpg', 1, NULL);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.quantidade
