@@ -15,24 +15,25 @@
 CREATE TABLE IF NOT EXISTS `acabamento` (
   `idAcabamento` int(11) NOT NULL AUTO_INCREMENT,
   `nomeAcabamento` varchar(150) NOT NULL,
+  `idProduto` int(11) NOT NULL,
   PRIMARY KEY (`idAcabamento`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.acabamento: ~11 rows (aproximadamente)
 DELETE FROM `acabamento`;
 /*!40000 ALTER TABLE `acabamento` DISABLE KEYS */;
-INSERT INTO `acabamento` (`idAcabamento`, `nomeAcabamento`) VALUES
-	(1, 'Bainha e Ilhós'),
-	(2, 'Tubete e Corda Lateral'),
-	(3, 'Bainha e Ilhós + Reforço com Corda'),
-	(4, 'Tubete e Corda Topo'),
-	(6, 'UV Total 1/0'),
-	(8, 'Corte e Vinco'),
-	(9, 'Blocagem'),
-	(10, 'Dobra'),
-	(11, 'Serrilha'),
-	(12, 'Furo 3mm'),
-	(13, 'Canteamento');
+INSERT INTO `acabamento` (`idAcabamento`, `nomeAcabamento`, `idProduto`) VALUES
+	(1, 'Bainha e Ilhós', 0),
+	(2, 'Tubete e Corda Lateral', 0),
+	(3, 'Bainha e Ilhós + Reforço com Corda', 0),
+	(4, 'Tubete e Corda Topo', 0),
+	(6, 'UV Total 1/0', 0),
+	(8, 'Corte e Vinco', 0),
+	(9, 'Blocagem', 0),
+	(10, 'Dobra', 0),
+	(11, 'Serrilha', 0),
+	(12, 'Furo 3mm', 0),
+	(13, 'Canteamento', 0);
 /*!40000 ALTER TABLE `acabamento` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.categoria
@@ -47,9 +48,23 @@ CREATE TABLE IF NOT EXISTS `categoria` (
 DELETE FROM `categoria`;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
 INSERT INTO `categoria` (`idCategoria`, `nomeCategoria`, `slugCategoria`) VALUES
-	(1, 'Comunicação Visual', ''),
-	(2, 'Impressão Offset', '');
+	(1, 'Comunicação Visual', 'comunicacao-visual'),
+	(2, 'Impressão Offset', 'impressao-offset');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela sistema.classificacao_produto
+CREATE TABLE IF NOT EXISTS `classificacao_produto` (
+  `idClassificacaoProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `valorClassificacaoProduto` tinyint(4) NOT NULL,
+  `comentarioClassificacaoProduto` varchar(300) DEFAULT NULL,
+  `idProduto` int(11) NOT NULL,
+  PRIMARY KEY (`idClassificacaoProduto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela sistema.classificacao_produto: ~0 rows (aproximadamente)
+DELETE FROM `classificacao_produto`;
+/*!40000 ALTER TABLE `classificacao_produto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classificacao_produto` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.cliente
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -92,16 +107,17 @@ INSERT INTO `colaboradores` (`idColaborador`, `nomeColaborador`, `cargoColaborad
 CREATE TABLE IF NOT EXISTS `cor` (
   `idCor` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCor` varchar(50) NOT NULL,
+  `idProduto` int(11) NOT NULL,
   PRIMARY KEY (`idCor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.cor: ~2 rows (aproximadamente)
 DELETE FROM `cor`;
 /*!40000 ALTER TABLE `cor` DISABLE KEYS */;
-INSERT INTO `cor` (`idCor`, `nomeCor`) VALUES
-	(1, '4/0'),
-	(2, '4/1'),
-	(3, '4/4');
+INSERT INTO `cor` (`idCor`, `nomeCor`, `idProduto`) VALUES
+	(1, '4/0', 0),
+	(2, '4/1', 0),
+	(3, '4/4', 0);
 /*!40000 ALTER TABLE `cor` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.endereco
@@ -194,49 +210,67 @@ INSERT INTO `gramatura` (`idGramatura`, `idProduto`, `nomeGramatura`) VALUES
 CREATE TABLE IF NOT EXISTS `midia` (
   `idMidia` int(11) NOT NULL AUTO_INCREMENT,
   `nomeMidia` varchar(150) NOT NULL,
+  `idProduto` int(11) NOT NULL,
   PRIMARY KEY (`idMidia`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.midia: ~18 rows (aproximadamente)
 DELETE FROM `midia`;
 /*!40000 ALTER TABLE `midia` DISABLE KEYS */;
-INSERT INTO `midia` (`idMidia`, `nomeMidia`) VALUES
-	(1, 'Adesivo Fosco Premium'),
-	(2, 'Adesivo Brilho Premium'),
-	(4, 'Lona Backlight'),
-	(5, 'Lona Brilho'),
-	(6, 'Adesivo Vinil Transparente'),
-	(7, 'Adesivo Vinil Fosco Premium'),
-	(8, 'Adesivo Vinil Brilho'),
-	(9, 'Adesivo Vinil Fosco'),
-	(10, 'Adesivo Vinil Brilho Premium'),
-	(11, 'Adesivo Vinil Brilho Automotivo'),
-	(12, 'Adesivo Vinil Transparente Retroverso'),
-	(13, 'Adesivo Vinil Blackout'),
-	(14, 'Adesivo Vinil Microperfurado'),
-	(15, 'Adesivo Vinil Fosco Automotivo'),
-	(16, 'Adesivo Vinil Fosco Blackout'),
-	(17, 'Adesivo Brilho Automotivo'),
-	(18, 'Adesivo Fosco Automotivo'),
-	(19, 'Lona Fosca'),
-	(20, 'Lona Bracklight U.V');
+INSERT INTO `midia` (`idMidia`, `nomeMidia`, `idProduto`) VALUES
+	(1, 'Adesivo Fosco Premium', 0),
+	(2, 'Adesivo Brilho Premium', 0),
+	(4, 'Lona Backlight', 0),
+	(5, 'Lona Brilho', 0),
+	(6, 'Adesivo Vinil Transparente', 0),
+	(7, 'Adesivo Vinil Fosco Premium', 0),
+	(8, 'Adesivo Vinil Brilho', 0),
+	(9, 'Adesivo Vinil Fosco', 0),
+	(10, 'Adesivo Vinil Brilho Premium', 0),
+	(11, 'Adesivo Vinil Brilho Automotivo', 0),
+	(12, 'Adesivo Vinil Transparente Retroverso', 0),
+	(13, 'Adesivo Vinil Blackout', 0),
+	(14, 'Adesivo Vinil Microperfurado', 0),
+	(15, 'Adesivo Vinil Fosco Automotivo', 0),
+	(16, 'Adesivo Vinil Fosco Blackout', 0),
+	(17, 'Adesivo Brilho Automotivo', 0),
+	(18, 'Adesivo Fosco Automotivo', 0),
+	(19, 'Lona Fosca', 0),
+	(20, 'Lona Bracklight U.V', 0);
 /*!40000 ALTER TABLE `midia` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela sistema.notificacao
+CREATE TABLE IF NOT EXISTS `notificacao` (
+  `idNotificacao` int(11) NOT NULL AUTO_INCREMENT,
+  `idEnviou` int(11) NOT NULL,
+  `idRecebeu` int(11) NOT NULL,
+  `dataNotificacao` datetime NOT NULL,
+  `mensagemNotificacao` varchar(150) NOT NULL,
+  `linkNotificacao` varchar(150) NOT NULL,
+  PRIMARY KEY (`idNotificacao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela sistema.notificacao: ~0 rows (aproximadamente)
+DELETE FROM `notificacao`;
+/*!40000 ALTER TABLE `notificacao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notificacao` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.papel
 CREATE TABLE IF NOT EXISTS `papel` (
   `idPapel` int(11) NOT NULL AUTO_INCREMENT,
   `nomePapel` varchar(100) NOT NULL,
+  `idProduto` int(11) NOT NULL,
   PRIMARY KEY (`idPapel`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.papel: ~4 rows (aproximadamente)
 DELETE FROM `papel`;
 /*!40000 ALTER TABLE `papel` DISABLE KEYS */;
-INSERT INTO `papel` (`idPapel`, `nomePapel`) VALUES
-	(1, 'Couchê Brilho'),
-	(2, 'DuoDesign'),
-	(3, 'Supremo'),
-	(4, 'Couchê Fosco');
+INSERT INTO `papel` (`idPapel`, `nomePapel`, `idProduto`) VALUES
+	(1, 'Couchê Brilho', 0),
+	(2, 'DuoDesign', 0),
+	(3, 'Supremo', 0),
+	(4, 'Couchê Fosco', 0);
 /*!40000 ALTER TABLE `papel` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.pedido
@@ -278,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   PRIMARY KEY (`idPostagem`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.postagem: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.postagem: ~0 rows (aproximadamente)
 DELETE FROM `postagem`;
 /*!40000 ALTER TABLE `postagem` DISABLE KEYS */;
 /*!40000 ALTER TABLE `postagem` ENABLE KEYS */;
@@ -293,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   PRIMARY KEY (`idProduto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.produto: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.produto: ~0 rows (aproximadamente)
 DELETE FROM `produto`;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;

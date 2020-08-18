@@ -12,56 +12,56 @@ $(document).ready(function(){
         else if(categoriaProduto == null){
             atencaoProdutos("O campo <strong>Categoria</strong> é <strong>obrigatório</strong>.");
         }else{
-            $("#cortaImagem").removeClass('d-none');
+            $("#defineImagemProduto").removeClass('d-none');
         }
     
-        var resize = $('#upload-demo').croppie({
-            enableExif: true,
-            enableOrientation: true,    
-            viewport: { 
-                width: 372,
-                height: 250
-            },
-            boundary: {
-                width: 372,
-                height: 250
-            }
-        });
-        $('#image').on('change', function () { 
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                resize.croppie('bind',{
-                url: e.target.result
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-        $('.btn-upload-image').on('click', function (ev) {
-            resize.croppie('result', {
-            type: 'canvas',
-            size: 'viewport'
-            }).then(function (img) {
-                $.ajax({
-                    url: urlSite+'/cadastraProduto/',
-                    type: 'POST',
-                    data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:img},
-                    success: function(dados){
-                        if(dados == 0){
-                            erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
-                        }
-                        else if(dados == 2){
-                            atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
-                        }
-                        else{
-                            sucessoProdutos("Produto cadastrado com sucesso!");
-                            setTimeout(function(){
-                                window.location.reload();
-                            }, 3000);
-                        }
-                    }
-                });
-            });
-        });
+        // var resize = $('#upload-demo').croppie({
+        //     enableExif: true,
+        //     enableOrientation: true,    
+        //     viewport: { 
+        //         width: 372,
+        //         height: 250
+        //     },
+        //     boundary: {
+        //         width: 372,
+        //         height: 250
+        //     }
+        // });
+        // $('#image').on('change', function () { 
+        //     var reader = new FileReader();
+        //     reader.onload = function (e) {
+        //         resize.croppie('bind',{
+        //         url: e.target.result
+        //         });
+        //     }
+        //     reader.readAsDataURL(this.files[0]);
+        // });
+        // $('.btn-upload-image').on('click', function (ev) {
+        //     resize.croppie('result', {
+        //     type: 'canvas',
+        //     size: 'viewport'
+        //     }).then(function (img) {
+        //         $.ajax({
+        //             url: urlSite+'/cadastraProduto/',
+        //             type: 'POST',
+        //             data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:img},
+        //             success: function(dados){
+        //                 if(dados == 0){
+        //                     erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
+        //                 }
+        //                 else if(dados == 2){
+        //                     atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
+        //                 }
+        //                 else{
+        //                     sucessoProdutos("Produto cadastrado com sucesso!");
+        //                     setTimeout(function(){
+        //                         window.location.reload();
+        //                     }, 3000);
+        //                 }
+        //             }
+        //         });
+        //     });
+        // });
     });
         
     $('.valorProduto').mask("#.##0,00", {reverse: true});
