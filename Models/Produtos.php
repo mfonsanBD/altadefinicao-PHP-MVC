@@ -29,9 +29,9 @@ class Produtos extends Model{
 
         return $array['quantidade'];
     }
-    public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto){
-        $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, idCategoria = ?");
-        $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto));
+    public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug){
+        $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, idCategoria = ?, slugProduto = ?");
+        $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug));
         
         if($sql->rowCount() > 0){
             return $this->conexao->lastInsertId();
@@ -50,9 +50,9 @@ class Produtos extends Model{
             return false;
         }
     }
-    public function alteraProduto($nomeProduto, $categoriaProduto, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE produto SET nomeProduto = ?, idCategoria = ? WHERE idProduto = ?");
-        $sql->execute(array($nomeProduto, $categoriaProduto, $idProduto));
+    public function alteraProduto($nomeProduto, $categoriaProduto, $slug, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE produto SET nomeProduto = ?, idCategoria = ?, slugProduto = ? WHERE idProduto = ?");
+        $sql->execute(array($nomeProduto, $categoriaProduto, $slug, $idProduto));
 
         if($sql->rowCount() > 0){
             return true;

@@ -57,7 +57,7 @@
                                         foreach($listaValorProdutoTipoCliente as $lvptc){
                                             if($produtos['idProduto'] == $lvptc['idProduto']){
                                                 if($lvptc['idTipoCliente'] == 1){
-                                                    echo '<small class="w-100">Preço para cliente '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor'], 2, ",", ".").'</small><br>';
+                                                    echo '<small class="w-100">Preço para Cliente '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor'], 2, ",", ".").'</small><br>';
                                                 }else{
                                                     echo '<small class="w-100">Preço para '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor'], 2, ",", ".").'</small><br>';
                                                 }
@@ -100,7 +100,7 @@
                                                                                             <div class="input-group-prepend">
                                                                                                 <span class="input-group-text"><i class="ni ni-box-2"></i></span>
                                                                                             </div>
-                                                                                            <input class="form-control" type="text" id="nomeEditaProduto">
+                                                                                            <input class="form-control" value="<?=$produtos['nomeProduto'];?>" type="text" id="nomeEditaProduto">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="form-group">
@@ -130,13 +130,13 @@
                                                                                 </form>
                                                                             </div>
                                                                             <div class="tab-pane fade" id="pills-editaprecorevenda" role="tabpanel" aria-labelledby="pills-editaprecorevenda-tab">
-                                                                                <form role="form" id="definePrecoRevenda">
+                                                                                <form role="form" id="editaPrecoRevenda">
                                                                                     <div class="form-group">
                                                                                         <div class="input-group input-group-merge input-group-alternative">
                                                                                             <div class="input-group-prepend">
                                                                                                 <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
                                                                                             </div>
-                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para revendedor" type="text" id="precoRevenda">
+                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para revendedor" type="text" id="editaPrecoRevenda">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="text-center">
@@ -145,13 +145,13 @@
                                                                                 </form>
                                                                             </div>
                                                                             <div class="tab-pane fade" id="pills-editaprecofinal" role="tabpanel" aria-labelledby="pills-editaprecofinal-tab">
-                                                                                <form role="form" id="definePrecoFinal">
+                                                                                <form role="form" id="editaPrecoFinal">
                                                                                     <div class="form-group">
                                                                                         <div class="input-group input-group-merge input-group-alternative">
                                                                                             <div class="input-group-prepend">
                                                                                                 <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
                                                                                             </div>
-                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para cliente final" type="text" id="precoFinal">
+                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para cliente final" type="text" id="editaPrecoFinal">
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="text-center">
@@ -182,7 +182,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto">Excluir</button>
+                                    <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-foto="<?=$produtos['fotoProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto">Excluir</button>
                                 </div>
                             </div>
                         <?php
@@ -218,7 +218,7 @@
                                 Cadastro de Novo Produto
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                                <form role="form" id="cadastraProduto">
+                                <form id="cadastraProduto">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -248,7 +248,7 @@
                                         <button type="submit" class="btn btn-warning my-4">Próximo</button>
                                     </div>
                                 </form>
-                                <form role="form" id="defineImagemProduto" class="d-none">
+                                <form id="defineImagemProduto" class="d-none">
                                     <div class="row" id="cortaImagem">
                                         <div class="col-md-12 text-center">
                                             <div id="upload-demo"></div>
@@ -262,7 +262,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form role="form" id="definePrecoRevenda" class="d-none">
+                                <form id="definePrecoRevenda" class="d-none">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -275,7 +275,7 @@
                                         <button type="submit" class="btn btn-warning my-4">Próximo</button>
                                     </div>
                                 </form>
-                                <form role="form" id="definePrecoFinal" class="d-none">
+                                <form id="definePrecoFinal" class="d-none">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">

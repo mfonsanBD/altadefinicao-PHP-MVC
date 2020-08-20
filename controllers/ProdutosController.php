@@ -8,7 +8,6 @@ use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
 
 class ProdutosController extends Login{
-    public $ultimoId;
 
 	public function index(){
         if(empty($_SESSION['logado']) || !isset($_SESSION['logado'])){
@@ -64,46 +63,70 @@ class ProdutosController extends Login{
             $nomeProduto            = trim(addslashes($_POST['nomeProduto']));
             $categoriaProduto       = trim(addslashes($_POST['categoriaProduto']));
             $fotoProduto            = trim(addslashes($_POST['fotoProduto']));
+            $valorRevenda           = trim(addslashes($_POST['revenda']));
+            $valorFinal             = trim(addslashes($_POST['final']));
+            $slug                   = trim(addslashes($_POST['slug']));
+            $nomeDaFotoDoProduto;
+
+            $fotoVazia = 'iVBORw0KGgoAAAANSUhEUgAAAXQAAAD6CAYAAACxrrxPAAABf0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwarmUAAcsYOEEAAAAASUVORK5CYII=';
 
             $primeiroArrayFoto = explode(";", $fotoProduto);
             $segundoArrayFoto = explode(",", $primeiroArrayFoto[1]);
 
-            $permitidos = array('data:image/jpeg', 'data:image/png', 'data:image/jpg');
-
-            if(in_array($primeiroArrayFoto[0], $permitidos)){
-                $informacoesDaFoto = base64_decode($segundoArrayFoto[1]);
-                $nomeDaFotoDoProduto = md5(date("d/m/Y - H:i:s").rand(0, 99999)).'.jpg';
-
-                $caminho = 'assets/img/servicos-produtos/';
-
-                if(is_dir($caminho)){
-                    file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
-                }
-                else{
-                    mkdir($caminho);
-                    file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
-                }
-
-                $produto            = new Produtos();
-                $this->ultimoId     = $produto->adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto);
-                
-                if($this->ultimoId != false){
-                    echo $this->ultimoId;
+            if($segundoArrayFoto[1] != $fotoVazia){
+                $permitidos = array('data:image/jpeg', 'data:image/png', 'data:image/jpg');
+    
+                if(in_array($primeiroArrayFoto[0], $permitidos)){
+                    $informacoesDaFoto = base64_decode($segundoArrayFoto[1]);
+                    $nomeDaFotoDoProduto = md5(date("d/m/Y - H:i:s").rand(0, 99999)).'.jpg';
+    
+                    $caminho = 'assets/img/servicos-produtos/';
+    
+                    if(is_dir($caminho)){
+                        file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
+                    }
+                    else{
+                        mkdir($caminho);
+                        file_put_contents($caminho.$nomeDaFotoDoProduto, $informacoesDaFoto);
+                    }
                 }else{
-                    echo 0;
+                    echo 2;
                 }
             }else{
-                echo 2;
+                $nomeDaFotoDoProduto = 'principal.png';
+            }
+    
+            $produto      = new Produtos();
+            $ultimoId     = $produto->adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug);
+            
+            $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
+            $precoRevenda   = $valorProdutoTipoCliente->defineValorRevenda($ultimoId, $valorRevenda);
+            $precoFinal     = $valorProdutoTipoCliente->defineValorFinal($ultimoId, $valorFinal);
+
+            if($ultimoId && $precoRevenda && $precoFinal){
+                echo 1;
+            }else{
+                echo 0;
             }
         }
     }
     public function excluiProduto(){
         if(isset($_POST) && !empty($_POST)){
-            $id = trim(addslashes($_POST['idProduto']));
+            $id     = trim(addslashes($_POST['idProduto']));
+            $foto   = trim(addslashes($_POST['foto']));
+            
+            if($foto != 'principal.png'){
+                $caminho = "assets/img/servicos-produtos/";
+                unlink($caminho."/".$foto);
+            }
 
-            $produto = new Produtos();
+            $produto                    = new Produtos();
+            $excluiProduto              = $produto->excluiProduto($id);
+            
+            $valorProdutoTipoCliente    = new ValorProdutoTipoCliente();
+            $excluiValorProduto         = $valorProdutoTipoCliente->excluiValorProduto($id);
 
-            if($produto->excluiProduto($id)){
+            if($excluiProduto && $excluiValorProduto){
                 echo 1;
             }else{
                 echo 0;
@@ -115,10 +138,11 @@ class ProdutosController extends Login{
             $idProduto              = trim(addslashes($_POST['idProduto']));
             $nomeProduto            = trim(addslashes($_POST['nomeProduto']));
             $categoriaProduto       = trim(addslashes($_POST['categoriaProduto']));
+            $slug                   = trim(addslashes($_POST['slug']));
 
             $produto = new Produtos();
             
-            if($produto->alteraProduto($nomeProduto, $categoriaProduto, $idProduto)){
+            if($produto->alteraProduto($nomeProduto, $categoriaProduto, $slug, $idProduto)){
                 echo 1;
             }else{
                 echo 0;

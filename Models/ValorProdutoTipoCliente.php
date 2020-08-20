@@ -38,4 +38,15 @@ class ValorProdutoTipoCliente extends Model{
             return false;
         }
     }
+    public function excluiValorProduto($id){
+        $sql = $this->conexao->prepare("DELETE FROM valor_produto_tipocliente WHERE idProduto = ?");
+        $sql->execute(array($id));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
