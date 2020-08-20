@@ -323,9 +323,9 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `nomeProduto` varchar(150) NOT NULL,
   `fotoProduto` varchar(36) NOT NULL,
   `idCategoria` int(11) NOT NULL,
-  `slugProduto` int(11) DEFAULT NULL,
+  `slugProduto` varchar(150) NOT NULL,
   PRIMARY KEY (`idProduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.produto: ~0 rows (aproximadamente)
 DELETE FROM `produto`;
@@ -402,16 +402,11 @@ CREATE TABLE IF NOT EXISTS `valor_produto_tipocliente` (
   `idTipoCliente` int(11) NOT NULL,
   `valor` float(12,2) NOT NULL,
   PRIMARY KEY (`idValorProdutoTipoCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.valor_produto_tipocliente: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.valor_produto_tipocliente: ~2 rows (aproximadamente)
 DELETE FROM `valor_produto_tipocliente`;
 /*!40000 ALTER TABLE `valor_produto_tipocliente` DISABLE KEYS */;
-INSERT INTO `valor_produto_tipocliente` (`idValorProdutoTipoCliente`, `idProduto`, `idTipoCliente`, `valor`) VALUES
-	(1, 27, 2, 20.00),
-	(2, 27, 1, 40.00),
-	(4, 28, 2, 25.00),
-	(5, 28, 1, 40.00);
 /*!40000 ALTER TABLE `valor_produto_tipocliente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
