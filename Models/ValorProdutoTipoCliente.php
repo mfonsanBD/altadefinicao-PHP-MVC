@@ -49,4 +49,40 @@ class ValorProdutoTipoCliente extends Model{
             return false;
         }
     }
+    public function listaValoresDoProdutoRevenda($id){
+        $sql = $this->conexao->prepare("SELECT * FROM valor_produto_tipocliente WHERE idProduto = ? AND idTipoCliente = 2");
+        $sql->execute(array($id));
+
+        if($sql->rowCount() > 0){
+            return $sql->fetch();
+        }
+    }
+    public function listaValoresDoProdutoFinal($id){
+        $sql = $this->conexao->prepare("SELECT * FROM valor_produto_tipocliente WHERE idProduto = ? AND idTipoCliente = 1");
+        $sql->execute(array($id));
+
+        if($sql->rowCount() > 0){
+            return $sql->fetch();
+        }
+    }
+    public function mudaValorParaRevenda($valorRevenda, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor = ? WHERE idProduto = ? AND idTipoCliente = 2");
+        $sql->execute(array($valorRevenda, $idProduto));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function mudaValorParaFinal($valorFinal, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor = ? WHERE idProduto = ? AND idTipoCliente = 1");
+        $sql->execute(array($valorFinal, $idProduto));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -20,6 +20,7 @@ $(document).ready(function(){
         }else{
             $("#cadastraProduto").addClass('d-none');
             $("#defineImagemProduto").removeClass('d-none');
+            $("#guia2-tab").addClass('active');
         }
     });
     
@@ -52,6 +53,7 @@ $(document).ready(function(){
             imagemProduto = img;
             $("#defineImagemProduto").addClass('d-none');
             $("#definePrecoRevenda").removeClass('d-none');
+            $("#guia3-tab").addClass('active');
         });
     });
     
@@ -65,6 +67,7 @@ $(document).ready(function(){
         }else{
             $("#definePrecoRevenda").addClass('d-none');
             $("#definePrecoFinal").removeClass('d-none');
+            $("#guia4-tab").addClass('active');
         }
     });
     
@@ -132,7 +135,27 @@ $(document).ready(function(){
         var botao = $(event.relatedTarget);
         var id      = botao.data("id");
         var nome    = botao.data("nome");
-        
+
+        $.ajax({
+            url: urlSite+'/listaValoresDoProdutoRevenda/',
+            type: 'POST',
+            dataType: 'json',
+            data:{idProduto:id},
+            success: function(dados){
+                $("#editaValorRevenda").val($.number(dados, 2, ',', '.' ));
+            }
+        });
+
+        $.ajax({
+            url: urlSite+'/listaValoresDoProdutoFinal/',
+            type: 'POST',
+            dataType: 'json',
+            data:{idProduto:id},
+            success: function(dados){
+                $("#editaValorFinal").val($.number(dados, 2, ',', '.' ));
+            }
+        });
+
         $("#formularioEditaProduto").on("submit", function(e){
             e.preventDefault();
 
@@ -159,44 +182,52 @@ $(document).ready(function(){
 
         $("#editaPrecoRevenda").on("submit", function(ev){
             ev.preventDefault();
-            var valorRevenda = $("#precoRevenda").val();
+            var valorRevenda = $("#editaValorRevenda").val();
             
-            $.ajax({
-                url: urlSite+'/precoParaRevenda/',
-                type: 'POST',
-                data: {valorRevenda:valorRevenda, idProduto:id},
-                success: function(dados){
-                    if(dados == 1){
-                        sucessoProdutos("Preço de revenda definido com sucesso!");
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 3000);
-                    }else{
-                        erroProdutos("Não foi possível definir o preço para revenda. Tente novamente mais tarde!");
+            if(valorRevenda == ''){
+                atencaoProdutos("O valor do(a) "+nome+" para revendedor <strong>é obrigatório</strong>.")
+            }else{
+                $.ajax({
+                    url: urlSite+'/precoParaRevenda/',
+                    type: 'POST',
+                    data: {valorRevenda:valorRevenda, idProduto:id},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Preço de revenda alterado com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }else{
+                            erroProdutos("A informação enviada é a atual.");
+                        }
                     }
-                }
-            });
+                });
+            }
         });
 
         $("#editaPrecoFinal").on("submit", function(evt){
             evt.preventDefault();
-            var valorFinal = $("#precoFinal").val();
+            var valorFinal = $("#editaValorFinal").val();
             
-            $.ajax({
-                url: urlSite+'/precoParaFinal/',
-                type: 'POST',
-                data: {valorFinal:valorFinal, idProduto:id},
-                success: function(dados){
-                    if(dados == 1){
-                        sucessoProdutos("Preço de cliente final definido com sucesso!");
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 3000);
-                    }else{
-                        erroProdutos("Não foi possível definir o preço para cliente final. Tente novamente mais tarde!");
+            if(valorFinal == ''){
+                atencaoProdutos("O valor do(a) "+nome+" para cliente final <strong>é obrigatório</strong>.")
+            }else{
+                $.ajax({
+                    url: urlSite+'/precoParaFinal/',
+                    type: 'POST',
+                    data: {valorFinal:valorFinal, idProduto:id},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Preço de cliente final alterado com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }else{
+                            erroProdutos("A informação enviada é a atual.");
+                        }
                     }
-                }
-            });
+                });
+            }
         });
         
         var resize = $('#upload-demo-edicao').croppie({

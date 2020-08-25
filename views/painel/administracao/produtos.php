@@ -67,121 +67,121 @@
                                 </div>
                                 <div class="card-footer pl-0 pr-0">
                                     <button class="btn btn-default float-left btn-block btn-sm" data-toggle="modal" data-target="#edita-produto" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>">Editar</button>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="modal fade" id="edita-produto" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
-                                                    <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-body p-0">
-                                                                <div class="card bg-secondary border-0 mb-0">
-                                                                    <div class="card-header bg-warning text-white">
-                                                                        Editar Produto
-                                                                    </div>
-                                                                    <div class="card-body px-lg-5 py-lg-5">
-                                                                        <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link active mb-3" id="pills-editadados-tab" data-toggle="pill" href="#pills-editadados" role="tab" aria-controls="pills-editadados" aria-selected="true">Dados</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link mb-3" id="pills-editaprecorevenda-tab" data-toggle="pill" href="#pills-editaprecorevenda" role="tab" aria-controls="pills-editaprecorevenda" aria-selected="false">Preço Revenda</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link mb-3" id="pills-editaprecofinal-tab" data-toggle="pill" href="#pills-editaprecofinal" role="tab" aria-controls="pills-editaprecofinal" aria-selected="false">Preço Final</a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a class="nav-link mb-3" id="pills-editafoto-tab" data-toggle="pill" href="#pills-editafoto" role="tab" aria-controls="pills-editafoto" aria-selected="false">Nova Foto</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <div class="tab-content" id="pills-tabContent">
-                                                                            <div class="tab-pane fade show active" id="pills-editadados" role="tabpanel" aria-labelledby="pills-editadados-tab">
-                                                                                <form role="form" id="formularioEditaProduto">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                                            <div class="input-group-prepend">
-                                                                                                <span class="input-group-text"><i class="ni ni-box-2"></i></span>
-                                                                                            </div>
-                                                                                            <input class="form-control" value="<?=$produtos['nomeProduto'];?>" type="text" id="nomeEditaProduto">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                                            <div class="input-group-prepend">
-                                                                                                <span class="input-group-text"><i class="fas fa-sitemap"></i>
-                                                                                            </div>
-                                                                                            <select class="form-control m-0" id="categoriaEditaProduto">
-                                                                                                <option disabled selected>Selecione a Categoria</option>
-                                                                                                <?php
-                                                                                                    foreach($listaCategoria as $tipoDeCategoria):
-                                                                                                ?>
-                                                                                                <option value="<?=$tipoDeCategoria['idCategoria']?>"
-                                                                                                <?=($produtos['idCategoria'] == $tipoDeCategoria['idCategoria']) ? 'selected' : ''?>
-                                                                                                >
-                                                                                                <?=$tipoDeCategoria['nomeCategoria']?>
-                                                                                                </option>
-                                                                                                <?php
-                                                                                                    endforeach;
-                                                                                                ?>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="text-center">
-                                                                                        <button type="submit" class="btn btn-warning my-4">Alterar Produto</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="tab-pane fade" id="pills-editaprecorevenda" role="tabpanel" aria-labelledby="pills-editaprecorevenda-tab">
-                                                                                <form role="form" id="editaPrecoRevenda">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                                            <div class="input-group-prepend">
-                                                                                                <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                                                                            </div>
-                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para revendedor" type="text" id="editaPrecoRevenda">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="text-center">
-                                                                                        <button type="submit" class="btn btn-warning my-4">Definir Preço de Revenda</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="tab-pane fade" id="pills-editaprecofinal" role="tabpanel" aria-labelledby="pills-editaprecofinal-tab">
-                                                                                <form role="form" id="editaPrecoFinal">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-group input-group-merge input-group-alternative">
-                                                                                            <div class="input-group-prepend">
-                                                                                                <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
-                                                                                            </div>
-                                                                                            <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para cliente final" type="text" id="editaPrecoFinal">
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="text-center">
-                                                                                        <button type="submit" class="btn btn-warning my-4">Definir Preço para Cliente Final</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="tab-pane fade" id="pills-editafoto" role="tabpanel" aria-labelledby="pills-editafoto-tab">
-                                                                                <form role="form">
-                                                                                    <div class="row" id="cortaImagemEdicao">
-                                                                                        <div class="col-md-12 text-center">
-                                                                                            <div id="upload-demo-edicao"></div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12" style="padding:5%;">
-                                                                                            <input type="file" id="image-edicao" class="d-none">
-                                                                                            <label for="image-edicao" class="p-3 border text-center w-100" id="escolherFoto"><strong class="text-warning">Clique aqui</strong> para trocar a imagem</label>
-                                                                                            <button type="button" class="btn btn-warning btn-block btn-upload-image-edicao mt-4" style="margin-top:2%">Mudar Foto do(a) <?=$produtos['nomeProduto']?></button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="modal fade" id="edita-produto" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary border-0 mb-0">
+                            <div class="card-header bg-warning text-white">
+                                Editar Produto
+                            </div>
+                            <div class="card-body px-lg-5 py-lg-5">
+                                <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active mb-3" id="pills-editadados-tab" data-toggle="pill" href="#pills-editadados" role="tab" aria-controls="pills-editadados" aria-selected="true">Dados</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-3" id="pills-editaprecorevenda-tab" data-toggle="pill" href="#pills-editaprecorevenda" role="tab" aria-controls="pills-editaprecorevenda" aria-selected="false">Preço Revenda</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-3" id="pills-editaprecofinal-tab" data-toggle="pill" href="#pills-editaprecofinal" role="tab" aria-controls="pills-editaprecofinal" aria-selected="false">Preço Final</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-3" id="pills-editafoto-tab" data-toggle="pill" href="#pills-editafoto" role="tab" aria-controls="pills-editafoto" aria-selected="false">Nova Foto</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-editadados" role="tabpanel" aria-labelledby="pills-editadados-tab">
+                                        <form role="form" id="formularioEditaProduto">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="ni ni-box-2"></i></span>
                                                     </div>
+                                                    <input class="form-control" value="<?=$produtos['nomeProduto'];?>" type="text" id="nomeEditaProduto">
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-sitemap"></i>
+                                                    </div>
+                                                    <select class="form-control m-0" id="categoriaEditaProduto">
+                                                        <option disabled selected>Selecione a Categoria</option>
+                                                        <?php
+                                                            foreach($listaCategoria as $tipoDeCategoria):
+                                                        ?>
+                                                        <option value="<?=$tipoDeCategoria['idCategoria']?>"
+                                                        <?=($produtos['idCategoria'] == $tipoDeCategoria['idCategoria']) ? 'selected' : ''?>
+                                                        >
+                                                        <?=$tipoDeCategoria['nomeCategoria']?>
+                                                        </option>
+                                                        <?php
+                                                            endforeach;
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-warning my-4">Alterar Produto</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-editaprecorevenda" role="tabpanel" aria-labelledby="pills-editaprecorevenda-tab">
+                                        <form role="form" id="editaPrecoRevenda">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
+                                                    </div>
+                                                    <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para revendedor" type="text" id="editaValorRevenda">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-warning my-4">Definir Preço de Revenda</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-editaprecofinal" role="tabpanel" aria-labelledby="pills-editaprecofinal-tab">
+                                        <form role="form" id="editaPrecoFinal">
+                                            <div class="form-group">
+                                                <div class="input-group input-group-merge input-group-alternative">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
+                                                    </div>
+                                                    <input class="form-control valorProduto" placeholder="Valor do(a) <?=$produtos['nomeProduto']?> para cliente final" type="text" id="editaValorFinal">
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-warning my-4">Definir Preço para Cliente Final</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-editafoto" role="tabpanel" aria-labelledby="pills-editafoto-tab">
+                                        <form role="form">
+                                            <div class="row" id="cortaImagemEdicao">
+                                                <div class="col-md-12 text-center">
+                                                    <div id="upload-demo-edicao"></div>
+                                                </div>
+                                                <div class="col-md-12" style="padding:5%;">
+                                                    <input type="file" id="image-edicao" class="d-none">
+                                                    <label for="image-edicao" class="p-3 border text-center w-100" id="escolherFoto"><strong class="text-warning">Clique aqui</strong> para trocar a imagem</label>
+                                                    <button type="button" class="btn btn-warning btn-block btn-upload-image-edicao mt-4" style="margin-top:2%">Mudar Foto do(a) <?=$produtos['nomeProduto']?></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                                     <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-foto="<?=$produtos['fotoProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto">Excluir</button>
                                 </div>
                             </div>
@@ -218,6 +218,20 @@
                                 Cadastro de Novo Produto
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
+                            <ul class="nav nav-pills nav-fill flex-column flex-sm-row mb-4" id="tabs-text" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0 disabled active" id="guia1-tab" data-toggle="tab" href="#guia1" role="tab" aria-controls="guia1" aria-selected="true">Informações</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia2-tab" data-toggle="tab" href="#guia2" role="tab" aria-controls="guia2" aria-selected="false">Foto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia3-tab" data-toggle="tab" href="#guia3" role="tab" aria-controls="guia3" aria-selected="false">Revenda</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia4-tab" data-toggle="tab" href="#guia4" role="tab" aria-controls="guia4" aria-selected="false">Final</a>
+                                </li>
+                            </ul>
                                 <form id="cadastraProduto">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">

@@ -42,6 +42,7 @@
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
   <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
+  <script src="assets/js/jquery.number.min.js"></script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/cadastro.js"></script>
   <script src="assets/js/produtos.js"></script>
