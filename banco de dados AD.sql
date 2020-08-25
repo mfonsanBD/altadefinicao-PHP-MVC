@@ -312,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `postagem` (
   PRIMARY KEY (`idPostagem`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.postagem: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.postagem: ~1 rows (aproximadamente)
 DELETE FROM `postagem`;
 /*!40000 ALTER TABLE `postagem` DISABLE KEYS */;
 /*!40000 ALTER TABLE `postagem` ENABLE KEYS */;
@@ -325,11 +325,13 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `idCategoria` int(11) NOT NULL,
   `slugProduto` varchar(150) NOT NULL,
   PRIMARY KEY (`idProduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.produto: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.produto: ~1 rows (aproximadamente)
 DELETE FROM `produto`;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+INSERT INTO `produto` (`idProduto`, `nomeProduto`, `fotoProduto`, `idCategoria`, `slugProduto`) VALUES
+	(37, 'Lona', 'a5bfc9e07964f8dddeb95fc584cd965d.jpg', 1, 'lona');
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.quantidade
@@ -402,11 +404,14 @@ CREATE TABLE IF NOT EXISTS `valor_produto_tipocliente` (
   `idTipoCliente` int(11) NOT NULL,
   `valor` float(12,2) NOT NULL,
   PRIMARY KEY (`idValorProdutoTipoCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.valor_produto_tipocliente: ~2 rows (aproximadamente)
 DELETE FROM `valor_produto_tipocliente`;
 /*!40000 ALTER TABLE `valor_produto_tipocliente` DISABLE KEYS */;
+INSERT INTO `valor_produto_tipocliente` (`idValorProdutoTipoCliente`, `idProduto`, `idTipoCliente`, `valor`) VALUES
+	(18, 37, 2, 25.00),
+	(19, 37, 1, 40.00);
 /*!40000 ALTER TABLE `valor_produto_tipocliente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
