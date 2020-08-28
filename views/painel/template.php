@@ -17,6 +17,7 @@
   <!-- Page plugins -->
   <!-- Argon CSS -->
   <link rel="stylesheet" href="assets/dashboard/css/argon.css?v=1.2.0" type="text/css">
+  <link rel="stylesheet" href="assets/dashboard/css/alta.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
@@ -43,16 +44,13 @@
   <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
   <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
   <script src="assets/js/jquery.number.min.js"></script>
+  <script src="https://cdn.datedropper.com/get/c1azyzs3ynuod5s60qrhyd5vqkbf2eb6"></script>
   <script src="assets/js/login.js"></script>
   <script src="assets/js/cadastro.js"></script>
   <script src="assets/js/produtos.js"></script>
   <script src="assets/js/clientes.js"></script>
   <script src="assets/js/colaboradores.js"></script>
   <script src="assets/js/blog.js"></script>
-
-  <script>
-    CKEDITOR.replace('texto_blog');
-    CKEDITOR.replace('editaTextoNoticia');
-  </script>
+  <script src="assets/js/caixa.js"></script>
 </body>
 </html>

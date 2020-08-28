@@ -114,3 +114,9 @@ QUANTIDADE
     - idQuantidade
     - idProduto
     - quantidade
+
+CAIXA
+    - idCaixa
+    - idPedido
+    - dataCaixa
+    - total

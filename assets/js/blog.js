@@ -1,5 +1,8 @@
 urlSite = window.location.href;
 
+CKEDITOR.replace('texto_blog');
+CKEDITOR.replace('editaTextoNoticia');
+
 function string_to_slug (nome) {
     nome = nome.replace('/^\s+|\s+$/g', ''); // tira os espaços do começo e do fim do texto
     nome = nome.toLowerCase();
