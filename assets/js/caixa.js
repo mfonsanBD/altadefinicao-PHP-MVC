@@ -16,8 +16,18 @@ $(document).ready(function(){
     var dataAtual =  dia+"/"+mes+"/"+ano;
     $("#dataCaixa").attr("value", dataAtual);
 
-    $("$dataCaixa").on("change", true);
-    var dataDefinida = $("#dataCaixa").val();
+    $("#buscaCaixa").on("click", function(){
+        var data = $("#dataCaixa").val();
+
+        $.ajax({
+            url: urlSite+'/buscaInfos/',
+            type: 'POST',
+            data: {data:data},
+            success: function(dados){
+                console.log(dados);
+            }
+        });
+    });
 });
 
 function sucessoCaixa(texto){

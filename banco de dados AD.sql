@@ -36,6 +36,29 @@ INSERT INTO `acabamento` (`idAcabamento`, `nomeAcabamento`, `idProduto`) VALUES
 	(13, 'Canteamento', 0);
 /*!40000 ALTER TABLE `acabamento` ENABLE KEYS */;
 
+-- Copiando estrutura para tabela sistema.caixa
+CREATE TABLE IF NOT EXISTS `caixa` (
+  `idCaixa` int(11) NOT NULL AUTO_INCREMENT,
+  `idPedido` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `dataCaixa` datetime NOT NULL,
+  `valorCaixa` float(10,2) NOT NULL,
+  `operacaoCaixa` tinyint(1) NOT NULL,
+  `descricaoOperacaoCaixa` varchar(150) NOT NULL,
+  `baixa` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idCaixa`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela sistema.caixa: ~4 rows (aproximadamente)
+DELETE FROM `caixa`;
+/*!40000 ALTER TABLE `caixa` DISABLE KEYS */;
+INSERT INTO `caixa` (`idCaixa`, `idPedido`, `idUsuario`, `dataCaixa`, `valorCaixa`, `operacaoCaixa`, `descricaoOperacaoCaixa`, `baixa`) VALUES
+	(1, 1, 1, '2020-09-02 14:00:00', 40.00, 0, 'Cliente tal', 0),
+	(2, 2, 1, '2020-09-02 14:40:00', 40.00, 1, 'Cliente 2', 0),
+	(3, 2, 1, '2020-09-02 14:40:00', 100.00, 1, 'Cliente 3', 0),
+	(4, 1, 1, '2020-09-02 14:00:00', 80.00, 0, 'Cliente 4', 0);
+/*!40000 ALTER TABLE `caixa` ENABLE KEYS */;
+
 -- Copiando estrutura para tabela sistema.categoria
 CREATE TABLE IF NOT EXISTS `categoria` (
   `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
@@ -280,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `idProduto` int(11) NOT NULL,
   `idMidia` int(11) NOT NULL,
   `idAcabamento` int(11) NOT NULL,
-  `idValorProdutoTipoCliente` int(11) NOT NULL,
+  `idTipoCliente` int(11) NOT NULL,
   `idFormaPagamento` int(11) NOT NULL,
   `codigoPedido` varchar(150) NOT NULL,
   `statusPagamento` tinyint(1) NOT NULL DEFAULT 0,
@@ -292,11 +315,14 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `quantidadeProduto` int(6) NOT NULL,
   `arquivo` varchar(37) NOT NULL,
   PRIMARY KEY (`idPedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.pedido: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.pedido: ~2 rows (aproximadamente)
 DELETE FROM `pedido`;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
+INSERT INTO `pedido` (`idPedido`, `idCliente`, `idProduto`, `idMidia`, `idAcabamento`, `idTipoCliente`, `idFormaPagamento`, `codigoPedido`, `statusPagamento`, `altura`, `largura`, `statusPedido`, `dataPedido`, `observacaoPedido`, `quantidadeProduto`, `arquivo`) VALUES
+	(1, 1, 37, 5, 1, 2, 1, '1', 0, '2,00', '0,80', 4, '2020-09-02 14:00:00', '', 1, 'arquivo.pdf'),
+	(2, 1, 37, 5, 1, 2, 1, '2', 0, '2,00', '0,80', 4, '2020-09-02 14:40:00', '', 1, 'arquivo.pdf');
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.postagem
@@ -327,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   PRIMARY KEY (`idProduto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.produto: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.produto: ~0 rows (aproximadamente)
 DELETE FROM `produto`;
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 INSERT INTO `produto` (`idProduto`, `nomeProduto`, `fotoProduto`, `idCategoria`, `slugProduto`) VALUES
@@ -388,13 +414,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `permissaoUsuario` tinyint(1) NOT NULL DEFAULT 0,
   `fotoUsuario` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.usuario: ~1 rows (aproximadamente)
 DELETE FROM `usuario`;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` (`idUsuario`, `tipoUsuario`, `nomeUsuario`, `sobrenomeUsuario`, `emailUsuario`, `senhaUsuario`, `hashUsuario`, `codigoUsuario`, `permissaoUsuario`, `fotoUsuario`) VALUES
-	(1, 1, 'Alta', 'Definição', 'altadefinicaocaxias@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, 1, 'usuario.jpg');
+	(1, 1, 'Alta', 'Definição', 'altadefinicaocaxias@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, 1, 'usuario.jpg'),
+	(33, 0, 'gdsafdsa', 'oiuyo', 'ghfd@gmail.com', '1ee9ba2625af553585bb92fca5f10f4e', NULL, NULL, 1, 'usuario.jpg');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.valor_produto_tipocliente

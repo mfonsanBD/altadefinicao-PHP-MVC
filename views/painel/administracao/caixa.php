@@ -35,16 +35,16 @@
               </div>
             </div>
             <div class="card-body pt-0">
+              <div class="col-lg-3 offset-lg-4 text-center">
+                  <h4>Caixa do dia:</h4>
+                  <div class="input-group mb-3">
+                      <input class="datedropper-init form-control text-center" type="text" id="dataCaixa" data-dd-theme="alta" data-dd-format="d/m/Y" data-dd-lang="pt">
+                      <div class="input-group-append">
+                          <button class="btn btn-warning" id="buscaCaixa">Ir</button>
+                      </div>
+                  </div>
+              </div>
               <div id="dados">
-                <div class="col-lg-3 offset-lg-4 text-center">
-                    <h4>Caixa do dia:</h4>
-                    <div class="input-group mb-3">
-                        <input class="datedropper-init form-control text-center" type="text" id="dataCaixa" data-dd-theme="alta" data-dd-format="d/m/Y" data-dd-lang="pt">
-                        <div class="input-group-append">
-                            <button class="btn btn-warning" id="buscaCaixa">Ir</button>
-                        </div>
-                    </div>
-                </div>
                 <!-- Card stats -->
                 <div class="row">
                   <div class="col-xl-4 col-md-4">
@@ -54,7 +54,9 @@
                         <div class="row">
                           <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Entradas</h5>
-                            <span class="h2 font-weight-bold mb-0" id="valorEntrada">R$ 20.000</span>
+                            <span class="h2 font-weight-bold mb-0" id="valorEntrada">
+                              <?='R$ '.number_format($entradasHoje, 2, ",", ".");?>
+                            </span>
                           </div>
                           <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -72,7 +74,9 @@
                         <div class="row">
                           <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Saidas</h5>
-                            <span class="h2 font-weight-bold mb-0" id="valorSaida">350,897</span>
+                            <span class="h2 font-weight-bold mb-0" id="valorSaida">
+                              <?='R$ '.number_format($saidasHoje, 2, ",", ".");?>
+                            </span>
                           </div>
                           <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -90,7 +94,9 @@
                         <div class="row">
                           <div class="col">
                             <h5 class="card-title text-uppercase text-muted mb-0">Total do Dia</h5>
-                            <span class="h2 font-weight-bold mb-0" id="valorTotal">R$ 120.000</span>
+                            <span class="h2 font-weight-bold mb-0" id="valorTotal">
+                              <?='R$ '.number_format($totalDoDia, 2, ",", ".");?>
+                            </span>
                           </div>
                           <div class="col-auto">
                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -109,38 +115,41 @@
                       <tr>
                         <th scope="col" class="sort" data-sort="name">Descrição</th>
                         <th scope="col" class="sort" data-sort="status">Operação</th>
-                        <th scope="col" class="sort" data-sort="completion">Total</th>
+                        <th scope="col" class="sort" data-sort="completion">Valor da Operação</th>
+                        <th scope="col" class="sort" data-sort="status">Forma de Pagamento</th>
                       </tr>
                     </thead>
                     <tbody class="list">
+                      <?php
+                        foreach($dadosHoje as $caixa):
+                      ?>
                       <tr>
                         <th class="budget">
-                          Hortifuiti
+                          <?=$caixa['descricaoOperacaoCaixa'];?>
                         </th>
                         <td>
                           <span class="badge badge-dot mr-4">
-                            <i class="bg-danger"></i>
-                            <span class="status">Saida</span>
+                            <?php
+                              if($caixa['operacaoCaixa'] == 0){
+                                echo "<i class='bg-danger'></i>
+                                <span class='status'>Saida</span>";
+                              }else{
+                                echo "<i class='bg-success'></i>
+                                <span class='status'>Entrada</span>";
+                              }
+                            ?>
                           </span>
                         </td>
                         <td class="budget">
-                          R$ 2.500,00
-                        </td>
-                      </tr>
-                      <tr>
-                        <th class="budget">
-                          Hortifuiti
-                        </th>
-                        <td>
-                          <span class="badge badge-dot mr-4">
-                            <i class="bg-success"></i>
-                            <span class="status">Entrada</span>
-                          </span>
+                          <?='R$ '.number_format($caixa['valorCaixa'], 2, ",", ".");?>
                         </td>
                         <td class="budget">
-                          R$ 2.500,00
+                          Dinheiro
                         </td>
                       </tr>
+                      <?php
+                        endforeach;
+                      ?>
                     </tbody>
                   </table>
                 </div>
