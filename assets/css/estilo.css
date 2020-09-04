@@ -67,7 +67,7 @@ form a{
 .contato,
 footer,
 .notfound{
-    padding: 120px 0;
+    padding: 80px 0;
 }
 .quem-somos h1,
 .produtos-servicos h1,
@@ -85,9 +85,6 @@ footer h5,
 .revenda h1{
     font-family: 'Montserrat' !important;
     margin-top: 30%;
-}
-.revenda{
-
 }
 .titulo::after{
     content: '';
@@ -120,57 +117,6 @@ footer{
 #copyright{
     background-color: #111111;
 }
-#produtoAlta::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(87deg, #FC7634 0, #F2AC34 100%) !important;
-    z-index: 2;
-    transition: 0.5s all;
-    opacity: 0;
-    border-radius: .3rem !important;
-}
-#produtoAlta:hover::before{
-    opacity: 0.8;
-}
-.imagemProduto{
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-    background-position-y: center;
-    background-position-x: center;
-}
-.textoProduto{
-    opacity: 0;
-    display: none;
-    transition: 0.5s all;
-    z-index: 3;
-}
-#produtoAlta:hover .textoProduto{
-    opacity: 1;
-    display: block;
-    animation: textToTop 0.5s;
-    margin-top: -40%;
-}
-
-@keyframes textToTop{
-    from{margin-top: -20%;}
-    to{margin-top: -40%;}
-}
-.textoProduto h4{
-    font-family: 'Montserrat' !important;
-    letter-spacing: -1px;
-    line-height: 1;
-}
-.col-lg-4{
-    -ms-flex: 0 0 32.6% !important;
-    flex: 0 0 32.6% !important;
-    max-width: 32.6% !important;
-}
 .ondeestou{
     padding: 100px 0 40px !important;
     background: url('../img/brandcrumb.jpg');
@@ -198,7 +144,7 @@ footer{
     z-index: -1;
 }
 .quemSomosText{
-    padding: 160px 0;
+    padding: 90px 0;
     text-align: center;
 }
 .breadcrumb-item + .breadcrumb-item::before{
@@ -220,4 +166,55 @@ footer{
     width: 100%;
     height:320px;
     overflow: hidden;
+}
+#produtoAlta{
+    cursor: pointer;
+}
+#produtoAlta::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #FC7634;
+    z-index: 2;
+    transition: 0.5s all;
+    opacity: 0;
+    border-radius: .3rem !important;
+}
+#produtoAlta:hover::before{
+    opacity: 0.8;
+}
+.textoProduto{
+    margin-top: -40%;
+    z-index: 3;
+    opacity: 0;
+    transition: 0.5s all;
+}
+#produtoAlta:hover .textoProduto{
+    opacity: 1;
+}
+.ctt{
+    word-wrap: break-word;
+}
+
+@media (max-width: 540px){
+    .quem-somos,
+    .produtos-servicos,
+    .revenda,
+    .noticias,
+    .contato,
+    footer,
+    .notfound{
+        padding: 20px 0;
+    }
+    .carousel-control-next, .carousel-control-prev{
+        top: 25% !important;
+        width: 10% !important;
+    }
+    .navbar-light .navbar-toggler{
+        border: none;
+    }
 }

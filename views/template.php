@@ -33,12 +33,12 @@
 					<li class="nav-item <?=($this->titulo == "Produtos & Serviços") ? 'ativo' : '';?>">
 						<a class="nav-link" href="produtos-e-servicos">Produtos & Serviços</a>
 					</li>
-					<li class="nav-item <?=($this->titulo == "Notícias") ? 'ativo' : '';?>">
+					<!-- <li class="nav-item <?=($this->titulo == "Notícias") ? 'ativo' : '';?>">
 						<a class="nav-link" href="noticias">Notícias</a>
 					</li>
 					<li class="nav-item <?=($this->titulo == "Orçamento") ? 'ativo' : '';?>">
 						<a class="nav-link" href="orcamento">Orçamento</a>
-					</li>
+					</li> -->
 					<li class="nav-item <?=($this->titulo == "Contato") ? 'ativo' : '';?>">
 						<a class="nav-link" href="contato">Contato</a>
 					</li>
@@ -46,11 +46,11 @@
 				<?php
 					if(empty($_SESSION['logado']) || !isset($_SESSION['logado'])){
 				?>
-					<button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button>
+					<!-- <button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button> -->
 				<?php
 					}else{
 				?>
-					<button id="botaoPainel" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Painel de Controle</button>
+					<!-- <button id="botaoPainel" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Painel de Controle</button> -->
 				<?php
 					} 
 				?>
@@ -67,7 +67,7 @@
 			<div class="row">
 				<div class="col">
 					<a class="navbar-brand" href="home"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+					<p>A Alta Definição teve seu inicio em 2000, Valdeir Foli, empresário visionário, começou sua empresa pensando no revendedor...</p>
 				</div>
 				<div class="col">
 					<h5>Menu do Site</h5>
@@ -81,18 +81,18 @@
 						<li>
 							<a class="nav-link text-white" href="produtos-e-servicos">Produtos & Serviços</a>
 						</li>
-						<li>
+						<!-- <li>
 							<a class="nav-link text-white" href="noticias">Notícias</a>
 						</li>
 						<li>
 							<a class="nav-link text-white" href="orcamento">Orçamento</a>
-						</li>
+						</li> -->
 						<li>
 							<a class="nav-link text-white" href="contato">Contato</a>
 						</li>
 					</ul>
 				</div>
-				<div class="col">
+				<!-- <div class="col">
 					<h5>Newsletter</h5>
 					<form class="pt-4">
 						<div class="form-group">
@@ -108,7 +108,7 @@
 						</div>
 						<button type="submit" class="btn bg-padrao">Enviar</button>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</footer>
@@ -116,7 +116,7 @@
 	<section id="copyright" class="p-4">
 		<p class="text-center text-white p-0 m-0">&copy; Copyright 
 			<?php
-				$anos = date('Y', strtotime('- 2005 years'));
+				$anos = date('Y', strtotime('- 2000 years'));
 				echo date('Y', strtotime('- '.$anos.' years'))." - ".date('Y').", <span class='nome-site'>".NOME_DO_SITE."</span>";
 			?>. Todos os direitos reservados.</p>
 	</section>

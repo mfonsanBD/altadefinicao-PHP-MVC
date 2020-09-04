@@ -13,13 +13,13 @@
             </div>
             <div class="col-lg-6">
                 <div class="quemSomosText">
-                    <p class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In tempora molestias ad adipisci optio laudantium rem! Eligendi, sed blanditiis eveniet reprehenderit, assumenda dolores quis delectus illo nihil accusantium adipisci alias.</p>
+                    <p class="text-muted">A Alta Definição teve seu inicio em 2000. Valdeir Foli, empresário visionário, começou sua empresa pensando no revendedor, tendo como principal produto a impressão digital em Lona e Adesivo, que desde então era visto pela maioria das gráficas como um produto de baixa lucratividade.</p><p class="text-muted">Com este espírito empreendedor nasceu uma empresa que respeita seus colaboradores e o revendedor gráfico, na busca constante da excelência, com inovação tecnológica e capacitação profissional.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section id="quem-somos" class="quem-somos mvv">
+<!-- <section id="quem-somos" class="quem-somos mvv">
     <div class="container">
         <div class="row">
             <div class="col bg-white rounded-lg shadow p-3 ml-1 mr-1 text-center m-0">
@@ -100,4 +100,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->

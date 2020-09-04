@@ -6,32 +6,17 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="assets/img/banner/banner-01.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <div class="container">
-          <h1 class="text-uppercase">First slide label</h1>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <button class="btn btn-light btn-sm">Saiba Mais</button>
-        </div>
-      </div>
+      <img src="assets/img/banner/banner-01.jpg" class="d-block w-100" alt="Preço especial de lona para revenda.">
     </div>
     <div class="carousel-item">
-      <img src="assets/img/banner/banner-02.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <div class="container">
-          <h1 class="text-uppercase">Second slide label</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button class="btn btn-light btn-sm">Saiba Mais</button>
-        </div>
-      </div>
+      <img src="assets/img/banner/banner-02.jpg" class="d-block w-100" alt="Recorte de letras em 3D">
     </div>
     <div class="carousel-item">
-      <img src="assets/img/banner/banner-03.jpg" class="d-block w-100" alt="...">
+      <img src="assets/img/banner/banner-03.jpg" class="d-block w-100" alt="Material para candidatos">
       <div class="carousel-caption d-none d-md-block">
         <div class="container">
-          <h1 class="text-uppercase">Third slide label</h1>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-          <button class="btn btn-light btn-sm">Saiba Mais</button>
+          <h1 class="text-uppercase">Material para Candidato</h1>
+          <p>Quer fazer o material de campanha do seu candidato? Nós somos a escolha certa.</p>
         </div>
       </div>
     </div>
@@ -50,11 +35,11 @@
     <div class="container">
         <h1 class="text-uppercase text-center titulo">Produtos & Serviços</h1>
         <div class="row mt-5">
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mb-2 rounded-lg shadow">
                 <div class="row">
                     <div class="col-lg-12 pr-0">
                         <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/letreiro-em-lona.webp" alt="Letreiro em Lona" width="100%">
+                            <img src="assets/img/servicos-produtos/4e87fcefffd6ee75180b25fbe117d8ab.jpg" alt="Letreiro em Lona" width="100%">
                         </div>
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
@@ -63,11 +48,11 @@
                     </div>
                 </div>
             </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mb-2 rounded-lg shadow">
                 <div class="row">
                     <div class="col-lg-12 pr-0">
                         <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/letreiro-em-acm.webp" alt="Letreiro em ACM" width="100%">
+                            <img src="assets/img/servicos-produtos/a5bfc9e07964f8dddeb95fc584cd965d.jpg" alt="Letreiro em ACM" width="100%">
                         </div>
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
@@ -76,11 +61,11 @@
                     </div>
                 </div>
             </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
+            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mb-2 rounded-lg shadow">
                 <div class="row">
                     <div class="col-lg-12 pr-0">
                         <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/adesivacao-de-lojas.webp" alt="Adesivação de Lojas" width="100%">
+                            <img src="assets/img/servicos-produtos/4e87fcefffd6ee75180b25fbe117d8ab.jpg" alt="Adesivação de Lojas" width="100%">
                         </div>
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
@@ -89,89 +74,11 @@
                     </div>
                 </div>
             </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/banners.webp" alt="Banners" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Banners</h4>
-                    </div>
-                </div>
-            </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/totens.webp" alt="Totens" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Totens</h4>
-                    </div>
-                </div>
-            </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/envelopamento-de-frotas.webp" alt="Envelopamento de Frotas" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-break text-white">Envelopamento de Frotas</h4>
-                    </div>
-                </div>
-            </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/panfletos.webp" alt="Panfletos" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase text-white">Panfletos</h4>
-                    </div>
-                </div>
-            </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/cartao-de-visita.webp" alt="Cartão de Visita" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase text-white">Cartão de Visita</h4>
-                    </div>
-                </div>
-            </div>
-            <div id="produtoAlta" class="col-lg-4 bg-white ml-0 pl-0 mr-2 mb-2 rounded-lg shadow">
-                <div class="row">
-                    <div class="col-lg-12 pr-0">
-                        <div class="imagemProduto rounded-lg">
-                            <img src="assets/img/servicos-produtos/tabuas-de-churrasco-personalizada.webp" alt="Tábua p/ Churrasco Personalizada" width="100%">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 pl-4 textoProduto text-center">
-                        <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-break text-white">Tábua Personalizada</h4>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
-<section id="revenda" class="revenda">
+<!-- <section id="revenda" class="revenda">
     <div class="container">
         <div class="text-center">
             <h1 class="text-uppercase m-0 p-0 text-white">Seja um revendedor!</h1>
@@ -266,12 +173,12 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
-<section id="contato" class="contato">
+<section id="contato" class="contato bg-white">
     <div class="container">
         <h1 class="text-uppercase text-center titulo">Contato</h1>
-        <div class="row mt-5">
+        <div class="row mt-5 ctt">
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
                 <i class="fas fa-phone-alt fa-2x texto-padrao"></i>
                 <h5 class="p-0 m-0 mt-3 text-black-50">(21) 4128-6328</h5>
