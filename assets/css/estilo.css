@@ -10,12 +10,6 @@
     font-family: 'Google Sans';
     outline: none !important;
 }
-.breadcrumb{
-    background-color: transparent !important;
-}
-.breadcrumb-titulo{
-    color: #000000 !important;
-}
 .breadcrumb a{
     color: #670001 !important;
 }
@@ -118,10 +112,7 @@ footer{
     background-color: #111111;
 }
 .ondeestou{
-    padding: 100px 0 40px !important;
-    background: url('../img/brandcrumb.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background:#FC7634 !important;
 }
 .quem-somos{
     padding: 80px 0;
