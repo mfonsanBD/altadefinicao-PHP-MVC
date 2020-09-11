@@ -48,7 +48,7 @@
                             </textarea>
                         </div>
                     </div>
-                    <button class="btn bg-padrao btn-sm" type="submit">Enviar Mensagem</button>
+                    <button class="btn bg-padrao btn-sm" type="submit" id="formContato">Enviar Mensagem</button>
                 </form>
             </div>
             <div class="col-lg-5 bg-dark p-5 contato-infos rounded-lg">

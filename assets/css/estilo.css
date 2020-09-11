@@ -187,6 +187,16 @@ footer{
 #produtoAlta:hover .textoProduto{
     opacity: 1;
 }
+.imagemProduto{
+    overflow: hidden;
+}
+#produtoAlta:hover .imagemProduto img{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+#produtoAlta h4{
+    font-family: 'Montserrat' !important;
+}
 .ctt{
     word-wrap: break-word;
 }
@@ -207,5 +217,16 @@ footer{
     }
     .navbar-light .navbar-toggler{
         border: none;
+    }
+    .titulo::after{
+        content: '';
+        width: 35%;
+        height: 5px;
+        position: absolute;
+        left: 50%;
+        margin-top: 5px;
+        transform: translateX(-50%);
+        background-color: #FC7634;
+        display: block;
     }
 }
