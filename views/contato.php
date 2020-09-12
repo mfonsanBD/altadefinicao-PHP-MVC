@@ -8,47 +8,36 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 mb-5">
-                <form class="needs-validation" novalidate>
+                <form>
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                        <label for="validationCustom01">Nome</label>
-                        <input type="text" class="form-control" id="validationCustom01" required>
-                        <div class="invalid-feedback">
-                            Informe seu nome!
-                        </div>
+                            <label for="nomeContato">Nome*</label>
+                            <input type="text" class="form-control" id="nomeContato" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                        <label for="validationCustom02">Sobrenome</label>
-                        <input type="text" class="form-control" id="validationCustom02" required>
-                        <div class="invalid-feedback">
-                            Informe seu sobrenome!
-                        </div>
+                            <label for="sobrenomeContato">Sobrenome*</label>
+                            <input type="text" class="form-control" id="sobrenomeContato" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-6 mb-3">
-                            <label for="validationCustom03">E-mail</label>
-                            <input type="email" class="form-control" id="validationCustom03" required>
-                            <div class="invalid-feedback">
-                                Informe um e-mail válido!
-                            </div>
+                            <label for="emailContato">E-mail*</label>
+                            <input type="email" class="form-control" id="emailContato" required>
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="validationCustom03">Assunto</label>
-                            <input type="email" class="form-control" id="validationCustom04" required>
-                            <div class="invalid-feedback">
-                                Qual o assunto da mensagem?
-                            </div>
+                            <label for="assuntoContato">Assunto*</label>
+                            <input type="text" class="form-control" id="assuntoContato" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-12 mb-3">
-                            <label for="validationCustom03">Mensagem</label>
-                            <textarea class="form-control" id="validationCustom05" required>
+                            <label for="mensagemContato">Mensagem*</label>
+                            <textarea class="form-control" id="mensagemContato" required>
                             </textarea>
                         </div>
                     </div>
-                    <button class="btn bg-padrao btn-sm" type="submit" id="formContato">Enviar Mensagem</button>
+                    <div class="g-recaptcha" data-sitekey="6LePCrAZAAAAAEnjkfbXuh04fM6HpsC0GyfRYbW6"></div>
+                    <button class="btn bg-padrao btn-sm mt-3" type="submit" id="formContato">Enviar Mensagem</button>
                 </form>
             </div>
             <div class="col-lg-5 bg-dark p-5 contato-infos rounded-lg">
@@ -93,3 +82,5 @@
     }, false);
     })();
 </script>
+
+<div id="notificacaoFormContato" class="fixed-bottom mb-2" style="z-index:9999999;"></div>
