@@ -59,6 +59,8 @@ $(document).ready(function(){
                 success: function(dados){
                     if(dados == 1){
                         sucessoFormContato("Enviou!");
+                    }else if(dados == 2){
+                        atencaoFormContato("Robô tentando enviar mensagem.");
                     }else{
                         erroFormContato("Não pôde ser enviado!");
                     }

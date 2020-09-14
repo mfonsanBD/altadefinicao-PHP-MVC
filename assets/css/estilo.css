@@ -10,8 +10,11 @@
     font-family: 'Google Sans';
     outline: none !important;
 }
+.breadcrumb{
+    border-radius: 0 !important;
+}
 .breadcrumb a{
-    color: #670001 !important;
+    color: #FC7634 !important;
 }
 .breadcrumb a:hover{
     text-decoration: none !important;
@@ -43,7 +46,6 @@ form a{
 }
 .carousel-caption{
     bottom: 35% !important;
-    /* text-align: left !important; */
 }
 .carousel-caption h1{
     font-family: 'Montserrat';
@@ -112,7 +114,15 @@ footer{
     background-color: #111111;
 }
 .ondeestou{
-    background:#FC7634 !important;
+    padding: 6em 0 !important;
+    background:#222222 !important;
+    opacity: .85;
+}
+.fundobdc{
+    background:url("../img/breadcrumb-img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .quem-somos{
     padding: 80px 0;
@@ -122,6 +132,7 @@ footer{
     height: 350px;
     background:url('https://fotografiamais.com.br/wp-content/uploads/2019/01/cmyk-ou-rgb-o-que-significa.jpg');
     background-size: cover;
+    background-position: center;
     overflow: hidden;
     z-index: 9999;
 }
@@ -184,6 +195,14 @@ footer{
     opacity: 0;
     transition: 0.5s all;
 }
+.textoProduto .linkProduto{
+    font-family: 'Montserrat' !important;
+    color: #FFFFFF;
+}
+.textoProduto .linkProduto:hover{
+    color: #F2AC34;
+    text-decoration: none;
+}
 #produtoAlta:hover .textoProduto{
     opacity: 1;
 }
@@ -194,14 +213,24 @@ footer{
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
-#produtoAlta h4{
-    font-family: 'Montserrat' !important;
-}
 .ctt{
     word-wrap: break-word;
 }
+.navbar-light .navbar-toggler{
+    border: none;
+}
 
 @media (max-width: 540px){
+    .carousel-caption{
+        bottom: 5% !important;
+    }
+    .carousel-caption h1{
+        font-family: 'Montserrat';
+        font-size: 1.5rem;
+    }
+    .carousel-caption p{
+        font-size: 12px;
+    }
     .quem-somos,
     .produtos-servicos,
     .revenda,

@@ -1,5 +1,5 @@
-<nav aria-label="breadcrumb" class="mt-4">
-    <ol class="breadcrumb justify-content-center ondeestou p-3">
+<nav aria-label="breadcrumb" class="fundobdc">
+    <ol class="breadcrumb justify-content-center ondeestou">
         <li class="breadcrumb-item"><a href="inicio">Página Inicial</a></li>
         <li class="breadcrumb-item text-white" aria-current="page"><?=$this->titulo?></li>
     </ol>
@@ -43,7 +43,7 @@
             <div class="col-lg-5 bg-dark p-5 contato-infos rounded-lg">
                 <div class="mb-4">
                     <i class="fab fa-whatsapp fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
-                    <a href="https://api.whatsapp.com/send?phone=5521982755100" target="_blank" class="pt-1">(21) 98275-5100</a>
+                    <a href="https://api.whatsapp.com/send?phone=5521982372555" target="_blank" class="pt-1">(21) 98237-2555</a>
                 </div>
                 <div class="mb-4">
                     <i class="fas fa-phone-alt fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
@@ -57,30 +57,18 @@
                     <i class="fas fa-map-marker-alt fa-lg pt-2 pb-2 pl-3 pr-3 mr-2 bg-padrao rounded-lg"></i>
                     <a href="https://goo.gl/maps/XcNxJ9edc3bFXbS49" target="_blank" class="pt-1">Av. Governador Leonel de Moura Brizola - Jardim das Oliveiras, Duque de Caxias - RJ, 25040-004</a>
                 </div>
+                <ul class="list-inline mt-5">
+                    <li class="list-inline-item">
+                        <a class="text-white" href="https://www.facebook.com/AltaDefinicaoComunicacaoVisual" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-white" href="https://www.instagram.com/altadefinicaorj/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.936315234984!2d-43.31413158556496!3d-22.730608337321524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997035baabfd21%3A0x288d87dc02a52c0d!2zQWx0YSBEZWZpbmnDp8Ojbw!5e0!3m2!1spt-BR!2sbr!4v1594044941233!5m2!1spt-BR!2sbr" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-        }, false);
-        });
-    }, false);
-    })();
-</script>
 
 <div id="notificacaoFormContato" class="fixed-bottom mb-2" style="z-index:9999999;"></div>

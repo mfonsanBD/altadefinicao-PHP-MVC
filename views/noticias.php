@@ -1,5 +1,5 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb justify-content-center ondeestou bg-dark">
+<nav aria-label="breadcrumb" class="fundobdc">
+    <ol class="breadcrumb justify-content-center ondeestou">
         <li class="breadcrumb-item"><a href="inicio">Página Inicial</a></li>
         <li class="breadcrumb-item breadcrumb-titulo active" aria-current="page"><?=$this->titulo?></li>
     </ol>

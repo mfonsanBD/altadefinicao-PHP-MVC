@@ -1,5 +1,5 @@
-<nav aria-label="breadcrumb" class="mt-4">
-    <ol class="breadcrumb justify-content-center ondeestou p-3">
+<nav aria-label="breadcrumb" class="fundobdc">
+    <ol class="breadcrumb justify-content-center ondeestou">
         <li class="breadcrumb-item"><a href="inicio">Página Inicial</a></li>
         <li class="breadcrumb-item text-white" aria-current="page"><?=$this->titulo?></li>
     </ol>
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Letreiros em Lona</h4>
+                        <h4 class="m-0 text-uppercase"><a href="letreiro-em-lona" class="linkProduto">Letreiros em Lona</a></h4>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Letreiros em ACM</h4>
+                        <h4 class="m-0 text-uppercase"><a href="letreiro-em-acm" class="linkProduto">Letreiros em ACM</a></h4>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Adesivos</h4>
+                        <h4 class="m-0 text-uppercase"><a href="adesivo" class="linkProduto">Adesivos</a></h4>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Banners</h4>
+                        <h4 class="m-0 text-uppercase"><a href="banners" class="linkProduto">Banners</a></h4>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Envelopamento de Frotas</h4>
+                        <h4 class="m-0 text-uppercase"><a href="envelopamento-de-frotas" class="linkProduto">Envelopamento de Frotas</a></h4>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Envelopamento de Geladeiras</h4>
+                        <h4 class="m-0 text-uppercase"><a href="envelopamento-de-geladeira" class="linkProduto">Envelopamento de Geladeiras</a></h4>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Totens</h4>
+                        <h4 class="m-0 text-uppercase"><a href="totens" class="linkProduto">Totens</a></h4>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase text-white">Cartão de Visita</h4>
+                        <h4 class="m-0 text-uppercase"><a href="cartao-de-visita" class="linkProduto">Cartão de Visita</a></h4>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-success">Impressão Offset</a>
-                        <h4 class="m-0 text-uppercase text-white">Panfleto</h4>
+                        <h4 class="m-0 text-uppercase"><a href="panfleto" class="linkProduto">Panfleto</a></h4>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="col-lg-12 pl-4 textoProduto text-center">
                         <a href="#" class="badge badge-warning">Comunicação Visual</a>
-                        <h4 class="m-0 text-uppercase text-white">Tábua para Churrasco Personalizada</h4>
+                        <h4 class="m-0 text-uppercase"><a href="tabua-para-churrasco" class="linkProduto">Tábua para Churrasco Personalizada</a></h4>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
-<nav aria-label="breadcrumb" class="mt-4">
-    <ol class="breadcrumb justify-content-center ondeestou p-3">
+<nav aria-label="breadcrumb" class="fundobdc">
+    <ol class="breadcrumb justify-content-center ondeestou">
         <li class="breadcrumb-item"><a href="inicio">Página Inicial</a></li>
         <li class="breadcrumb-item text-white" aria-current="page"><?=$this->titulo?></li>
     </ol>

@@ -66,11 +66,11 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col">
+				<div class="col-lg-4">
 					<a class="navbar-brand" href="home"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
 					<p>A Alta Definição teve seu inicio em 2000, Valdeir Foli, empresário visionário, começou sua empresa pensando no revendedor...</p>
 				</div>
-				<div class="col">
+				<div class="col-lg-4">
 					<h5>Menu do Site</h5>
 					<ul class="navbar-nav pt-4">
 						<li>
@@ -90,6 +90,20 @@
 						</li> -->
 						<li>
 							<a class="nav-link text-white" href="contato">Contato</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-4">
+					<h5>Segue lá!</h5>
+					<ul class="list-inline mt-4">
+						<li class="list-inline-item">
+							<a class="text-white" href="https://www.facebook.com/AltaDefinicaoComunicacaoVisual" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
+						</li>
+						<li class="list-inline-item">
+							<a class="text-white" href="https://www.instagram.com/altadefinicaorj/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+						</li>
+						<li class="list-inline-item">
+							<a class="text-white" href="https://api.whatsapp.com/send?phone=5521982372555" target="_blank"><i class="fab fa-whatsapp fa-2x"></i></a>
 						</li>
 					</ul>
 				</div>
