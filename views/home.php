@@ -2,7 +2,6 @@
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -10,15 +9,6 @@
     </div>
     <div class="carousel-item">
       <img src="assets/img/banner/banner-02.jpg" class="d-block w-100" alt="Recorte de letras em 3D">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/banner/banner-03.jpg" class="d-block w-100" alt="Material para candidatos">
-      <div class="carousel-caption d-md-block">
-        <div class="container">
-          <h1 class="text-uppercase">Material para Candidato</h1>
-          <p>Quer fazer o material de campanha do seu candidato? Nós somos a escolha certa.</p>
-        </div>
-      </div>
     </div>
   </div>
   <a class="carousel-control-prev border border-white" href="#carouselExampleCaptions" role="button" data-slide="prev">

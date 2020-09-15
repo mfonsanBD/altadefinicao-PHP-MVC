@@ -9,6 +9,8 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/css/estilo.css">
+	<link rel="stylesheet" href="assets/css/baguetteBox.min.css">
+	<link rel="stylesheet" href="assets/css/fluid-gallery.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 	<script src="https://kit.fontawesome.com/8ab5313a10.js" crossorigin="anonymous"></script>
 
@@ -142,5 +144,10 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	<script src="assets/js/site.js"></script>
+
+	<script src="assets/js/baguetteBox.min.js"></script>
+	<script>
+		baguetteBox.run('.tz-gallery');
+	</script>
   </body>
 </html>
