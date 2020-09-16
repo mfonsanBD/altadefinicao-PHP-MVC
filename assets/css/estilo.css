@@ -10,6 +10,14 @@
     font-family: 'Google Sans';
     outline: none !important;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Montserrat' !important;
+}
 .breadcrumb{
     border-radius: 0 !important;
 }
@@ -79,7 +87,6 @@ footer h5,
     line-height: 0.9;
 }
 .revenda h1{
-    font-family: 'Montserrat' !important;
     margin-top: 30%;
 }
 .titulo::after{
