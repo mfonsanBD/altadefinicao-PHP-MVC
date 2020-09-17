@@ -9,6 +9,9 @@ use PHPMailer\PHPMailer\Exception;
 class ContatoController extends Controller{
 	public function index(){
 		$this->titulo = "Contato";
+
+		$this->descricao = "Entre em contato. Estamos a disposição para tirar suas dúvidas. Ligue para: (21) 4128-6328, ou mande uma mensagem no WhatsApp em:  (21) 98237-2555.";
+
 		$this->loadTemplate('contato', $dados=array());
 	}
 	public function enviaContato(){

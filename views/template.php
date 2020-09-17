@@ -7,6 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   	<link rel="icon" href="assets/img/favicon.png" type="image/png">
 
+	<meta name="description" content="<?=$this->descricao?>">
+	<meta name="keywords" content="Gráfica, Comunicação Visual, Letreiro, Lona, Adesivo, ACM, PVC Espandido, Banner, Letra 3D, Totens, Tabua para Churrasco Personalizada, Cartão de Visita, Panfleto, Adesivo Geladeira, Envelopamento de Frota, Rio de Janeiro, Rj, Duque de Caxias">
+	<meta name="author" content="Mike Fonseca dos Santos">
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="assets/css/estilo.css">
 	<link rel="stylesheet" href="assets/css/baguetteBox.min.css">
@@ -20,7 +24,7 @@
   <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-transparent p-0">
-			<a class="navbar-brand p-0" href="inicio"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
+			<a class="navbar-brand p-0" href="<?=URL_BASE?>"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -28,7 +32,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav menu">
 					<li class="nav-item <?=($this->titulo == "A maior gráfica de Duque de Caxias") ? 'ativo' : '';?>">
-						<a class="nav-link" href="inicio">Inicio</a>
+						<a class="nav-link" href="<?=URL_BASE?>">Inicio</a>
 					</li>
 					<li class="nav-item <?=($this->titulo == "Quem Somos") ? 'ativo' : '';?>">
 						<a class="nav-link" href="quem-somos">Quem Somos</a>
@@ -76,7 +80,7 @@
 					<h5>Menu do Site</h5>
 					<ul class="navbar-nav pt-4">
 						<li>
-							<a class="nav-link text-white" href="inicio">Inicio</a>
+							<a class="nav-link text-white" href="<?=URL_BASE?>">Inicio</a>
 						</li>
 						<li>
 							<a class="nav-link text-white" href="quem-somos">Quem Somos</a>

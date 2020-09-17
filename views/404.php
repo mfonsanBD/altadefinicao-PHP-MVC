@@ -5,7 +5,7 @@
 			<h1 class="text-padrao p-0 m-0 mt-3 text-uppercase">Oops...!</h1>
 			<p class="p-0 m-0 text-black-50 mb-4"> A pagina que você tentou acessar não foi encontrada.</p>
 			<button class="btn bg-padrao">
-				<a href="inicio" class="text-black"><i class="fa fa-angle-left fa-lg"></i> Voltar ao inicio</a>
+				<a href="<?=URL_BASE?>" class="text-black"><i class="fa fa-angle-left fa-lg"></i> Voltar ao inicio</a>
 			</button>
 		</div>
 	</div>

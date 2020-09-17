@@ -6,7 +6,7 @@
         <div class="header-body text-center mb-5">
           <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-6 col-md-8 px-5">
-              <a href="inicio"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
+              <a href="<?=URL_BASE?>"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
               <h1 class="text-white"><?=$this->titulo?>!</h1>
               <p class="text-lead text-white">Entre com a sua conta e vamos ao trabalho.</p>
             </div>
