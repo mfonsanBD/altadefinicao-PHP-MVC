@@ -52,7 +52,24 @@ class ContatoController extends Controller{
 				$mail->CharSet = 'utf-8';
 		
 				$mail->Subject  = $assunto;
-				$mail->Body = "".$mensagem."";
+				$mail->Body = "<div style=width: 600px; background-color: #F9F9F9; font-family: Helvetica;>
+				<div style=width: 600px; text-align: center; background-color: #222222;>
+					<img src=https://altadefinicaocaxias.com.br/assets/img/logo-alta-definicao.png alt=Logo Alta Definição Caxias height=80px>
+				</div>
+				<div style=width: 600px; text-align: center; color: #222222; padding: 30px 0;>
+					<h3 style=text-transform: uppercase; padding: 0; margin: 0;>".$assunto."</h3>
+				</div>
+				<div style=width: 600px; text-align: center; color: #222222; padding: 0 0 20px;>
+					<p>".$mensagem."</p>
+				</div>
+				<div style=width: 600px; text-align: center; color: #222222; padding: 0 0 20px;>
+					<p><strong>Nome:</strong> ".$nome." ".$sobrenome."<br>
+					<strong>E-mail:</strong> ".$email."</p>
+				</div>
+				<div style=width: 600px; text-align: center; color: #222222; padding: 0 0 20px;>
+					<p>Mensagem enviada pelo site: www.altadefinicaocaxias.com.br</p>
+				</div>
+			</div>";
 		
 				$enviado = $mail->Send();
 				$mail->ClearAllRecipients();
