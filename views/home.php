@@ -21,6 +21,23 @@
   </a>
 </div>
 
+<section id="quem-somos" class="quem-somos">
+    <div class="container">
+        <h1 class="text-uppercase text-center titulo">Quem Somos</h1>
+        <div class="row mt-5">
+            <div class="col-lg-6">
+                <div class="quemSomosImg"></div>
+                <div class="caixaImg"></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="quemSomosText">
+                    <p class="text-muted">A Alta Definição teve seu inicio em 2000. Valdeir Foli, empresário visionário, começou sua empresa pensando no revendedor, tendo como principal produto a impressão digital em Lona e Adesivo, que desde então era visto pela maioria das gráficas como um produto de baixa lucratividade.</p><p class="text-muted">Com este espírito empreendedor nasceu uma empresa que respeita seus colaboradores e o revendedor gráfico, na busca constante da excelência, com inovação tecnológica e capacitação profissional.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="produtos-servicos" class="produtos-servicos">
     <div class="container">
         <h1 class="text-uppercase text-center titulo">Produtos & Serviços</h1>
@@ -261,18 +278,18 @@
         <h1 class="text-uppercase text-center titulo">Contato</h1>
         <div class="row mt-5 ctt">
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-phone-alt fa-2x texto-padrao"></i>
-                <h5 class="p-0 m-0 mt-3 text-black-50">(21) 4128-6328</h5>
-                <h5 class="p-0 m-0 text-black-50">(21) 98275-5100</h5>
+                <i class="fas fa-phone-alt fa-2x texto-padrao"></i><br>
+                <span class="p-0 m-0 mt-3 text-black-50">(21) 4128-6328</span><br>
+                <span class="p-0 m-0 text-black-50">(21) 98237-2555</span>
             </div>
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-envelope fa-2x texto-padrao"></i>
-                <h5 class="p-0 m-0 mt-3 text-black-50">altadefinicaocaxias@gmail.com</h5>
-                <h5 class="p-0 m-0 text-black-50">contato@altadefinicaocaxias.com.br</h5>
+                <i class="fas fa-envelope fa-2x texto-padrao"></i><br>
+                <span class="p-0 m-0 mt-3 text-black-50">altadefinicaocaxias@gmail.com</span><br>
+                <span class="p-0 m-0 text-black-50">contato@altadefinicaocaxias.com.br</span>
             </div>
             <div class="col ml-2 mr-2 p-5 bg-white rounded-lg text-center shadow">
-                <i class="fas fa-map-marker-alt fa-2x texto-padrao"></i>
-                <h5 class="p-0 m-0 mt-3 text-black-50">Presidente Kennedy, 8515 - São Bento - D. de Caxias - RJ</h5>
+                <i class="fas fa-map-marker-alt fa-2x texto-padrao"></i><br>
+                <span class="p-0 m-0 mt-3 text-black-50">Presidente Kennedy, 8515 - São Bento - D. de Caxias - RJ</span>
             </div>
         </div>
     </div>

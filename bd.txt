@@ -118,5 +118,14 @@ QUANTIDADE
 CAIXA
     - idCaixa
     - idPedido
+    - idBaixa
     - dataCaixa
-    - total
+    - valorCaixa
+    - operacaoCaixa
+    - descricaoOperacaoCaixa
+
+Baixa
+    - idBaixa
+    - situacaoBaixa
+    - dataBaixa
+    - idUsuario

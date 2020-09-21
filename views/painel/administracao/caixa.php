@@ -16,7 +16,7 @@
               </nav>
             </div>
             <div class="col-lg-6 col-5 text-right">
-              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-cliente"><i class="fas fa-plus"></i> Cadastrar Saída</a>
+              <a href="#" class="btn btn-neutral text-warning" data-toggle="modal" data-target="#cadastra-saida"><i class="fas fa-plus"></i> Cadastrar Saída</a>
             </div>
           </div>
         </div>
@@ -34,16 +34,16 @@
                 </div>
               </div>
             </div>
-            <div class="card-body pt-0">
-              <div class="col-lg-3 offset-lg-4 text-center">
-                  <h4>Caixa do dia:</h4>
-                  <div class="input-group mb-3">
-                      <input class="datedropper-init form-control text-center" type="text" id="dataCaixa" data-dd-theme="alta" data-dd-format="d/m/Y" data-dd-lang="pt">
-                      <div class="input-group-append">
-                          <button class="btn btn-warning" id="buscaCaixa">Ir</button>
-                      </div>
-                  </div>
-              </div>
+            <div class="col-lg-3 offset-lg-4 text-center">
+                <h4>Caixa do dia:</h4>
+                <div class="input-group mb-3">
+                    <input class="datedropper-init form-control text-center" type="text" id="dataCaixa" data-dd-theme="alta" data-dd-format="d/m/Y" data-dd-lang="pt">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" id="buscaCaixa">Ir</button>
+                    </div>
+                </div>
+            </div>
+            <div id="dadosAtuais" class="card-body pt-0">
               <div id="dados">
                 <!-- Card stats -->
                 <div class="row">
@@ -121,34 +121,44 @@
                     </thead>
                     <tbody class="list">
                       <?php
-                        foreach($dadosHoje as $caixa):
-                      ?>
-                      <tr>
-                        <th class="budget">
-                          <?=$caixa['descricaoOperacaoCaixa'];?>
-                        </th>
-                        <td>
-                          <span class="badge badge-dot mr-4">
-                            <?php
-                              if($caixa['operacaoCaixa'] == 0){
-                                echo "<i class='bg-danger'></i>
-                                <span class='status'>Saida</span>";
-                              }else{
-                                echo "<i class='bg-success'></i>
-                                <span class='status'>Entrada</span>";
-                              }
+                        if($fluxoHoje != 0){
+                          foreach($dadosHoje as $caixa):
                             ?>
-                          </span>
-                        </td>
-                        <td class="budget">
-                          <?='R$ '.number_format($caixa['valorCaixa'], 2, ",", ".");?>
-                        </td>
-                        <td class="budget">
-                          Dinheiro
-                        </td>
-                      </tr>
+                            <tr>
+                              <th class="budget">
+                                <?=$caixa['descricaoOperacaoCaixa'];?>
+                              </th>
+                              <td>
+                                <span class="badge badge-dot mr-4">
+                                  <?php
+                                    if($caixa['operacaoCaixa'] == 0){
+                                      echo "<i class='bg-danger'></i>
+                                      <span class='status'>Saida</span>";
+                                    }else{
+                                      echo "<i class='bg-success'></i>
+                                      <span class='status'>Entrada</span>";
+                                    }
+                                  ?>
+                                </span>
+                              </td>
+                              <td class="budget">
+                                <?='R$ '.number_format($caixa['valorCaixa'], 2, ",", ".");?>
+                              </td>
+                              <td class="budget">
+                                Dinheiro
+                              </td>
+                            </tr>
+                            <?php
+                          endforeach;
+                        }else{
+                      ?>
+                        <tr>
+                          <td colspan="4" class="text-center">
+                            Nenhum dado registrado no caixa de hoje até o momento.
+                          </td>
+                        </tr>
                       <?php
-                        endforeach;
+                        }
                       ?>
                     </tbody>
                   </table>
@@ -158,6 +168,7 @@
                 </div>
               </div>
             </div>
+            <div id="dadosAntigo" class="card-body pt-0 d-none"></div>
           </div>
         </div>
         <div class="col-xl-12">
@@ -172,59 +183,34 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="modal fade" id="cadastra-cliente" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+        <div class="modal fade" id="cadastra-saida" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
             <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
                 <div class="modal-content">
                     <div class="modal-body p-0">
                         <div class="card bg-secondary border-0 mb-0">
                             <div class="card-header bg-warning text-white">
-                                Cadastro de Novo Cliente
+                                Cadastro de Nova Saída
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                                <form role="form" id="cadastraCliente">
+                                <form role="form" id="cadastraSaida">
                                   <div class="form-group">
                                       <div class="input-group input-group-merge input-group-alternative">
                                           <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-user"></i>
+                                              <span class="input-group-text"><i class="fas fa-comment-alt"></i>
                                           </div>
-                                          <input class="form-control" placeholder="Nome" type="text" id="nomeCliente">
+                                          <input class="form-control" placeholder="Descrição" type="text" id="descricaoOperacaoCaixa">
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="input-group input-group-merge input-group-alternative">
                                           <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-user"></i>
+                                              <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
                                           </div>
-                                          <input class="form-control" placeholder="Sobrenome" type="text" id="sobrenomeCliente">
+                                          <input class="form-control valorSaida" placeholder="Valor da Saída" type="text" id="precoSaida">
                                       </div>
                                   </div>
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="E-mail" type="email" id="emailCliente">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="Senha" type="password" id="senhaCliente">
-                                      </div>
-                                  </div>
-                                  <div class="form-group">
-                                      <div class="input-group input-group-merge input-group-alternative">
-                                          <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                          </div>
-                                          <input class="form-control" placeholder="Confirma Senha" type="password" id="confirmaSenhaCliente">
-                                      </div>
-                                  </div>
-                                  <div class="text-muted font-italic forcaSenha"></div>
                                   <div class="text-center">
-                                      <button type="submit" class="btn btn-warning my-4">Cadastrar</button>
+                                      <button type="submit" class="btn btn-warning my-4">Cadastrar Saída</button>
                                   </div>
                                 </form>
                             </div>
@@ -234,62 +220,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="modal fade" id="confirmaExclusaoDeCliente" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-      <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-        <div class="modal-content bg-gradient-danger">
-          <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-notification">Atenção!</h6>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div class="py-3 text-center">
-                  <i class="ni ni-bell-55 ni-3x"></i>
-                  <h4 class="heading mt-4">O(A) cliente <cliente></cliente> está para ser excluido(a).</h4>
-                  <p>Tem certeza que deseja excluir <cliente></cliente>?<br>Todas as informações dele(a) serão excluidas permanentemente.</p>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-white" id="botaoExcluiCliente">Sim, excluir</button>
-              <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Não, cancelar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="modal fade" id="desitavaCliente" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-      <div class="modal-dialog modal-warning modal-dialog-centered modal-" role="document">
-        <div class="modal-content bg-gradient-warning">
-          <div class="modal-header">
-              <h6 class="modal-title" id="modal-title-notification">Atenção!</h6>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-              </button>
-          </div>
-          <div class="modal-body">
-              <div class="py-3 text-center">
-                  <i class="ni ni-bell-55 ni-3x"></i>
-                  <h4 class="heading mt-4">O(A) cliente <cliente></cliente> está para ser desativado(a).</h4>
-                  <p>Com isso, <cliente></cliente> não terá mais acesso ao sistema até que você o ative novamente.<br>Tem certeza que deseja desativar <cliente></cliente>?</p>
-              </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-white" id="botaoDesativaCliente">Sim, desativar</button>
-              <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal">Não, cancelar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div id="notificacaoCaixa" class="fixed-bottom mb-2" style="z-index:9999999;"></div>

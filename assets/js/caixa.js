@@ -1,6 +1,8 @@
 urlSite = window.location.href;
 
 $(document).ready(function(){
+    $('.valorSaida').mask("#.##0,00", {reverse: true});
+
     var hoje = new Date();
     var dia = hoje.getUTCDate();
     var mes = hoje.getUTCMonth()+1;
@@ -17,16 +19,52 @@ $(document).ready(function(){
     $("#dataCaixa").attr("value", dataAtual);
 
     $("#buscaCaixa").on("click", function(){
+
         var data = $("#dataCaixa").val();
 
-        $.ajax({
-            url: urlSite+'/buscaInfos/',
-            type: 'POST',
-            data: {data:data},
-            success: function(dados){
-                console.log(dados);
-            }
-        });
+        if(data > dataAtual){
+            atencaoCaixa("A data selecionada deve ser inferior a de hoje.");
+        }else{
+            $.ajax({
+                url: urlSite+'/buscaInfos/',
+                type: 'POST',
+                data: {data:data},
+                success: function(dados){
+                    $("#dadosAtuais").addClass('d-none');
+                    $("#dadosAntigo").removeClass('d-none');
+                    $("#dadosAntigo").html(dados);
+                }
+            });
+        }
+    });
+
+    $("#cadastraSaida").on("submit", function(e){
+        e.preventDefault();
+        
+        var descricaoSaida   = $("#descricaoOperacaoCaixa").val();
+        var valorSaida       = $("#precoSaida").val();
+
+        if(descricaoSaida == ''){
+            atencaoCaixa("O campo <strong>descrição</strong> é obrigatório.");
+        }else if(valorSaida == ''){
+            atencaoCaixa("O campo <strong>valor da saída</strong> é obrigatório.");
+        }else{
+            $.ajax({
+                url: urlSite+'/cadastraSaida/',
+                type: 'POST',
+                data: {descricao:descricaoSaida, valor:valorSaida},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoCaixa("Cadastro de saída realizado com sucesso!");
+                        setTimeout(function(){
+                            window.location.reload();
+                        }, 3000);
+                    }else{
+                        erroCaixa("Não foi possível cadastrar a saída. Tente novamente mais tarde!");
+                    }
+                }
+            });
+        }
     });
 });
 

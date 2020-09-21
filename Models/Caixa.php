@@ -13,6 +13,16 @@ class Caixa extends Model{
         }
         return $array;
     }
+    public function fluxoCaixa($hoje){
+        $array = array();
+        $sql = $this->conexao->prepare("SELECT COUNT(*) AS qtd FROM caixa WHERE dataCaixa LIKE '".$hoje."%'");
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+        return $array['qtd'];
+    }
     public function entradasHoje($hoje){
         $array = array();
         $sql = $this->conexao->prepare("SELECT SUM(valorCaixa) AS totalEntradas FROM caixa WHERE operacaoCaixa = 1 AND dataCaixa LIKE '".$hoje."%' GROUP BY operacaoCaixa");
@@ -20,6 +30,8 @@ class Caixa extends Model{
 
         if($sql->rowCount() > 0){
             $array = $sql->fetch();
+        }else{
+            $array['totalEntradas'] = 0;
         }
 
         return $array['totalEntradas'];
@@ -31,8 +43,20 @@ class Caixa extends Model{
 
         if($sql->rowCount() > 0){
             $array = $sql->fetch();
+        }else{
+            $array['totalSaidas'] = 0;
         }
 
         return $array['totalSaidas'];
+    }
+    public function cadastraSaida($valor, $descricao){
+        $sql = $this->conexao->prepare("INSERT INTO caixa SET dataCaixa = NOW(), valorCaixa = ?, operacaoCaixa = 0, descricaoOperacaoCaixa = ?");
+        $sql->execute(array($valor, $descricao));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
