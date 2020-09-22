@@ -52,5 +52,6 @@
   <script src="assets/js/colaboradores.js"></script>
   <script src="assets/js/blog.js"></script>
   <script src="assets/js/caixa.js"></script>
+  <script src="assets/js/pedidos.js"></script>
 </body>
 </html>
