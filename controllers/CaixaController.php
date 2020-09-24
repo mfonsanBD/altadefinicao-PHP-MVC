@@ -3,6 +3,7 @@ namespace Controllers;
 use \Core\Login;
 use \Models\Usuario;
 use \Models\Caixa;
+use \Models\Baixa;
 
 class CaixaController extends Login{
 	public function index(){
@@ -170,8 +171,11 @@ class CaixaController extends Login{
       $descricao  = trim(addslashes($_POST['descricao']));
       $valor      = trim(addslashes($_POST['valor']));
 
+      $baixa = new Baixa();
+      $ultimoId = $baixa->ultimoId();
+
       $caixa = new Caixa();
-      if($caixa->cadastraSaida($valor, $descricao)){
+      if($caixa->cadastraSaida($ultimoId, $valor, $descricao)){
         echo 1;
       }
       else{
