@@ -188,7 +188,10 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                             </div>
-                                            <input class="form-control" placeholder="Nome do Cliente" type="text" id="clienteFinal">
+                                            <input class="form-control" placeholder="Nome do Cliente" type="text" id="nomeClienteFinal">
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" id="enviaFinal" class="btn btn-warning my-4">Próximo</button>
                                         </div>
                                     </div>
                                     <div id="clienteRevendedor" class="form-group d-none">
@@ -196,7 +199,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="ni ni-single-02"></i>
                                             </div>
-                                            <select class="form-control m-0" id="clientePedido">
+                                            <select class="form-control m-0" id="clienteRevenda">
                                                 <option disabled selected value="">Selecione o Cliente</option>
                                                 <?php
                                                     foreach($listaUsuarios as $clientes):
@@ -209,9 +212,12 @@
                                                 ?>
                                             </select>
                                         </div>
+                                        <div class="text-center">
+                                            <button type="button" id="enviaRevenda" class="btn btn-warning my-4">Próximo</button>
+                                        </div>
                                     </div>
                                 </form>
-                                <form id="definePrecoRevenda" class="d-none">
+                                <form id="especificacaoMaterial" class="d-none">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">

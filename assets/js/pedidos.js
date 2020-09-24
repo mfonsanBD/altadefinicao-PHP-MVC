@@ -31,15 +31,34 @@ $(document).ready(function(){
         if(tipoCliente == "Final"){
             $("#clienteFinal").removeClass('d-none');
             $("#clienteRevendedor").addClass('d-none');
-
-            final = $("#clienteFinal").val();
-            if(final == ''){
-                atencaoProdutos("O campo <b>produto</b> é obrigatório!");
-            }
-
         }else{
             $("#clienteRevendedor").removeClass('d-none');
             $("#clienteFinal").addClass('d-none');
+        }
+    });
+    
+    $("#enviaFinal").on("click", function(){
+        final = $("#nomeClienteFinal").val();
+
+        if(final == ''){
+            atencaoProdutos("O campo <b>nome do cliente</b> é obrigatório.");
+        }else{
+            $("#clientePedido").addClass('d-none');
+            $("#especificacaoMaterial").removeClass('d-none');
+            $("#guia3-tab").addClass('active');
+            revendedor = null;
+        }
+    });
+    $("#enviaRevenda").on("click", function(){
+        revendedor = $("#clienteRevenda").val();
+
+        if(revendedor == null){
+            atencaoProdutos("O campo <b>cliente</b> é obrigatório.");
+        }else{
+            $("#clientePedido").addClass('d-none');
+            $("#especificacaoMaterial").removeClass('d-none');
+            $("#guia3-tab").addClass('active');
+            final = '';
         }
     });
 });

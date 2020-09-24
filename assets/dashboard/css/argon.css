@@ -21601,7 +21601,12 @@ textarea[resize='horizontal']
     padding-left: 1rem;
 
     border-radius: .375rem; 
-    background: #f6f9fc;
+    background: #f56036;
+    color: #FFFFFF;
+}
+.navbar-vertical.navbar-expand-xs .navbar-nav > .nav-item > .nav-link.active > i
+{
+    color: #FFFFFF !important;
 }
 .navbar-vertical.navbar-expand-xs .lavalamp-object
 {
