@@ -43,15 +43,16 @@ CREATE TABLE IF NOT EXISTS `baixa` (
   `situacaoBaixa` tinyint(4) NOT NULL DEFAULT 0,
   `dataBaixa` date NOT NULL,
   PRIMARY KEY (`idBaixa`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.baixa: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.baixa: ~4 rows (aproximadamente)
 DELETE FROM `baixa`;
 /*!40000 ALTER TABLE `baixa` DISABLE KEYS */;
 INSERT INTO `baixa` (`idBaixa`, `idUsuario`, `situacaoBaixa`, `dataBaixa`) VALUES
-	(1, NULL, 0, '2020-09-21'),
+	(1, 1, 1, '2020-09-21'),
 	(2, NULL, 0, '2020-09-24'),
-	(3, NULL, 0, '2020-09-25');
+	(3, NULL, 0, '2020-09-25'),
+	(4, 0, 0, '2020-09-28');
 /*!40000 ALTER TABLE `baixa` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.caixa
@@ -64,9 +65,9 @@ CREATE TABLE IF NOT EXISTS `caixa` (
   `operacaoCaixa` tinyint(1) NOT NULL,
   `descricaoOperacaoCaixa` varchar(150) NOT NULL,
   PRIMARY KEY (`idCaixa`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.caixa: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.caixa: ~6 rows (aproximadamente)
 DELETE FROM `caixa`;
 /*!40000 ALTER TABLE `caixa` DISABLE KEYS */;
 INSERT INTO `caixa` (`idCaixa`, `idPedido`, `idBaixa`, `dataCaixa`, `valorCaixa`, `operacaoCaixa`, `descricaoOperacaoCaixa`) VALUES
@@ -74,7 +75,8 @@ INSERT INTO `caixa` (`idCaixa`, `idPedido`, `idBaixa`, `dataCaixa`, `valorCaixa`
 	(6, 1, NULL, '2020-09-18', 20.00, 0, 'Valdeir'),
 	(7, NULL, NULL, '2020-09-21', 250.00, 0, 'Valdeir'),
 	(8, NULL, NULL, '2020-09-21', 20.00, 0, 'Mike'),
-	(9, 1, NULL, '2020-09-21', 300.00, 1, 'Cliente');
+	(9, 1, NULL, '2020-09-21', 300.00, 1, 'Cliente'),
+	(11, NULL, 4, '2020-09-28', 250.00, 0, 'Valdeir');
 /*!40000 ALTER TABLE `caixa` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.categoria
@@ -233,9 +235,9 @@ CREATE TABLE IF NOT EXISTS `gramatura` (
   `idProduto` int(11) NOT NULL,
   `nomeGramatura` varchar(4) NOT NULL,
   PRIMARY KEY (`idGramatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela sistema.gramatura: ~6 rows (aproximadamente)
+-- Copiando dados para a tabela sistema.gramatura: ~7 rows (aproximadamente)
 DELETE FROM `gramatura`;
 /*!40000 ALTER TABLE `gramatura` DISABLE KEYS */;
 INSERT INTO `gramatura` (`idGramatura`, `idProduto`, `nomeGramatura`) VALUES
@@ -244,7 +246,8 @@ INSERT INTO `gramatura` (`idGramatura`, `idProduto`, `nomeGramatura`) VALUES
 	(3, 0, '115'),
 	(4, 0, '80'),
 	(5, 0, '150'),
-	(6, 0, '90');
+	(6, 0, '90'),
+	(7, 0, '440');
 /*!40000 ALTER TABLE `gramatura` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.midia
@@ -326,24 +329,27 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `idFormaPagamento` int(11) NOT NULL,
   `idTipoEntrega` int(11) DEFAULT NULL,
   `nomeCliente` varchar(150) DEFAULT NULL,
+  `nomeArte` varchar(150) NOT NULL,
   `statusPagamento` tinyint(1) NOT NULL DEFAULT 0,
   `altura` varchar(5) NOT NULL,
   `largura` varchar(5) NOT NULL,
+  `quantidadeProduto` int(6) NOT NULL,
+  `valorPedido` float(10,2) NOT NULL,
   `statusPedido` tinyint(1) NOT NULL DEFAULT 0,
   `dataPedido` datetime NOT NULL,
   `observacaoPedido` text NOT NULL,
-  `quantidadeProduto` int(6) NOT NULL,
   `arquivo` varchar(37) NOT NULL,
   `slugPedido` varchar(32) NOT NULL,
+  `visualizado` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idPedido`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela sistema.pedido: ~2 rows (aproximadamente)
 DELETE FROM `pedido`;
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
-INSERT INTO `pedido` (`idPedido`, `idCliente`, `idProduto`, `idMidia`, `idAcabamento`, `idTipoCliente`, `idFormaPagamento`, `idTipoEntrega`, `nomeCliente`, `statusPagamento`, `altura`, `largura`, `statusPedido`, `dataPedido`, `observacaoPedido`, `quantidadeProduto`, `arquivo`, `slugPedido`) VALUES
-	(1, 1, 37, 5, 1, 2, 1, NULL, NULL, 0, '2,00', '0,80', 4, '2020-09-02 14:00:00', '', 1, 'arquivo.pdf', ''),
-	(2, 1, 37, 5, 1, 2, 1, NULL, NULL, 0, '2,00', '0,80', 4, '2020-09-02 14:40:00', '', 1, 'arquivo.pdf', '');
+INSERT INTO `pedido` (`idPedido`, `idCliente`, `idProduto`, `idMidia`, `idAcabamento`, `idTipoCliente`, `idFormaPagamento`, `idTipoEntrega`, `nomeCliente`, `nomeArte`, `statusPagamento`, `altura`, `largura`, `quantidadeProduto`, `valorPedido`, `statusPedido`, `dataPedido`, `observacaoPedido`, `arquivo`, `slugPedido`, `visualizado`) VALUES
+	(1, 33, 37, 5, 1, 2, 1, 1, NULL, 'Hortifruti', 0, '2,00', '0,80', 1, 40.00, 5, '2020-09-02 14:00:00', '', 'arquivo.pdf', '202cb962ac59075b964b07152d234b70', 0),
+	(2, 33, 37, 5, 1, 2, 1, 1, NULL, 'Frango Assado', 0, '2,00', '0,80', 1, 40.00, 4, '2020-09-02 14:40:00', '', 'arquivo.pdf', 'caf1a3dfb505ffed0d024130f58c5cfa', 1);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema.postagem
