@@ -163,9 +163,23 @@
                     </tbody>
                   </table>
                 </div>
-                <div class="text-center mt-5">
-                  <button class="btn btn-warning btn-sm">Dar Baixa no Caixa</button>
-                </div>
+                <?php
+                  foreach($listaBaixa as $baixa):
+                    if($baixa['situacaoBaixa'] == 0){
+                ?>
+                  <div class="text-center mt-5">
+                    <button class="btn btn-warning btn-sm" id="baixaNoCaixa">Dar Baixa no Caixa</button>
+                  </div>
+                <?php
+                    }else{
+                ?>
+                  <div class="col-lg-12 text-center mt-5 bg-gradient-green p-2">
+                    <p class="p-0 m-0 text-white">Baixa no caixa dado por: <?=$this->nomeDeuBaixa;?></p>
+                  </div>
+                <?php
+                    }
+                  endforeach;
+                ?>
               </div>
             </div>
             <div id="dadosAntigo" class="card-body pt-0 d-none"></div>

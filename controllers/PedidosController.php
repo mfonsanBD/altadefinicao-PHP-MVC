@@ -6,6 +6,7 @@ use \Models\Produtos;
 use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
 use \Models\Caixa;
+use \Models\Pedidos;
 
 class PedidosController extends Login{
 	public function index(){
@@ -25,6 +26,9 @@ class PedidosController extends Login{
         $this->titulo = "Pedidos";
         $dados = array();
 
+        $pedidos                    = new Pedidos();
+        $listaPedidos               = $pedidos->listaPedidos();
+
         $produto                    = new Produtos();
         $listaProduto               = $produto->listaProduto();
 
@@ -33,6 +37,7 @@ class PedidosController extends Login{
 
         $listaUsuarios              = $usuario->listaUsuarios();
 
+        $dados['listaPedidos']      = $listaPedidos;
         $dados['listaProduto']      = $listaProduto;
         $dados['listaTipoCliente']  = $listaTipoCliente;
         $dados['listaUsuarios']     = $listaUsuarios;

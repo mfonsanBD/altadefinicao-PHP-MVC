@@ -49,6 +49,7 @@ $(document).ready(function(){
             revendedor = null;
         }
     });
+   
     $("#enviaRevenda").on("click", function(){
         revendedor = $("#clienteRevenda").val();
 
@@ -61,6 +62,8 @@ $(document).ready(function(){
             final = '';
         }
     });
+
+
 });
 
 function sucessoPedidos(texto){
@@ -71,21 +74,4 @@ function erroProdutos(texto){
 }
 function atencaoProdutos(texto){
     $("#notificacaoPedidos").html("<div class='col-lg-4 offset-lg-4 alert alert-warning alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-exclamation-triangle'></i></span><span class='alert-text'><strong>Atenção! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
-}
-function string_to_slug (nome) {
-    nome = nome.replace('/^\s+|\s+$/g', ''); // tira os espaços do começo e do fim do texto
-    nome = nome.toLowerCase();
-  
-    // remove caracteres especiais
-    var from = "ãàáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-    var to   = "aaaaaeeeeiiiioooouuuunc------";
-    for (var i=0, l=from.length ; i<l ; i++) {
-        nome = nome.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-
-    nome = nome.replace(/[^a-z0-9 -]/g, '') // remove caracteres invalidos
-        .replace(/\s+/g, '-') // transforma espaço para -
-        .replace(/-+/g, '-'); // transforma as traves
-
-    return nome;
 }

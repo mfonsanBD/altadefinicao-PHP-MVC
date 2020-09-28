@@ -43,48 +43,92 @@
                       <th scope="col" class="sort" data-sort="name">N° Pedido</th>
                       <th scope="col" class="sort" data-sort="name">Nome da Arte</th>
                       <th scope="col" class="sort" data-sort="name">Cliente</th>
-                      <th scope="col" class="sort" data-sort="status">Status Pedido</th>
-                      <th scope="col" class="sort" data-sort="name">Enviado</th>
-                      <th scope="col" class="sort" data-sort="name">Valor Pedido</th>
+                      <th scope="col" class="sort" data-sort="status">Status do Pedido</th>
+                      <th scope="col" class="sort" data-sort="name">dia do Pedido</th>
+                      <th scope="col" class="sort" data-sort="name">Valor do Pedido</th>
                       <th scope="col"></th>
                   </tr>
                   </thead>
                   <tbody class="list">
                       <?php
-                        //   foreach($listaUsuarios as $clientes):
+                          foreach($listaPedidos as $pedidos):
+                            if($pedidos['visualizado'] == 0){
+                                $bold = " style='background-color: #adb5bd; color:#FFFFFF;'";
+                            }else{
+                                $bold = '';
+                            }
                       ?>
-                      <tr>
+                      <tr<?=$bold;?>>
                           <th scope="row">
                               <div class="media align-items-center">
                                   <div class="media-body">
-                                  <span class="name mb-0 text-sm ml-2">#00001</span>
+                                  <span class="name mb-0 text-sm ml-2">
+                                  <?='#'.str_pad($pedidos['idPedido'], 6, 0, STR_PAD_LEFT);?>
+                                  </span>
                                   </div>
                               </div>
                           </th>
                           <td>
-                              <span class='name'>Hortifruti</span>
+                              <span class='name'><?=$pedidos['nomeArte']?></span>
                           </td>
                           <td>
-                              <span class='name'>Cliente 1</span>
+                                <?php
+                                    if($pedidos['idCliente'] == null){
+                                        echo "<span class='name'>".$pedidos['nomeCliente']."</span>";
+                                    }else{
+                                        echo "<span class='name'>".$pedidos['nomeUsuario']." ".$pedidos['sobrenomeUsuario']."</span>";
+                                    }
+                                ?>
                           </td>
                           <td>
                               <span class="badge badge-dot mr-4">
-                                <i class='bg-warning'></i>
-                                <span class='status'>Aguardando Aprovação</span>
+                                <?php
+                                    switch($pedidos['statusPedido']){
+                                        case 1:
+                                            echo "<i class='bg-warning'></i>
+                                            <span class='status'>Processando</span>";
+                                        break;
+                                        case 2:
+                                            echo "<i class='bg-default'></i>
+                                            <span class='status'>Em produção</span>";
+                                        break;
+                                        case 3:
+                                            if($pedidos['idTipoEntrega'] == 1){
+                                                echo "<i class='bg-info'></i>
+                                                <span class='status'>Pronto para Retirada</span>";
+                                            }else{
+                                                echo "<i class='bg-info'></i>
+                                                <span class='status'>Saiu para Entrega</span>";
+                                            }
+                                        break;
+                                        case 4:
+                                            echo "<i class='bg-success'></i>
+                                            <span class='status'>Finalizado</span>";
+                                        break;
+                                        case 5:
+                                            echo "<i class='bg-danger'></i>
+                                            <span class='status'>Com Problema</span>";
+                                        break;
+                                        default:
+                                            echo "<i style='background-color:#8898aa;'></i>
+                                            <span class='status'>Aguardando</span>";
+                                        break;
+                                    }
+                                ?>
                               </span>
                           </td>
                           <td>
-                              <span class='name'>Dia - Hora</span>
+                              <span class='name'><?=date("d/m/Y - H:i", strtotime($pedidos['dataPedido']));?></span>
                           </td>
                           <td>
-                              <span class='name'>R$ 250,00</span>
+                              <span class='name'><?= "R$ ".number_format($pedidos['valorPedido'], 2, ",", ".")?></span>
                           </td>
                         <td class="text-right">
-                            <button class="btn btn-default btn-sm">Abrir</button>
+                            <a href="<?=URL_BASE."pedido/".$pedidos['slugPedido']?>" class="btn btn-default btn-sm">Abrir</a>
                         </td>
                       </tr>
                       <?php
-                        //   endforeach;
+                          endforeach;
                       ?>
                   </tbody>
               </table>

@@ -66,6 +66,22 @@ $(document).ready(function(){
             });
         }
     });
+    
+    $("#baixaNoCaixa").on("click", function(){
+        $.ajax({
+            url: urlSite+'/darBaixa/',
+            success: function(dados){
+                if(dados == 1){
+                    sucessoCaixa("Bom trabalho! Você deu baixa no Caixa de hoje!");
+                    setTimeout(function(){
+                        window.location.reload();
+                    }, 3000);
+                }else{
+                    erroCaixa("Não foi possível dar baixa no caixa de hoje. Tente novamente mais tarde!");
+                }
+            }
+        });
+    });
 });
 
 function sucessoCaixa(texto){

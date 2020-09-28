@@ -49,9 +49,9 @@ class Caixa extends Model{
 
         return $array['totalSaidas'];
     }
-    public function cadastraSaida($valor, $descricao){
-        $sql = $this->conexao->prepare("INSERT INTO caixa SET dataCaixa = NOW(), valorCaixa = ?, operacaoCaixa = 0, descricaoOperacaoCaixa = ?");
-        $sql->execute(array($valor, $descricao));
+    public function cadastraSaida($ultimoId, $valor, $descricao){
+        $sql = $this->conexao->prepare("INSERT INTO caixa SET idBaixa = ?, dataCaixa = NOW(), valorCaixa = ?, operacaoCaixa = 0, descricaoOperacaoCaixa = ?");
+        $sql->execute(array($ultimoId, $valor, $descricao));
 
         if($sql->rowCount() > 0){
             return true;

@@ -129,3 +129,13 @@ Baixa
     - situacaoBaixa
     - dataBaixa
     - idUsuario
+
+
+
+STATUSPEDIDO
+    - 0 = aguardando                                                [gray 600]
+    - 1 = processando                                               [warning]
+    - 2 = em produção                                               [default]
+    - 3 = pronto para retirada / saiu para entrega (tipoEntrega)    [info]
+    - 4 = finalizado                                                [success]
+    - 5 = com problema                                              [danger]

@@ -119,4 +119,17 @@ class Usuario extends Model{
 			return false;
 		}
 	}
+	public function usuarioDeuBaixa($usuario){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT * FROM usuario WHERE idUsuario = ?");
+		$sql->execute(array($usuario));
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}else{
+			$array = 0;
+		}
+
+		return $array;
+	}
 }
