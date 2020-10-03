@@ -44,4 +44,23 @@ class PedidosController extends Login{
 
         $this->loadTemplate('administracao/pedidos', $dados);
   }
+  public function pedido($slug){
+    $id = $_SESSION['logado'];
+
+    $usuario = new Usuario();
+    $informacoesUsuario = $usuario->informacoesUsuario($id);
+
+    $this->nomeUsuario = $informacoesUsuario['nomeUsuario']." ".$informacoesUsuario['sobrenomeUsuario'];
+    $this->foto = $informacoesUsuario['fotoUsuario'];
+
+    $dados = array();
+
+    $pedido = new Pedidos();
+    $infoPedido = $pedido->infoPedidos($slug);
+
+    $this->titulo = "Pedido: ".str_pad($infoPedido['idPedido'], 6, 0, STR_PAD_LEFT);
+
+    $dados['pedido'] = $infoPedido;
+    $this->loadTemplate('administracao/pedido', $dados);
+  }
 }

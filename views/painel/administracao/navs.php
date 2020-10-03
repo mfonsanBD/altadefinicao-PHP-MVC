@@ -4,7 +4,7 @@
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
         <a class="navbar-brand" href="javascript:void(0)">
-          <img src="assets/img/logo-alta-definicao.png" class="navbar-brand-img" alt="...">
+          <img src="<?=URL_BASE?>assets/img/logo-alta-definicao.png" class="navbar-brand-img" alt="...">
         </a>
       </div>
       <div class="navbar-inner">
@@ -202,9 +202,9 @@
                   <span class="avatar avatar-sm rounded-circle">
                     <?php
                         if($this->foto == 'usuario.jpg'){
-                            echo "<img alt='Foto de Usuário' src='assets/img/usuario.jpg'>";
+                            echo "<img alt='Foto de Usuário' src='".URL_BASE."assets/img/usuario.jpg'>";
                         }else{
-                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='assets/img/usuario/".$_SESSION['logado']."/".$this->foto."'>";
+                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='".URL_BASE."assets/img/usuario/".$_SESSION['logado']."/".$this->foto."'>";
                         }
                     ?>
                   </span>

@@ -15,4 +15,16 @@ class Pedidos extends Model{
 
         return $array;
     }
+    public function infoPedidos($slug){
+        $array = array();
+
+        $sql = $this->conexao->prepare("SELECT * FROM pedido WHERE slugPedido = ?");
+        $sql->execute(array($slug));
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+
+        return $array;
+    }
 }

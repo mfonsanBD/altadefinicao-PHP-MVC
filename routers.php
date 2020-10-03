@@ -17,3 +17,5 @@ $routers['/totens']                         = '/ProdutosEServicos/totens';
 $routers['/cartao-de-visita']               = '/ProdutosEServicos/cartaoDeVisita';
 $routers['/panfleto']                       = '/ProdutosEServicos/panfleto';
 $routers['/tabua-para-churrasco']           = '/ProdutosEServicos/tabuaParaChurrasco';
+
+$routers['/pedido/{slug}']           = '/Pedidos/pedido/:slug';

@@ -5,16 +5,16 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  	<link rel="icon" href="assets/img/favicon.png" type="image/png">
+  	<link rel="icon" href="<?=URL_BASE?>assets/img/favicon.png" type="image/png">
 
 	<meta name="description" content="<?=$this->descricao?>">
 	<meta name="keywords" content="Gráfica, Comunicação Visual, Letreiro, Lona, Adesivo, ACM, PVC Espandido, Banner, Letra 3D, Totens, Tabua para Churrasco Personalizada, Cartão de Visita, Panfleto, Adesivo Geladeira, Envelopamento de Frota, Rio de Janeiro, Rj, Duque de Caxias">
 	<meta name="author" content="Mike Fonseca dos Santos">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="assets/css/estilo.css">
-	<link rel="stylesheet" href="assets/css/baguetteBox.min.css">
-	<link rel="stylesheet" href="assets/css/fluid-gallery.css">
+	<link rel="stylesheet" href="<?=URL_BASE?>assets/css/estilo.css">
+	<link rel="stylesheet" href="<?=URL_BASE?>assets/css/baguetteBox.min.css">
+	<link rel="stylesheet" href="<?=URL_BASE?>assets/css/fluid-gallery.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 	<script src="https://kit.fontawesome.com/8ab5313a10.js" crossorigin="anonymous"></script>
 
