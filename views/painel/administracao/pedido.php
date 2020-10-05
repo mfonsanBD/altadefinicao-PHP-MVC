@@ -34,7 +34,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-lg-3">
                         <small class="p-0 m-0">Dia do Pedido: <b><?=date("d/m/Y", strtotime($pedido['dataPedido']))?></b></small><br>
 
                         <small class="p-0 m-0">Horário do Pedido: <b><?=date("H:i", strtotime($pedido['dataPedido']))?></b></small><br>
@@ -59,6 +59,12 @@
                         </small><br>
 
                         <small class="p-0 m-0">Total do Pedido: <b><?="R$ ".number_format($pedido['valorPedido'], 2, ",", ".")?></b></small>
+                    </div>
+                    <div class="col-lg-9">
+                      <span class="badge badge-dot mr-4">
+                        <i class='bg-warning p-2'></i><br>
+                        <span class='status'>Processando</span>
+                      </span>
                     </div>
                 </div>
             </div>

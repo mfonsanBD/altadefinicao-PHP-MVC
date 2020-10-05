@@ -33,12 +33,12 @@
   <script src="<?=URL_BASE?>assets/dashboard/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
   <script src="<?=URL_BASE?>assets/dashboard/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
   <!-- Optional JS -->
-  <script src="assets/dashboard/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="assets/dashboard/vendor/chart.js/dist/Chart.extension.js"></script>
+  <script src="<?=URL_BASE?>assets/dashboard/vendor/chart.js/dist/Chart.min.js"></script>
+  <script src="<?=URL_BASE?>assets/dashboard/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="<?=URL_BASE?>assets/dashboard/js/argon.js?v=1.2.0"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <script src="assets/dashboard/js/jquery.mask.js"></script>
+  <script src="<?=URL_BASE?>assets/dashboard/js/jquery.mask.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>

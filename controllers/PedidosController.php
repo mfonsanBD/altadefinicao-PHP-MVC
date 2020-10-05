@@ -57,6 +57,10 @@ class PedidosController extends Login{
 
     $pedido = new Pedidos();
     $infoPedido = $pedido->infoPedidos($slug);
+    
+    if($infoPedido['visualizado'] == 0){
+      $visualizado = $pedido->visualizou($slug);
+    }
 
     $this->titulo = "Pedido: ".str_pad($infoPedido['idPedido'], 6, 0, STR_PAD_LEFT);
 

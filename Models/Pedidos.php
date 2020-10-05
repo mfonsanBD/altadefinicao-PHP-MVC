@@ -27,4 +27,8 @@ class Pedidos extends Model{
 
         return $array;
     }
+    public function visualizou($slug){
+        $sql = $this->conexao->prepare("UPDATE pedido SET visualizado = 1 WHERE slugPedido = ?");
+        $sql->execute(array($slug));
+    }
 }
