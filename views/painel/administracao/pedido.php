@@ -60,10 +60,26 @@
 
                         <small class="p-0 m-0">Total do Pedido: <b><?="R$ ".number_format($pedido['valorPedido'], 2, ",", ".")?></b></small>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 d-flex justify-content-center align-items-center">
                       <span class="badge badge-dot mr-4">
-                        <i class='bg-warning p-2'></i><br>
+                        <i class='bg-warning p-2 mb-2'></i><br>
+                        <span class='status'>Aguardando</span>
+                      </span>
+                      <span class="badge badge-dot mr-4">
+                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
                         <span class='status'>Processando</span>
+                      </span>
+                      <span class="badge badge-dot mr-4">
+                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
+                        <span class='status'>Em Produção</span>
+                      </span>
+                      <span class="badge badge-dot mr-4">
+                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
+                        <span class='status'>Pronto para Retirada</span>
+                      </span>
+                      <span class="badge badge-dot mr-4">
+                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
+                        <span class='status'>Finalizado</span>
                       </span>
                     </div>
                 </div>

@@ -13,43 +13,43 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Painel de Controle") ? 'active' : '';?>" href="painel">
+              <a class="nav-link <?=($this->titulo == "Painel de Controle") ? 'active' : '';?>" href="<?=URL_BASE?>painel">
                 <i class="ni ni-chart-pie-35 text-default"></i>
                 <span class="nav-link-text">Painel de Controle</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Pedidos") ? 'active' : '';?>" href="pedidos">
+              <a class="nav-link <?=($this->titulo == "Pedidos") ? 'active' : '';?>" href="<?=URL_BASE?>pedidos">
                 <i class="ni ni-archive-2 text-default"></i>
                 <span class="nav-link-text">Pedidos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Produtos") ? 'active' : '';?>" href="produtos">
+              <a class="nav-link <?=($this->titulo == "Produtos") ? 'active' : '';?>" href="<?=URL_BASE?>produtos">
                 <i class="ni ni-box-2 text-default"></i>
                 <span class="nav-link-text">Produtos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Clientes") ? 'active' : '';?>" href="clientes">
+              <a class="nav-link <?=($this->titulo == "Clientes") ? 'active' : '';?>" href="<?=URL_BASE?>clientes">
                 <i class="ni ni-single-02 text-default"></i>
                 <span class="nav-link-text">Clientes</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Colaboradores") ? 'active' : '';?>" href="colaboradores">
+              <a class="nav-link <?=($this->titulo == "Colaboradores") ? 'active' : '';?>" href="<?=URL_BASE?>colaboradores">
                 <i class="ni ni-single-02 text-default"></i>
                 <span class="nav-link-text">Colaboradores</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="caixa">
+              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="<?=URL_BASE?>caixa">
                 <i class="ni ni-book-bookmark text-default"></i>
                 <span class="nav-link-text">Caixa</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Blog") ? 'active' : '';?>" href="blog">
+              <a class="nav-link <?=($this->titulo == "Blog") ? 'active' : '';?>" href="<?=URL_BASE?>blog">
               <i class="fas fa-newspaper text-default"></i>
                 <span class="nav-link-text">Blog</span>
               </a>

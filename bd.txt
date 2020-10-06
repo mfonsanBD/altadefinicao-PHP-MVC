@@ -131,7 +131,6 @@ Baixa
     - idUsuario
 
 
-
 STATUSPEDIDO
     - 0 = aguardando                                                [gray 600]
     - 1 = processando                                               [warning]
