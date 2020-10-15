@@ -56,19 +56,18 @@ class CaixaController extends Login{
           $data = explode("/", $_POST['data']);
           $data = $data[2]."-".$data[1]."-".$data[0];
 
-          $caixa = new Caixa();
+          $baixa          = new Baixa();
+          $listaBaixa     = $baixa->listaBaixa($data);
+
+          $caixa          = new Caixa();
           $dadosData      = $caixa->listaCaixaHoje($data);
           $fluxoData      = $caixa->fluxoCaixa($data);
           $entradasData   = $caixa->entradasHoje($data);
           $saidasData     = $caixa->saidasHoje($data);
           $totalDaData    = $entradasData - $saidasData;
-
-          $baixa = new Baixa();
-          $listaBaixa     = $baixa->listaBaixa($data);
   
           foreach($listaBaixa as $lista){
             if($lista['situacaoBaixa'] != 0){
-
               $usuario = new Usuario();
               $usuarioDeuBaixa = $usuario->usuarioDeuBaixa($lista['idUsuario']);
               $this->nomeDeuBaixa = $usuarioDeuBaixa['nomeUsuario']." ".$usuarioDeuBaixa['sobrenomeUsuario'];

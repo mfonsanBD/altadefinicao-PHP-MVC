@@ -19,16 +19,17 @@ $(document).ready(function(){
     $("#dataCaixa").attr("value", dataAtual);
 
     $("#buscaCaixa").on("click", function(){
+        var dataEscolhida = $("#dataCaixa").val();
+        var data = $("#dataCaixa").val().split("/");
+        var data = new Date(data[2], (data[1]-1), data[0]);
 
-        var data = $("#dataCaixa").val();
-
-        if(data > dataAtual){
+        if(data > hoje){
             atencaoCaixa("A data selecionada deve ser inferior a de hoje.");
         }else{
             $.ajax({
                 url: urlSite+'/buscaInfos/',
                 type: 'POST',
-                data: {data:data},
+                data: {data:dataEscolhida},
                 success: function(dados){
                     $("#dadosAtuais").addClass('d-none');
                     $("#dadosAntigo").removeClass('d-none');
