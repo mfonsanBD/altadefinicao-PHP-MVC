@@ -31,4 +31,15 @@ class Pedidos extends Model{
         $sql = $this->conexao->prepare("UPDATE pedido SET visualizado = 1 WHERE slugPedido = ?");
         $sql->execute(array($slug));
     }
+	public function quantidadePedidos($data){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT COUNT(*) AS quantidade FROM pedido WHERE dataPedido LIKE '".$data."%'");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+		
+		return $array['quantidade'];
+	}
 }

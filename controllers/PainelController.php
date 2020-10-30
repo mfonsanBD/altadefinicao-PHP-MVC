@@ -2,6 +2,7 @@
 namespace Controllers;
 use \Core\Login;
 use \Models\Usuario;
+use \Models\Pedidos;
 
 class PainelController extends Login{
 	public function index(){
@@ -15,6 +16,8 @@ class PainelController extends Login{
         $usuario = new Usuario();
         $informacoesUsuario = $usuario->informacoesUsuario($id);
 
+        $pedido = new Pedidos();
+
         $this->nomeUsuario = $informacoesUsuario['nomeUsuario']." ".$informacoesUsuario['sobrenomeUsuario'];
         $this->foto = $informacoesUsuario['fotoUsuario'];
 
@@ -27,8 +30,20 @@ class PainelController extends Login{
                 $quantidadeUsuarios = $usuario->quantidadeUsuarios();
                 $dados['quantidadeUsuarios'] = $quantidadeUsuarios;
 
+                $dataHoje = date("Y-m-d");
+                $quantidadePedidos = $pedido->quantidadePedidos($dataHoje);
+                $dados['quantidadePedidos'] = $quantidadePedidos;
+
                 $this->titulo = "Painel de Controle";
                 $this->loadTemplate('administracao/painel', $dados);
+            break;
+            case 2:
+                $this->titulo = "Painel de Controle";
+                $this->loadTemplate('producao/painel', $dados=array());
+            break;
+            case 3:
+                $this->titulo = "Painel de Controle";
+                $this->loadTemplate('artefinal/painel', $dados=array());
             break;
             default:
                 header("Location: ".URL_BASE."login");
