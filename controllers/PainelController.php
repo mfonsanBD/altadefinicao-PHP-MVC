@@ -2,6 +2,8 @@
 namespace Controllers;
 use \Core\Login;
 use \Models\Usuario;
+use \Models\Produtos;
+use \Models\TipoCliente;
 use \Models\Pedidos;
 
 class PainelController extends Login{
@@ -33,6 +35,21 @@ class PainelController extends Login{
                 $dataHoje = date("Y-m-d");
                 $quantidadePedidos = $pedido->quantidadePedidos($dataHoje);
                 $dados['quantidadePedidos'] = $quantidadePedidos;
+
+                $listaPedidos               = $pedido->listaPedidos();
+        
+                $produto                    = new Produtos();
+                $listaProduto               = $produto->listaProduto();
+        
+                $tiporCliente               = new TipoCliente();
+                $listaTipoCliente           = $tiporCliente->listaTipoCliente();
+        
+                $listaUsuarios              = $usuario->listaUsuarios();
+        
+                $dados['listaPedidos']      = $listaPedidos;
+                $dados['listaProduto']      = $listaProduto;
+                $dados['listaTipoCliente']  = $listaTipoCliente;
+                $dados['listaUsuarios']     = $listaUsuarios;
 
                 $this->titulo = "Painel de Controle";
                 $this->loadTemplate('administracao/painel', $dados);

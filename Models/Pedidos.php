@@ -18,7 +18,11 @@ class Pedidos extends Model{
     public function infoPedidos($slug){
         $array = array();
 
-        $sql = $this->conexao->prepare("SELECT * FROM pedido WHERE slugPedido = ?");
+        $sql = $this->conexao->prepare("SELECT ped.*, us.*, tde.*, fdp.* FROM pedido AS ped
+        INNER JOIN usuario AS us ON (ped.idCliente = us.idUsuario)
+        INNER JOIN tipoentrega AS tde ON (ped.idTipoEntrega = tde.idTipoEntrega)
+        INNER JOIN forma_pagamento AS fdp ON (ped.idFormaPagamento = fdp.idFormaPagamento)
+        WHERE slugPedido = ?");
         $sql->execute(array($slug));
 
         if($sql->rowCount() > 0){

@@ -121,67 +121,105 @@
                   <h3 class="mb-0">Últimos Pedidos</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Ver Todos</a>
+                  <a href="pedidos" class="btn btn-sm btn-primary">Ver Todos</a>
                 </div>
               </div>
             </div>
-            <!-- Light table -->
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+            <table class="table align-items-center table-flush" id="tabelaDeClientes">
                 <thead class="thead-light">
-                  <tr>
+                <tr>
                     <th scope="col" class="sort" data-sort="name">N° Pedido</th>
-                    <th scope="col" class="sort" data-sort="budget">Nome da Arte</th>
-                    <th scope="col" class="sort" data-sort="budget">Cliente</th>
-                    <th scope="col" class="sort" data-sort="status">Status</th>
-                    <th scope="col">Data - Hora</th>
-                    <th scope="col" class="sort" data-sort="completion">Total</th>
+                    <th scope="col" class="sort" data-sort="name">Nome da Arte</th>
+                    <th scope="col" class="sort" data-sort="name">Cliente</th>
+                    <th scope="col" class="sort" data-sort="status">Status do Pedido</th>
+                    <th scope="col" class="sort" data-sort="name">dia do Pedido</th>
+                    <th scope="col" class="sort" data-sort="name">Valor do Pedido</th>
                     <th scope="col"></th>
-                  </tr>
+                </tr>
                 </thead>
                 <tbody class="list">
-                  <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                        <div class="media-body">
-                          <span class="name mb-0 text-sm">#0000001</span>
-                        </div>
-                      </div>
-                    </th>
-                    <td class="budget">
-                      Hortifuiti
-                    </td>
-                    <td class="budget">
-                      Zezin das Lonas
-                    </td>
-                    <td>
-                      <span class="badge badge-dot mr-4">
-                        <i class="bg-warning"></i>
-                        <span class="status">pendente</span>
-                      </span>
-                    </td>
-                    <td class="budget">
-                      14/07/2020 - 17:44
-                    </td>
-                    <td class="budget">
-                      R$ 2.500,00
-                    </td>
-                    <td class="text-right">
-                      <div class="dropdown">
-                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
+                    <?php
+                        foreach($listaPedidos as $pedidos):
+                            if($pedidos['visualizado'] == 0){
+                                $bold = " style='background-color: #adb5bd; color:#FFFFFF;'";
+                            }else{
+                                $bold = '';
+                            }
+                    ?>
+                    <tr<?=$bold;?>>
+                        <th scope="row">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                <span class="name mb-0 text-sm ml-2">
+                                <?='#'.str_pad($pedidos['idPedido'], 6, 0, STR_PAD_LEFT);?>
+                                </span>
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            <span class='name'><?=$pedidos['nomeArte']?></span>
+                        </td>
+                        <td>
+                                <?php
+                                    if($pedidos['idCliente'] == null){
+                                        echo "<span class='name'>".$pedidos['nomeCliente']."</span>";
+                                    }else{
+                                        echo "<span class='name'>".$pedidos['nomeUsuario']." ".$pedidos['sobrenomeUsuario']."</span>";
+                                    }
+                                ?>
+                        </td>
+                        <td>
+                            <span class="badge badge-dot mr-4">
+                                <?php
+                                    switch($pedidos['statusPedido']){
+                                        case 1:
+                                            echo "<i class='bg-warning'></i>
+                                            <span class='status'>Processando</span>";
+                                        break;
+                                        case 2:
+                                            echo "<i class='bg-default'></i>
+                                            <span class='status'>Em produção</span>";
+                                        break;
+                                        case 3:
+                                            if($pedidos['idTipoEntrega'] == 1){
+                                                echo "<i class='bg-info'></i>
+                                                <span class='status'>Pronto para Retirada</span>";
+                                            }else{
+                                                echo "<i class='bg-info'></i>
+                                                <span class='status'>Saiu para Entrega</span>";
+                                            }
+                                        break;
+                                        case 4:
+                                            echo "<i class='bg-success'></i>
+                                            <span class='status'>Finalizado</span>";
+                                        break;
+                                        case 5:
+                                            echo "<i class='bg-danger'></i>
+                                            <span class='status'>Com Problema</span>";
+                                        break;
+                                        default:
+                                            echo "<i style='background-color:#8898aa;'></i>
+                                            <span class='status'>Aguardando</span>";
+                                        break;
+                                    }
+                                ?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class='name'><?=date("d/m/Y - H:i", strtotime($pedidos['dataPedido']));?></span>
+                        </td>
+                        <td>
+                            <span class='name'><?= "R$ ".number_format($pedidos['valorPedido'], 2, ",", ".")?></span>
+                        </td>
+                        <td class="text-right">
+                            <a href="<?=URL_BASE."pedido/".$pedidos['slugPedido']?>" class="btn btn-default btn-sm">Abrir</a>
+                        </td>
+                    </tr>
+                    <?php
+                        endforeach;
+                    ?>
                 </tbody>
-              </table>
-            </div>
+            </table>
           </div>
         </div>
       </div>
