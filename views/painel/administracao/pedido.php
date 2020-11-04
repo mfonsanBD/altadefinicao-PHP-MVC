@@ -61,26 +61,93 @@
                         <small class="p-0 m-0">Valor do Pedido: <b><?="R$ ".number_format($pedido['valorPedido'], 2, ",", ".")?></b></small>
                     </div>
                     <div class="col-lg-9 d-flex justify-content-center align-items-center">
-                      <span class="badge badge-dot mr-4">
-                        <i class='bg-warning p-2 mb-2'></i><br>
-                        <span class='status'>Aguardando</span>
-                      </span>
-                      <span class="badge badge-dot mr-4">
-                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
-                        <span class='status'>Processando</span>
-                      </span>
-                      <span class="badge badge-dot mr-4">
-                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
-                        <span class='status'>Em Produção</span>
-                      </span>
-                      <span class="badge badge-dot mr-4">
-                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
-                        <span class='status'>Pronto para Retirada</span>
-                      </span>
-                      <span class="badge badge-dot mr-4">
-                        <i class='p-2 mb-2' style="background-color:#adb5bd;"></i><br>
-                        <span class='status'>Finalizado</span>
-                      </span>
+                      <?php
+                        if($pedido['idTipoEntrega'] == 1){
+                          $textoEntrega = "Pronto para Retirada";
+                        }else{
+                          $textoEntrega = "Saiu para Entrega";
+                        }
+                        switch($pedido['statusPedido']){
+                          case 1:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Finalizado</span></span>
+                            ";
+                          break;
+                          case 2:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Finalizado</span></span>
+                            ";
+                          break;
+                          case 3:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Finalizado</span></span>
+                            ";
+                          break;
+                          case 4:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='bg-success p-2 mb-2'></i><br><span class='status'>Finalizado</span></span>
+                            ";
+                          break;
+                          case 5:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='bg-danger p-2 mb-2'></i><br><span class='status'>Com Problema</span></span>
+                            ";
+                          break;
+                          default:
+                            echo "
+                              <span class='badge badge-dot mr-4'><i class='bg-warning p-2 mb-2'></i><br><span class='status'>Aguardando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Processando</span></span>
+                              
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Em Produção</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>".$textoEntrega."</span></span>
+
+                              <span class='badge badge-dot mr-4'><i class='p-2 mb-2' style='background-color:#adb5bd;'></i><br><span class='status'>Finalizado</span></span>
+                            ";
+                          break;
+                        }
+                      ?>
                     </div>
                 </div>
             </div>
@@ -218,6 +285,86 @@
                         </td>
                         <td>
                             <span class='name'><?="R$ ".number_format($pedido['valorPedido']+$pedido['valorTipoEntrega'], 2, ",", ".")?></span>
+                        </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <table class="table align-items-center table-flush mt-4">
+                  <thead class="thead-light">
+                  <tr>
+                      <th scope="col" class="sort" data-sort="name">Produto</th>
+                      <th scope="col" class="sort" data-sort="name">Mídia</th>
+                      <th scope="col" class="sort" data-sort="name">Acabamento</th>
+                      <th scope="col" class="sort" data-sort="status">Altura x Largura</th>
+                      <th scope="col" class="sort" data-sort="name">Quantidade</th>
+                      <th scope="col" class="sort" data-sort="name">Arquivo</th>
+                  </tr>
+                  </thead>
+                  <tbody class="list">
+                      <tr>
+                        <th scope="row">
+                            <div class="media align-items-center">
+                                <div class="media-body">
+                                <span class="name mb-0 text-sm ml-2">
+                                <?=$pedido['nomeProduto']?>
+                                </span>
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            <span class='name'><?=$pedido['nomeMidia']?></span>
+                        </td>
+                        <td>
+                          <span class='name'><?=$pedido['nomeAcabamento']?></span>
+                        </td>
+                        <td>
+                            <?=$pedido['altura']." x ".$pedido['largura']?>
+                        </td>
+                        <td>
+                            <span class='name'>
+                              <?=$pedido['quantidadeProduto']?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class='name'>
+                              <?php
+                                $extensao = explode(".", $pedido['arquivo']);
+                                switch($extensao[1]){
+                                  case 'jpeg':
+                                    echo "
+                                      <a href='".URL_BASE."media/".$pedido['idCliente']."/arquivo.jpeg' download>
+                                        <img src='".URL_BASE."assets/img/jpg.png' width='40'/>
+                                      </a>
+                                    ";
+                                  break;
+                                  case 'jpg':
+                                    echo "
+                                      <a href='".URL_BASE."media/".$pedido['idCliente']."/arquivo.jpg' download>
+                                        <img src='".URL_BASE."assets/img/jpg.png' width='40'/>
+                                      </a>
+                                    ";
+                                  break;
+                                  case 'pdf':
+                                    echo "
+                                      <a href='".URL_BASE."media/".$pedido['idCliente']."/arquivo.pdf' download>
+                                        <img src='".URL_BASE."assets/img/pdf.png' width='40'/>
+                                      </a>
+                                    ";
+                                  break;
+                                  case 'cdr':
+                                    echo "
+                                      <a href='".URL_BASE."media/".$pedido['idCliente']."/arquivo.cdr' download>
+                                        <img src='".URL_BASE."assets/img/cdr.png' width='40'/>
+                                      </a>
+                                    ";
+                                  break;
+                                  default:
+                                    echo "<a href='".URL_BASE."media/".$pedido['idCliente']."/".
+                                      $pedido['arquivo']."' download>".$pedido['arquivo']."</a>";
+                                  break;
+                                }
+                              ?>
+                            </span>
                         </td>
                       </tr>
                   </tbody>
