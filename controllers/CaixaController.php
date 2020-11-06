@@ -4,6 +4,7 @@ use \Core\Login;
 use \Models\Usuario;
 use \Models\Caixa;
 use \Models\Baixa;
+use \Models\Pedidos;
 
 class CaixaController extends Login{
 	public function index(){
@@ -207,7 +208,9 @@ class CaixaController extends Login{
       $ultimoId = $baixa->ultimoId($hoje);
 
       $caixa = new Caixa();
-      if($caixa->cadastraSaida($ultimoId, $valor, $descricao)){
+      $cadastraSaida = $caixa->cadastraSaida($ultimoId, $valor, $descricao);
+
+      if($cadastraSaida){
         echo 1;
       }
       else{
@@ -225,6 +228,35 @@ class CaixaController extends Login{
       echo 1;
     }else{
       echo 0;
+    }
+  }
+  public function cadastraEntradaCaixa(){
+    if(isset($_POST) && !empty($_POST)){
+      $idPedido           = trim(addslashes($_POST['idPedido']));
+      $hoje               = date("Y-m-d");
+
+      $pedido = new Pedidos();
+      $informacoesPedido  = $pedido->infoPedido($idPedido);
+      $valor              = $informacoesPedido['valorPedido'];
+      $cliente;
+      
+      if($informacoesPedido['idCliente'] == null){
+        $cliente          = $informacoesPedido['nomeCliente'];
+      }else{
+        $cliente          = $informacoesPedido['nomeUsuario']." ".$informacoesPedido['sobrenomeUsuario'];
+      }
+
+      $baixa = new Baixa();
+      $ultimoId = $baixa->ultimoId($hoje);
+
+      $caixa = new Caixa();
+      $cadastraEntradaCaixa = $caixa->cadastraEntradaCaixa($idPedido, $ultimoId, $hoje, $valor, $cliente);
+
+      if($cadastraEntradaCaixa){
+        echo 1;
+      }else{
+        echo 0;
+      }
     }
   }
 }

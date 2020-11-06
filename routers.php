@@ -21,4 +21,6 @@ $routers['/tabua-para-churrasco']               = '/ProdutosEServicos/tabuaParaC
 $routers['/pedido/alteraPedido']                = '/Pedidos/alteraPedido';
 $routers['/pedido/alteraVisualizacaoPedido']    = '/Pedidos/alteraVisualizacaoPedido';
 
+$routers['/pedido/cadastraEntradaCaixa']        = '/Caixa/cadastraEntradaCaixa';
+
 $routers['/pedido/{slug}']                      = '/Pedidos/pedido/:slug';

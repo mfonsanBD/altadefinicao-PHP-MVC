@@ -59,4 +59,14 @@ class Caixa extends Model{
             return false;
         }
     }
+    public function cadastraEntradaCaixa($idPedido, $ultimoId, $hoje, $valor, $cliente){
+        $sql = $this->conexao->prepare("INSERT INTO caixa SET idPedido = ?, idBaixa = ?, dataCaixa = ?, valorCaixa = ?, operacaoCaixa = 1, descricaoOperacaoCaixa = ?");
+        $sql->execute(array($idPedido, $ultimoId, $hoje, $valor, $cliente));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

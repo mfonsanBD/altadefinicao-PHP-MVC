@@ -34,6 +34,19 @@ class Pedidos extends Model{
 
         return $array;
     }
+    public function infoPedido($idPedido){
+        $array = array();
+        $sql = $this->conexao->prepare("SELECT pdd.*, user.* FROM pedido AS pdd
+        INNER JOIN usuario AS user ON (pdd.idCliente = user.idUsuario)
+        WHERE pdd.idPedido = ?");
+        $sql->execute(array($idPedido));
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+
+        return $array;
+    }
     public function visualizou($slug){
         $sql = $this->conexao->prepare("UPDATE pedido SET visualizado = 1 WHERE slugPedido = ?");
         $sql->execute(array($slug));

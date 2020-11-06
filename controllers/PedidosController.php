@@ -5,7 +5,6 @@ use \Models\Usuario;
 use \Models\Produtos;
 use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
-use \Models\Caixa;
 use \Models\Pedidos;
 
 class PedidosController extends Login{

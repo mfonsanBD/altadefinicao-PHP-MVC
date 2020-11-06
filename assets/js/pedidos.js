@@ -68,6 +68,9 @@ $(document).ready(function(){
         var problema = "";
         var idPedido = $(this).attr("data-idPedido");
         alteraPedido(status, problema, idPedido);
+        setTimeout(function(){
+            window.location.reload();
+        }, 3000);
     });
     
     $("#producao").on("click", function(){
@@ -75,6 +78,9 @@ $(document).ready(function(){
         var problema = "";
         var idPedido = $(this).attr("data-idPedido");
         alteraPedido(status, problema, idPedido);
+        setTimeout(function(){
+            window.location.reload();
+        }, 3000);
     });
     
     $("#entrega").on("click", function(){
@@ -82,6 +88,9 @@ $(document).ready(function(){
         var problema = "";
         var idPedido = $(this).attr("data-idPedido");
         alteraPedido(status, problema, idPedido);
+        setTimeout(function(){
+            window.location.reload();
+        }, 3000);
     });
     
     $("#finalizado").on("click", function(){
@@ -89,6 +98,19 @@ $(document).ready(function(){
         var problema = "";
         var idPedido = $(this).attr("data-idPedido");
         alteraPedido(status, problema, idPedido);
+
+        $.ajax({
+            url: 'cadastraEntradaCaixa',
+            type: 'POST',
+            data: {idPedido:idPedido},
+            success: function(resposta){
+                if(resposta == 1){
+                    setTimeout(function(){
+                        window.location.reload();
+                    }, 3000);
+                }
+            }
+        });
     });
 
     $("#problema").on("show.bs.modal", function(event){
@@ -144,16 +166,12 @@ function alteraPedido(status, problema, idPedido){
         success: function(resposta){
             if(resposta == 1){
                 sucessoPedido("O <b>Status do Pedido</b> foi alterado com sucesso.");
-                setTimeout(function(){
-                    window.location.reload();
-                }, 3000);
             }else{
                 erroPedido("O <b>Status do Pedido</b> não pode ser alterado. Por favor, tente novamente mais tarde!");
             }
         }
     });
 }
-
 function alteraVisualizacaoPedido(visualizado, idPedido){
     $.ajax({
         url: 'alteraVisualizacaoPedido',
