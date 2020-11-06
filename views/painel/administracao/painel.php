@@ -24,7 +24,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Pedidos Hoje</h5>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Pedidos</h5>
                       <span class="h2 font-weight-bold mb-0"><?=$quantidadePedidos?></span>
                     </div>
                     <div class="col-auto">
@@ -68,8 +68,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Ganho Hoje</h5>
-                      <span class="h2 font-weight-bold mb-0">R$ 20.000</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Lucro de Hoje</h5>
+                      <span class="h2 font-weight-bold mb-0">R$ <?=number_format($lucroDoDia, 2, ",", ".")?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -90,8 +90,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Ganho no Mês</h5>
-                      <span class="h2 font-weight-bold mb-0">R$ 120.000</span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Lucro do Mês</h5>
+                      <span class="h2 font-weight-bold mb-0">R$ <?=number_format($lucroDoMes, 2, ",", ".")?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -225,12 +225,12 @@
       </div>
       <div class="row">
         <div class="col-xl-6">
-          <div class="card bg-default">
+          <div class="card bg-warning">
             <div class="card-header bg-transparent">
               <div class="row align-items-center">
                 <div class="col">
                   <!-- <h6 class="text-light text-uppercase ls-1 mb-1">Overview</h6> -->
-                  <h5 class="h3 text-white mb-0">Ganho Mensal</h5>
+                  <h5 class="h3 text-white mb-0">Lucro Mensal - <?=date("Y")?></h5>
                 </div>
               </div>
             </div>
@@ -238,7 +238,7 @@
               <!-- Chart -->
               <div class="chart">
                 <!-- Chart wrapper -->
-                <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+                <canvas id="lucroMensal" height="230"></canvas>
               </div>
             </div>
           </div>
@@ -249,14 +249,14 @@
               <div class="row align-items-center">
                 <div class="col">
                   <!-- <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6> -->
-                  <h5 class="h3 mb-0">Pedidos Mensal</h5>
+                  <h5 class="h3 mb-0">Pedido Mensal - <?=date("Y")?></h5>
                 </div>
               </div>
             </div>
             <div class="card-body">
               <!-- Chart -->
               <div class="chart">
-                <canvas id="chart-bars" class="chart-canvas"></canvas>
+                <canvas id="pedidosMensal" height="230"></canvas>
               </div>
             </div>
           </div>

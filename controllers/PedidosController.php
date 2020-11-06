@@ -45,6 +45,11 @@ class PedidosController extends Login{
         $this->loadTemplate('administracao/pedidos', $dados);
   }
   public function pedido($slug){
+    if(empty($_SESSION['logado']) || !isset($_SESSION['logado']) || $_SESSION['tipoUsuario'] != 1){
+        header("Location: ".URL_BASE."login");
+        exit();
+    }
+    
     $id = $_SESSION['logado'];
 
     $usuario = new Usuario();
@@ -66,5 +71,36 @@ class PedidosController extends Login{
 
     $dados['pedido'] = $infoPedido;
     $this->loadTemplate('administracao/pedido', $dados);
+  }
+  public function alteraPedido(){
+    if(isset($_POST) && !empty($_POST)){
+      $status     = trim(addslashes($_POST['status']));
+      $problema   = trim(addslashes($_POST['problema']));
+      $idPedido   = trim(addslashes($_POST['idPedido']));
+
+      $pedido = new Pedidos();
+      $alteraPedido = $pedido->alteraPedido($status, $problema, $idPedido);
+
+      if($alteraPedido){
+        echo 1;
+      }else{
+        echo 0;
+      }
+    }
+  }
+  public function alteraVisualizacaoPedido(){
+    if(isset($_POST) && !empty($_POST)){
+      $visualizado     = trim(addslashes($_POST['visualizado']));
+      $idPedido        = trim(addslashes($_POST['idPedido']));
+
+      $pedido = new Pedidos();
+      $alteraVisualizacaoPedido = $pedido->alteraVisualizacaoPedido($visualizado, $idPedido);
+
+      if($alteraVisualizacaoPedido){
+        echo 1;
+      }else{
+        echo 0;
+      }
+    }
   }
 }

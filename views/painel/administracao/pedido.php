@@ -22,6 +22,15 @@
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--6">
+      <?php
+        if($pedido['visualizado'] == 1){
+          echo "<div class='col-xl-12'>
+            <div class='text-center mb-4'>
+              <button id='naoLido' data-idpedido='".$pedido['idPedido']."' class='btn btn-white btn-sm'>Marcar Pedido como Não Lido</a>
+            </div>
+          </div>";
+        }
+      ?>
       <div class="row">
         <div class="col-xl-12">
           <div class="card">
@@ -372,58 +381,73 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header bg-gradient-warning border border-white">
+              <div class="row align-items-center">
+                <div class="col text-center">
+                  <h2 class="mb-0 text-uppercase text-white">Observação do pedido</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <p><?=$pedido['observacaoPedido']?></p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-xl-12 text-center mb-5">
-          <h2 class="text-uppercase">Alterar status do pedido:</h2>
           <?php
+            if($pedido['idTipoEntrega'] == 1){
+              $textoEntrega = "Pronto para Retirada";
+            }else{
+              $textoEntrega = "Saiu para Entrega";
+            }
             switch($pedido['statusPedido']){
-                case 1:
+              case 1:
+                echo "
+                  <h2 class='text-uppercase'>Alterar status do pedido:</h2>
+                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default btn-sm'>Em Produção</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm' disabled>".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
+                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger btn-sm'>Com Problema</button>
+                ";
+              break;
+              case 2:
+                echo "
+                  <h2 class='text-uppercase'>Alterar status do pedido:</h2>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm'>".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
+                ";
+              break;
+              case 3:
                   if($pedido['idTipoEntrega'] == 1){
-                    $textoEntrega = "Pronto para Retirada";
+                    echo "
+                      <h2 class='text-uppercase'>Alterar status do pedido:</h2>
+                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm'>Finalizado</button>
+                    ";
                   }else{
-                    $textoEntrega = "Saiu para Entrega";
+                    echo "
+                      <h2 class='text-uppercase'>Alterar status do pedido:</h2>
+                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm'>Finalizado</button>
+                    ";
                   }
-                  echo "
-                    <button class='btn btn-default btn-sm'>Em Produção</button>
-                    <button class='btn btn-info btn-sm'>".$textoEntrega."</button>
-                    <button class='btn btn-success btn-sm'>Finalizado</button>
-                    <button class='btn btn-danger btn-sm'>Com Problema</button>
-                  ";
-                break;
-                case 2:
-                    echo "<i class='bg-default'></i>
-                    <span class='status'>Em produção</span>";
-                break;
-                case 3:
-                    if($pedido['idTipoEntrega'] == 1){
-                        echo "<i class='bg-info'></i>
-                        <span class='status'>Pronto para Retirada</span>";
-                    }else{
-                        echo "<i class='bg-info'></i>
-                        <span class='status'>Saiu para Entrega</span>";
-                    }
-                break;
-                case 4:
-                    echo "<i class='bg-success'></i>
-                    <span class='status'>Finalizado</span>";
-                break;
-                case 5:
-                    echo "<i class='bg-danger'></i>
-                    <span class='status'>Com Problema</span>";
-                break;
-                default:
-                  if($pedido['idTipoEntrega'] == 1){
-                    $textoEntrega = "Pronto para Retirada";
-                  }else{
-                    $textoEntrega = "Saiu para Entrega";
-                  }
-                  echo "
-                    <button class='btn btn-warning btn-sm'>Processando</button>
-                    <button class='btn btn-defaul btn-sm'>Em Produção</button>
-                    <button class='btn btn-info btn-sm'>".$textoEntrega."</button>
-                    <button class='btn btn-success btn-sm'>Finalizado</button>
-                    <button class='btn btn-danger btn-sm'>Com Problema</button>
-                  ";
-                break;
+              break;
+              case 4: echo "<span class='bg-success text-white p-1 border-rounded'>Finalizado</span>";
+              break;
+              case 5: echo "<span class='bg-danger text-white p-1 border-rounded'>Com Problema</span><p class='mt-2 text-danger'><small><b>Problema:</b> ".$pedido['problemaPedido']."</small></p>";
+              break;
+              default:
+                echo "
+                  <h2 class='text-uppercase'>Alterar status do pedido:</h2>
+                  <button data-idPedido='".$pedido['idPedido']."' id='processando' class='btn btn-sm text-white' style='background-color:#8898aa !important;'>Processando</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default btn-sm' disabled>Em Produção</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm text-white' disabled>".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
+                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger btn-sm' disabled>Com Problema</button>
+                ";
+              break;
             }
           ?>
         </div>
@@ -436,3 +460,39 @@
   <!-- Argon Scripts -->
 
 <div id="notificacaoPedido" class="fixed-bottom mb-2" style="z-index:9999999;"></div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="modal fade" id="problema" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary border-0 mb-0">
+                            <div class="card-header bg-warning text-white">
+                                Pedido com problema
+                            </div>
+                            <div class="card-body px-lg-5 py-lg-5">
+                                <div class="tab-content" id="pills-tabContent">
+                                  <form role="form" id="pedidoComProblema">
+                                    <small>Qual o problema deste pedido?</small>
+                                      <div class="form-group mt-2">
+                                        <div class="input-group input-group-merge input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="ni ni-notification-70"></i></span>
+                                            </div>
+                                            <input class="form-control" placeholder="Problema do Pedido" type="text" id="problemaDoPedido">
+                                        </div>
+                                      </div>
+                                      <div class="text-center">
+                                          <button type="submit" class="btn btn-warning my-4">Mudar Status do Pedido</button>
+                                      </div>
+                                  </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

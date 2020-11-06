@@ -45,6 +45,7 @@
   <script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
   <script src="<?=URL_BASE?>assets/js/jquery.number.min.js"></script>
   <script src="https://cdn.datedropper.com/get/c1azyzs3ynuod5s60qrhyd5vqkbf2eb6"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
   <script src="<?=URL_BASE?>assets/js/login.js"></script>
   <script src="<?=URL_BASE?>assets/js/cadastro.js"></script>
   <script src="<?=URL_BASE?>assets/js/produtos.js"></script>
@@ -53,5 +54,73 @@
   <script src="<?=URL_BASE?>assets/js/blog.js"></script>
   <script src="<?=URL_BASE?>assets/js/caixa.js"></script>
   <script src="<?=URL_BASE?>assets/js/pedidos.js"></script>
+  
+<script>
+  var lm = document.getElementById('lucroMensal');
+  var dadoslm = {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+      datasets: [{
+              label: "Lucro no Mês",
+              backgroundColor: "rgba(255,255,255,0.2)",
+              borderColor: "rgba(255,255,255,1)",
+              borderWidth: 2,
+              hoverBackgroundColor: "rgba(255,255,255,0.4)",
+              hoverBorderColor: "rgba(255,255,255,1)",
+              data: [65, 59, 30, 81, 56, 55, 40, 30, 81, 56, 55, 40],
+          }]
+  };
+  var opcoeslm = {
+    animation: {
+            duration:1000
+    },
+    scales: {
+        yAxes: [{
+            ticks: {beginAtZero: true, fontColor: "#FFFFFF"},
+            gridLines: { color: "#ff6f4e" }
+        }],
+        xAxes: [{
+            ticks: {beginAtZero: true, fontColor: "#FFFFFF"},
+            gridLines: { color: "#ff6f4e" }
+        }]
+    }
+  };
+  var lucroMensal = Chart.Bar(lm,{
+    data:dadoslm,
+    options:opcoeslm
+  });
+
+  var pm = document.getElementById('pedidosMensal');
+  var dadospm = {
+      labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+      datasets: [{
+              label: "Pedidos no Mês",
+              backgroundColor: "rgba(245,96,54,0.2)",
+              borderColor: "rgba(245,96,54,1)",
+              borderWidth: 2,
+              hoverBackgroundColor: "rgba(245,96,54,0.4)",
+              hoverBorderColor: "rgba(245,96,54,1)",
+              data: [65, 59, 30, 81, 56, 55, 40, 30, 81, 56, 55, 40],
+          }]
+  };
+  var opcoespm = {
+    animation: {
+            duration:1000
+    },
+    scales: {
+        yAxes: [{
+            ticks: {beginAtZero: true, fontColor: "#BBBBBB"},
+            gridLines: { color: "#F9F9F9" }
+        }],
+        xAxes: [{
+            ticks: {beginAtZero: true, fontColor: "#BBBBBB"},
+            gridLines: { color: "#F9F9F9" }
+        }]
+    }
+  };
+  var pedidosMensal = Chart.Bar(pm,{
+    data:dadospm,
+    options:opcoespm
+  });
+</script>
 </body>
 </html>

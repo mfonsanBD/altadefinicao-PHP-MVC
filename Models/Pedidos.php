@@ -38,9 +38,9 @@ class Pedidos extends Model{
         $sql = $this->conexao->prepare("UPDATE pedido SET visualizado = 1 WHERE slugPedido = ?");
         $sql->execute(array($slug));
     }
-	public function quantidadePedidos($data){
+	public function quantidadePedidos(){
 		$array = array();
-		$sql = $this->conexao->prepare("SELECT COUNT(*) AS quantidade FROM pedido WHERE dataPedido LIKE '".$data."%'");
+		$sql = $this->conexao->prepare("SELECT COUNT(*) AS quantidade FROM pedido WHERE statusPedido != 4");
 		$sql->execute();
 
 		if($sql->rowCount() > 0){
@@ -48,5 +48,47 @@ class Pedidos extends Model{
 		}
 		
 		return $array['quantidade'];
-	}
+    }
+    public function alteraPedido($status, $problema, $idPedido){
+        $sql = $this->conexao->prepare("UPDATE pedido SET statusPedido = ?, problemaPedido = ? WHERE idPedido = ?");
+        $sql->execute(array($status, $problema, $idPedido));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function alteraVisualizacaoPedido($visualizado, $idPedido){
+        $sql = $this->conexao->prepare("UPDATE pedido SET visualizado = ? WHERE idPedido = ?");
+        $sql->execute(array($visualizado, $idPedido));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+	public function lucroDoDia($data){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT SUM(valorPedido) AS lucroDia FROM pedido WHERE dataPedido LIKE '".$data."%' AND statusPedido = 4");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+		
+		return $array['lucroDia'];
+    }
+	public function lucroDoMes($mes){
+		$array = array();
+		$sql = $this->conexao->prepare("SELECT SUM(valorPedido) AS lucroMes FROM pedido WHERE dataPedido LIKE '".$mes."%' AND statusPedido = 4");
+		$sql->execute();
+
+		if($sql->rowCount() > 0){
+			$array = $sql->fetch();
+		}
+		
+		return $array['lucroMes'];
+    }
 }

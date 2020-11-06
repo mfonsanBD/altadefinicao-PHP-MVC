@@ -32,14 +32,22 @@ class PainelController extends Login{
                 $quantidadeUsuarios = $usuario->quantidadeUsuarios();
                 $dados['quantidadeUsuarios'] = $quantidadeUsuarios;
 
-                $dataHoje = date("Y-m-d");
-                $quantidadePedidos = $pedido->quantidadePedidos($dataHoje);
+                $dataHoje   = date("Y-m-d");
+                $Mes        = date("Y-m");
+
+                $quantidadePedidos = $pedido->quantidadePedidos();
                 $dados['quantidadePedidos'] = $quantidadePedidos;
 
                 $listaPedidos               = $pedido->listaPedidos();
         
                 $produto                    = new Produtos();
                 $listaProduto               = $produto->listaProduto();
+
+                $lucroDoDia                 = $pedido->lucroDoDia($dataHoje);
+                $lucroDoMes                 = $pedido->lucroDoMes($Mes);
+                $dados['lucroDoDia']        = $lucroDoDia;
+                $dados['lucroDoMes']        = $lucroDoMes;
+                
         
                 $tiporCliente               = new TipoCliente();
                 $listaTipoCliente           = $tiporCliente->listaTipoCliente();
