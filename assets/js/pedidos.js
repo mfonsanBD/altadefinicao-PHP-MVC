@@ -1,11 +1,7 @@
 urlSite = window.location.href;
 $(document).ready(function(){
-    var produtoPedido;
-    var identificacao;
-    var observacao;
-    var tipoCliente;
-    var final;
-    var revendedor;
+    let produtoPedido, identificacao, observacao, tipoCliente, final,
+    revendedor, midia, acabamento, altura, largura, quantidade, tipoarte;
 
     $("#cadastraPedido").on("submit", function(e){
         e.preventDefault();
@@ -15,9 +11,9 @@ $(document).ready(function(){
         observacao      = $("#observacao").val();
 
         if(produtoPedido == null){
-            atencaoProdutos("O campo <b>produto</b> é obrigatório!");
+            atencaoPedidos("O campo <b>produto</b> é obrigatório!");
         }else if(identificacao == ''){
-            atencaoProdutos("O campo <b>Identificação do Produto</b> é obrigatório!");
+            atencaoPedidos("O campo <b>Identificação do Produto</b> é obrigatório!");
         }else{
             $(this).addClass('d-none');
             $("#clientePedido").removeClass('d-none');
@@ -26,9 +22,9 @@ $(document).ready(function(){
     });
 
     $("input[type='radio']").on("click", function(){
-        tipoCliente = $("input[name='cliente']:checked").val();
+        tipoCliente = $("input[name='tipocliente']:checked").val();
 
-        if(tipoCliente == "Final"){
+        if(tipoCliente == 1){
             $("#clienteFinal").removeClass('d-none');
             $("#clienteRevendedor").addClass('d-none');
         }else{
@@ -41,7 +37,7 @@ $(document).ready(function(){
         final = $("#nomeClienteFinal").val();
 
         if(final == ''){
-            atencaoProdutos("O campo <b>nome do cliente</b> é obrigatório.");
+            atencaoPedidos("O campo <b>nome do cliente</b> é obrigatório.");
         }else{
             $("#clientePedido").addClass('d-none');
             $("#especificacaoMaterial").removeClass('d-none');
@@ -54,13 +50,112 @@ $(document).ready(function(){
         revendedor = $("#clienteRevenda").val();
 
         if(revendedor == null){
-            atencaoProdutos("O campo <b>cliente</b> é obrigatório.");
+            atencaoPedidos("O campo <b>cliente</b> é obrigatório.");
         }else{
             $("#clientePedido").addClass('d-none');
-            $("#especificacaoMaterial").removeClass('d-none');
+            $("#midiaMaterial").removeClass('d-none');
             $("#guia3-tab").addClass('active');
             final = '';
         }
+    });
+
+    $("#midiaMaterial").on("submit", function(e){
+        e.preventDefault();
+        midia               = $("input[name='midia']:checked").val();
+        var midiaMarcada    = $("input[name='midia']").is(":checked");
+
+        if(midiaMarcada == false){
+            atencaoPedidos("O campo <b>Mídia</b> é obrigatório.");
+        }else{
+            $("#midiaMaterial").addClass('d-none');
+            $("#acabamentoMaterial").removeClass('d-none');
+            $("#guia4-tab").addClass('active');
+        }
+    });
+
+    $("#acabamentoMaterial").on("submit", function(e){
+        e.preventDefault();
+        acabamento                  = $("input[name='acabamento']:checked").val();
+        let acabamentoMarcado       = $("input[name='acabamento']").is(":checked");
+
+        if(acabamentoMarcado == false){
+            atencaoPedidos("O campo <b>Acabamento</b> é obrigatório.");
+        }else{
+            $("#acabamentoMaterial").addClass('d-none');
+            $("#medidasMaterial").removeClass('d-none');
+            $("#guia5-tab").addClass('active');
+        }
+    });
+
+    $("#medidasMaterial").on("submit", function(e){
+        e.preventDefault();
+        altura = $("#alturaProduto").val();
+        largura = $("#larguraProduto").val();
+
+        if(altura == "" || largura == ""){
+            atencaoPedidos("Os campos <b>Altura</b> e <b>Largura</b> são obrigatórios.");
+        }else{
+            $("#medidasMaterial").addClass('d-none');
+            $("#quantidadeMaterial").removeClass('d-none');
+            $("#guia6-tab").addClass('active');
+        }
+    });
+    
+    $("#quantidadeMaterial").on("submit", function(e){
+        e.preventDefault();
+        quantidade = $("#quantidadeProduto").val();
+
+        if(quantidade == ""){
+            atencaoPedidos("O campo <b>Quantidade</b> é obrigatório.");
+        }else if(isNaN(quantidade)){
+            atencaoPedidos("O campo <b>Quantidade</b> só pode conter número.");
+        }else{
+            $("#quantidadeMaterial").addClass('d-none');
+            $("#artePedido").removeClass('d-none');
+            $("#guia7-tab").addClass('active');
+        }
+    });
+
+    $("#artePedido").on("submit", function(e){
+        e.preventDefault();
+        tipoarte                = $("input[name='tipoarte']:checked").val();
+        let tipoarteMarcada     = $("input[name='tipoarte']").is(":checked");
+
+        if(tipoarteMarcada == false){
+            atencaoPedidos("O campo <b>Envio de Arte</b> é obrigatório.");
+        }else{
+            $("#acabamentoMaterial").addClass('d-none');
+            $("#medidasMaterial").removeClass('d-none');
+            $("#guia5-tab").addClass('active');
+        }
+    });
+
+    $("#confirmaPedido").on("show.bs.modal", function(event){
+        var botao = $(event.relatedTarget);
+        
+        $.ajax({
+            url: urlSite+'/getInformacoes',
+            type: 'POST',
+            data: {idProduto:produtoPedido, idTipoCliente:tipoCliente, idCliente:revendedor, idMidia:midia, idAcabamento:acabamento, altura:altura, largura:largura, quantidade:quantidade},
+            // dataType: 'json',
+            success: function(response){
+                console.log(response);
+                // $("produtopedido").html(response.nomeProduto);
+                // if(tipoCliente == 1){
+                //     $("clientepedido").html(final);
+                // }else{
+                //     $("clientepedido").html(response.nomeCliente);
+                // }
+                // $("midiapedido").html(response.nomeMidia);
+                // $("acabamentopedido").html(response.nomeAcabamento);
+                // $("totaldopedido").html(response.valorDoPedido);
+            }
+        });
+
+        $("identificacaopedido").html(identificacao);
+        $("medidaspedido").html(altura+" x "+largura);
+        $("quantidadepedido").html(quantidade);
+
     });
 
     $("#processando").on("click", function(){
@@ -136,6 +231,8 @@ $(document).ready(function(){
         var idPedido = $(this).attr("data-idpedido");
         alteraVisualizacaoPedido(visualizado, idPedido);
     });
+    
+    $(".medidas").mask("##0,00", {reverse: true});
 });
 
 function sucessoPedidos(texto){

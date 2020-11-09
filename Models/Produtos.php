@@ -71,4 +71,15 @@ class Produtos extends Model{
             return false;
         }
     }
+    public function getNomeProduto($idProduto){
+        $nome;
+        $sql = $this->conexao->prepare("SELECT nomeProduto FROM produto WHERE idProduto = ?");
+        $sql->execute(array($idProduto));
+        
+        if($sql->rowCount() > 0){
+            $nome = $sql->fetch();
+        }
+
+        return $nome;
+    }
 }

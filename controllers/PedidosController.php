@@ -6,6 +6,8 @@ use \Models\Produtos;
 use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
 use \Models\Pedidos;
+use \Models\Midia;
+use \Models\Acabamento;
 
 class PedidosController extends Login{
 	public function index(){
@@ -34,12 +36,20 @@ class PedidosController extends Login{
         $tiporCliente               = new TipoCliente();
         $listaTipoCliente           = $tiporCliente->listaTipoCliente();
 
+        $midia                      = new Midia();
+        $listaMidia                 = $midia->listaMidia();
+
+        $acabamento                 = new Acabamento();
+        $listaAcabamento            = $acabamento->listaAcabamento();
+
         $listaUsuarios              = $usuario->listaUsuarios();
 
         $dados['listaPedidos']      = $listaPedidos;
         $dados['listaProduto']      = $listaProduto;
         $dados['listaTipoCliente']  = $listaTipoCliente;
         $dados['listaUsuarios']     = $listaUsuarios;
+        $dados['listaAcabamento']   = $listaAcabamento;
+        $dados['listaMidia']        = $listaMidia;
 
         $this->loadTemplate('administracao/pedidos', $dados);
   }
@@ -100,6 +110,58 @@ class PedidosController extends Login{
       }else{
         echo 0;
       }
+    }
+  }
+  public function getInformacoes(){
+    if(isset($_POST) && !empty($_POST)){
+      $idProduto      = trim(addslashes($_POST['idProduto']));
+      $idTipoCliente  = trim(addslashes($_POST['idTipoCliente']));
+      $idCliente      = trim(addslashes($_POST['idCliente']));
+      $idMidia        = trim(addslashes($_POST['idMidia']));
+      $idAcabamento   = trim(addslashes($_POST['idAcabamento']));
+      
+      $altura         = trim(addslashes($_POST['altura']));
+      $altura         = str_replace(".", "", $altura);
+      $altura         = str_replace(",", "", $altura);
+
+      $largura        = trim(addslashes($_POST['largura']));
+      $largura         = str_replace(".", "", $largura);
+      $largura         = str_replace(",", "", $largura);
+
+      $quantidade     = trim(addslashes($_POST['quantidade']));
+
+      $produto                        = new Produtos();
+      $getNomeProduto                 = $produto->getNomeProduto($idProduto);
+
+      $tipodecliente                  = new TipoCliente();
+      $getNomeTipoCliente             = $tipodecliente->getNomeTipoCliente($idTipoCliente);
+
+      $valorTipoCliente               = new ValorProdutoTipoCliente();
+      $getValorProdutoTipoCliente     = $valorTipoCliente->getValorProdutoTipoCliente($idProduto, $idTipoCliente);
+
+      $usuario                        = new Usuario();
+      $getNomeUsuario                 = $usuario->getNomeUsuario($idCliente);
+                             
+      $midia                          = new Midia();
+      $getNomeMidia                   = $midia->getNomeMidia($idMidia);
+
+      $acabamento                     = new Acabamento();
+      $getNomeAcabamento              = $acabamento->getNomeAcabamento($idAcabamento);
+
+      $totalPedido                    = ((($altura*$largura)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
+
+      echo number_format($totalPedido, 2, ",", ".");
+
+      // $array = array(
+      //   'nomeProduto'               => $getNomeProduto['nomeProduto'],
+      //   'nomeTipoCliente'           => $getNomeTipoCliente['nomeTipoCliente'],
+      //   'nomeCliente'               => $getNomeUsuario['nomeUsuario']." ".$getNomeUsuario['sobrenomeUsuario'],
+      //   'nomeMidia'                 => $getNomeMidia['nomeMidia'],
+      //   'nomeAcabamento'            => $getNomeAcabamento['nomeAcabamento'],
+      //   'valorDoPedido'             => $totalPedido
+      // );
+
+      // echo json_encode($array);
     }
   }
 }

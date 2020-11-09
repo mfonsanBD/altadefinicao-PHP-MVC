@@ -14,4 +14,15 @@ class Acabamento extends Model{
 
         return $array;
     }
+	public function getNomeAcabamento($idAcabamento){
+        $nome;
+        $sql = $this->conexao->prepare("SELECT nomeAcabamento FROM acabamento WHERE idAcabamento = ?");
+        $sql->execute(array($idAcabamento));
+        
+        if($sql->rowCount() > 0){
+            $nome = $sql->fetch();
+        }
+
+        return $nome;
+	}
 }

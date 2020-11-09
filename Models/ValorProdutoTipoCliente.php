@@ -85,4 +85,15 @@ class ValorProdutoTipoCliente extends Model{
             return false;
         }
     }
+    public function getValorProdutoTipoCliente($idProduto, $idTipoCliente){
+        $valor;
+        $sql = $this->conexao->prepare("SELECT valor_p_tc FROM valor_produto_tipocliente WHERE idProduto = ? AND idTipoCliente = ?");
+        $sql->execute(array($idProduto, $idTipoCliente));
+        
+        if($sql->rowCount() > 0){
+            $valor = $sql->fetch();
+        }
+
+        return $valor;
+    }
 }

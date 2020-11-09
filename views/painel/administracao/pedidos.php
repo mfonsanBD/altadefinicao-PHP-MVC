@@ -162,19 +162,22 @@
                                         <a class="nav-link mb-sm-3 mb-md-2 disabled active" id="guia1-tab" data-toggle="tab" href="#guia1" role="tab" aria-controls="guia1" aria-selected="true">Produto</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia2-tab" data-toggle="tab" href="#guia2" role="tab" aria-controls="guia4" aria-selected="false">Cliente</a>
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia2-tab" data-toggle="tab" href="#guia2" role="tab" aria-controls="guia2" aria-selected="false">Cliente</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia3-tab" data-toggle="tab" href="#guia3" role="tab" aria-controls="guia2" aria-selected="false">Especificações</a>
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia3-tab" data-toggle="tab" href="#guia3" role="tab" aria-controls="guia3" aria-selected="false">Mídia</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia4-tab" data-toggle="tab" href="#guia4" role="tab" aria-controls="guia3" aria-selected="false">Medidas</a>
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia4-tab" data-toggle="tab" href="#guia4" role="tab" aria-controls="guia4" aria-selected="false">Acabamento</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia5-tab" data-toggle="tab" href="#guia5" role="tab" aria-controls="guia4" aria-selected="false">Quantidade</a>
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia5-tab" data-toggle="tab" href="#guia5" role="tab" aria-controls="guia5" aria-selected="false">Medidas</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia6-tab" data-toggle="tab" href="#guia6" role="tab" aria-controls="guia4" aria-selected="false">Arte</a>
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia6-tab" data-toggle="tab" href="#guia6" role="tab" aria-controls="guia6" aria-selected="false">Quantidade</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-2 disabled" id="guia7-tab" data-toggle="tab" href="#guia7" role="tab" aria-controls="guia7" aria-selected="false">Arte</a>
                                     </li>
                                 </ul>
                                 <form id="cadastraPedido">
@@ -221,8 +224,8 @@
                                         foreach($listaTipoCliente as $tipoCliente):
                                     ?>
                                         <div class="custom-control custom-radio mb-3">
-                                            <input type="radio" id="<?=$tipoCliente['nomeTipoCliente']?>" name="cliente" class="custom-control-input" value="<?=$tipoCliente['nomeTipoCliente']?>">
-                                            <label class="custom-control-label" for="<?=$tipoCliente['nomeTipoCliente']?>"><?=$tipoCliente['nomeTipoCliente']?></label>
+                                            <input type="radio" id="tipocliente<?=$tipoCliente['idTipoCliente']?>" name="tipocliente" class="custom-control-input" value="<?=$tipoCliente['idTipoCliente']?>">
+                                            <label class="custom-control-label" for="tipocliente<?=$tipoCliente['idTipoCliente']?>"><?=$tipoCliente['nomeTipoCliente']?></label>
                                         </div>
                                     <?php
                                         endforeach;
@@ -261,32 +264,165 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form id="especificacaoMaterial" class="d-none">
+                                <form id="midiaMaterial" class="d-none">
+                                    <?php
+                                        foreach($listaMidia as $midia):
+                                    ?>
+                                        <div class="custom-control custom-radio mb-3">
+                                            <input type="radio" id="midia<?=$midia['idMidia']?>" name="midia" class="custom-control-input" value="<?=$midia['idMidia']?>">
+                                            <label class="custom-control-label" for="midia<?=$midia['idMidia']?>"><?=$midia['nomeMidia']?></label>
+                                        </div>
+                                    <?php
+                                        endforeach;
+                                    ?>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-warning my-4">Próximo</button>
+                                    </div>
+                                </form>
+                                <form id="acabamentoMaterial" class="d-none">
+                                    <?php
+                                        foreach($listaAcabamento as $acabamento):
+                                    ?>
+                                        <div class="custom-control custom-radio mb-3">
+                                            <input type="radio" id="acabamento<?=$acabamento['idAcabamento']?>" name="acabamento" class="custom-control-input" value="<?=$acabamento['idAcabamento']?>">
+                                            <label class="custom-control-label" for="acabamento<?=$acabamento['idAcabamento']?>"><?=$acabamento['nomeAcabamento']?></label>
+                                        </div>
+                                    <?php
+                                        endforeach;
+                                    ?>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-warning my-4">Próximo</button>
+                                    </div>
+                                </form>
+                                <form id="medidasMaterial" class="d-none">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
+                                                <span class="input-group-text"><i class="fas fa-arrows-alt-v"></i></span>
                                             </div>
-                                            <input class="form-control valorProduto" placeholder="Valor do produto para revendedor" type="text" id="precoRevenda">
+                                            <input class="form-control medidas" placeholder="Altura (cm)" type="text" id="alturaProduto">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group input-group-merge input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-arrows-alt-h"></i></span>
+                                            </div>
+                                            <input class="form-control medidas" placeholder="Largura (cm)" type="text" id="larguraProduto">
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-warning my-4">Próximo</button>
                                     </div>
                                 </form>
-                                <form id="definePrecoFinal" class="d-none">
+                                <form id="quantidadeMaterial" class="d-none">
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-hand-holding-usd"></i>
+                                                <span class="input-group-text"><i class="fas fa-sort-numeric-up"></i></span>
                                             </div>
-                                            <input class="form-control valorProduto" placeholder="Valor do produto para cliente final" type="text" id="precoFinal">
+                                            <input class="form-control medidas" placeholder="Quantidade" type="number" id="quantidadeProduto">
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-warning my-4">Finalizar Cadastro</button>
+                                        <button type="submit" class="btn btn-warning my-4">Próximo</button>
                                     </div>
                                 </form>
+                                <form id="artePedido" class="d-none">
+                                        <h3>Como será o envio da arte?</h3>
+                                    <div class="custom-control custom-radio mb-5">
+                                        <input type="radio" id="tipoarte1" name="tipoarte" class="custom-control-input" value="0">
+                                        <label class="custom-control-label" for="tipoarte1">
+                                            Vou Enviar minha Arte<br><small>Envie o seu arquivo finalizado para impressão conforme sua configuração selecionada.</small>
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-radio mb-5">
+                                        <input type="radio" id="tipoarte2" name="tipoarte" class="custom-control-input" value="1">
+                                        <label class="custom-control-label" for="tipoarte2">
+                                            Quero Criar minha Arte<br><small>Utilizando suas informações e imagens nossos designers vão criar uma arte personalizada para você. Custo adicional de R$ 30,00</small>
+                                        </label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-warning my-4" data-toggle="modal" data-target="#confirmaPedido">Pré-Visualizar Pedido</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="modal fade" id="confirmaPedido" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+            <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
+                <div class="modal-content">
+                    <div class="modal-body p-0">
+                        <div class="card bg-secondary border-0 mb-0">
+                            <div class="card-header bg-warning text-white">
+                                Pré-Visualizar Pedido
+                            </div>
+                            <div class="card-body px-lg-5 py-lg-5">
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Produto:</b>
+                                        <produtopedido></produtopedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Identificação:</b>
+                                        <identificacaopedido></identificacaopedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Cliente:</b>
+                                        <clientepedido></clientepedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Mídia:</b>
+                                        <midiapedido></midiapedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Acabamento</b>
+                                        <acabamentopedido></acabamentopedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Medidas</b>
+                                        <medidaspedido></medidaspedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-3">
+                                    <smal>
+                                        <b>Quantidade</b>
+                                        <quantidadepedido></quantidadepedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-5">
+                                    <smal>
+                                        <b>Arte</b>
+                                        <artepedido></artepedido>
+                                    </small>
+                                </div>
+                                <div class="col-lg-12 mb-5">
+                                    <smal>
+                                        <b>Valor do Pedido</b>
+                                        R$ <totaldopedido></totaldopedido>
+                                    </small>
+                                </div>
+                                <div class="text-center">
+                                    <button id="finalizarPedido" class="btn btn-success my-4">Finalizar Pedido</button>
+                                </div>
                             </div>
                         </div>
                     </div>

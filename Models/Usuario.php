@@ -132,4 +132,15 @@ class Usuario extends Model{
 
 		return $array;
 	}
+	public function getNomeUsuario($idCliente){
+        $nome;
+        $sql = $this->conexao->prepare("SELECT nomeUsuario, sobrenomeUsuario FROM usuario WHERE idUsuario = ?");
+        $sql->execute(array($idCliente));
+        
+        if($sql->rowCount() > 0){
+            $nome = $sql->fetch();
+        }
+
+        return $nome;
+	}
 }
