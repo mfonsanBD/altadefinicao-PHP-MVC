@@ -119,6 +119,8 @@ class PedidosController extends Login{
       $idCliente      = trim(addslashes($_POST['idCliente']));
       $idMidia        = trim(addslashes($_POST['idMidia']));
       $idAcabamento   = trim(addslashes($_POST['idAcabamento']));
+      $final          = trim(addslashes($_POST['final']));
+      $nomeDoCliente;
       
       $altura         = trim(addslashes($_POST['altura']));
       $altura         = str_replace(".", "", $altura);
@@ -138,9 +140,6 @@ class PedidosController extends Login{
 
       $valorTipoCliente               = new ValorProdutoTipoCliente();
       $getValorProdutoTipoCliente     = $valorTipoCliente->getValorProdutoTipoCliente($idProduto, $idTipoCliente);
-
-      $usuario                        = new Usuario();
-      $getNomeUsuario                 = $usuario->getNomeUsuario($idCliente);
                              
       $midia                          = new Midia();
       $getNomeMidia                   = $midia->getNomeMidia($idMidia);
@@ -149,19 +148,27 @@ class PedidosController extends Login{
       $getNomeAcabamento              = $acabamento->getNomeAcabamento($idAcabamento);
 
       $totalPedido                    = ((($altura*$largura)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
+      $totalPedido                    = $totalPedido/100;
+      $totalPedido                    = $totalPedido/100;
 
-      echo number_format($totalPedido, 2, ",", ".");
+      if($idTipoCliente == 2){
+        $usuario            = new Usuario();
+        $getNomeUsuario     = $usuario->getNomeUsuario($idCliente);
+        $nomeDoCliente      = $getNomeUsuario['nomeUsuario']." ".$getNomeUsuario['sobrenomeUsuario'];
+      }else{
+        $nomeDoCliente = $final;
+      }
 
-      // $array = array(
-      //   'nomeProduto'               => $getNomeProduto['nomeProduto'],
-      //   'nomeTipoCliente'           => $getNomeTipoCliente['nomeTipoCliente'],
-      //   'nomeCliente'               => $getNomeUsuario['nomeUsuario']." ".$getNomeUsuario['sobrenomeUsuario'],
-      //   'nomeMidia'                 => $getNomeMidia['nomeMidia'],
-      //   'nomeAcabamento'            => $getNomeAcabamento['nomeAcabamento'],
-      //   'valorDoPedido'             => $totalPedido
-      // );
+      $array = array(
+        'nomeProduto'               => $getNomeProduto['nomeProduto'],
+        'nomeTipoCliente'           => $getNomeTipoCliente['nomeTipoCliente'],
+        'nomeCliente'               => $nomeDoCliente,
+        'nomeMidia'                 => $getNomeMidia['nomeMidia'],
+        'nomeAcabamento'            => $getNomeAcabamento['nomeAcabamento'],
+        'valorDoPedido'             => number_format($totalPedido, 2, ",", ".")
+      );
 
-      // echo json_encode($array);
+      echo json_encode($array);
     }
   }
 }

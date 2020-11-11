@@ -57,9 +57,9 @@
                                         foreach($listaValorProdutoTipoCliente as $lvptc){
                                             if($produtos['idProduto'] == $lvptc['idProduto']){
                                                 if($lvptc['idTipoCliente'] == 1){
-                                                    echo '<small class="w-100">Preço para Cliente '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor'], 2, ",", ".").'</small><br>';
+                                                    echo '<small class="w-100">Preço para Cliente '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</small><br>';
                                                 }else{
-                                                    echo '<small class="w-100">Preço para '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor'], 2, ",", ".").'</small><br>';
+                                                    echo '<small class="w-100">Preço para '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</small><br>';
                                                 }
                                             }
                                         }

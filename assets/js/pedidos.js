@@ -1,7 +1,7 @@
 urlSite = window.location.href;
 $(document).ready(function(){
     let produtoPedido, identificacao, observacao, tipoCliente, final,
-    revendedor, midia, acabamento, altura, largura, quantidade, tipoarte;
+    revendedor, midia, acabamento, altura, largura, quantidade, tipoarte, infoCriacaoDeArte;
 
     $("#cadastraPedido").on("submit", function(e){
         e.preventDefault();
@@ -40,7 +40,7 @@ $(document).ready(function(){
             atencaoPedidos("O campo <b>nome do cliente</b> é obrigatório.");
         }else{
             $("#clientePedido").addClass('d-none');
-            $("#especificacaoMaterial").removeClass('d-none');
+            $("#midiaMaterial").removeClass('d-none');
             $("#guia3-tab").addClass('active');
             revendedor = null;
         }
@@ -124,9 +124,20 @@ $(document).ready(function(){
         if(tipoarteMarcada == false){
             atencaoPedidos("O campo <b>Envio de Arte</b> é obrigatório.");
         }else{
-            $("#acabamentoMaterial").addClass('d-none');
-            $("#medidasMaterial").removeClass('d-none');
-            $("#guia5-tab").addClass('active');
+            if(tipoarte == 0){
+                $('#enviaarte').modal('show');
+            }else{
+                $('#criaarte').modal('show');
+                $("#infoCriacaoDaArte").on("submit", function(){
+                    infoCriacaoDeArte = $("#infoArte").val();
+                    
+                    if(infoCriacaoDeArte == ""){
+                        atencaoPedidos("As <b>informações para criação da arte</b> é obrigatória")
+                    }else{
+                        $('#criaarte').modal('hide');
+                    }
+                });
+            }
         }
     });
 
@@ -136,27 +147,22 @@ $(document).ready(function(){
         $.ajax({
             url: urlSite+'/getInformacoes',
             type: 'POST',
-            data: {idProduto:produtoPedido, idTipoCliente:tipoCliente, idCliente:revendedor, idMidia:midia, idAcabamento:acabamento, altura:altura, largura:largura, quantidade:quantidade},
-            // dataType: 'json',
+            data: {idProduto:produtoPedido, idTipoCliente:tipoCliente, idCliente:revendedor, idMidia:midia, idAcabamento:acabamento, altura:altura, largura:largura, quantidade:quantidade, final:final},
+            dataType: 'json',
             success: function(response){
-                console.log(response);
-                // $("produtopedido").html(response.nomeProduto);
-                // if(tipoCliente == 1){
-                //     $("clientepedido").html(final);
-                // }else{
-                //     $("clientepedido").html(response.nomeCliente);
-                // }
-                // $("midiapedido").html(response.nomeMidia);
-                // $("acabamentopedido").html(response.nomeAcabamento);
-                // $("totaldopedido").html(response.valorDoPedido);
+                $("produtopedido").html(response.nomeProduto);
+                $("clientepedido").html(response.nomeCliente);
+                $("midiapedido").html(response.nomeMidia);
+                $("acabamentopedido").html(response.nomeAcabamento);
+                $("totaldopedido").html(response.valorDoPedido);
             }
         });
 
         $("identificacaopedido").html(identificacao);
         $("medidaspedido").html(altura+" x "+largura);
         $("quantidadepedido").html(quantidade);
-
     });
+
 
     $("#processando").on("click", function(){
         var status = 1;
