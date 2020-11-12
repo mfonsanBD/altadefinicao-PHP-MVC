@@ -8,6 +8,8 @@ use \Models\ValorProdutoTipoCliente;
 use \Models\Pedidos;
 use \Models\Midia;
 use \Models\Acabamento;
+use \Models\TipoEntrega;
+use \Models\FormaPagamento;
 
 class PedidosController extends Login{
 	public function index(){
@@ -19,7 +21,8 @@ class PedidosController extends Login{
         $id = $_SESSION['logado'];
 
         $usuario = new Usuario();
-        $informacoesUsuario = $usuario->informacoesUsuario($id);
+        $informacoesUsuario   = $usuario->informacoesUsuario($id);
+        $listaUsuarios        = $usuario->listaUsuarios();
 
         $this->nomeUsuario = $informacoesUsuario['nomeUsuario']." ".$informacoesUsuario['sobrenomeUsuario'];
         $this->foto = $informacoesUsuario['fotoUsuario'];
@@ -42,7 +45,11 @@ class PedidosController extends Login{
         $acabamento                 = new Acabamento();
         $listaAcabamento            = $acabamento->listaAcabamento();
 
-        $listaUsuarios              = $usuario->listaUsuarios();
+        $tipoEntrega                 = new TipoEntrega();
+        $listaTipoEntrega            = $tipoEntrega->listaTipoEntrega();
+
+        $formaPagamento              = new FormaPagamento();
+        $listaFormaPagamento         = $formaPagamento->listaFormaPagamento();
 
         $dados['listaPedidos']      = $listaPedidos;
         $dados['listaProduto']      = $listaProduto;
@@ -50,6 +57,8 @@ class PedidosController extends Login{
         $dados['listaUsuarios']     = $listaUsuarios;
         $dados['listaAcabamento']   = $listaAcabamento;
         $dados['listaMidia']        = $listaMidia;
+        $dados['listaEntrega']      = $listaTipoEntrega;
+        $dados['listaPagamento']    = $listaFormaPagamento;
 
         $this->loadTemplate('administracao/pedidos', $dados);
   }

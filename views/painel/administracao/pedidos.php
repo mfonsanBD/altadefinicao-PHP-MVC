@@ -353,11 +353,11 @@
                                 </form>
                                 <form id="entregaMaterial" class="d-none">
                                     <?php
-                                        foreach($listaMidia as $midia):
+                                        foreach($listaEntrega as $entrega):
                                     ?>
                                         <div class="custom-control custom-radio mb-3">
-                                            <input type="radio" id="midia<?=$midia['idMidia']?>" name="midia" class="custom-control-input" value="<?=$midia['idMidia']?>">
-                                            <label class="custom-control-label" for="midia<?=$midia['idMidia']?>"><?=$midia['nomeMidia']?></label>
+                                            <input type="radio" id="entrega<?=$entrega['idTipoEntrega']?>" name="entrega" class="custom-control-input" value="<?=$entrega['idTipoEntrega']?>">
+                                            <label class="custom-control-label" for="entrega<?=$entrega['idTipoEntrega']?>"><?=$entrega['nomeTipoEntrega']?></label>
                                         </div>
                                     <?php
                                         endforeach;
@@ -368,17 +368,17 @@
                                 </form>
                                 <form id="pagamentoMaterial" class="d-none">
                                     <?php
-                                        foreach($listaMidia as $midia):
+                                        foreach($listaPagamento as $pagamento):
                                     ?>
                                         <div class="custom-control custom-radio mb-3">
-                                            <input type="radio" id="midia<?=$midia['idMidia']?>" name="midia" class="custom-control-input" value="<?=$midia['idMidia']?>">
-                                            <label class="custom-control-label" for="midia<?=$midia['idMidia']?>"><?=$midia['nomeMidia']?></label>
+                                            <input type="radio" id="pagamento<?=$pagamento['idFormaPagamento']?>" name="pagamento" class="custom-control-input" value="<?=$pagamento['idFormaPagamento']?>">
+                                            <label class="custom-control-label" for="pagamento<?=$pagamento['idFormaPagamento']?>"><?=$pagamento['nomeFormaPagamento']?></label>
                                         </div>
                                     <?php
                                         endforeach;
                                     ?>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-warning my-4">Próximo</button>
+                                        <button type="submit" class="btn btn-warning my-4">Confirmar Pedido</button>
                                     </div>
                                 </form>
                             </div>
@@ -498,56 +498,16 @@
                                 Envio da Arte
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Produto:</b>
-                                        <produtopedido></produtopedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Identificação:</b>
-                                        <identificacaopedido></identificacaopedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Cliente:</b>
-                                        <clientepedido></clientepedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Mídia:</b>
-                                        <midiapedido></midiapedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Acabamento:</b>
-                                        <acabamentopedido></acabamentopedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Medidas:</b>
-                                        <medidaspedido></medidaspedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-3">
-                                    <smal>
-                                        <b>Quantidade:</b>
-                                        <quantidadepedido></quantidadepedido>
-                                    </small>
-                                </div>
-                                <div class="col-lg-12 mb-4">
-                                    <smal>
-                                        <b>Valor do Pedido:</b>
-                                        R$ <totaldopedido></totaldopedido>
-                                    </small>
-                                </div>
+                                <form id="formEnviaArte" enctype="multipart/form-data">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-file-upload"></i></span>
+                                        </div>
+                                        <input type="file" id="arte" class="form-control" aria-describedby="basic-addon1">
+                                    </div>
+                                </form>
                                 <div class="text-center">
-                                    <button id="finalizarPedido" class="btn btn-success my-4">Finalizar Pedido</button>
+                                    <button id="proximoEnviaArte" class="btn btn-warning my-4">Próximo</button>
                                 </div>
                             </div>
                         </div>
