@@ -14,4 +14,15 @@ class FormaPagamento extends Model{
 
         return $array;
     }
+    public function getNomeFormaPagamento($idPagamento){
+        $nome;
+        $sql = $this->conexao->prepare("SELECT nomeFormaPagamento FROM forma_pagamento WHERE idFormaPagamento = ?");
+        $sql->execute(array($idPagamento));
+        
+        if($sql->rowCount() > 0){
+            $nome = $sql->fetch();
+        }
+
+        return $nome;
+    }
 }

@@ -1,9 +1,9 @@
 urlSite = window.location.href;
 $(document).ready(function(){
     let produtoPedido, identificacao, observacao, tipoCliente, final,
-    revendedor, midia, acabamento, altura, largura, quantidade, tipoarte, infoCriacaoDeArte, arquivoArte, entrega, pagamento;
+    revendedor, midia, acabamento, altura, largura, quantidade, tipoarte, infoCriacaoDeArte, arquivoArte, entrega, pagamento, totalDoPedido;
 
-    $("#cadastraPedido").on("submit", function(e){
+    $("#botaoCadastraPedido").click(function(e){
         e.preventDefault();
 
         produtoPedido   = $("#produtoPedido").val();
@@ -17,7 +17,7 @@ $(document).ready(function(){
             atencaoPedidos("O campo <b>Identificação do Produto</b> é obrigatório!");
             setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
-            $(this).addClass('d-none');
+            $("#cadastraPedido").addClass('d-none');
             $("#clientePedido").removeClass('d-none');
             $("#guia2-tab").addClass('active');
         }
@@ -63,7 +63,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#midiaMaterial").on("submit", function(e){
+    $("#botaoMidiaMaterial").click(function(e){
         e.preventDefault();
         midia               = $("input[name='midia']:checked").val();
         var midiaMarcada    = $("input[name='midia']").is(":checked");
@@ -78,7 +78,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#acabamentoMaterial").on("submit", function(e){
+    $("#botaoAcabamentoMaterial").click(function(e){
         e.preventDefault();
         acabamento                  = $("input[name='acabamento']:checked").val();
         let acabamentoMarcado       = $("input[name='acabamento']").is(":checked");
@@ -93,7 +93,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#medidasMaterial").on("submit", function(e){
+    $("#botaoMedidasMaterial").click(function(e){
         e.preventDefault();
         altura = $("#alturaProduto").val();
         largura = $("#larguraProduto").val();
@@ -108,7 +108,7 @@ $(document).ready(function(){
         }
     });
     
-    $("#quantidadeMaterial").on("submit", function(e){
+    $("#botaoQuantidadeMaterial").click(function(e){
         e.preventDefault();
         quantidade = $("#quantidadeProduto").val();
 
@@ -125,7 +125,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#artePedido").on("submit", function(e){
+    $("#botaoArtePedido").click(function(e){
         e.preventDefault();
         tipoarte                = $("input[name='tipoarte']:checked").val();
         let tipoarteMarcada     = $("input[name='tipoarte']").is(":checked");
@@ -135,18 +135,20 @@ $(document).ready(function(){
             setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
             if(tipoarte == 0){
-                $('#enviaarte').modal('show');
-                $("#proximoEnviaArte").click(function(){
-                    arquivoArte = $('#arte').prop('files')[0];
+                $('#enviaarte').removeClass('d-none');
+                $("#artePedido").addClass('d-none');
 
-                    $("#artePedido").addClass('d-none');
+                $("#proximoEnviaArte").click(function(e){
+                    e.preventDefault();
+                    $("#enviaarte").addClass('d-none');
                     $("#entregaMaterial").removeClass('d-none');
                     $("#guia8-tab").addClass('active');
-                    $('#enviaarte').modal('hide');
                 });
             }else{
-                $('#criaarte').modal('show');
-                $("#infoCriacaoDaArte").on("submit", function(e){
+                $('#criaarte').removeClass('d-none');
+                $("#artePedido").addClass('d-none');
+
+                $("#proximoCriaArte").click(function(e){
                     e.preventDefault();
                     infoCriacaoDeArte = $("#infoArte").val();
                     
@@ -154,17 +156,16 @@ $(document).ready(function(){
                         atencaoPedidos("As <b>informações para criação da arte</b> são obrigatórias");
                         setTimeout(function(){$(".alert").alert('close');}, 5000);
                     }else{
-                        $("#artePedido").addClass('d-none');
+                        $("#criaarte").addClass('d-none');
                         $("#entregaMaterial").removeClass('d-none');
                         $("#guia8-tab").addClass('active');
-                        $('#criaarte').modal('hide');
                     }
                 });
             }
         }
     });
 
-    $("#entregaMaterial").submit(function(e){
+    $("#botaoEntregaMaterial").click(function(e){
         e.preventDefault();
         entrega                  = $("input[name='entrega']:checked").val();
         let entregaMarcado       = $("input[name='entrega']").is(":checked");
@@ -179,41 +180,54 @@ $(document).ready(function(){
         }
     });
 
-    $("#pagamentoMaterial").submit(function(e){
+    $("#botaoPagamentoMaterial").click(function(e){
         e.preventDefault();
         pagamento                  = $("input[name='pagamento']:checked").val();
         let pagamentoMarcado       = $("input[name='pagamento']").is(":checked");
-
-        if(pagamentoMarcado == false){
-            atencaoPedidos("O campo <b>Método de Pagamento</b> é obrigatório.");
-            setTimeout(function(){$(".alert").alert('close');}, 5000);
-        }else{
-            $("#cadastra-pedido").addClass('d-none');
-            $("#confirmaPedido").modal('show');
-        }
-    });
-
-    $("#confirmaPedido").on("show.bs.modal", function(event){
-        var botao = $(event.relatedTarget);
         
         $.ajax({
             url: urlSite+'/getInformacoes',
             type: 'POST',
-            data: {idProduto:produtoPedido, idTipoCliente:tipoCliente, idCliente:revendedor, idMidia:midia, idAcabamento:acabamento, altura:altura, largura:largura, quantidade:quantidade, final:final},
+            data: {idProduto:produtoPedido, idTipoCliente:tipoCliente, idCliente:revendedor, idMidia:midia, idAcabamento:acabamento, altura:altura, largura:largura, quantidade:quantidade, final:final, entrega:entrega, pagamento:pagamento},
             dataType: 'json',
             success: function(response){
                 $("produtopedido").html(response.nomeProduto);
                 $("clientepedido").html(response.nomeCliente);
                 $("midiapedido").html(response.nomeMidia);
                 $("acabamentopedido").html(response.nomeAcabamento);
+                $("entregapedido").html(response.nomeTipoEntrega);
+                $("pagamentopedido").html(response.nomeFormaPagamento);
                 $("totaldopedido").html(response.valorDoPedido);
+                totalDoPedido = response.valorDoPedido;
             }
         });
         $("identificacaopedido").html(identificacao);
         $("medidaspedido").html(altura+" x "+largura);
         $("quantidadepedido").html(quantidade);
+
+        if(pagamentoMarcado == false){
+            atencaoPedidos("O campo <b>Método de Pagamento</b> é obrigatório.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
+        }else{
+            $("#pagamentoMaterial").addClass('d-none');
+            $("#tabs-text").addClass('d-none');
+            $("#confirmaInfoPedido").removeClass('d-none');
+        }
     });
 
+    $("#formNovoPedido").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: urlSite+'/addPedido',
+            type: 'POST',
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            success: function(resposta){
+                sucessoPedidos(resposta);
+            }
+        });
+    });
 
     $("#processando").on("click", function(){
         var status = 1;

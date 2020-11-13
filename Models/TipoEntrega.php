@@ -14,4 +14,15 @@ class TipoEntrega extends Model{
 
         return $array;
     }
+    public function getNomeTipoEntrega($idEntrega){
+        $nome;
+        $sql = $this->conexao->prepare("SELECT nomeTipoEntrega FROM tipoentrega WHERE idTipoEntrega = ?");
+        $sql->execute(array($idEntrega));
+        
+        if($sql->rowCount() > 0){
+            $nome = $sql->fetch();
+        }
+
+        return $nome;
+    }
 }

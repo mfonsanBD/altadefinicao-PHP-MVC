@@ -123,12 +123,14 @@ class PedidosController extends Login{
   }
   public function getInformacoes(){
     if(isset($_POST) && !empty($_POST)){
-      $idProduto      = trim(addslashes($_POST['idProduto']));
-      $idTipoCliente  = trim(addslashes($_POST['idTipoCliente']));
-      $idCliente      = trim(addslashes($_POST['idCliente']));
-      $idMidia        = trim(addslashes($_POST['idMidia']));
-      $idAcabamento   = trim(addslashes($_POST['idAcabamento']));
-      $final          = trim(addslashes($_POST['final']));
+      $idProduto        = trim(addslashes($_POST['idProduto']));
+      $idTipoCliente    = trim(addslashes($_POST['idTipoCliente']));
+      $idCliente        = trim(addslashes($_POST['idCliente']));
+      $idMidia          = trim(addslashes($_POST['idMidia']));
+      $idAcabamento     = trim(addslashes($_POST['idAcabamento']));
+      $final            = trim(addslashes($_POST['final']));
+      $idEntrega        = trim(addslashes($_POST['entrega']));
+      $idPagamento      = trim(addslashes($_POST['pagamento']));
       $nomeDoCliente;
       
       $altura         = trim(addslashes($_POST['altura']));
@@ -156,6 +158,12 @@ class PedidosController extends Login{
       $acabamento                     = new Acabamento();
       $getNomeAcabamento              = $acabamento->getNomeAcabamento($idAcabamento);
 
+      $tipoentrega                    = new TipoEntrega();
+      $getNomeTipoEntrega             = $tipoentrega->getNomeTipoEntrega($idEntrega);
+
+      $formaPagamento                 = new FormaPagamento();
+      $getNomeFormaPagamento          = $formaPagamento->getNomeFormaPagamento($idPagamento);
+
       $totalPedido                    = ((($altura*$largura)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
       $totalPedido                    = $totalPedido/100;
       $totalPedido                    = $totalPedido/100;
@@ -174,10 +182,45 @@ class PedidosController extends Login{
         'nomeCliente'               => $nomeDoCliente,
         'nomeMidia'                 => $getNomeMidia['nomeMidia'],
         'nomeAcabamento'            => $getNomeAcabamento['nomeAcabamento'],
+        'nomeTipoEntrega'           => $getNomeTipoEntrega['nomeTipoEntrega'],
+        'nomeFormaPagamento'        => $getNomeFormaPagamento['nomeFormaPagamento'],
         'valorDoPedido'             => number_format($totalPedido, 2, ",", ".")
       );
 
       echo json_encode($array);
+    }
+  }
+  public function addPedido(){
+    if(isset($_POST) && !empty($_POST)){
+      $revendedor         = trim(addslashes($_POST['clienteRevenda']));
+      $produtoPedido      = trim(addslashes($_POST['produtoPedido']));
+      $midia              = trim(addslashes($_POST['midia']));
+      $acabamento         = trim(addslashes($_POST['acabamento']));
+      $tipoCliente        = trim(addslashes($_POST['tipocliente']));
+      $pagamento          = trim(addslashes($_POST['pagamento']));
+      $entrega            = trim(addslashes($_POST['entrega']));
+      $final              = trim(addslashes($_POST['nomeClienteFinal']));
+      $identificacao      = trim(addslashes($_POST['identificacao']));
+      $altura             = trim(addslashes($_POST['alturaProduto']));
+      $largura            = trim(addslashes($_POST['larguraProduto']));
+      $quantidade         = trim(addslashes($_POST['quantidadeProduto']));
+      $observacao         = trim(addslashes($_POST['observacao']));
+      $infoArte           = trim(addslashes($_POST['infoArte']));
+
+      $valorTipoCliente               = new ValorProdutoTipoCliente();
+      $getValorProdutoTipoCliente     = $valorTipoCliente->getValorProdutoTipoCliente($produtoPedido, $tipoCliente);
+      
+      $altura         = str_replace(".", "", $altura);
+      $altura         = str_replace(",", "", $altura);
+      
+      $largura         = str_replace(".", "", $largura);
+      $largura         = str_replace(",", "", $largura);
+
+      $totalPedido                    = ((($altura*$largura)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
+      $totalPedido                    = $totalPedido/100;
+      $totalPedido                    = $totalPedido/100;
+
+      echo ($revendedor." - ".$produtoPedido." - ".$midia." - ".$acabamento." - ".$tipoCliente." - ".$pagamento." - ".$entrega." - ".$final." - ".$identificacao." - ".$altura." - ".$largura." - ".$quantidade." - ".$observacao." - ".$infoArte." - ".$totalPedido);
     }
   }
 }
