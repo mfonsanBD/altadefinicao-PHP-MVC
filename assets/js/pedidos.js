@@ -224,7 +224,7 @@ $(document).ready(function(){
             processData: false,
             contentType: false,
             success: function(resposta){
-                sucessoPedidos(resposta);
+                console.log(resposta);
             }
         });
     });

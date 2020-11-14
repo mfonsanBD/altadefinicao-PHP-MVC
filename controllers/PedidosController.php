@@ -192,35 +192,99 @@ class PedidosController extends Login{
   }
   public function addPedido(){
     if(isset($_POST) && !empty($_POST)){
-      $revendedor         = trim(addslashes($_POST['clienteRevenda']));
+      $revendedor;
+      $final;
+
+      if(isset($_POST['clienteRevenda']) && !empty($_POST['clienteRevenda'])){
+        $revendedor = trim(addslashes($_POST['clienteRevenda']));
+        $final = "";
+      }else{
+        $revendedor = NULL;
+        $final = trim(addslashes($_POST['nomeClienteFinal']));
+      }
+
+      $tipoCliente        = trim(addslashes($_POST['tipocliente']));
       $produtoPedido      = trim(addslashes($_POST['produtoPedido']));
       $midia              = trim(addslashes($_POST['midia']));
       $acabamento         = trim(addslashes($_POST['acabamento']));
-      $tipoCliente        = trim(addslashes($_POST['tipocliente']));
       $pagamento          = trim(addslashes($_POST['pagamento']));
       $entrega            = trim(addslashes($_POST['entrega']));
-      $final              = trim(addslashes($_POST['nomeClienteFinal']));
       $identificacao      = trim(addslashes($_POST['identificacao']));
       $altura             = trim(addslashes($_POST['alturaProduto']));
       $largura            = trim(addslashes($_POST['larguraProduto']));
-      $quantidade         = trim(addslashes($_POST['quantidadeProduto']));
-      $observacao         = trim(addslashes($_POST['observacao']));
-      $infoArte           = trim(addslashes($_POST['infoArte']));
 
       $valorTipoCliente               = new ValorProdutoTipoCliente();
       $getValorProdutoTipoCliente     = $valorTipoCliente->getValorProdutoTipoCliente($produtoPedido, $tipoCliente);
       
-      $altura         = str_replace(".", "", $altura);
-      $altura         = str_replace(",", "", $altura);
+      $alturaPedido       = str_replace(".", "", $altura);
+      $alturaPedido       = str_replace(",", "", $alturaPedido);
       
-      $largura         = str_replace(".", "", $largura);
-      $largura         = str_replace(",", "", $largura);
+      $larguraPedido      = str_replace(".", "", $largura);
+      $larguraPedido      = str_replace(",", "", $larguraPedido);
 
-      $totalPedido                    = ((($altura*$largura)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
-      $totalPedido                    = $totalPedido/100;
-      $totalPedido                    = $totalPedido/100;
+      $quantidade         = trim(addslashes($_POST['quantidadeProduto']));
 
-      echo ($revendedor." - ".$produtoPedido." - ".$midia." - ".$acabamento." - ".$tipoCliente." - ".$pagamento." - ".$entrega." - ".$final." - ".$identificacao." - ".$altura." - ".$largura." - ".$quantidade." - ".$observacao." - ".$infoArte." - ".$totalPedido);
+      $totalPedido        = ((($alturaPedido*$larguraPedido)*$getValorProdutoTipoCliente['valor_p_tc'])*$quantidade);
+      $totalPedido        = $totalPedido/100;
+      $totalPedido        = $totalPedido/100;
+
+      $observacao         = trim(addslashes($_POST['observacao']));
+
+      $arquivoArte        = $_FILES['arte']['name'];
+      $caminhoArquivo     = $_FILES['arte']['tmp_name'];
+      $tipoArquivo        = $_FILES['arte']['type'];
+      $pastaAno           = date("Y");
+
+      $permitidos         = array('application/octet-stream', 'image/jpeg', 'application/pdf');
+
+      if(in_array($tipoArquivo, $permitidos)){
+        if(is_dir('media/pedidos/'.$pastaAno)){
+          if($tipoCliente == 2){
+            verificaPastaRevendedor($pastaAno, $revendedor, $arquivoArte, $caminhoArquivo);
+          }else{
+            verificaPastaFinal($pastaAno, $final, $arquivoArte, $caminhoArquivo);
+          }
+        }else{
+          mkdir('media/pedidos/'.$pastaAno);
+          if($tipoCliente == 2){
+            verificaPastaRevendedor($pastaAno, $revendedor, $arquivoArte, $caminhoArquivo);
+          }else{
+            verificaPastaFinal($pastaAno, $final, $arquivoArte, $caminhoArquivo);
+          }
+        }
+      }else{
+        echo 2;
+      }
+
+      $slug               = md5(date("Y-m-d H:i:s").rand(0, 99999));
+      $infoArte           = trim(addslashes($_POST['infoArte']));
+      
+      $pedido = new Pedidos();
+      $adicionaPedido     = $pedido->adicionaPedido($revendedor, $produtoPedido, $midia, $acabamento, $tipoCliente, $pagamento, $entrega, $final, $identificacao, $altura, $largura, $quantidade, $totalPedido, $observacao, $arquivoArte, $slug, $infoArte);
+
+      if($adicionaPedido){
+        echo 1;
+      }else{
+        echo 0;
+      }
     }
+  }
+}
+
+function verificaPastaRevendedor($pastaAno, $revendedor, $arquivoArte, $caminhoArquivo){
+  if(is_dir('media/pedidos/'.$pastaAno.'/'.$revendedor)){
+    move_uploaded_file($caminhoArquivo, 'media/pedidos/'.$pastaAno.'/'.$revendedor.'/'.$arquivoArte);
+  }else{
+    mkdir('media/pedidos/'.$pastaAno.'/'.$revendedor);
+    move_uploaded_file($caminhoArquivo, 'media/pedidos/'.$pastaAno.'/'.$revendedor.'/'.$arquivoArte);
+  }
+}
+
+function verificaPastaFinal($pastaAno, $final, $arquivoArte, $caminhoArquivo){
+  if(is_dir('media/pedidos/'.$pastaAno.'/'.$final)){
+    move_uploaded_file($caminhoArquivo, 'media/pedidos/'.$pastaAno.'/'.$final.'/'.$arquivoArte);
+  }else{
+    mkdir('media/pedidos/'.$pastaAno.'/'.$final);
+    move_uploaded_file($caminhoArquivo, 'media/pedidos/'.$pastaAno.'/'.$final.'/'.$arquivoArte);
   }
 }

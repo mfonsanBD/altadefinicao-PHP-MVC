@@ -104,4 +104,14 @@ class Pedidos extends Model{
 		
 		return $array['lucroMes'];
     }
+    public function adicionaPedido($revendedor, $produtoPedido, $midia, $acabamento, $tipoCliente, $pagamento, $entrega, $final, $identificacao, $altura, $largura, $quantidade, $totalPedido, $observacao, $arquivoArte, $slug, $infoArte){
+        $sql = $this->conexao->prepare("INSERT INTO pedido SET idCliente = ?, idProduto = ?, idMidia = ?, idAcabamento = ?, idTipoCliente = ?, idFormaPagamento = ?, idTipoEntrega = ?, nomeCliente = ?, nomeArte = ?, altura = ?, largura = ?, quantidadeProduto = ?, valorPedido = ?, dataPedido = NOW(), observacaoPedido = ?, arquivo = ?, slugPedido = ?, criarArte = ?");
+        $sql->execute(array($revendedor, $produtoPedido, $midia, $acabamento, $tipoCliente, $pagamento, $entrega, $final, $identificacao, $altura, $largura, $quantidade, $totalPedido, $observacao, $arquivoArte, $slug, $infoArte));
+
+        if($sql->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
