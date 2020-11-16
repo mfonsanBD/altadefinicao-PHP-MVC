@@ -1,12 +1,14 @@
 urlSite = window.location.href;
 $(document).ready(function(){
-    var nomeProduto;
-    var categoriaProduto;
-    var imagemProduto;
-    var precoRevenda;
-    var precoFinal;
+    let nomeProduto;
+    let categoriaProduto;
+    let midiasMarcadas;
+    let acabamentosMarcados;
+    let imagemProduto;
+    let precoRevenda;
+    let precoFinal;
 
-    $("#cadastraProduto").on("submit", function(e){
+    $("#botaoCadastraProduto").click(function(e){
         e.preventDefault();
 
         nomeProduto             = $("#nomeProduto").val();
@@ -19,8 +21,44 @@ $(document).ready(function(){
             atencaoProdutos("O campo <strong>Categoria</strong> é <strong>obrigatório</strong>.");
         }else{
             $("#cadastraProduto").addClass('d-none');
-            $("#defineImagemProduto").removeClass('d-none');
+            $("#defineMidiasDoProduto").removeClass('d-none');
             $("#guia2-tab").addClass('active');
+        }
+    });
+
+    $("#botaoDefineMidiasDoProduto").click(function(){
+        midiasMarcadas = new Array();
+        $("input[name='midiasproduto']:checked").each(function() {
+            midiasMarcadas.push($(this).val());
+        });
+
+        let midiasescolhidas = $("input[name='midiasproduto']").is(":checked");
+
+        if(midiasescolhidas == false){
+            atencaoProdutos("Ao menos 1 mídia deve ser escolhida.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
+        }else{
+            $("#defineMidiasDoProduto").addClass('d-none');
+            $("#defineAcabamentosDoProduto").removeClass('d-none');
+            $("#guia3-tab").addClass('active');
+        }
+    });
+
+    $("#botaoDefineAcabamentosDoProduto").click(function(){
+        acabamentosMarcados = new Array();
+        $("input[name='acabamentosproduto']:checked").each(function() {
+            acabamentosMarcados.push($(this).val());
+        });
+
+        let acabamentosescolhidas = $("input[name='acabamentosproduto']").is(":checked");
+
+        if(acabamentosescolhidas == false){
+            atencaoProdutos("Ao menos 1 acabamento deve ser escolhido.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
+        }else{
+            $("#defineAcabamentosDoProduto").addClass('d-none');
+            $("#defineImagemProduto").removeClass('d-none');
+            $("#guia4-tab").addClass('active');
         }
     });
     
@@ -53,11 +91,11 @@ $(document).ready(function(){
             imagemProduto = img;
             $("#defineImagemProduto").addClass('d-none');
             $("#definePrecoRevenda").removeClass('d-none');
-            $("#guia3-tab").addClass('active');
+            $("#guia5-tab").addClass('active');
         });
     });
     
-    $("#definePrecoRevenda").on("submit", function(e){
+    $("#botaoDefinePrecoRevenda").click(function(e){
         e.preventDefault();
 
         precoRevenda = $("#precoRevenda").val();
@@ -67,11 +105,11 @@ $(document).ready(function(){
         }else{
             $("#definePrecoRevenda").addClass('d-none');
             $("#definePrecoFinal").removeClass('d-none');
-            $("#guia4-tab").addClass('active');
+            $("#guia6-tab").addClass('active');
         }
     });
     
-    $("#definePrecoFinal").on("submit", function(e){
+    $("#botaoDefinePrecoFinal").click(function(e){
         e.preventDefault();
 
         precoFinal = $("#precoFinal").val();
@@ -84,12 +122,11 @@ $(document).ready(function(){
                 type: 'POST',
                 data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:imagemProduto, revenda:precoRevenda, final:precoFinal, slug:string_to_slug(nomeProduto)},
                 success: function(dados){
-                    // console.log(dados);
                     if(dados == 0){
                         erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");
                     }
                     else if(dados == 2){
-                        atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.")
+                        atencaoProdutos("Tipo de imagem inválida. Tente enviar uma nova imagem.")
                     }
                     else{
                         sucessoProdutos("Produto cadastrado com sucesso!");

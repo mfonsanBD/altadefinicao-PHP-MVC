@@ -6,6 +6,8 @@ use \Models\Produtos;
 use \Models\Categoria;
 use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
+use \Models\Midia;
+use \Models\Acabamento;
 
 class ProdutosController extends Login{
 	public function index(){
@@ -42,12 +44,20 @@ class ProdutosController extends Login{
 
                 $valorProdutoTipoCliente                = new ValorProdutoTipoCliente();
                 $listaValorProdutoTipoCliente           = $valorProdutoTipoCliente->listaValorProdutoTipoCliente();
+
+                $midia                                  = new Midia();
+                $listaMidia                             = $midia->listaMidia();
+        
+                $acabamento                             = new Acabamento();
+                $listaAcabamento                        = $acabamento->listaAcabamento();
                 
                 $dados['listaProduto']                  = $listaProduto;
                 $dados['quantidadeDeProduto']           = $quantidadeDeProduto;
                 $dados['listaCategoria']                = $listaCategoria;
                 $dados['listaTipoCliente']              = $listaTipoCliente;
                 $dados['listaValorProdutoTipoCliente']  = $listaValorProdutoTipoCliente;
+                $dados['listaAcabamento']               = $listaAcabamento;
+                $dados['listaMidia']                    = $listaMidia;
                 
                 $this->loadTemplate('administracao/produtos', $dados);
             break;
