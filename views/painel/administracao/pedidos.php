@@ -76,7 +76,11 @@
                                             if($pedidos['idCliente'] == null){
                                                 echo "<span class='name'>".$pedidos['nomeCliente']."</span>";
                                             }else{
-                                                echo "<span class='name'>".$pedidos['nomeUsuario']." ".$pedidos['sobrenomeUsuario']."</span>";
+                                                foreach($listaUsuarios as $usuario){
+                                                    if($usuario['idUsuario'] == $pedidos['idCliente']){
+                                                        echo "<span class='name'>".$usuario['nomeUsuario']." ".$usuario['sobrenomeUsuario']."</span>";
+                                                    }
+                                                }
                                             }
                                         ?>
                                 </td>

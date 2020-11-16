@@ -224,7 +224,14 @@ $(document).ready(function(){
             processData: false,
             contentType: false,
             success: function(resposta){
-                console.log(resposta);
+                if(resposta == 1){
+                    sucessoPedidos("Pedido adicionado com sucesso!");
+                    setTimeout(function(){window.location.reload()}, 3000);
+                }else if(resposta == 2){
+                    atencaoPedidos("Esse tipo de arquivo não é permitido no sistema.");
+                }else{
+                    erroPedidos("Não foi possível adicionar este pedido no momento. Tente novamente mais tarde!");
+                }
             }
         });
     });

@@ -160,13 +160,17 @@
                             <span class='name'><?=$pedidos['nomeArte']?></span>
                         </td>
                         <td>
-                                <?php
-                                    if($pedidos['idCliente'] == null){
-                                        echo "<span class='name'>".$pedidos['nomeCliente']."</span>";
-                                    }else{
-                                        echo "<span class='name'>".$pedidos['nomeUsuario']." ".$pedidos['sobrenomeUsuario']."</span>";
+                          <?php
+                            if($pedidos['idCliente'] == null){
+                                echo "<span class='name'>".$pedidos['nomeCliente']."</span>";
+                            }else{
+                                foreach($listaUsuarios as $usuario){
+                                    if($usuario['idUsuario'] == $pedidos['idCliente']){
+                                        echo "<span class='name'>".$usuario['nomeUsuario']." ".$usuario['sobrenomeUsuario']."</span>";
                                     }
-                                ?>
+                                }
+                            }
+                          ?>
                         </td>
                         <td>
                             <span class="badge badge-dot mr-4">

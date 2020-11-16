@@ -54,13 +54,13 @@
                                 switch($data){
                                     case 5:
                                     case 6:
-                                        echo date("d/m/Y", strtotime("+3 day", strtotime($pedido['dataPedido'])));
+                                        echo date("d/m/Y", strtotime("+4 day", strtotime($pedido['dataPedido'])));
                                     break;
                                     case 7:
-                                        echo date("d/m/Y", strtotime("+2 day", strtotime($pedido['dataPedido'])));
+                                        echo date("d/m/Y", strtotime("+3 day", strtotime($pedido['dataPedido'])));
                                     break;
                                     default:
-                                        echo date("d/m/Y", strtotime("+1 day", strtotime($pedido['dataPedido'])));
+                                        echo date("d/m/Y", strtotime("+2 day", strtotime($pedido['dataPedido'])));
                                     break;
                                 }
                             ?>
