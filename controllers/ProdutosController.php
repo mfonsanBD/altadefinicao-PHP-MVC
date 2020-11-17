@@ -8,6 +8,7 @@ use \Models\TipoCliente;
 use \Models\ValorProdutoTipoCliente;
 use \Models\Midia;
 use \Models\Acabamento;
+use \Models\Gramatura;
 
 class ProdutosController extends Login{
 	public function index(){
@@ -50,6 +51,9 @@ class ProdutosController extends Login{
         
                 $acabamento                             = new Acabamento();
                 $listaAcabamento                        = $acabamento->listaAcabamento();
+        
+                $gramatura                              = new Gramatura();
+                $listaGramatura                         = $gramatura->listaGramatura();
                 
                 $dados['listaProduto']                  = $listaProduto;
                 $dados['quantidadeDeProduto']           = $quantidadeDeProduto;
@@ -58,6 +62,7 @@ class ProdutosController extends Login{
                 $dados['listaValorProdutoTipoCliente']  = $listaValorProdutoTipoCliente;
                 $dados['listaAcabamento']               = $listaAcabamento;
                 $dados['listaMidia']                    = $listaMidia;
+                $dados['listaGramatura']                = $listaGramatura;
                 
                 $this->loadTemplate('administracao/produtos', $dados);
             break;
@@ -68,13 +73,21 @@ class ProdutosController extends Login{
         }
     }
     public function cadastraProduto(){
+        $gramaturasMarcadas = NULL;
         if(isset($_POST) && !empty($_POST)){
-            $nomeProduto            = trim(addslashes($_POST['nomeProduto']));
-            $categoriaProduto       = trim(addslashes($_POST['categoriaProduto']));
-            $fotoProduto            = trim(addslashes($_POST['fotoProduto']));
-            $valorRevenda           = trim(addslashes($_POST['revenda']));
-            $valorFinal             = trim(addslashes($_POST['final']));
-            $slug                   = trim(addslashes($_POST['slug']));
+            $categoriaProduto           = trim(addslashes($_POST['categoriaProduto']));
+            $midiasMarcadas             = implode(",", $_POST['midiasMarcadas']);
+            $acabamentosMarcados        = implode(",", $_POST['acabamentosMarcados']);
+
+            if(isset($_POST['gramaturasMarcadas']) && !empty($_POST['gramaturasMarcadas'])){
+                $gramaturasMarcadas     = implode(",", $_POST['gramaturasMarcadas']);
+            }
+
+            $nomeProduto                = trim(addslashes($_POST['nomeProduto']));
+            $fotoProduto                = trim(addslashes($_POST['fotoProduto']));
+            $valorRevenda               = trim(addslashes($_POST['revenda']));
+            $valorFinal                 = trim(addslashes($_POST['final']));
+            $slug                       = trim(addslashes($_POST['slug']));
             $nomeDaFotoDoProduto;
 
             $fotoVazia = 'iVBORw0KGgoAAAANSUhEUgAAAXQAAAD6CAYAAACxrrxPAAABf0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwarmUAAcsYOEEAAAAASUVORK5CYII=';
@@ -104,9 +117,9 @@ class ProdutosController extends Login{
             }else{
                 $nomeDaFotoDoProduto = 'principal.png';
             }
-    
+
             $produto      = new Produtos();
-            $ultimoId     = $produto->adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug);
+            $ultimoId     = $produto->adicionarProduto($categoriaProduto, $midiasMarcadas, $acabamentosMarcados, $gramaturasMarcadas, $nomeProduto, $nomeDaFotoDoProduto, $slug);
             
             $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
             $precoRevenda   = $valorProdutoTipoCliente->defineValorRevenda($ultimoId, $valorRevenda);

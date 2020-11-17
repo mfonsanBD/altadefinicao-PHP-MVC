@@ -4,6 +4,7 @@ $(document).ready(function(){
     let categoriaProduto;
     let midiasMarcadas;
     let acabamentosMarcados;
+    let gramaturasMarcadas;
     let imagemProduto;
     let precoRevenda;
     let precoFinal;
@@ -16,9 +17,11 @@ $(document).ready(function(){
 
         if(nomeProduto == ''){
             atencaoProdutos("O campo <strong>Nome do Produto</strong> é <strong>obrigatório</strong>.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
         }
         else if(categoriaProduto == null){
             atencaoProdutos("O campo <strong>Categoria</strong> é <strong>obrigatório</strong>.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
             $("#cadastraProduto").addClass('d-none');
             $("#defineMidiasDoProduto").removeClass('d-none');
@@ -50,16 +53,20 @@ $(document).ready(function(){
             acabamentosMarcados.push($(this).val());
         });
 
-        let acabamentosescolhidas = $("input[name='acabamentosproduto']").is(":checked");
+        $("#defineAcabamentosDoProduto").addClass('d-none');
+        $("#defineGramaturaDoProduto").removeClass('d-none');
+        $("#guia4-tab").addClass('active');
+    });
 
-        if(acabamentosescolhidas == false){
-            atencaoProdutos("Ao menos 1 acabamento deve ser escolhido.");
-            setTimeout(function(){$(".alert").alert('close');}, 5000);
-        }else{
-            $("#defineAcabamentosDoProduto").addClass('d-none');
-            $("#defineImagemProduto").removeClass('d-none');
-            $("#guia4-tab").addClass('active');
-        }
+    $("#botaoDefineGramaturaDoProduto").click(function(){
+        gramaturasMarcadas = new Array();
+        $("input[name='gramaturaproduto']:checked").each(function() {
+            gramaturasMarcadas.push($(this).val());
+        });
+
+        $("#defineGramaturaDoProduto").addClass('d-none');
+        $("#defineImagemProduto").removeClass('d-none');
+        $("#guia5-tab").addClass('active');
     });
     
     var resize = $('#upload-demo').croppie({
@@ -91,7 +98,7 @@ $(document).ready(function(){
             imagemProduto = img;
             $("#defineImagemProduto").addClass('d-none');
             $("#definePrecoRevenda").removeClass('d-none');
-            $("#guia5-tab").addClass('active');
+            $("#guia6-tab").addClass('active');
         });
     });
     
@@ -102,10 +109,11 @@ $(document).ready(function(){
 
         if(precoRevenda == ''){
             atencaoProdutos("O campo <strong>Valor do produto para revendedor</strong> é <strong>obrigatório</strong>.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
             $("#definePrecoRevenda").addClass('d-none');
             $("#definePrecoFinal").removeClass('d-none');
-            $("#guia6-tab").addClass('active');
+            $("#guia7-tab").addClass('active');
         }
     });
     
@@ -116,11 +124,12 @@ $(document).ready(function(){
 
         if(precoFinal == ''){
             atencaoProdutos("O campo <strong>Valor do produto para  cliente final</strong> é <strong>obrigatório</strong>.");
+            setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
             $.ajax({
                 url: urlSite+'/cadastraProduto/',
                 type: 'POST',
-                data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, fotoProduto:imagemProduto, revenda:precoRevenda, final:precoFinal, slug:string_to_slug(nomeProduto)},
+                data: {nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, midiasMarcadas:midiasMarcadas, acabamentosMarcados:acabamentosMarcados, gramaturasMarcadas:gramaturasMarcadas, fotoProduto:imagemProduto, revenda:precoRevenda, final:precoFinal, slug:string_to_slug(nomeProduto)},
                 success: function(dados){
                     if(dados == 0){
                         erroProdutos("Não foi possível cadastrar um novo produto. Tente novamente mais tarde!");

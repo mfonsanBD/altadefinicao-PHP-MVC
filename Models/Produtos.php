@@ -29,9 +29,9 @@ class Produtos extends Model{
 
         return $array['quantidade'];
     }
-    public function adicionarProduto($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug){
-        $sql = $this->conexao->prepare("INSERT INTO produto SET nomeProduto = ?, fotoProduto = ?, idCategoria = ?, slugProduto = ?");
-        $sql->execute(array($nomeProduto, $nomeDaFotoDoProduto, $categoriaProduto, $slug));
+    public function adicionarProduto($categoriaProduto, $midiasMarcadas, $acabamentosMarcados, $gramaturasMarcadas, $nomeProduto, $nomeDaFotoDoProduto, $slug){
+        $sql = $this->conexao->prepare("INSERT INTO produto SET idCategoria = ?, idsMidias = ?, idsAcabamentos = ?, idsGramaturas = ?, nomeProduto = ?, fotoProduto = ?, slugProduto = ?");
+        $sql->execute(array($categoriaProduto, $midiasMarcadas, $acabamentosMarcados, $gramaturasMarcadas, $nomeProduto, $nomeDaFotoDoProduto, $slug));
         
         if($sql->rowCount() > 0){
             return $this->conexao->lastInsertId();

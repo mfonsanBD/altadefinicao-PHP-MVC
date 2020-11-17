@@ -19,7 +19,7 @@ class ValorProdutoTipoCliente extends Model{
         return $array;
     }
     public function defineValorRevenda($idProduto, $precoRevenda){
-        $sql = $this->conexao->prepare("INSERT INTO valor_produto_tipocliente SET idProduto = ?, idTipoCliente = 2, valor = ?");
+        $sql = $this->conexao->prepare("INSERT INTO valor_produto_tipocliente SET idProduto = ?, idTipoCliente = 2, valor_p_tc = ?");
         $sql->execute(array($idProduto, $precoRevenda));
 
         if($sql->rowCount() > 0){
@@ -29,7 +29,7 @@ class ValorProdutoTipoCliente extends Model{
         }
     }
     public function defineValorFinal($idProduto, $precoFinal){
-        $sql = $this->conexao->prepare("INSERT INTO valor_produto_tipocliente SET idProduto = ?, idTipoCliente = 1, valor = ?");
+        $sql = $this->conexao->prepare("INSERT INTO valor_produto_tipocliente SET idProduto = ?, idTipoCliente = 1, valor_p_tc = ?");
         $sql->execute(array($idProduto, $precoFinal));
 
         if($sql->rowCount() > 0){
@@ -66,7 +66,7 @@ class ValorProdutoTipoCliente extends Model{
         }
     }
     public function mudaValorParaRevenda($valorRevenda, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor = ? WHERE idProduto = ? AND idTipoCliente = 2");
+        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor_p_tc = ? WHERE idProduto = ? AND idTipoCliente = 2");
         $sql->execute(array($valorRevenda, $idProduto));
 
         if($sql->rowCount() > 0){
@@ -76,7 +76,7 @@ class ValorProdutoTipoCliente extends Model{
         }
     }
     public function mudaValorParaFinal($valorFinal, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor = ? WHERE idProduto = ? AND idTipoCliente = 1");
+        $sql = $this->conexao->prepare("UPDATE valor_produto_tipocliente SET valor_p_tc = ? WHERE idProduto = ? AND idTipoCliente = 1");
         $sql->execute(array($valorFinal, $idProduto));
 
         if($sql->rowCount() > 0){

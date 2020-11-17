@@ -57,13 +57,52 @@
                                         foreach($listaValorProdutoTipoCliente as $lvptc){
                                             if($produtos['idProduto'] == $lvptc['idProduto']){
                                                 if($lvptc['idTipoCliente'] == 1){
-                                                    echo '<small class="w-100">Preço para Cliente '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</small><br>';
+                                                    echo '<small class="w-100">Preço para Cliente '.$lvptc['nomeTipoCliente'].': <b>R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</b></small><br>';
                                                 }else{
-                                                    echo '<small class="w-100">Preço para '.$lvptc['nomeTipoCliente'].': R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</small><br>';
+                                                    echo '<small class="w-100">Preço para '.$lvptc['nomeTipoCliente'].': <b>R$'.number_format($lvptc['valor_p_tc'], 2, ",", ".").'</b></small><br>';
                                                 }
                                             }
                                         }
                                     ?>
+                                    <small class="w-100">- Mídias do Produto:<br>
+                                        <?php
+                                            $midias_produto = explode(",", $produtos['idsMidias']);
+                                            foreach($listaMidia as $midias){
+                                                if(in_array($midias['idMidia'], $midias_produto)){
+                                                    echo "* <b>".$midias['nomeMidia']."</b><br>";
+                                                }
+                                            }
+                                            if($produtos['idsMidias'] == ""){
+                                                echo "<b>--</b>";
+                                            }
+                                        ?>
+                                    </small>
+                                    <small class="w-100">- Acabamentos do Produto:<br>
+                                        <?php
+                                            $acabamentos_produto = explode(",", $produtos['idsAcabamentos']);
+                                            foreach($listaAcabamento as $acabamentos){
+                                                if(in_array($acabamentos['idAcabamento'], $acabamentos_produto)){
+                                                    echo "* <b>".$acabamentos['nomeAcabamento']."</b><br>";
+                                                }
+                                            }
+                                            if($produtos['idsAcabamentos'] == ""){
+                                                echo "<b>--</b>";
+                                            }
+                                        ?>
+                                    </small>
+                                    <small class="w-100">- Gramatura do Produto:<br>
+                                        <?php
+                                            $gramaturas_produto = explode(",", $produtos['idsGramaturas']);
+                                            foreach($listaGramatura as $gramatura){
+                                                if(in_array($gramatura['idGramatura'], $gramaturas_produto)){
+                                                    echo "* <b>".$gramatura['nomeGramatura']."g</b><br>";
+                                                }
+                                            }
+                                            if($produtos['idsGramaturas'] == ""){
+                                                echo "<b>--</b>";
+                                            }
+                                        ?>
+                                    </small>
                                 </div>
                                 <div class="card-footer pl-0 pr-0">
                                     <button class="btn btn-default float-left btn-block btn-sm" data-toggle="modal" data-target="#edita-produto" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>">Editar</button>
@@ -207,8 +246,6 @@
   </div>
   <!-- Argon Scripts -->
 
-
-
 <div class="row">
     <div class="col-md-6">
         <div class="modal fade" id="cadastra-produto" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
@@ -231,16 +268,20 @@
                                         <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia3-tab" data-toggle="tab" href="#guia3" role="tab" aria-controls="guia3" aria-selected="false">Acabamentos</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia4-tab" data-toggle="tab" href="#guia4" role="tab" aria-controls="guia4" aria-selected="false">Foto</a>
+                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia4-tab" data-toggle="tab" href="#guia4" role="tab" aria-controls="guia4" aria-selected="false">Gramatura</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia5-tab" data-toggle="tab" href="#guia5" role="tab" aria-controls="guia5" aria-selected="false">Revenda</a>
+                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia5-tab" data-toggle="tab" href="#guia5" role="tab" aria-controls="guia5" aria-selected="false">Foto</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia6-tab" data-toggle="tab" href="#guia6" role="tab" aria-controls="guia6" aria-selected="false">Final</a>
+                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia6-tab" data-toggle="tab" href="#guia6" role="tab" aria-controls="guia6" aria-selected="false">Revenda</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-sm-3 mb-md-0 disabled" id="guia7-tab" data-toggle="tab" href="#guia7" role="tab" aria-controls="guia7" aria-selected="false">Final</a>
                                     </li>
                                 </ul>
                                 <div id="cadastraProduto">
+                                    <h4>Informações do Produto</h4>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -271,6 +312,7 @@
                                     </div>
                                 </div>
                                 <div id="defineMidiasDoProduto" class="d-none">
+                                    <h4>Qual(is) a(s) mídia(s) desse produto?</h4>
                                     <?php
                                         foreach($listaMidia as $midias):
                                     ?>
@@ -286,6 +328,7 @@
                                     </div>
                                 </div>
                                 <div id="defineAcabamentosDoProduto" class="d-none">
+                                    <h4>Qual(is) o(s) acabamento(s)?</h4>
                                     <?php
                                         foreach($listaAcabamento as $acabamentos):
                                     ?>
@@ -300,7 +343,24 @@
                                         <button id="botaoDefineAcabamentosDoProduto" class="btn btn-warning my-4">Próximo</button>
                                     </div>
                                 </div>
+                                <div id="defineGramaturaDoProduto" class="d-none">
+                                    <h4>Qual(is) a(s) gramatura(s)?</h4>
+                                    <?php
+                                        foreach($listaGramatura as $gramatura):
+                                    ?>
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                        <input type="checkbox" name="gramaturaproduto" class="custom-control-input" id="gramatura<?=$gramatura['idGramatura']?>" value="<?=$gramatura['idGramatura']?>">
+                                        <label class="custom-control-label" for="gramatura<?=$gramatura['idGramatura']?>"><?=$gramatura['nomeGramatura']?></label>
+                                    </div>
+                                    <?php
+                                        endforeach;
+                                    ?>
+                                    <div class="text-center">
+                                        <button id="botaoDefineGramaturaDoProduto" class="btn btn-warning my-4">Próximo</button>
+                                    </div>
+                                </div>
                                 <div id="defineImagemProduto" class="d-none">
+                                    <h4>Definir a imagem do produto.</h4>
                                     <div class="row" id="cortaImagem">
                                         <div class="col-md-12 text-center">
                                             <div id="upload-demo"></div>
@@ -315,6 +375,7 @@
                                     </div>
                                 </div>
                                 <div id="definePrecoRevenda" class="d-none">
+                                    <h4>Quanto esse produto custará para revenda?</h4>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
@@ -328,6 +389,7 @@
                                     </div>
                                 </div>
                                 <div id="definePrecoFinal" class="d-none">
+                                    <h4>Quanto esse produto custará para cliente final?</h4>
                                     <div class="form-group">
                                         <div class="input-group input-group-merge input-group-alternative">
                                             <div class="input-group-prepend">
