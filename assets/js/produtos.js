@@ -178,9 +178,10 @@ $(document).ready(function(){
     });
 
     $("#edita-produto").on("show.bs.modal", function(event){
-        var botao = $(event.relatedTarget);
-        var id      = botao.data("id");
-        var nome    = botao.data("nome");
+        var botao           = $(event.relatedTarget);
+        var id              = botao.data("id");
+        var nome            = botao.data("nome");
+        var categoria       = botao.data("categoria");
 
         $.ajax({
             url: urlSite+'/listaValoresDoProdutoRevenda/',
@@ -201,6 +202,9 @@ $(document).ready(function(){
                 $("#editaValorFinal").val($.number(dados, 2, ',', '.' ));
             }
         });
+
+        $("#nomeEditaProduto").val(nome);
+        $("#categoriaEditaProduto").val(categoria);
 
         $("#formularioEditaProduto").on("submit", function(e){
             e.preventDefault();
