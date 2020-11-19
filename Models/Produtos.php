@@ -50,24 +50,13 @@ class Produtos extends Model{
             return false;
         }
     }
-    public function alteraProduto($nomeProduto, $categoriaProduto, $slug, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE produto SET nomeProduto = ?, idCategoria = ?, slugProduto = ? WHERE idProduto = ?");
-        $sql->execute(array($nomeProduto, $categoriaProduto, $slug, $idProduto));
+    public function alteraProduto($categoriaProduto, $nomeProduto, $nomeDaFotoDoProduto, $slug, $idProduto){
+        $sql = $this->conexao->prepare("UPDATE produto SET idCategoria = ?, nomeProduto = ?, fotoProduto = ?, slugProduto = ? WHERE idProduto = ?");
+        $sql->execute(array($categoriaProduto, $nomeProduto, $nomeDaFotoDoProduto, $slug, $idProduto));
 
         if($sql->rowCount() > 0){
             return true;
         }else{
-            return false;
-        }
-    }
-    public function alteraFotoProduto($nomeDaFotoDoProduto, $idProduto){
-        $sql = $this->conexao->prepare("UPDATE produto SET fotoProduto = ? WHERE idProduto = ?");
-        $sql->execute(array($nomeDaFotoDoProduto, $idProduto));
-
-        if($sql->rowCount() > 0){
-            return true;
-        }
-        else{
             return false;
         }
     }

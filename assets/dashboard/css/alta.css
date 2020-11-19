@@ -1,19 +1,13 @@
-
 /*
-
   INSTRUCTIONS ---------------------------------------------------------------------------------
   
   1. Add this stylesheet to the <head> of your pages
      <link href="YOUR PATH/alta.css" rel="stylesheet" type="text/css" />
      
   2. Use the file name as data-dd-theme attribute on your datedropper elements
-     <input data-dd-theme="alta" />
-     
+     <input data-dd-theme="alta" />  
 */
-
-
 div.datedropper.alta {
-
   --dd-color1: #FC7634;
   --dd-color2: #FFF;
   --dd-color3: #222222;
@@ -22,6 +16,28 @@ div.datedropper.alta {
   --dd-radius: 16px;
   --dd-width: 200px;
   --dd-shadow: 0 0 32px 0px rgba(0, 0, 0, 0.1);
-
 }
+/* width */
+::-webkit-scrollbar {width: 10px;}
+::-moz-scrollbar {width: 10px;}
+::-ms-scrollbar {width: 10px;}
+::-o-scrollbar {width: 10px;}
+
+/* Track */
+::-webkit-scrollbar-track {background: #f1f1f1;}
+::-moz-scrollbar-track {background: #f1f1f1;}
+::-ms-scrollbar-track {background: #f1f1f1;}
+::-o-scrollbar-track {background: #f1f1f1;}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {background: #888; border-radius:20px;}
+::-moz-scrollbar-thumb {background: #888; border-radius:20px;}
+::-ms-scrollbar-thumb {background: #888; border-radius:20px;}
+::-o-scrollbar-thumb {background: #888; border-radius:20px;}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {background: #555;}
+::-moz-scrollbar-thumb:hover {background: #555;}
+::-ms-scrollbar-thumb:hover {background: #555;}
+::-o-scrollbar-thumb:hover {background: #555;}
 

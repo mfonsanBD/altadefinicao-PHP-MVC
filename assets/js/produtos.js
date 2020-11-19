@@ -1,13 +1,7 @@
 urlSite = window.location.href;
 $(document).ready(function(){
-    let nomeProduto;
-    let categoriaProduto;
-    let midiasMarcadas;
-    let acabamentosMarcados;
-    let gramaturasMarcadas;
-    let imagemProduto;
-    let precoRevenda;
-    let precoFinal;
+    let nomeProduto, categoriaProduto, midiasMarcadas, acabamentosMarcados, gramaturasMarcadas, imagemProduto, precoRevenda, precoFinal;
+    let editaNomeProduto, editaCategoriaProduto, editaImagemProduto, editaPrecoRevenda, editaPrecoFinal;
 
     $("#botaoCadastraProduto").click(function(e){
         e.preventDefault();
@@ -181,7 +175,8 @@ $(document).ready(function(){
         var botao           = $(event.relatedTarget);
         var id              = botao.data("id");
         var nome            = botao.data("nome");
-        var categoria       = botao.data("categoria");
+
+        $("#nomeEditaProduto").val(nome);
 
         $.ajax({
             url: urlSite+'/listaValoresDoProdutoRevenda/',
@@ -203,83 +198,25 @@ $(document).ready(function(){
             }
         });
 
-        $("#nomeEditaProduto").val(nome);
-        $("#categoriaEditaProduto").val(categoria);
-
-        $("#formularioEditaProduto").on("submit", function(e){
+        $("#botaoEditaProduto").click(function(e){
             e.preventDefault();
 
-            var nomeProduto         = $("#nomeEditaProduto").val();
-            var categoriaProduto    = $("#categoriaEditaProduto").val();
+            editaNomeProduto         = $("#nomeEditaProduto").val();
+            editaCategoriaProduto    = $("#categoriaEditaProduto").val();
 
-            $.ajax({
-                url: urlSite+'/alteraProduto/',
-                type: 'POST',
-                data: {idProduto:id, nomeProduto:nomeProduto, categoriaProduto:categoriaProduto, slug:string_to_slug(nomeProduto)},
-                success: function(dados){
-                    if(dados == 1){
-                        sucessoProdutos("Produto alterado com sucesso!");
-                        setTimeout(function(){
-                            window.location.reload();
-                        }, 3000);
-                    }
-                    else{
-                        atencaoProdutos("As informações que você enviou são as informações atuais do produto!");
-                    }
-                }
-            });
-        });
-
-        $("#editaPrecoRevenda").on("submit", function(ev){
-            ev.preventDefault();
-            var valorRevenda = $("#editaValorRevenda").val();
-            
-            if(valorRevenda == ''){
-                atencaoProdutos("O valor do(a) "+nome+" para revendedor <strong>é obrigatório</strong>.")
+            if(editaNomeProduto == ""){
+                atencaoProdutos("O <b>Nome do Produto</b> é obrigatório.");
+                setTimeout(function(){$(".alert").alert('close');}, 3000);
+            }else if(editaCategoriaProduto == null){
+                atencaoProdutos("A <b>Categoria do Produto</b> é obrigatória.");
+                setTimeout(function(){$(".alert").alert('close');}, 3000);
             }else{
-                $.ajax({
-                    url: urlSite+'/precoParaRevenda/',
-                    type: 'POST',
-                    data: {valorRevenda:valorRevenda, idProduto:id},
-                    success: function(dados){
-                        if(dados == 1){
-                            sucessoProdutos("Preço de revenda alterado com sucesso!");
-                            setTimeout(function(){
-                                window.location.reload();
-                            }, 3000);
-                        }else{
-                            erroProdutos("A informação enviada é a atual.");
-                        }
-                    }
-                });
+                $("#editaProduto").addClass("d-none");
+                $("#guiaedita2-tab").addClass("active");
+                $("#editaImagemProduto").removeClass("d-none");
             }
         });
 
-        $("#editaPrecoFinal").on("submit", function(evt){
-            evt.preventDefault();
-            var valorFinal = $("#editaValorFinal").val();
-            
-            if(valorFinal == ''){
-                atencaoProdutos("O valor do(a) "+nome+" para cliente final <strong>é obrigatório</strong>.")
-            }else{
-                $.ajax({
-                    url: urlSite+'/precoParaFinal/',
-                    type: 'POST',
-                    data: {valorFinal:valorFinal, idProduto:id},
-                    success: function(dados){
-                        if(dados == 1){
-                            sucessoProdutos("Preço de cliente final alterado com sucesso!");
-                            setTimeout(function(){
-                                window.location.reload();
-                            }, 3000);
-                        }else{
-                            erroProdutos("A informação enviada é a atual.");
-                        }
-                    }
-                });
-            }
-        });
-        
         var resize = $('#upload-demo-edicao').croppie({
             enableExif: true,
             enableOrientation: true,    
@@ -306,26 +243,96 @@ $(document).ready(function(){
             type: 'canvas',
             size: 'viewport'
             }).then(function (img) {
+                editaImagemProduto = img;
                 $.ajax({
-                    url: urlSite+'/alteraFotoProduto/',
+                    url: urlSite+'/alteraProduto/',
                     type: 'POST',
-                    data: {idProduto:id, fotoProduto:img},
+                    data: {editaNomeProduto:editaNomeProduto, editaCategoriaProduto:editaCategoriaProduto, editaImagemProduto:editaImagemProduto, slug:string_to_slug(editaNomeProduto), idProduto:id},
                     success: function(dados){
                         if(dados == 1){
-                            sucessoProdutos("Foto do produto alterada com sucesso!");
+                            sucessoProdutos("Informações do produto alteradas com sucesso!");
                             setTimeout(function(){
-                                window.location.reload();
+                                $(".alert").alert('close');
+                                $("#editaImagemProduto").addClass("d-none");
+                                $("#guiaedita3-tab").addClass("active");
+                                $("#editaPrecoRevenda").removeClass("d-none");
                             }, 3000);
-                        }
-                        else if(dados == 2){
-                            atencaoProdutos("Tipo de imagem inválida. Tente ennviar uma nova imagem.");
-                        }
-                        else{
-                            erroProdutos("Não foi possível alterar a foto do produto. Tente novamente mais tarde!");
+                        }else{
+                            atencaoProdutos("A informação enviada é a atual.");
+                            setTimeout(function(){
+                                $(".alert").alert('close');
+                                $("#editaImagemProduto").addClass("d-none");
+                                $("#guiaedita3-tab").addClass("active");
+                                $("#editaPrecoRevenda").removeClass("d-none");
+                            }, 3000);
                         }
                     }
                 });
             });
+        });
+
+        $("#botaoEditaPrecoRevenda").click(function(ev){
+            ev.preventDefault();
+            editaPrecoRevenda = $("#editaValorRevenda").val();
+            
+            if(editaPrecoRevenda == ''){
+                atencaoProdutos("O campo <b>Valor para Revenda</b> não pode estar vazio.");
+                setTimeout(function(){$(".alert").alert('close');}, 3000);
+            }else{
+                $.ajax({
+                    url: urlSite+'/precoParaRevenda/',
+                    type: 'POST',
+                    data: {editaPrecoRevenda:editaPrecoRevenda, idProduto:id},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Preço para revendedor alterado com sucesso!");
+                            setTimeout(function(){
+                                $(".alert").alert('close');
+                                $("#editaPrecoRevenda").addClass("d-none");
+                                $("#guiaedita4-tab").addClass("active");
+                                $("#editaPrecoFinal").removeClass("d-none");
+                            }, 3000);
+                        }else{
+                            atencaoProdutos("O preço que você informou está sendo usado atualmente.");
+                            setTimeout(function(){
+                                $(".alert").alert('close');
+                                $("#editaPrecoRevenda").addClass("d-none");
+                                $("#guiaedita4-tab").addClass("active");
+                                $("#editaPrecoFinal").removeClass("d-none");
+                            }, 3000);
+                        }
+                    }
+                });
+            }
+        });
+
+        $("#botaoEditaPrecoFinal").click(function(evt){
+            evt.preventDefault();
+            editaPrecoFinal = $("#editaValorFinal").val();
+            
+            if(editaPrecoFinal == ''){
+                atencaoProdutos("O campo <b>Valor para Cliente Final</b> não pode estar vazio.");
+                setTimeout(function(){$(".alert").alert('close');}, 3000);
+            }else{
+                $.ajax({
+                    url: urlSite+'/precoParaFinal/',
+                    type: 'POST',
+                    data: {editaPrecoFinal:editaPrecoFinal, idProduto:id},
+                    success: function(dados){
+                        if(dados == 1){
+                            sucessoProdutos("Preço para cliente final alterado com sucesso!");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }else{
+                            atencaoProdutos("O preço que você informou está sendo usado atualmente.");
+                            setTimeout(function(){
+                                window.location.reload();
+                            }, 3000);
+                        }
+                    }
+                });
+            }
         });
     });
 });

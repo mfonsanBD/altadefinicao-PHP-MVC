@@ -158,23 +158,10 @@ class ProdutosController extends Login{
     public function alteraProduto(){
         if(isset($_POST) && !empty($_POST)){
             $idProduto              = trim(addslashes($_POST['idProduto']));
-            $nomeProduto            = trim(addslashes($_POST['nomeProduto']));
-            $categoriaProduto       = trim(addslashes($_POST['categoriaProduto']));
+            $nomeProduto            = trim(addslashes($_POST['editaNomeProduto']));
+            $categoriaProduto       = trim(addslashes($_POST['editaCategoriaProduto']));
+            $fotoProduto            = trim(addslashes($_POST['editaImagemProduto']));
             $slug                   = trim(addslashes($_POST['slug']));
-
-            $produto = new Produtos();
-            
-            if($produto->alteraProduto($nomeProduto, $categoriaProduto, $slug, $idProduto)){
-                echo 1;
-            }else{
-                echo 0;
-            }
-        }
-    }
-    public function alteraFotoProduto(){
-        if(isset($_POST) && !empty($_POST)){
-            $idProduto          = trim(addslashes($_POST['idProduto']));
-            $fotoProduto        = trim(addslashes($_POST['fotoProduto']));
             $nomeDaFotoDoProduto;
 
             $fotoVazia = 'iVBORw0KGgoAAAANSUhEUgAAAXQAAAD6CAYAAACxrrxPAAABf0lEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwarmUAAcsYOEEAAAAASUVORK5CYII=';
@@ -187,7 +174,7 @@ class ProdutosController extends Login{
     
                 if(in_array($primeiroArrayFoto[0], $permitidos)){
                     $informacoesDaFoto = base64_decode($segundoArrayFoto[1]);
-                    $nomeDaFotoDoProduto = md5($idProduto).'.jpg';
+                    $nomeDaFotoDoProduto = md5(date("Y-m-d H:i:s").rand(0, 9999)).'.jpg';
     
                     $caminho = 'assets/img/servicos-produtos/';
     
@@ -205,9 +192,10 @@ class ProdutosController extends Login{
                 $nomeDaFotoDoProduto = 'principal.png';
             }
 
-            $produto        = new Produtos();
+            $produto       = new Produtos();
+            $alteraProduto = $produto->alteraProduto($categoriaProduto, $nomeProduto, $nomeDaFotoDoProduto, $slug, $idProduto);
             
-            if($produto->alteraFotoProduto($nomeDaFotoDoProduto, $idProduto)){
+            if($alteraProduto){
                 echo 1;
             }else{
                 echo 0;
@@ -221,7 +209,7 @@ class ProdutosController extends Login{
             $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
             $valores = $valorProdutoTipoCliente->listaValoresDoProdutoRevenda($id);
 
-            echo $valores['valor'];
+            echo $valores['valor_p_tc'];
         }
     }
     public function listaValoresDoProdutoFinal(){
@@ -231,17 +219,18 @@ class ProdutosController extends Login{
             $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
             $valores = $valorProdutoTipoCliente->listaValoresDoProdutoFinal($id);
 
-            echo $valores['valor'];
+            echo $valores['valor_p_tc'];
         }
     }
     public function precoParaRevenda(){
         if(isset($_POST) && !empty($_POST)){
             $idProduto = trim(addslashes($_POST['idProduto']));
-            $valorRevenda = trim(addslashes($_POST['valorRevenda']));
+            $valorRevenda = trim(addslashes($_POST['editaPrecoRevenda']));
 
             $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
+            $mudaValorParaRevenda = $valorProdutoTipoCliente->mudaValorParaRevenda($valorRevenda, $idProduto);
             
-            if($valorProdutoTipoCliente->mudaValorParaRevenda($valorRevenda, $idProduto)){
+            if($mudaValorParaRevenda){
                 echo 1;
             }else{
                 echo 0;
@@ -251,11 +240,12 @@ class ProdutosController extends Login{
     public function precoParaFinal(){
         if(isset($_POST) && !empty($_POST)){
             $idProduto = trim(addslashes($_POST['idProduto']));
-            $valorFinal = trim(addslashes($_POST['valorFinal']));
+            $valorFinal = trim(addslashes($_POST['editaPrecoFinal']));
 
             $valorProdutoTipoCliente = new ValorProdutoTipoCliente();
+            $mudaValorParaFinal = $valorProdutoTipoCliente->mudaValorParaFinal($valorFinal, $idProduto);
             
-            if($valorProdutoTipoCliente->mudaValorParaFinal($valorFinal, $idProduto)){
+            if($mudaValorParaFinal){
                 echo 1;
             }else{
                 echo 0;
