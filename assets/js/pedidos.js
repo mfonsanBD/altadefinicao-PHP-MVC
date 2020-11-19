@@ -17,6 +17,24 @@ $(document).ready(function(){
             atencaoPedidos("O campo <b>Identificação do Produto</b> é obrigatório!");
             setTimeout(function(){$(".alert").alert('close');}, 5000);
         }else{
+            $.ajax({
+                url: urlSite+'/getMidias',
+                type: 'POST',
+                dataType: 'html',
+                data: {idProduto:produtoPedido},
+                success: function(resposta){
+                    $("#midiasproduto").html(resposta);
+                }
+            });
+            $.ajax({
+                url: urlSite+'/getAcabamentos',
+                type: 'POST',
+                dataType: 'html',
+                data: {idProduto:produtoPedido},
+                success: function(resposta){
+                    $("#acabamentosproduto").html(resposta);
+                }
+            });
             $("#cadastraPedido").addClass('d-none');
             $("#clientePedido").removeClass('d-none');
             $("#guia2-tab").addClass('active');

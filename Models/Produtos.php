@@ -71,4 +71,15 @@ class Produtos extends Model{
 
         return $nome;
     }
+    public function listaInfosProduto($idProduto){
+        $array = array();
+        $sql = $this->conexao->prepare("SELECT * FROM produto WHERE idProduto = ?");
+        $sql->execute(array($idProduto));
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetch();
+        }
+
+        return $array;
+    }
 }

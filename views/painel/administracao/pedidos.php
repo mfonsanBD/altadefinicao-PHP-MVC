@@ -44,7 +44,7 @@
                             <th scope="col" class="sort" data-sort="name">Nome da Arte</th>
                             <th scope="col" class="sort" data-sort="name">Cliente</th>
                             <th scope="col" class="sort" data-sort="status">Status do Pedido</th>
-                            <th scope="col" class="sort" data-sort="name">dia do Pedido</th>
+                            <th scope="col" class="sort" data-sort="name">Dia do Pedido</th>
                             <th scope="col" class="sort" data-sort="name">Valor do Pedido</th>
                             <th scope="col"></th>
                         </tr>
@@ -234,7 +234,7 @@
                                         <?php
                                             foreach($listaTipoCliente as $tipoCliente):
                                         ?>
-                                            <div class="custom-control custom-radio mb-3">
+                                            <div class="custom-control custom-radio mb-3 custom-control-inline">
                                                 <input type="radio" id="tipocliente<?=$tipoCliente['idTipoCliente']?>" name="tipocliente" class="custom-control-input" value="<?=$tipoCliente['idTipoCliente']?>">
                                                 <label class="custom-control-label" for="tipocliente<?=$tipoCliente['idTipoCliente']?>"><?=$tipoCliente['nomeTipoCliente']?></label>
                                             </div>
@@ -277,32 +277,14 @@
                                     </div>
                                     <div id="midiaMaterial" class="d-none">
                                         <h4>Qual a mídia do Produto?</h4>
-                                        <?php
-                                            foreach($listaMidia as $midia):
-                                        ?>
-                                            <div class="custom-control custom-radio mb-3">
-                                                <input type="radio" id="midia<?=$midia['idMidia']?>" name="midia" class="custom-control-input" value="<?=$midia['idMidia']?>">
-                                                <label class="custom-control-label" for="midia<?=$midia['idMidia']?>"><?=$midia['nomeMidia']?></label>
-                                            </div>
-                                        <?php
-                                            endforeach;
-                                        ?>
+                                        <div id="midiasproduto"></div>
                                         <div class="text-center">
                                             <button id="botaoMidiaMaterial" class="btn btn-warning my-4">Próximo</button>
                                         </div>
                                     </div>
                                     <div id="acabamentoMaterial" class="d-none">
                                         <h4>Qual o acabamento do Produto?</h4>
-                                        <?php
-                                            foreach($listaAcabamento as $acabamento):
-                                        ?>
-                                            <div class="custom-control custom-radio mb-3">
-                                                <input type="radio" id="acabamento<?=$acabamento['idAcabamento']?>" name="acabamento" class="custom-control-input" value="<?=$acabamento['idAcabamento']?>">
-                                                <label class="custom-control-label" for="acabamento<?=$acabamento['idAcabamento']?>"><?=$acabamento['nomeAcabamento']?></label>
-                                            </div>
-                                        <?php
-                                            endforeach;
-                                        ?>
+                                        <div id="acabamentosproduto"></div>
                                         <div class="text-center">
                                             <button id="botaoAcabamentoMaterial" class="btn btn-warning my-4">Próximo</button>
                                         </div>

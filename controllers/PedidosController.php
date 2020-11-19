@@ -269,6 +269,50 @@ class PedidosController extends Login{
       }
     }
   }
+  public function getMidias(){
+    if(isset($_POST) && !empty($_POST)){
+      $idProduto        = trim(addslashes($_POST['idProduto']));
+
+      $produto                    = new Produtos();
+      $listaInfosProduto          = $produto->listaInfosProduto($idProduto);
+
+      $midia                      = new Midia();
+      $listaMidia                 = $midia->listaMidia();
+
+      $midiasProduto        = explode(",", $listaInfosProduto['idsMidias']);
+
+      foreach($listaMidia as $midias){
+        if(in_array($midias['idMidia'], $midiasProduto)){
+          echo "<div class='custom-control custom-radio mb-3 custom-control-inline'>
+              <input type='radio' id='midia".$midias['idMidia']."' name='midia' class='custom-control-input' value='".$midias['idMidia']."'>
+              <label class='custom-control-label' for='midia".$midias['idMidia']."'>".$midias['nomeMidia']."</label>
+          </div>";
+        }
+      }
+    }
+  }
+  public function getAcabamentos(){
+    if(isset($_POST) && !empty($_POST)){
+      $idProduto        = trim(addslashes($_POST['idProduto']));
+
+      $produto                    = new Produtos();
+      $listaInfosProduto          = $produto->listaInfosProduto($idProduto);
+
+      $acabamento                 = new Acabamento();
+      $listaAcabamento            = $acabamento->listaAcabamento();
+
+      $acabamentosProduto        = explode(",", $listaInfosProduto['idsAcabamentos']);
+
+      foreach($listaAcabamento as $acabamentos){
+        if(in_array($acabamentos['idAcabamento'], $acabamentosProduto)){
+          echo "<div class='custom-control custom-radio mb-3 custom-control-inline'>
+              <input type='radio' id='acabamento".$acabamentos['idAcabamento']."' name='acabamento' class='custom-control-input' value='".$acabamentos['idAcabamento']."'>
+              <label class='custom-control-label' for='acabamento".$acabamentos['idAcabamento']."'>".$acabamentos['nomeAcabamento']."</label>
+          </div>";
+        }
+      }
+    }
+  }
 }
 
 function verificaPastaRevendedor($pastaAno, $revendedor, $arquivoArte, $caminhoArquivo){
