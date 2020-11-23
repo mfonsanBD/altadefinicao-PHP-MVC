@@ -60,13 +60,26 @@
   var dadoslm = {
       labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
       datasets: [{
-              label: "Lucro no Mês",
+              label: "Lucro por Mês (R$)",
               backgroundColor: "rgba(255,255,255,0.2)",
               borderColor: "rgba(255,255,255,1)",
               borderWidth: 2,
               hoverBackgroundColor: "rgba(255,255,255,0.4)",
               hoverBorderColor: "rgba(255,255,255,1)",
-              data: [65, 59, 30, 81, 56, 55, 40, 30, 81, 56, 55, 40],
+              data: [
+                <?=$this->lucroJaneiro;?>,
+                <?=$this->lucroFevereiro;?>,
+                <?=$this->lucroMarco;?>,
+                <?=$this->lucroAbril;?>,
+                <?=$this->lucroMaio;?>,
+                <?=$this->lucroJunho;?>,
+                <?=$this->lucroJulho;?>,
+                <?=$this->lucroAgosto;?>,
+                <?=$this->lucroSetembro;?>,
+                <?=$this->lucroOutubro;?>,
+                <?=$this->lucroNovembro;?>,
+                <?=$this->lucroDezembro;?>
+              ],
           }]
   };
   var opcoeslm = {
@@ -93,13 +106,26 @@
   var dadospm = {
       labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
       datasets: [{
-              label: "Pedidos no Mês",
+              label: "Pedidos por Mês",
               backgroundColor: "rgba(245,96,54,0.2)",
               borderColor: "rgba(245,96,54,1)",
               borderWidth: 2,
               hoverBackgroundColor: "rgba(245,96,54,0.4)",
               hoverBorderColor: "rgba(245,96,54,1)",
-              data: [65, 59, 30, 81, 56, 55, 40, 30, 81, 56, 55, 40],
+              data: [
+                <?=$this->pedidosJaneiro;?>,
+                <?=$this->pedidosFevereiro;?>,
+                <?=$this->pedidosMarco;?>,
+                <?=$this->pedidosAbril;?>,
+                <?=$this->pedidosMaio;?>,
+                <?=$this->pedidosJunho;?>,
+                <?=$this->pedidosJulho;?>,
+                <?=$this->pedidosAgosto;?>,
+                <?=$this->pedidosSetembro;?>,
+                <?=$this->pedidosOutubro;?>,
+                <?=$this->pedidosNovembro;?>,
+                <?=$this->pedidosDezembro;?>
+              ],
           }]
   };
   var opcoespm = {

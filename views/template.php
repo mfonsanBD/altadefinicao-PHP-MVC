@@ -40,12 +40,12 @@
 					<li class="nav-item <?=($this->titulo == "Produtos & Serviços") ? 'ativo' : '';?>">
 						<a class="nav-link" href="produtos-e-servicos">Produtos & Serviços</a>
 					</li>
-					<!-- <li class="nav-item <?=($this->titulo == "Notícias") ? 'ativo' : '';?>">
+					<li class="nav-item <?=($this->titulo == "Notícias") ? 'ativo' : '';?>">
 						<a class="nav-link" href="noticias">Notícias</a>
 					</li>
 					<li class="nav-item <?=($this->titulo == "Orçamento") ? 'ativo' : '';?>">
 						<a class="nav-link" href="orcamento">Orçamento</a>
-					</li> -->
+					</li>
 					<li class="nav-item <?=($this->titulo == "Contato") ? 'ativo' : '';?>">
 						<a class="nav-link" href="contato">Contato</a>
 					</li>
@@ -53,11 +53,11 @@
 				<?php
 					if(empty($_SESSION['logado']) || !isset($_SESSION['logado'])){
 				?>
-					<!-- <button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button> -->
+					<button id="botaoLogin" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Login</button>
 				<?php
 					}else{
 				?>
-					<!-- <button id="botaoPainel" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Painel de Controle</button> -->
+					<button id="botaoPainel" class="btn bg-padrao my-2 my-sm-0 btn-sm ml-3">Painel de Controle</button>
 				<?php
 					} 
 				?>
@@ -72,11 +72,11 @@
 	<footer>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<a class="navbar-brand" href="home"><img src="assets/img/logo-alta-definicao.png" alt="Logo Alta Definição"></a>
 					<p>A Alta Definição teve seu inicio em 2000, Valdeir Foli, empresário visionário, começou sua empresa pensando no revendedor...</p>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<h5>Menu do Site</h5>
 					<ul class="navbar-nav pt-4">
 						<li>
@@ -88,18 +88,18 @@
 						<li>
 							<a class="nav-link text-white" href="produtos-e-servicos">Produtos & Serviços</a>
 						</li>
-						<!-- <li>
+						<li>
 							<a class="nav-link text-white" href="noticias">Notícias</a>
 						</li>
 						<li>
 							<a class="nav-link text-white" href="orcamento">Orçamento</a>
-						</li> -->
+						</li>
 						<li>
 							<a class="nav-link text-white" href="contato">Contato</a>
 						</li>
 					</ul>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-3">
 					<h5>Segue lá!</h5>
 					<ul class="list-inline mt-4">
 						<li class="list-inline-item">
@@ -113,7 +113,7 @@
 						</li>
 					</ul>
 				</div>
-				<!-- <div class="col">
+				<div class="col-lg-3">
 					<h5>Newsletter</h5>
 					<form class="pt-4">
 						<div class="form-group">
@@ -129,7 +129,7 @@
 						</div>
 						<button type="submit" class="btn bg-padrao">Enviar</button>
 					</form>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</footer>
