@@ -329,6 +329,13 @@ $(document).ready(function(){
     });
     
     $(".medidas").mask("##0,00", {reverse: true});
+
+    $('#tabelaDePedidos').DataTable({
+        "order": [[ 4, 'desc' ]],
+        "language": {
+            "url": "assets/js/Portuguese-Brasil.json"
+        }
+    });
 });
 
 function sucessoPedidos(texto){

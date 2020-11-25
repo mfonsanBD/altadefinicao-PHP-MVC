@@ -25,6 +25,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="<?=URL_BASE?>caixa">
+                <i class="ni ni-book-bookmark text-default"></i>
+                <span class="nav-link-text">Caixa</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link <?=($this->titulo == "Produtos") ? 'active' : '';?>" href="<?=URL_BASE?>produtos">
                 <i class="ni ni-box-2 text-default"></i>
                 <span class="nav-link-text">Produtos</span>
@@ -37,15 +43,21 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Colaboradores") ? 'active' : '';?>" href="<?=URL_BASE?>colaboradores">
-                <i class="ni ni-single-02 text-default"></i>
-                <span class="nav-link-text">Colaboradores</span>
+              <a class="nav-link <?=($this->titulo == "Endereço") ? 'active' : '';?>" href="<?=URL_BASE?>endereco">
+                <i class="ni ni-pin-3 text-default"></i>
+                <span class="nav-link-text">Endereço</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Caixa") ? 'active' : '';?>" href="<?=URL_BASE?>caixa">
-                <i class="ni ni-book-bookmark text-default"></i>
-                <span class="nav-link-text">Caixa</span>
+              <a class="nav-link <?=($this->titulo == "Contato") ? 'active' : '';?>" href="<?=URL_BASE?>contatos">
+                <i class="ni ni-mobile-button text-default"></i>
+                <span class="nav-link-text">Contato</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link <?=($this->titulo == "Colaboradores") ? 'active' : '';?>" href="<?=URL_BASE?>colaboradores">
+                <i class="ni ni-single-02 text-default"></i>
+                <span class="nav-link-text">Colaboradores</span>
               </a>
             </li>
             <li class="nav-item">

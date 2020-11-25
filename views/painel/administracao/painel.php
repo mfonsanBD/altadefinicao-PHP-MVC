@@ -125,15 +125,15 @@
                 </div>
               </div>
             </div>
-            <table class="table align-items-center table-flush" id="tabelaDeClientes">
+            <table class="table align-items-center table-flush" id="tabelaDePedidos">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col" class="sort" data-sort="name">N° Pedido</th>
-                    <th scope="col" class="sort" data-sort="name">Nome da Arte</th>
-                    <th scope="col" class="sort" data-sort="name">Cliente</th>
-                    <th scope="col" class="sort" data-sort="status">Status do Pedido</th>
-                    <th scope="col" class="sort" data-sort="name">dia do Pedido</th>
-                    <th scope="col" class="sort" data-sort="name">Valor do Pedido</th>
+                    <th scope="col" class="sort">N° Pedido</th>
+                    <th scope="col" class="sort">Nome da Arte</th>
+                    <th scope="col" class="sort">Cliente</th>
+                    <th scope="col" class="sort">Status do Pedido</th>
+                    <th scope="col" class="sort">dia do Pedido</th>
+                    <th scope="col" class="sort">Valor do Pedido</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>

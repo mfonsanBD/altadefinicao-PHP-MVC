@@ -25,7 +25,7 @@ class ProdutosController extends Login{
         $this->nomeUsuario = $informacoesUsuario['nomeUsuario']." ".$informacoesUsuario['sobrenomeUsuario'];
         $this->foto = $informacoesUsuario['fotoUsuario'];
 
-        switch($_SESSION['tipoUsuario']){
+        switch($_SESSION['idTipoUsuario']){
             case 0:
                 $this->titulo = "Produtos";
                 $this->loadTemplate('cliente/produtos', $dados);

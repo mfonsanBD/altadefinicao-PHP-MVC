@@ -37,7 +37,7 @@
             <div id="dadosAtuais" class="card-body pt-0">
               <div id="dados">
                 <div class="card-body">
-                    <table class="table align-items-center table-flush" id="tabelaDeClientes">
+                    <table class="table align-items-center table-flush" id="tabelaDePedidos">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col" class="sort" data-sort="name">N° Pedido</th>

@@ -145,4 +145,24 @@ class Usuario extends Model{
 
         return $nome;
 	}
+	public function alteraUsuario($nome, $sobrenome, $email, $id){
+		$sql = $this->conexao->prepare("UPDATE usuario SET nomeUsuario = ?, sobrenomeUsuario = ?, emailUsuario = ? WHERE idUsuario = ?");
+		$sql->execute(array($nome, $sobrenome, $email, $id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function alteraSenha($senha, $id){
+		$sql = $this->conexao->prepare("UPDATE usuario SET senhaUsuario = ? WHERE idUsuario = ?");
+		$sql->execute(array($senha, $id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

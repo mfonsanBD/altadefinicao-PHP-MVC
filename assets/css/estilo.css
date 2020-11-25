@@ -18,6 +18,16 @@ h5,
 h6{
     font-family: 'Montserrat' !important;
 }
+#notfound img{
+    position: absolute;
+    bottom: 0;
+}
+.notfoundinfo{
+    position: absolute;
+    top: 29%;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .breadcrumb{
     border-radius: 0 !important;
 }
@@ -69,8 +79,7 @@ form a{
 .revenda,
 .noticias,
 .contato,
-footer,
-.notfound{
+footer{
     padding: 80px 0;
 }
 .quem-somos h1,
@@ -243,8 +252,7 @@ footer{
     .revenda,
     .noticias,
     .contato,
-    footer,
-    .notfound{
+    footer{
         padding: 20px 0;
     }
     .carousel-control-next, .carousel-control-prev{

@@ -49,5 +49,38 @@ class PerfilController extends Login{
                 exit();
             break;
         }
-	}
+    }
+    public function alteraUsuario(){
+		if(!empty($_POST) && isset($_POST)){
+			$nome 				= trim(addslashes($_POST['nome']));
+			$sobrenome 			= trim(addslashes($_POST['sobrenome']));
+			$email 				= trim(addslashes($_POST['email']));
+            $id                 = $_SESSION['logado'];
+                    
+            $usuario = new Usuario();
+            $alteraUsuario = $usuario->alteraUsuario($nome, $sobrenome, $email, $id);
+            
+            if($alteraUsuario){
+                echo 1;
+            }else{
+                echo 0;
+            }
+			
+		}
+    }
+    public function alteraSenha(){
+		if(!empty($_POST) && isset($_POST)){
+			$senha 				= md5(trim(addslashes($_POST['senha'])));
+            $id                 = $_SESSION['logado'];
+                    
+            $usuario = new Usuario();
+            $alteraSenha = $usuario->alteraSenha($senha, $id);
+            
+            if($alteraSenha){
+                echo 1;
+            }else{
+                echo 0;
+            }
+		}
+    }
 }
