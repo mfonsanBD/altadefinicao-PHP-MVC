@@ -48,9 +48,10 @@ class Usuario extends Model{
 	}
 	public function informacoesUsuario($id){
 		$array = array();
-		$sql = $this->conexao->prepare("SELECT user.*, tipoUser.* FROM usuario AS user 
-		INNER JOIN tipousuario AS tipoUser ON (user.idTipoUsuario = tipoUser.idTipoUsuario) 
-		WHERE idUsuario = ?");
+		$sql = $this->conexao->prepare("SELECT user.*, tipoUser.*, c.* FROM usuario AS user 
+		INNER JOIN tipousuario AS tipoUser ON (user.idTipoUsuario = tipoUser.idTipoUsuario)
+		INNER JOIN cliente AS c ON (user.idUsuario = c.idUsuario)
+		WHERE user.idUsuario = ?");
 		$sql->execute(array($id));
 
 		if($sql->rowCount() > 0){
@@ -158,6 +159,16 @@ class Usuario extends Model{
 	public function alteraSenha($senha, $id){
 		$sql = $this->conexao->prepare("UPDATE usuario SET senhaUsuario = ? WHERE idUsuario = ?");
 		$sql->execute(array($senha, $id));
+
+		if($sql->rowCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public function alteraFoto($nomeDaFotoDoProduto, $id){
+		$sql = $this->conexao->prepare("UPDATE usuario SET fotoUsuario = ? WHERE idUsuario = ?");
+		$sql->execute(array($nomeDaFotoDoProduto, $id));
 
 		if($sql->rowCount() > 0){
 			return true;

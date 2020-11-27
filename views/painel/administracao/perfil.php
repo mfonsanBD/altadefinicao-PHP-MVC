@@ -27,13 +27,13 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
+                  <a class="btn" data-toggle="modal" data-target="#alteraFotoUsuario">
                     <?php
-                        if($this->foto == 'usuario.jpg'){
-                            echo "<img alt='Foto de Usuário' src='".URL_BASE."assets/img/usuario.jpg' class='rounded-circle'>";
-                        }else{
-                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='".URL_BASE."assets/img/usuario/".$_SESSION['logado']."/".$this->foto."' class='rounded-circle'>";
-                        }
+                      if($this->foto == 'usuario.jpg'){
+                          echo "<img alt='Foto de Usuário' src='".URL_BASE."assets/img/usuario.jpg' class='rounded-circle'>";
+                      }else{
+                          echo "<img alt='Foto de ".$this->nomeUsuario."' src='".URL_BASE."media/usuarios/".$_SESSION['logado']."/".$this->foto."' class='rounded-circle'>";
+                      }
                     ?>
                   </a>
                 </div>
@@ -114,62 +114,6 @@
                   </div>
                 </div>
                 <hr class="my-4" />
-                <!-- Address -->
-                <h6 class="heading-small text-muted mb-4">Informações do Endereço</h6>
-                <div class="pl-lg-4">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="form-control-label" for="logradouro">Logradouro</label>
-                        <input id="logradouro" class="form-control" placeholder="Ex: Av. Governador Leonel de Moura Brizola" type="text">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-2">
-                      <div class="form-group">
-                        <label class="form-control-label" for="numero">Número</label>
-                        <input type="text" id="numero" class="form-control" placeholder="01">
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                      <div class="form-group">
-                        <label class="form-control-label" for="complemento">Complemento</label>
-                        <input type="text" id="complemento" class="form-control" placeholder="Ex: Lote: 00 Quadra: 00">
-                      </div>
-                    </div>
-                    <div class="col-lg-5">
-                      <div class="form-group">
-                        <label class="form-control-label" for="bairro">Bairro</label>
-                        <input type="text" id="bairro" class="form-control" placeholder="Ex: São Bento">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="cidade">Cidade</label>
-                        <input type="text" id="cidade" class="form-control" placeholder="Ex: Duque de Caxias">
-                      </div>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="form-group">
-                        <label class="form-control-label" for="estado">Estado</label>
-                        <input type="text" id="estado" class="form-control" placeholder="Ex: RJ">
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <label class="form-control-label" for="cep">CEP</label>
-                        <input type="text" id="cep" class="form-control" placeholder="Ex: 00.000-000">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                      <button class="btn btn-warning btn-sm mt-3" id="botaoAlteracaoEndereco">Salvar Alterações de Endereço</button>
-                  </div>
-                </div>
-                <hr class="my-4" />
                 <!-- Description -->
                 <h6 class="heading-small text-muted mb-4">Informações de Contato</h6>
                 <div class="pl-lg-4">
@@ -177,19 +121,19 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="telefoneFixo">Telefone (Fixo)</label>
-                        <input type="text" id="telefoneFixo" class="form-control" placeholder="Ex: 0000-0000">
+                        <input type="text" id="fixo" class="form-control fixo" placeholder="Ex: (00) 0000-0000" value="<?=$informacoesUsuario['telefoneCliente']?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="celular">Celular</label>
-                        <input type="text" id="celular" class="form-control" placeholder="Ex: (21) 90000-0000">
+                        <input type="text" id="celular" class="form-control celular" placeholder="Ex: (00) 90000-0000" value="<?=$informacoesUsuario['celularCliente']?>">
                       </div>
                     </div>
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="whatsapp">WhatsaApp</label>
-                        <input type="text" id="whatsapp" class="form-control" placeholder="Ex: (21) 90000-0000">
+                        <input type="text" id="whatsapp" class="form-control whatsapp" placeholder="Ex: +55 (00) 90000-0000" value="<?=$informacoesUsuario['whatsappCliente']?>">
                       </div>
                     </div>
                   </div>
@@ -208,5 +152,40 @@
     </div>
   </div>
   <!-- Argon Scripts -->
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="modal fade" id="alteraFotoUsuario" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+      <div class="modal-dialog modal- modal-dialog-centered modal" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary border-0 mb-0">
+              <div class="card-header bg-warning text-white">
+                  Alterar Foto
+              </div>
+              <div class="card-body px-lg-5 py-lg-5">
+                <div>
+                  <h4>Definir a imagem do usuário.</h4>
+                  <div class="row" id="cortaImagemUsuario">
+                    <div class="col-md-12 text-center">
+                      <div id="upload-demo-usuario"></div>
+                    </div>
+                    <div class="col-md-12" style="padding:5%;">
+                      <input type="file" id="imageUsuario" class="d-none" accept=".jpeg, .jpg">
+                      <label for="imageUsuario" class="p-3 border text-center"><span class="text-warning">Clique aqui</span> e escolha uma imagem para seu perfil</label>
+                      <div class="text-center">
+                        <button type="button" class="btn btn-warning btn-upload-image-usuario mt-4" style="margin-top:2%">Definir Imagem</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div id="notificacaoPerfil" class="fixed-bottom mb-2" style="z-index:9999999;"></div>

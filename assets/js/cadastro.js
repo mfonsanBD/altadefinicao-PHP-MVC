@@ -2,7 +2,7 @@ urlSite = window.location.href;
 $(document).ready(function(){
     $("#aceito").click(function(){
         var aceita = $(this).is(':checked');
-        if(aceita == true){
+        if(aceita){
             $('#cadastro').removeAttr('disabled');
         }else{
             $('#cadastro').attr('disabled', true);

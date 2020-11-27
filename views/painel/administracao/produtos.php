@@ -124,9 +124,9 @@
                                     ?>
                                 </td>
                                 <td>
-                                    <button class="btn btn-default float-left btn-block btn-sm" data-toggle="modal" data-target="#edita-produto" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-categoria="<?=$produtos['idCategoria']?>">Editar</button>
+                                    <button class="btn btn-default float-left btn-block btn-sm" data-toggle="modal" data-target="#edita-produto" data-id="<?=$produtos['idProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-categoria="<?=$produtos['idCategoria']?>"><i class="fas fa-edit"></i> Editar</button>
 
-                                    <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-foto="<?=$produtos['fotoProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto">Excluir</button>
+                                    <button class="btn btn-danger float-right btn-block btn-sm mt-1" data-id="<?=$produtos['idProduto']?>" data-foto="<?=$produtos['fotoProduto']?>" data-nome="<?=$produtos['nomeProduto']?>" data-toggle="modal" data-target="#confirmaExclusaoDeProduto"><i class="fas fa-trash-alt"></i> Excluir</button>
                                 </td>
                             </tr>
                             <?php

@@ -238,7 +238,23 @@ class CaixaController extends Login{
       $pedido = new Pedidos();
       $informacoesPedido  = $pedido->infoPedido($idPedido);
       $valor              = $informacoesPedido['valorPedido'];
+      $formaPagamento;
       $cliente;
+
+      switch($informacoesPedido['idFormaPagamento']){
+        case 1:
+          $formaPagamento = "Dinheiro";
+        break;
+        case 2:
+          $formaPagamento = "Transferência";
+        break;
+        case 3:
+          $formaPagamento = "Cartão de Débito";
+        break;
+        case 3:
+          $formaPagamento = "Cartão de Crédito";
+        break;
+      }
       
       if($informacoesPedido['idCliente'] == null){
         $cliente          = $informacoesPedido['nomeCliente'];
@@ -250,7 +266,7 @@ class CaixaController extends Login{
       $ultimoId = $baixa->ultimoId($hoje);
 
       $caixa = new Caixa();
-      $cadastraEntradaCaixa = $caixa->cadastraEntradaCaixa($idPedido, $ultimoId, $hoje, $valor, $cliente);
+      $cadastraEntradaCaixa = $caixa->cadastraEntradaCaixa($idPedido, $ultimoId, $hoje, $valor, $cliente, $formaPagamento);
 
       if($cadastraEntradaCaixa){
         echo 1;

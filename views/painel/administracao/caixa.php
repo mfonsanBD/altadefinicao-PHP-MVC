@@ -145,7 +145,7 @@
                                 <?='R$ '.number_format($caixa['valorCaixa'], 2, ",", ".");?>
                               </td>
                               <td class="budget">
-                                Dinheiro
+                              <?=$caixa['pagamento'];?>
                               </td>
                             </tr>
                             <?php

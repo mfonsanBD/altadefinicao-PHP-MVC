@@ -42,16 +42,11 @@
                 <span class="nav-link-text">Clientes</span>
               </a>
             </li>
+            <div class="dropdown-divider mt-3 mb-3"></div>
             <li class="nav-item">
               <a class="nav-link <?=($this->titulo == "Endereço") ? 'active' : '';?>" href="<?=URL_BASE?>endereco">
                 <i class="ni ni-pin-3 text-default"></i>
                 <span class="nav-link-text">Endereço</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link <?=($this->titulo == "Contato") ? 'active' : '';?>" href="<?=URL_BASE?>contatos">
-                <i class="ni ni-mobile-button text-default"></i>
-                <span class="nav-link-text">Contato</span>
               </a>
             </li>
             <li class="nav-item">
@@ -96,13 +91,13 @@
             </li>
             <li class="nav-item dropdown">
                 <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>Notificações</span>
-                    <span class="badge badge-primary">24</span>
+                    <span><i class="ni ni-bell-55"></i> Notificações</span>
+                    <span class="badge badge-warning">24</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                     <!-- Dropdown header -->
                     <div class="px-3 py-3">
-                    <h6 class="text-sm text-muted m-0">Você tem <strong class="text-primary">13</strong> notificações.</h6>
+                    <h6 class="text-sm text-muted m-0">Você tem <strong class="text-warning">13</strong> notificações.</h6>
                     </div>
                     <!-- List group -->
                     <div class="list-group list-group-flush">
@@ -203,7 +198,7 @@
                     </a>
                     </div>
                     <!-- View all -->
-                    <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">Ver Todas</a>
+                    <a href="#!" class="dropdown-item text-center text-warning font-weight-bold py-3">Ver Todas</a>
                 </div>
             </li>
           </ul>
@@ -216,7 +211,7 @@
                         if($this->foto == 'usuario.jpg'){
                             echo "<img alt='Foto de Usuário' src='".URL_BASE."assets/img/usuario.jpg'>";
                         }else{
-                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='".URL_BASE."assets/img/usuario/".$_SESSION['logado']."/".$this->foto."'>";
+                            echo "<img alt='Foto de ".$this->nomeUsuario."' src='".URL_BASE."media/usuarios/".$_SESSION['logado']."/".$this->foto."'>";
                         }
                     ?>
                   </span>

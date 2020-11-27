@@ -86,17 +86,88 @@ $(document).ready(function(){
         }
     });
     
-    $("#botaoAlteracaoEndereco").click(function(e){
+    var resize = $('#upload-demo-usuario').croppie({
+        enableExif: true,
+        enableOrientation: true,    
+        viewport: { 
+            width: 140,
+            height: 140, 
+            type: 'circle'
+        },
+        boundary: {
+            width: 140,
+            height: 140
+        }
+    });
+    $('#imageUsuario').on('change', function () { 
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            resize.croppie('bind',{
+            url: e.target.result
+            });
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+    $('.btn-upload-image-usuario').on('click', function (ev) {
+        resize.croppie('result', {
+        type: 'canvas',
+        size: 'viewport'
+        }).then(function (img) {
+            $.ajax({
+                url: urlSite+'/alteraFotoUsuario/',
+                type: 'POST',
+                data: {img:img},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoPerfil("Foto de perfil alterada com sucesso!");
+                        setTimeout(function(){window.location.reload()}, 3000);
+                    }else{
+                        atencaoPerfil("A extenção da imagem que você enviou não é permitida em nosso sistema.");
+                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                    }
+                }
+            });
+        });
+    });
+    
+    $("#botaoCadastraEndereco").click(function(e){
         e.preventDefault();
-        sucessoPerfil("Endereço");
+        sucessoEndereco("Endereço");
         setTimeout(function(){$(".alert").alert('close');}, 3000);
     });
     
     $("#botaoAlteracaoContato").click(function(e){
         e.preventDefault();
-        sucessoPerfil("Contato");
+        let fixo        = $("#fixo").val();
+        let celular     = $("#celular").val();
+        let whatsapp    = $("#whatsapp").val();
+
+        if(fixo == "" || celular == "" || whatsapp == ""){
+            atencaoPerfil("Nenhum campo de contato deve estar vazio.");
+        }else{
+            $.ajax({
+                url: urlSite+'/alteraContato/',
+                type: 'POST',
+                data: {fixo:fixo, celular:celular, whatsapp:whatsapp},
+                success: function(dados){
+                    if(dados == 1){
+                        sucessoPerfil("Alteração das informações de contato realizada com sucesso.");
+                        setTimeout(function(){window.location.reload();}, 5000);
+                    }else{
+                        atencaoPerfil("As informações enviadas já estão em uso.");
+                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                    }
+                }
+            });
+        }
+
         setTimeout(function(){$(".alert").alert('close');}, 3000);
     });
+
+    $('.fixo').mask('(00) 0000-0000');
+    $('.celular').mask('(00) 00000-0000');
+    $('.whatsapp').mask('+00 (00) 00000-0000');
+    $('.cep').mask('00000-000');
 });
 
 function sucessoPerfil(texto){
@@ -107,6 +178,16 @@ function erroPerfil(texto){
 }
 function atencaoPerfil(texto){
     $("#notificacaoPerfil").html("<div class='col-lg-4 offset-lg-4 alert alert-warning alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-exclamation-triangle'></i></span><span class='alert-text'><strong>Atenção! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+}
+
+function sucessoEndereco(texto){
+    $("#notificacaoEndereco").html("<div class='col-lg-4 offset-lg-4 alert alert-success alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='ni ni-like-2'></i></span><span class='alert-text'><strong>Sucesso! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+}
+function erroEndereco(texto){
+    $("#notificacaoEndereco").html("<div class='col-lg-4 offset-lg-4 alert alert-danger alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-times'></i></span><span class='alert-text'><strong>Erro! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+}
+function atencaoEndereco(texto){
+    $("#notificacaoEndereco").html("<div class='col-lg-4 offset-lg-4 alert alert-warning alert-dismissible fade show animate__animated animate__slideInLeft' role='alert'><span class='alert-icon'><i class='fas fa-exclamation-triangle'></i></span><span class='alert-text'><strong>Atenção! </strong>"+texto+"</span><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
 }
 
 $("#senha").keyup(function(){

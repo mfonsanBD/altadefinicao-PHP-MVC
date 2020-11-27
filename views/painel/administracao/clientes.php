@@ -93,19 +93,19 @@
                                       switch($clientes['permissaoUsuario']){
                                         case 0:
                                           echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-success' onclick='aprovar(".$clientes['idUsuario'].")' id='aprovaCliente'>Aprovar Revendedor</button>";
+                                          <button class='btn btn-success' onclick='aprovar(".$clientes['idUsuario'].")' id='aprovaCliente'><i class='fas fa-thumbs-up'></i> Aprovar Revendedor</button>";
                                         break;
                                         case 1:
                                           echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-warning' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-toggle='modal' data-target='#desitavaCliente'>Desativar Revendedor</button>
+                                          <button class='btn btn-warning' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-toggle='modal' data-target='#desitavaCliente'><i class='fas fa-power-off'></i> Desativar Revendedor</button>
 
-                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'>Excluir Revendedor</button>";
+                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'><i class='fas fa-trash-alt'></i> Excluir Revendedor</button>";
                                         break;
                                         case 2:
                                           echo "<div class='dropdown-menu dropdown-menu-right dropdown-menu-arrow p-2'>
-                                          <button class='btn btn-success' onclick='reativar(".$clientes['idUsuario'].")' id='aprovaCliente'>Reativar Revendedor</button>
+                                          <button class='btn btn-success' onclick='reativar(".$clientes['idUsuario'].")' id='aprovaCliente'><i class='fas fa-power-off'></i> Reativar Revendedor</button>
 
-                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'>Excluir Revendedor</button>";
+                                          <button class='btn btn-danger' data-id='".$clientes['idUsuario']."' data-nome='".$clientes['nomeUsuario']."' data-sobrenome='".$clientes['sobrenomeUsuario']."' data-foto='".$clientes['fotoUsuario']."' data-toggle='modal' data-target='#confirmaExclusaoDeCliente'><i class='fas fa-trash-alt'></i> Excluir Revendedor</button>";
                                         break;
                                       }
                                     ?>

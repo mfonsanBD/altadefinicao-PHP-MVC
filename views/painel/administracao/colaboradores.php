@@ -69,7 +69,7 @@
                           </td>
                           <td class="text-right">
                             <?php
-                              echo "<button class='btn btn-danger btn-sm' data-id='".$colaboradores['idColaborador']."' data-nome='".$colaboradores['nomeColaborador']."' data-foto='".$colaboradores['fotoColaborador']."' data-toggle='modal' data-target='#confirmaExclusaoDeColaborador'>Excluir Colaborador</button>";
+                              echo "<button class='btn btn-danger btn-sm' data-id='".$colaboradores['idColaborador']."' data-nome='".$colaboradores['nomeColaborador']."' data-foto='".$colaboradores['fotoColaborador']."' data-toggle='modal' data-target='#confirmaExclusaoDeColaborador'><i class='fas fa-trash-alt'></i> Excluir Colaborador</button>";
                             ?>
                           </td>
                       </tr>

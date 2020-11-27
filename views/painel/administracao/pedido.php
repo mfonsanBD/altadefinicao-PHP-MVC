@@ -408,44 +408,44 @@
               case 1:
                 echo "
                   <h2 class='text-uppercase'>Alterar status do pedido:</h2>
-                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default btn-sm'>Em Produção</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm' disabled>".$textoEntrega."</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
-                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger btn-sm'>Com Problema</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default'><i class='fas fa-print'></i> Em Produção</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info' disabled><i class='fas fa-pallet'></i> ".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success' disabled><i class='fas fa-check'></i> Finalizado</button>
+                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger'><i class='fas fa-times'></i> Com Problema</button>
                 ";
               break;
               case 2:
                 echo "
                   <h2 class='text-uppercase'>Alterar status do pedido:</h2>
-                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm'>".$textoEntrega."</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info'><i class='fas fa-pallet'></i> ".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success' disabled><i class='fas fa-check'></i> Finalizado</button>
                 ";
               break;
               case 3:
                   if($pedido['idTipoEntrega'] == 1){
                     echo "
                       <h2 class='text-uppercase'>Alterar status do pedido:</h2>
-                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm'>Finalizado</button>
+                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success'><i class='fas fa-check'></i> Finalizado</button>
                     ";
                   }else{
                     echo "
                       <h2 class='text-uppercase'>Alterar status do pedido:</h2>
-                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm'>Finalizado</button>
+                      <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success'><i class='fas fa-check'></i> Finalizado</button>
                     ";
                   }
               break;
-              case 4: echo "<span class='bg-success text-white p-1 border-rounded'>Finalizado</span>";
+              case 4: echo "<span class='bg-success text-white p-2 border-rounded'><i class='fas fa-check'></i> Finalizado</span>";
               break;
-              case 5: echo "<span class='bg-danger text-white p-1 border-rounded'>Com Problema</span><p class='mt-2 text-danger'><small><b>Problema:</b> ".$pedido['problemaPedido']."</small></p>";
+              case 5: echo "<span class='bg-danger text-white p-2 border-rounded'><i class='fas fa-times'></i> Com Problema</span><p class='mt-2 text-danger'><small><b>Problema:</b> ".$pedido['problemaPedido']."</small></p>";
               break;
               default:
                 echo "
                   <h2 class='text-uppercase'>Alterar status do pedido:</h2>
-                  <button data-idPedido='".$pedido['idPedido']."' id='processando' class='btn btn-sm text-white' style='background-color:#8898aa !important;'>Processando</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default btn-sm' disabled>Em Produção</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info btn-sm text-white' disabled>".$textoEntrega."</button>
-                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success btn-sm' disabled>Finalizado</button>
-                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger btn-sm' disabled>Com Problema</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='processando' class='btn btn-warning'><i class='fas fa-sync'></i> Processando</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='producao' class='btn btn-default' disabled><i class='fas fa-print'></i> Em Produção</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='entrega' class='btn btn-info text-white' disabled><i class='fas fa-pallet'></i> ".$textoEntrega."</button>
+                  <button data-idPedido='".$pedido['idPedido']."' id='finalizado' class='btn btn-success' disabled><i class='fas fa-check'></i> Finalizado</button>
+                  <button data-toggle='modal' data-target='#problema' data-idpedido='".$pedido['idPedido']."' class='btn btn-danger' disabled><i class='fas fa-times'></i> Com Problema</button>
                 ";
               break;
             }
