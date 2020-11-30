@@ -5,6 +5,7 @@ use \Models\Usuario;
 use \Models\Produtos;
 use \Models\TipoCliente;
 use \Models\Pedidos;
+use \Models\Notificacoes;
 
 class PainelController extends Login{
 	public function index(){
@@ -12,6 +13,10 @@ class PainelController extends Login{
             header("Location: ".URL_BASE."login");
             exit();
         }
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $id = $_SESSION['logado'];
 
@@ -44,6 +49,9 @@ class PainelController extends Login{
                 $outubro        = date("Y-10");
                 $novembro       = date("Y-11");
                 $dezembro       = date("Y-12");
+
+                $maisPedidos                = $pedido->maisPedidos();
+                $dados['maispedidos']       = $maisPedidos;
 
                 $quantidadePedidos = $pedido->quantidadePedidos();
                 $dados['quantidadePedidos'] = $quantidadePedidos;

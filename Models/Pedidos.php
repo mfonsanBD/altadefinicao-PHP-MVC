@@ -14,6 +14,21 @@ class Pedidos extends Model{
 
         return $array;
     }
+    public function maisPedidos(){
+        $array = array();
+        $sql = $this->conexao->prepare("SELECT COUNT(pdd.idProduto) AS conta, pdt.nomeProduto AS nome
+		FROM pedido AS pdd
+		INNER JOIN produto AS pdt ON (pdd.idProduto = pdt.idProduto)
+		GROUP BY pdd.idProduto 
+		ORDER BY conta DESC");
+        $sql->execute();
+
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+
+        return $array;
+    }
     public function infoPedidos($slug){
         $array = array();
 

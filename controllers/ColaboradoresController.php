@@ -3,6 +3,7 @@ namespace Controllers;
 use \Core\Login;
 use \Models\Usuario;
 use \Models\Colaboradores;
+use \Models\Notificacoes;
 
 class ColaboradoresController extends Login{
 	public function index(){
@@ -10,6 +11,10 @@ class ColaboradoresController extends Login{
             header("Location: ".URL_BASE."login");
             exit();
         }
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $id = $_SESSION['logado'];
 

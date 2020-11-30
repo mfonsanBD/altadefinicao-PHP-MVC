@@ -3,6 +3,7 @@ namespace Controllers;
 use \Core\Login;
 use \Models\Usuario;
 use \Models\Postagem;
+use \Models\Notificacoes;
 
 class BlogController extends Login{
 	public function index(){
@@ -20,6 +21,10 @@ class BlogController extends Login{
         $this->foto = $informacoesUsuario['fotoUsuario'];
         
         $this->titulo = "Blog";
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $postagem = new Postagem();
 

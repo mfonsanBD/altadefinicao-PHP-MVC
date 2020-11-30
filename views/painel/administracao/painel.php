@@ -228,6 +228,48 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Produtos Mais Pedidos</h3>
+                </div>
+              </div>
+            </div>
+            <table class="table align-items-center table-flush" id="tabelaDePedidos">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col" class="sort">Produto</th>
+                    <th scope="col" class="sort">Quantidade</th>
+                </tr>
+                </thead>
+                <tbody class="list">
+                    <?php
+                      foreach($maispedidos as $mp):
+                    ?>
+                    <tr>
+                      <th scope="row">
+                          <div class="media align-items-center">
+                              <div class="media-body">
+                              <span class="name mb-0 text-sm ml-2">
+                                <?=$mp['nome'];?>
+                              </span>
+                              </div>
+                          </div>
+                      </th>
+                      <td>
+                          <span class='name'><?=$mp['conta']?></span>
+                      </td>
+                    <?php
+                      endforeach;
+                    ?>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-xl-6">
           <div class="card bg-warning">
             <div class="card-header bg-transparent">

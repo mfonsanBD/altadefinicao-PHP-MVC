@@ -84,20 +84,15 @@
                 </div>
               </div>
             </li>
-            <li class="nav-item d-sm-none">
-              <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
-                <i class="ni ni-zoom-split-in"></i>
-              </a>
-            </li>
             <li class="nav-item dropdown">
                 <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span><i class="ni ni-bell-55"></i> Notificações</span>
-                    <span class="badge badge-warning">24</span>
+                    <span class="badge badge-warning" id="quantidadeNotificacaobtn"><?=$this->qtdNotify?></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
                     <!-- Dropdown header -->
                     <div class="px-3 py-3">
-                    <h6 class="text-sm text-muted m-0">Você tem <strong class="text-warning">13</strong> notificações.</h6>
+                    <h6 class="text-sm text-muted m-0">Você tem <strong class="text-warning" id="quantidadeNotificacao"><?=$this->qtdNotify?></strong> notificações.</h6>
                     </div>
                     <!-- List group -->
                     <div class="list-group list-group-flush">
@@ -198,7 +193,7 @@
                     </a>
                     </div>
                     <!-- View all -->
-                    <a href="#!" class="dropdown-item text-center text-warning font-weight-bold py-3">Ver Todas</a>
+                    <a href="notificacoes" class="dropdown-item text-center text-warning font-weight-bold py-3">Ver Todas</a>
                 </div>
             </li>
           </ul>

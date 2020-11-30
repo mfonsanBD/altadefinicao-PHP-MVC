@@ -5,6 +5,7 @@ use \Models\Usuario;
 use \Models\Caixa;
 use \Models\Baixa;
 use \Models\Pedidos;
+use \Models\Notificacoes;
 
 class CaixaController extends Login{
 	public function index(){
@@ -12,6 +13,10 @@ class CaixaController extends Login{
             header("Location: ".URL_BASE."login");
             exit();
         }
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $id = $_SESSION['logado'];
 

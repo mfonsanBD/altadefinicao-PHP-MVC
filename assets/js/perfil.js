@@ -10,27 +10,35 @@ $(document).ready(function(){
 
         if(nome == ''){
             atencaoPerfil("O campo <strong class='text-uppercase'>nome</strong> é <strong>obrigatório</strong>.");
+            fechaAlerta();
         }
         else if(nome.length < 3){
             atencaoPerfil("O campo <strong class='text-uppercase'>nome</strong> deve conter no mínimo <strong>3 caracteres</strong>.");
+            fechaAlerta();
         }
         else if(!isNaN(nome)){
             atencaoPerfil("O campo <strong class='text-uppercase'>nome</strong> não deve conter <strong>caracteres numéricos</strong>.");
+            fechaAlerta();
         }
         else if(sobrenome == ''){
             atencaoPerfil("O campo <strong class='text-uppercase'>sobrenome</strong> é <strong>obrigatório</strong>.");
+            fechaAlerta();
         }
         else if(sobrenome.length < 3){
             atencaoPerfil("O campo <strong class='text-uppercase'>sobrenome</strong> deve conter no mínimo <strong>3 caracteres</strong>.");
+            fechaAlerta();
         }
         else if(!isNaN(sobrenome)){
             atencaoPerfil("O campo <strong class='text-uppercase'>sobrenome</strong> não deve conter <strong>caracteres numéricos</strong>.");
+            fechaAlerta();
         }
         else if(email == ''){
             atencaoPerfil("O campo <strong class='text-uppercase'>e-mail</strong> é <strong>obrigatório</strong>.");
+            fechaAlerta();
         }
         else if(!validaEmail(email)){
             atencaoPerfil("Digite um <strong class='text-uppercase'>e-mail</strong> <strong>válido</strong>.");
+            fechaAlerta();
         }else{
             $.ajax({
                 url: urlSite+'/alteraUsuario/',
@@ -39,10 +47,10 @@ $(document).ready(function(){
                 success: function(dados){
                     if(dados == 1){
                         sucessoPerfil("Alteração das informações de usuário realizada com sucesso.");
-                        setTimeout(function(){window.location.reload();}, 5000);
+                        atualizaPagina();
                     }else{
                         atencaoPerfil("As informações enviadas já estão em uso.");
-                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                        fechaAlerta();
                     }
                 }
             });      
@@ -58,12 +66,15 @@ $(document).ready(function(){
 
         if(senha == ''){
             atencaoPerfil("O campo <strong class='text-uppercase'>senha</strong> é <strong>obrigatório</strong>.");
-        }
-        else if(forcaDaSenha(senha) < 70){
-            atencaoPerfil("Para segurança das suas informações sua <strong class='text-uppercase'>senha</strong> precisa ser <strong>mais forte</strong>.");
+            fechaAlerta();
         }
         else if(confirmasenha == ''){
             atencaoPerfil("O campo <strong class='text-uppercase'>confirma senha</strong> é <strong>obrigatório</strong>.");
+            fechaAlerta();
+        }
+        else if(forcaDaSenha(senha) < 70){
+            atencaoPerfil("Para segurança das suas informações sua <strong class='text-uppercase'>senha</strong> precisa ser <strong>mais forte</strong>.");
+            fechaAlerta();
         }
         else if(confirmasenha != senha){
             atencaoPerfil("Os campos de senha não coincidem.");
@@ -75,11 +86,11 @@ $(document).ready(function(){
                 success: function(dados){
                     if(dados == 1){
                         sucessoPerfil("Senha alterada com sucesso.");
-                        setTimeout(function(){window.location.reload();}, 5000);
+                        atualizaPagina();
                     }
                     else{
                         atencaoPerfil("A senha que você enviou já está em uso.");
-                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                        fechaAlerta();
                     }
                 }
             });      
@@ -111,7 +122,8 @@ $(document).ready(function(){
     $('.btn-upload-image-usuario').on('click', function (ev) {
         resize.croppie('result', {
         type: 'canvas',
-        size: 'viewport'
+        size: 'viewport',
+        format: 'jpeg'
         }).then(function (img) {
             $.ajax({
                 url: urlSite+'/alteraFotoUsuario/',
@@ -120,10 +132,10 @@ $(document).ready(function(){
                 success: function(dados){
                     if(dados == 1){
                         sucessoPerfil("Foto de perfil alterada com sucesso!");
-                        setTimeout(function(){window.location.reload()}, 3000);
+                        atualizaPagina();
                     }else{
                         atencaoPerfil("A extenção da imagem que você enviou não é permitida em nosso sistema.");
-                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                        fechaAlerta();
                     }
                 }
             });
@@ -144,6 +156,7 @@ $(document).ready(function(){
 
         if(fixo == "" || celular == "" || whatsapp == ""){
             atencaoPerfil("Nenhum campo de contato deve estar vazio.");
+            fechaAlerta();
         }else{
             $.ajax({
                 url: urlSite+'/alteraContato/',
@@ -152,16 +165,14 @@ $(document).ready(function(){
                 success: function(dados){
                     if(dados == 1){
                         sucessoPerfil("Alteração das informações de contato realizada com sucesso.");
-                        setTimeout(function(){window.location.reload();}, 5000);
+                        atualizaPagina();
                     }else{
                         atencaoPerfil("As informações enviadas já estão em uso.");
-                        setTimeout(function(){$(".alert").alert('close');}, 3000);
+                        fechaAlerta();
                     }
                 }
             });
         }
-
-        setTimeout(function(){$(".alert").alert('close');}, 3000);
     });
 
     $('.fixo').mask('(00) 0000-0000');
@@ -240,4 +251,16 @@ function forcaDaSenha(senha){
     }
 
     return forca;
+}
+
+function fechaAlerta(){
+    setTimeout(function(){
+        $(".alert").alert('close');
+    }, 3000);
+}
+
+function atualizaPagina(){
+    setTimeout(function(){
+        window.location.reload();
+    }, 3000);
 }

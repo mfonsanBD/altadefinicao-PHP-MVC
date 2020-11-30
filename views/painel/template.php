@@ -55,6 +55,7 @@
   <script src="<?=URL_BASE?>assets/js/caixa.js"></script>
   <script src="<?=URL_BASE?>assets/js/pedidos.js"></script>
   <script src="<?=URL_BASE?>assets/js/perfil.js"></script>
+  <script src="<?=URL_BASE?>assets/js/geral.js"></script>
   
 <script>
   var lm = document.getElementById('lucroMensal');

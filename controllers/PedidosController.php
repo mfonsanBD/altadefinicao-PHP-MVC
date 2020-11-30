@@ -10,6 +10,7 @@ use \Models\Midia;
 use \Models\Acabamento;
 use \Models\TipoEntrega;
 use \Models\FormaPagamento;
+use \Models\Notificacoes;
 
 class PedidosController extends Login{
 	public function index(){
@@ -17,6 +18,10 @@ class PedidosController extends Login{
             header("Location: ".URL_BASE."login");
             exit();
         }
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $id = $_SESSION['logado'];
 

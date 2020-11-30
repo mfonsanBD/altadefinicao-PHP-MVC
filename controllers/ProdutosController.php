@@ -9,6 +9,7 @@ use \Models\ValorProdutoTipoCliente;
 use \Models\Midia;
 use \Models\Acabamento;
 use \Models\Gramatura;
+use \Models\Notificacoes;
 
 class ProdutosController extends Login{
 	public function index(){
@@ -16,6 +17,10 @@ class ProdutosController extends Login{
             header("Location: ".URL_BASE."login");
             exit();
         }
+
+        $notificacoes = new Notificacoes();
+        $quantidade = $notificacoes->quantidadeNotificacoes();
+        $this->qtdNotify = $quantidade;
 
         $id = $_SESSION['logado'];
 

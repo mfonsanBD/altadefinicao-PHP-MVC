@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-lg-12 text-center mb-2 text-muted font-italic forcaSenha"></div>
                 <div class="text-center">
-                    <button class="btn btn-warning btn-sm mt-3" id="botaoAlteracaoSenha">Salvar Alterações de Senha</button>
+                    <button class="btn btn-warning mt-3" id="botaoAlteracaoSenha"><i class="fas fa-check"></i> Salvar Alterações de Senha</button>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@
                     </div>
                   </div>
                   <div class="text-center">
-                      <button class="btn btn-warning btn-sm mt-3" id="botaoAlteracaoUsuario">Salvar Alterações de Usuário</button>
+                      <button class="btn btn-warning mt-3" id="botaoAlteracaoUsuario"><i class="fas fa-check"></i> Salvar Alterações de Usuário</button>
                   </div>
                 </div>
                 <hr class="my-4" />
@@ -138,7 +138,7 @@
                     </div>
                   </div>
                   <div class="text-center">
-                      <button class="btn btn-warning btn-sm mt-3" id="botaoAlteracaoContato">Salvar Alterações de Contato</button>
+                      <button class="btn btn-warning mt-3" id="botaoAlteracaoContato"><i class="fas fa-check"></i> Salvar Alterações de Contato</button>
                   </div>
                 </div>
               </form>
